@@ -1,0 +1,6 @@
+.container-box {
+  margin-top: 1em;
+}
+.container-box .checkbox {
+  border: 1px solid gray;
+}

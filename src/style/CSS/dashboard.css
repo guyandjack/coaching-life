@@ -1,0 +1,10 @@
+.container-page-dashboard {
+  width: 100%;
+  border: 2px solid green;
+  padding: 1em;
+}
+.container-page-dashboard h1 {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+}
