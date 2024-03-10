@@ -2,6 +2,9 @@
 const express = require("express");
 
 // eslint-disable-next-line no-undef
+const fileUpload = require("express-fileupload");
+
+// eslint-disable-next-line no-undef
 const routeApi = require("./route.js");
 
 // eslint-disable-next-line no-undef
@@ -14,6 +17,9 @@ app.use(express.json());
 
 //permet d'acceder au contenu du corps de la requette
 app.use(bodyParser.urlencoded({ extended: true }));
+
+//permet de recuperer les fichier dans le corps de la requte
+app.use(fileUpload());
 
 app.use("/api", routeApi);
 

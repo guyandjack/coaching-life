@@ -1,4 +1,4 @@
-//fonction unitaire qui controle la validite des données utilisateur issu des formulaires
+//fonctions unitaires qui controlent la validite des données utilisateur issu des formulaires
 
 //import des regEx
 // eslint-disable-next-line no-undef
@@ -35,27 +35,24 @@ function checkFirstname(firstname) {
   }
   return false;
 }
-//Test la validite d'une chaine de caractere alpha
-function checkText(text) {
-  if (regEx.masqueMail.test(text)) {
+//Test la validite d'un message
+function checkText(content) {
+  if (regEx.masqueMessage.test(content)) {
     return true;
   }
   return false;
 }
-//Test la validite d'une chaine de caractere alpha
+//Test la validite d'une url
 function checkUrl(url) {
-  if (regEx.masqueMail.test(url)) {
+  if (regEx.masqueUrl.test(url)) {
     return true;
   }
   return false;
 }
-//Test la validite d'une chaine de caractere alpha
-function checkImg(img) {
-  if (regEx.masqueMail.test(img)) {
-    return true;
-  }
+//Test la validite d'un fichier image
+/*function checkImg(img) {
   return false;
-}
+}*/
 
 // eslint-disable-next-line no-undef
 module.exports = {
@@ -65,6 +62,6 @@ module.exports = {
   checkPassword,
   checkText,
   checkUrl,
-  checkImg,
+  //checkImg,
 };
 // eslint-disable-next-line no-undef

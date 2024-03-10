@@ -2192,6 +2192,22 @@
 
       <div id="rc-form-password"></div>
 
+      <form id="upload" method="post" actenctype="multipart/form-data">
+        <input
+          ref="upload"
+          type="file"
+          name="avatar"
+          accept="image/png, image/jpg"
+        />
+        <button
+          type="submit"
+          form="upload"
+          formaction="localhost:5500/api/image"
+        >
+          uploader image
+        </button>
+      </form>
+
       <footer></footer>
     </div>
     <p>

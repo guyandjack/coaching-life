@@ -36,6 +36,11 @@ const masqueNumber = /^[0-9]/;
 //Motif qui permet de controler un mot de passe
 const masquePassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,30}$/;
 
+//Motif qui permet de controler une url
+const masqueUrl =
+  // eslint-disable-next-line no-useless-escape
+  /^(((https?):\/\/)|(www\.)|((https?):\/\/www\.))[a-z_\.\-]{1,15}\.[a-z_\.\-]{1,20}[a-z0-9\/:%_+.,#?!@&=-]+$/;
+
 // eslint-disable-next-line no-undef
 module.exports = {
   masqueCivilite,
@@ -44,4 +49,5 @@ module.exports = {
   masqueMessage,
   masqueNumber,
   masquePassword,
+  masqueUrl,
 };
