@@ -49,6 +49,13 @@ function checkUrl(url) {
   }
   return false;
 }
+//Test la validite d'une url
+function checkNumber(number) {
+  if (regEx.masqueNumber.test(number)) {
+    return true;
+  }
+  return false;
+}
 //Test la validite d'un fichier image
 /*function checkImg(img) {
   return false;
@@ -62,6 +69,7 @@ module.exports = {
   checkPassword,
   checkText,
   checkUrl,
+  checkNumber,
   //checkImg,
 };
 // eslint-disable-next-line no-undef

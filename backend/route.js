@@ -7,6 +7,12 @@ const routeur = express.Router();
 
 // eslint-disable-next-line no-undef
 const addOneAvis = require("./controlers/avis/addAvis.js");
+
+// eslint-disable-next-line no-undef
+const deleteAvis = require("./controlers/avis/deleteAvis.js");
+
+// eslint-disable-next-line no-undef
+const testPostman = require("./controlers/avis/test.js");
 /*
 const changeAvis = require("./controlers/avis/changeAvis.js");
 const deleteAvis = require("./controlers/avis/deleteAvis.js");*/
@@ -66,9 +72,10 @@ routeur.put("/avis", auth, (req, res) => {
 
 /*********** route delete   **************/
 
-routeur.delete("/avis", auth, (req, res) => {
-  res.status(200).send("la route suprimer avis est validée");
-});
+routeur.delete("/avis", auth, checkData, deleteAvis);
+
+//route de test
+routeur.post("/test", testPostman);
 
 // eslint-disable-next-line no-undef
 module.exports = routeur;

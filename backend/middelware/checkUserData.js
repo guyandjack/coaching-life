@@ -70,6 +70,11 @@ function isDataValid(req, res, next) {
           tabError.push("error avatarurl");
         }
         break;
+      case "avisid":
+        if (!functionControl.checkNumber(req.body.avisid)) {
+          tabError.push("error avatarurl");
+        }
+        break;
 
       default:
         break;
