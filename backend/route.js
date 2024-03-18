@@ -1,25 +1,30 @@
-// import du module express
+// import des modules
 // eslint-disable-next-line no-undef
 const express = require("express");
 const routeur = express.Router();
+// eslint-disable-next-line no-undef
+const path = require("path");
 
-//import des controlers pour les avis clients
+/********* import des controlers pour les avis clients ************/
+
+// eslint-disable-next-line no-undef
+const getAllAvis = require("./controlers/avis/getAllAvis.js");
 
 // eslint-disable-next-line no-undef
 const addOneAvis = require("./controlers/avis/addAvis.js");
 
 // eslint-disable-next-line no-undef
-const deleteAvis = require("./controlers/avis/deleteAvis.js");
+const changeOneAvis = require("./controlers/avis/changeAvis.js");
 
 // eslint-disable-next-line no-undef
-const testPostman = require("./controlers/avis/test.js");
-/*
-const changeAvis = require("./controlers/avis/changeAvis.js");
-const deleteAvis = require("./controlers/avis/deleteAvis.js");*/
+const deleteAvis = require("./controlers/avis/deleteAvis.js");
 
-//import des controlers pour l' admin
+/*// eslint-disable-next-line no-undef
+const testPostman = require("./controlers/avis/test.js");*/
 
-//authentification de l' admin
+/************ import des controlers pour l' admin *************/
+
+//connection de l' admin
 // eslint-disable-next-line no-undef
 const logUser = require("./controlers/user/loginUser.js");
 
@@ -27,32 +32,37 @@ const logUser = require("./controlers/user/loginUser.js");
 // eslint-disable-next-line no-unused-vars, no-undef
 const changePassword = require("./controlers/user/changePassword.js");
 
+/************ import des middelware ***************** */
+
+// authentification du user par token
 // eslint-disable-next-line no-undef
 const auth = require("./middelware/authentification/auth.js");
+
+//controle des donnees envoyées par le user
 // eslint-disable-next-line no-undef
 const checkData = require("./middelware/checkUserData.js");
 
-/*********** route post **************/
+// eslint-disable-next-line no-undef
+const setHeaderSecurityCORS = require("./middelware/CORS.js");
 
-//route de test pour recuperre une image
-routeur.post("/image", (req, res) => {
-  // Get the file that was set to our field named "image"
-  console.log("req-files: " + req.files);
-  const { image } = req.files.avatar;
+/***********************************************
+ * ************* creation des enpoints************
+ * ********************************************/
 
-  // If no image submitted, exit
-  if (!image) return res.sendStatus(400);
+/*********** route get **************
+ * **********************************/
 
-  let imagePath = image.name;
-  let imageValid = imagePath.split(" ").join("");
-  console.log("nom de l'image: " + imagePath);
+routeur.get("/avis", setHeaderSecurityCORS, getAllAvis);
 
-  // Move the uploaded image to our upload folder
+routeur.get(
+  "/avis/avatar",
+  setHeaderSecurityCORS,
   // eslint-disable-next-line no-undef
-  image.mv(__dirname + "/images/" + Date.now() + "_" + imageValid);
+  express.static(path.join(__dirname, "images"))
+);
 
-  res.status(201).send("image enregistrée");
-});
+/*********** route post **************
+ * **************************************/
 
 // routes login utilisateur
 routeur.post("/login", checkData, logUser);
@@ -60,22 +70,22 @@ routeur.post("/login", checkData, logUser);
 // routes Ajouter avis
 routeur.post("/avis", auth, addOneAvis);
 
-/*********** route put   **************/
+/*********** route put   **************
+ * ************************************/
 
 //Modif mot de passe
 routeur.put("/password", auth, checkData, changePassword);
 
 //Modif avis
-routeur.put("/avis", auth, (req, res) => {
-  res.status(200).send("la route modif avis est validée");
-});
+routeur.put("/avis", auth, checkData, changeOneAvis);
 
-/*********** route delete   **************/
+/*********** route delete   **************
+ * *****************************************/
 
-routeur.delete("/avis", auth, checkData, deleteAvis);
+routeur.delete("/avis/:_id", auth, checkData, deleteAvis);
 
-//route de test
-routeur.post("/test", testPostman);
+/*//route de test
+routeur.post("/test", testPostman);*/
 
 // eslint-disable-next-line no-undef
 module.exports = routeur;

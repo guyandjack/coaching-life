@@ -60,8 +60,6 @@ async function globalChangePassword(req, res) {
     paramRequetePasswordAdmin
   );
 
-  connect.end();
-
   if (requestResult.length < 1) {
     connect.end();
     res.status(401).json({ message: "pas d'admin correspondant" });

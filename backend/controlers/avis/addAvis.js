@@ -4,6 +4,7 @@
 // eslint-disable-next-line no-undef, no-unused-vars
 const crypt = require("bcrypt");
 // eslint-disable-next-line no-undef, no-unused-vars
+const path = require("path");
 
 //import des fonctions
 // eslint-disable-next-line no-undef
@@ -15,7 +16,7 @@ const connectToDataBase = require("../../utils/functions/connectionDataBase.js")
 const sendRequest = require("../../utils/functions/requestDataBase.js");
 
 //declaration des variables
-let avatarPath = null;
+let avatarPathDataBase = null;
 
 let isValid = true;
 
@@ -31,7 +32,6 @@ async function getContent(bodyparsed) {
   return bodyparsed.content;
 }
 
-
 async function getSocialUrl(bodyparsed) {
   if (!bodyparsed.socialurl) {
     return null;
@@ -39,10 +39,7 @@ async function getSocialUrl(bodyparsed) {
   return bodyparsed.socialurl;
 }
 
-
-
 async function globalAddOneAvis(req, res) {
-
   if (Object.keys(req.body).length < 1) {
     return res.status(500).json({ message: "corps de la requette vide" });
   }
@@ -53,27 +50,39 @@ async function globalAddOneAvis(req, res) {
   const content = await getContent(bodyParsed);
   const socialUrl = await getSocialUrl(bodyParsed);
 
-  if (req.files) {
+  if (req.files !== null) {
     //recuperation de l' extension du fichier image avatar
 
     let avatarName = req.files.avatar.name;
     let avatarExt = avatarName.split(".").pop(); // eslint-disable-next-line no-undef
 
-    avatarPath =
+    avatarPathDataBase = path.join(
       // eslint-disable-next-line no-undef
-      __dirname +
-      "../../../images/" +
+
       "avatar-" +
-      Date.now() +
-      "-" +
-      lastName +
-      "-" +
-      firstName +
-      "." +
-      avatarExt;
+        Date.now() +
+        "-" +
+        lastName +
+        "-" +
+        firstName +
+        "." +
+        avatarExt
+    );
+    let avatarPathDiskStorage = path.join(
+      // eslint-disable-next-line no-undef
+      "images/" +
+        "avatar-" +
+        Date.now() +
+        "-" +
+        lastName +
+        "-" +
+        firstName +
+        "." +
+        avatarExt
+    );
 
     //enregistrement dans un fichier du serveur
-    req.files.avatar.mv(avatarPath, (err) => {
+    req.files.avatar.mv(avatarPathDiskStorage, (err) => {
       if (err) {
         console.log("impossible d' enregistrer l' avatar: " + err);
         res
@@ -92,7 +101,7 @@ async function globalAddOneAvis(req, res) {
       firstName,
       lastName,
       socialUrl,
-      avatarPath,
+      avatarPathDataBase,
     ];
 
     // connection à la base de donnee

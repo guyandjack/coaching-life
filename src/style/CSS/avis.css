@@ -1,0 +1,45 @@
+#banner-avis {
+  padding: 1em;
+  background-color: lightcyan;
+}
+
+.container-avis {
+  position: relative;
+  padding: 1em;
+  border: 1px solid black;
+  min-height: 100px;
+}
+
+.avis-avatar-img,
+.avis-avatar-bis {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border-radius: 50%;
+  border: 2px solid white;
+  width: 80px;
+  height: 80px;
+}
+
+.avis-avatar-bis {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 2em;
+  color: white;
+  background-color: lightskyblue;
+}
+
+.avis-info-user {
+  text-transform: capitalize;
+}
