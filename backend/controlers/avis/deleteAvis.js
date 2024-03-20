@@ -3,6 +3,8 @@
 //import des librairies
 // eslint-disable-next-line no-undef
 const fs = require("fs");
+// eslint-disable-next-line no-undef
+const path = require("path");
 
 //import des fonctions
 // eslint-disable-next-line no-undef
@@ -36,13 +38,16 @@ async function globalDeleteOneAvis(req, res) {
   );
   console.log("url recuperer de la bdd: " + requestResultUrl + "fin de chaine");
 
-  //si une url est trouvé on supprime le fichier image correspondant
+  //si la requete abouti à un resultat nnon null
   console.log("resultat url: " + requestResultUrl.length);
   if (requestResultUrl.length > 0) {
     console.log("resultat url-2: " + requestResultUrl.length);
-    let avatarUrl = "images/" + requestResultUrl[0]["url_img"];
+    //modification du chemin de l'image a suprimer
+    let avatarUrl = path.join("images/" + requestResultUrl[0]["url_img"]);
 
     console.log("url de la bdd + /images : " + avatarUrl);
+
+    //suppression du fichier image
     fs.unlink(avatarUrl, (err) => {
       if (err) throw err;
       console.log(avatarUrl + " deleted");
@@ -62,13 +67,17 @@ async function globalDeleteOneAvis(req, res) {
 
   connect.end();
 
-  
-
-  if (requestResult) {
+  //si l'objet result de la requete delete n' existe pas
+  if (!requestResult) {
     res.status(500).json({ message: "impossible de suprimer l'avis" });
   }
 
-  res.status(201).json({ message: "avis supprimé" });
+  //si nombre de ligne affectées ets differents de 1
+  if (requestResult["affectedRows"] !== 1) {
+    res.status(500).json({ message: "impossible de suprimer l'avis" });
+  }
+  //console.log("objet retour delete: " + Object.entries(requestResult));
+  res.status(200).json({ message: "avis supprimé" });
 }
 
 function deleteOneAvis(req, res) {
