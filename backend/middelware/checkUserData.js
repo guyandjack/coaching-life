@@ -17,6 +17,7 @@ function isDataValid(req, res, next) {
   /*if (req.files || Object.keys(req.files).length > 0) {
     console.log("liste des clef de l'objet req.files" + Object.keys(req.files));
   }*/
+
   //selectionne une fonction de controle en fonction du type de données
   tabOfProperty.forEach((element) => {
     switch (element) {

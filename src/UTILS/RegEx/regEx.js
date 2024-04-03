@@ -23,6 +23,7 @@ const masqueMail =
 /***** Permet le controle de l' input "content" (le corps du message)  **********/
 
 //Motif qui autorise tous les carracteres à l' exeption des balises ouvrantes, accolades, crochets, signe multiplié et signe logique (ou)
+// eslint-disable-next-line no-useless-escape
 const masqueMessage = /^[^<>{}\[\]*|]{20,200}$/;
 
 //Motif qui permet de controler si une expression est un nombre entier positif
@@ -32,7 +33,10 @@ const masqueNumberInt = /^[^\-\D]?[0-9]{1,}$/;
 const masqueNumberFloat = /^([0-9]{1}||[0-9]{1}[,.]{1}[0-9]{1,2})$/;
 
 //Motif qui
-const masquePassWord = /^[(0-9){1,}(A-Z){1,}{8,}]$/;
+const masquePassWord =
+  /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\S+$).{8,}$/;
+
+const masqueAlphanumeric = /^[0-9A-Za-z_'.-\s]{2,50}$/;
 export {
   masqueCivilite,
   masqueText,
@@ -41,4 +45,5 @@ export {
   masqueNumberInt,
   masqueNumberFloat,
   masquePassWord,
+  masqueAlphanumeric,
 };

@@ -68,7 +68,7 @@ routeur.get(
 routeur.post("/login", checkData, logUser);
 
 // routes Ajouter avis
-routeur.post("/avis", auth, addOneAvis);
+routeur.post("/avis", auth, checkData, addOneAvis);
 
 /*********** route put   **************
  * ************************************/

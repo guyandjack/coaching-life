@@ -1,0 +1,8 @@
+.form-login {
+  width: 350px;
+}
+@media screen and (min-width: 769px) {
+  .form-login {
+    width: 500px;
+  }
+}

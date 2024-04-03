@@ -12,11 +12,11 @@
 }*/
 @font-face {
   font-family: "Oswald", sans-serif;
-  src: url("../../../../Font/Oswald/static/Oswald-Bold.ttf");
+  src: url("../../../../Fonts/static/Oswald-Regular.ttf");
 }
 @font-face {
   font-family: "Mulish", sans-serif;
-  src: url("../../../../Font/Mulish/static/Mulish-Regular.ttf");
+  src: url("../../../../Fonts/static/Mulish-Regular.ttf");
 }
 * {
   margin: 0px;
@@ -46,7 +46,6 @@ body {
           align-items: center;
   height: 100%;
   width: 100%;
-  color: #272727;
 }
 
 .title {
@@ -54,17 +53,22 @@ body {
 }
 
 .h1 {
-  font-weight: 600;
+  font-weight: 800;
   font-size: 2.5em;
   padding: 1em 0em;
 }
 
 .h2 {
-  font-weight: 600;
-  font-size: 1.2em;
+  font-weight: 700;
+  font-size: 1.5em;
 }
 
 .h3 {
   font-weight: 600;
   font-size: 1.3em;
+}
+
+.h3 {
+  font-weight: 600;
+  font-size: 1.2em;
 }

@@ -94,7 +94,7 @@ async function globalcheckUserLogin(req, res) {
               { adminId: requestResult[0]["id"] },
               // eslint-disable-next-line no-undef
               process.env.PRIVATE_KEY_TOKEN,
-              { expiresIn: "1h" }
+              { expiresIn: "2h" }
             ),
           };
           //Renvoi de l'objet reponse

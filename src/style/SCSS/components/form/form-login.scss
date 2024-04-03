@@ -1,0 +1,9 @@
+//import des fichiers utils
+@import "../../utils/mixins/responsive/responsive.scss";
+
+.form-login {
+  width: 350px;
+  @include upper-medium-screen {
+    width: 500px;
+  }
+}
