@@ -1,0 +1,341 @@
+/*******************************************************************************
+******************** shared-style  *************************************************
+**********************************************************************************/
+
+//fichier outil
+@import "../../vendors/normalize.scss";
+@import "../../utils/colors-rule/colors-rule.scss";
+@import "../../utils/mixins/responsive/responsive.scss";
+@import "../fonts/font.scss";
+
+/****************************************************************************************
+/********  **************** Main style **************** ******************/
+/****start******************************************************************************/
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+  font-family: "Mulish", sans-serif; //text
+  font-size: 1em;
+  font-weight: 500;
+}
+
+/****************************************************************************************
+/********  **************** Main style **************** ******************/
+/****end******************************************************************************/
+
+/****************************************************************************************
+/********  **************** Layout **************** ******************/
+/****start******************************************************************************/
+
+/************ flex-box***********************************/
+
+//row
+.flex-row-start-center {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flex-row-center-center {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-row-space_evenly-center {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.flex-row-space_evenly-center-wrap {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.flex-row-space_evenly-start {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.flex-row-space_between-center {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-row_reverse-space_between-center {
+  display: flex;
+  flex-flow: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
+
+//column
+
+.flex-column-start-center {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flex-column-start-start {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.flex-column-center-center {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-column-center-start {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: start;
+}
+
+.flex-column-space_evenly-start {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  align-items: start;
+}
+
+/****************************************************************************************
+/********  **************** flex box **************** ******************/
+/**** end ******************************************************************************/
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: flex;
+}
+
+/**** start ********************** color ***********************************************/
+/****************************************************************************************
+/****************************************************************************************/
+
+// text color
+.text-first {
+  color: map-get($colors-rule, first-color);
+}
+.text-second {
+  color: map-get($colors-rule, second-color);
+}
+.text-third {
+  color: map-get($colors-rule, third-color);
+}
+.text-fourth {
+  color: map-get($colors-rule, fourth-color);
+}
+.text-fifth {
+  color: map-get($colors-rule, fifth-color);
+}
+.text-sixth {
+  color: map-get($colors-rule, sixth-color);
+}
+.text-seventh {
+  color: map-get($colors-rule, seventh-color);
+}
+
+//bg-color
+.bg-first {
+  background-color: map-get($colors-rule, first-color);
+}
+.bg-second {
+  background-color: map-get($colors-rule, second-color);
+}
+.bg-third {
+  background-color: map-get($colors-rule, third-color);
+}
+.bg-fourth {
+  background-color: map-get($colors-rule, fourth-color);
+}
+.bg-fifth {
+  background-color: map-get($colors-rule, fifth-color);
+}
+.bg-sixth {
+  background-color: map-get($colors-rule, sixth-color);
+}
+.bg-seventh {
+  background-color: map-get($colors-rule, seventh-color);
+}
+
+/**** start ********************** color ***********************************************/
+/****************************************************************************************
+/****************************************************************************************/
+
+/**** start **********************formulaire***********************************************/
+/****************************************************************************************
+/****************************************************************************************/
+.form-text-error {
+  color: map-get($colors-rule, third-color);
+}
+
+.form-border-error {
+  border: 1px solid map-get($colors-rule, third-color);
+}
+
+.form-border-valid {
+  border: 1px solid map-get($colors-rule, second-color);
+}
+
+.form-bg-button-enabled {
+  background-color: map-get($colors-rule, second-color);
+}
+
+.form-bg-button-unebled {
+  background-color: map-get($colors-rule, second-color);
+  opacity: 0.7;
+}
+
+.input {
+  border: 1px solid map-get($colors-rule, sixth-color);
+  padding: 0.5em;
+}
+
+.btn-submit {
+  padding: 0.5em;
+  margin: 1.5em;
+  border-radius: 1em;
+}
+
+/********  ****************  formulaire ************ ******************/
+/**** end ******************************************************************************/
+/****************************************************************************************
+
+
+
+
+
+/****************************************************************************************
+/********  **************** container-page   **************** ******************/
+/**** start ******************************************************************************/
+
+.container-page {
+  position: relative;
+  max-width: 1500px;
+  min-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  //padding: 1em;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      40deg,
+      map-get($colors-rule, second-color),
+      40%,
+      map-get($colors-rule, sixth-color)
+    );
+    z-index: -2;
+  }
+}
+
+/****************************************************************************************
+/********  **************** container-page  **************** ******************/
+/**** end ******************************************************************************/
+
+/****************************************************************************************
+/********  **************** titre Hn  **************** ******************/
+/**** start ******************************************************************************/
+.h1,
+.h2,
+.h3 {
+  color: map-get($colors-rule, sixth-color);
+}
+.h1 {
+  padding-left: 5%;
+  font-family: "Source Code Pro", monospace;
+  font-size: 25px;
+  font-weight: 600;
+  max-width: 70%;
+  line-height: 120%;
+  @include upper-medium-screen {
+    font-size: 30px;
+    max-width: 60%;
+  }
+
+  @include upper-large-screen {
+    font-size: 40px;
+    max-width: 50%;
+  }
+}
+.h2 {
+  font-family: "Oxygen", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  //max-width: 70%;
+  line-height: 1.4em;
+  @include upper-medium-screen {
+    font-size: 25px;
+    //max-width: 60%;
+  }
+
+  @include upper-large-screen {
+    font-size: 30px;
+    //max-width: 50%;
+  }
+}
+
+.h3 {
+  font-family: "Oxygen", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  //max-width: 70%;
+  line-height: 1.4em;
+  @include upper-medium-screen {
+    font-size: 25px;
+    //max-width: 60%;
+  }
+
+  @include upper-large-screen {
+    font-size: 30px;
+    //max-width: 50%;
+  }
+}
+.h4 {
+  font-family: "Oxygen", sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  //max-width: 70%;
+  line-height: 120%;
+  @include upper-medium-screen {
+    font-size: 20px;
+    //max-width: 60%;
+  }
+
+  @include upper-large-screen {
+    font-size: 25px;
+    //max-width: 50%;
+  }
+}
+
+/****************************************************************************************
+/********  **************** titre Hn  **************** ******************/
+/**** end ******************************************************************************/

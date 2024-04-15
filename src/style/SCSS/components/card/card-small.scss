@@ -1,0 +1,42 @@
+@import "../../utils/colors-rule/colors-rule.scss";
+
+.card-small {
+  position: relative;
+  height: 300px;
+  width: 400px;
+  border: 2px solid green;
+
+  .card-title {
+    font-size: 10px;
+    height: 20%;
+    border: 2px solid pink;
+  }
+
+  .card-img {
+    height: 50%;
+    object-fit: cover;
+    width: 100%;
+    flex: 0 0 60%;
+    overflow: hidden;
+    border: 2px solid blue;
+  }
+
+  .card-text {
+    height: 30%;
+    font-size: 1em;
+    flex: 0 0 50px;
+    border: 2px solid red;
+  }
+
+  .card-btn {
+    position: absolute;
+    left: 0px;
+    bottom: -20%;
+    border: 2px solid orange;
+  }
+
+  //clip-path: circle(32.9% at 50% 50%);
+  /*clip-path: path(
+    "M143.314 151.994C74.66 152.519 -1 119.258 -1 119.258L-1 57L-1 1L401 1V139.907C401 139.907 399.837 126.65 349.278 125.302C264.01 123.027 211.969 151.469 143.314 151.994Z"
+  );*/
+}

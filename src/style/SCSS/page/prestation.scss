@@ -1,3 +1,71 @@
-@import "../../SCSS/vendors/normalize.scss";
 @import "../utils/shared-class/class.scss";
-@import "../utils/style-rule/style-rule.scss";
+//@import "../utils/style-rule/style-rule.scss";
+@import "../utils/mixins/responsive/responsive.scss";
+@import "../utils/colors-rule/colors-rule.scss";
+
+.container-carousel {
+  position: relative;
+  border: 2px solid transparent;
+}
+
+.carousel {
+  @include upper-large-screen {
+    margin-bottom: 100px;
+  }
+  .carousel-item {
+    width: 400px;
+    height: 300px;
+    background-color: map-get($colors-rule, first-color);
+    background-size: cover !important;
+    background-position: center !important;
+  }
+
+  #slider-1 {
+    background: url("http://localhost:5173/src/assets/escqlier1.jpg");
+  }
+  #slider-2 {
+    background: url("http://localhost:5173/src/assets/fresh.jpg");
+  }
+  #slider-3 {
+    background: url("http://localhost:5173/src/assets/lake.jpg");
+  }
+}
+
+.arrow-container {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: fit-content;
+  padding: 0px 30%;
+  border: 2px solid transparent;
+
+  @include upper-large-screen {
+    bottom: 0%;
+  }
+}
+
+#arrow-prev,
+#arrow-next {
+  padding: 10px;
+}
+
+.icon-arrow-slider {
+  width: 40px;
+  height: 40px;
+  fill: #fbfffe;
+  //stroke: #fbfffe;
+  @include upper-small-screen {
+    width: 80px;
+    height: 80px;
+  }
+
+  @include upper-large-screen {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.suite {
+  margin-top: 50px;
+}

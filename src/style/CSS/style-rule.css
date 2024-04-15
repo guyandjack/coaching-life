@@ -18,6 +18,14 @@
   font-family: "Mulish", sans-serif;
   src: url("../../../../Fonts/static/Mulish-Regular.ttf");
 }
+@font-face {
+  font-family: "Oxygen", sans-serif;
+  src: url("../../../../Fonts/static/Oxygen-Regular.ttf");
+}
+@font-face {
+  font-family: "Source Code Pro", monospace;
+  src: url("../../../../Fonts/variable/SourceCodePro-VariableFont_wght.ttf");
+}
 * {
   margin: 0px;
   padding: 0px;
@@ -28,24 +36,6 @@
   font-family: "Mulish", sans-serif;
   font-size: 1em;
   font-weight: 500;
-}
-
-body {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column nowrap;
-          flex-flow: column nowrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 100%;
-  width: 100%;
 }
 
 .title {

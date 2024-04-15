@@ -18,12 +18,21 @@
   font-family: "Mulish", sans-serif;
   src: url("../../../../Fonts/static/Mulish-Regular.ttf");
 }
+@font-face {
+  font-family: "Oxygen", sans-serif;
+  src: url("../../../../Fonts/static/Oxygen-Regular.ttf");
+}
+@font-face {
+  font-family: "Source Code Pro", monospace;
+  src: url("../../../../Fonts/variable/SourceCodePro-VariableFont_wght.ttf");
+}
 /*******************************************************************************
 ******************** class css *************************************************
 **********************************************************************************/
 /****************************************************************************************
-/********  **************** flex box **************** ******************/
+/********  **************** Layout **************** ******************/
 /****start******************************************************************************/
+/************ flex-box***********************************/
 .flex-row-start-center {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -56,7 +65,7 @@
           align-items: center;
 }
 
-.flex-row-space-evenly-center {
+.flex-row-space_evenly-center {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -72,7 +81,7 @@
           align-items: center;
 }
 
-.flex-row-space-evenly-center-wrap {
+.flex-row-space_evenly-center-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -102,6 +111,38 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+}
+
+.flex-row-space_between-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.flex-row_reverse-space_between-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-flow: row-reverse;
+          flex-flow: row-reverse;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .flex-column-start-center {
@@ -152,9 +193,105 @@
           align-items: center;
 }
 
+.flex-column-center-start {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+}
+
+.flex-column-space_evenly-start {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+}
+
 /****************************************************************************************
 /********  **************** flex box **************** ******************/
 /**** end ******************************************************************************/
+.hide {
+  display: none;
+}
+
+.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/**** start ********************** color ***********************************************/
+/****************************************************************************************
+/****************************************************************************************/
+.text-first {
+  color: #142452;
+}
+
+.text-second {
+  color: #1ba4e3;
+}
+
+.text-third {
+  color: #ff6e00;
+}
+
+.text-fourth {
+  color: #9cd008;
+}
+
+.text-fifth {
+  color: #171717;
+}
+
+.text-sixth {
+  color: #fbfffe;
+}
+
+.bg-first {
+  background-color: #142452;
+}
+
+.bg-second {
+  background-color: #1ba4e3;
+}
+
+.bg-third {
+  background-color: #ff6e00;
+}
+
+.bg-fourth {
+  background-color: #9cd008;
+}
+
+.bg-fifth {
+  background-color: #171717;
+}
+
+.bg-sixth {
+  background-color: #fbfffe;
+}
+
+/**** start ********************** color ***********************************************/
+/****************************************************************************************
+/****************************************************************************************/
 /**** start **********************formulaire***********************************************/
 /****************************************************************************************
 /****************************************************************************************/
@@ -202,15 +339,103 @@
 /********  **************** container-page   **************** ******************/
 /**** start ******************************************************************************/
 .container-page {
+  position: relative;
   max-width: 1500px;
   min-width: 400px;
   width: 100%;
   margin: 0 auto;
-  padding: 1em;
+}
+.container-page::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(40deg, #1ba4e3, 40%, #fbfffe);
+  z-index: -2;
 }
 
 /****************************************************************************************
 /********  **************** container-page  **************** ******************/
+/**** end ******************************************************************************/
+/****************************************************************************************
+/********  **************** titre Hn  **************** ******************/
+/**** start ******************************************************************************/
+.h1 {
+  padding-left: 5%;
+  font-family: "Source Code Pro", monospace;
+  font-size: 25px;
+  font-weight: 600;
+  max-width: 70%;
+  line-height: 120%;
+}
+@media screen and (min-width: 769px) {
+  .h1 {
+    font-size: 30px;
+    max-width: 60%;
+  }
+}
+@media screen and (min-width: 993px) {
+  .h1 {
+    font-size: 40px;
+    max-width: 50%;
+  }
+}
+
+.h2 {
+  font-family: "Source Code Pro", monospace;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4em;
+}
+@media screen and (min-width: 769px) {
+  .h2 {
+    font-size: 25px;
+  }
+}
+@media screen and (min-width: 993px) {
+  .h2 {
+    font-size: 30px;
+  }
+}
+
+.h3 {
+  font-family: "Oxygen", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4em;
+}
+@media screen and (min-width: 769px) {
+  .h3 {
+    font-size: 25px;
+  }
+}
+@media screen and (min-width: 993px) {
+  .h3 {
+    font-size: 30px;
+  }
+}
+
+.h4 {
+  font-family: "Oxygen", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4em;
+}
+@media screen and (min-width: 769px) {
+  .h4 {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 993px) {
+  .h4 {
+    font-size: 25px;
+  }
+}
+
+/****************************************************************************************
+/********  **************** titre Hn  **************** ******************/
 /**** end ******************************************************************************/
 .main-container-slider {
   margin: 50px 0px;

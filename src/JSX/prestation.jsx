@@ -3,23 +3,19 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 //import des composants enfants
-//import { SimpleSlider } from "../COMPONENTS/slider/slider.jsx";
-import { Carousel } from "../COMPONENTS/slider/slider-swiper.jsx";
+import { CardPrestationContainer } from "../COMPONENTS/card/cardPrestationContainer.jsx";
 
-//affiche le composant "simpleslider"
+//import du contenu des cartes
+import { cardContentPrestationFr } from "../DATA/cardContent/fr/cardContentPrestation-fr.js";
 
-/*const containerSlider = document.getElementById("RC-slider");
-const rootSlider = ReactDOM.createRoot(containerSlider);
-rootSlider.render(
+const containerCardPrestation = document.getElementById(
+  "RC-container-card-prestation"
+);
+ReactDOM.createRoot(containerCardPrestation).render(
   <React.StrictMode>
-    <SimpleSlider />
-  </React.StrictMode>
-);*/
-
-const containerCarousel = document.getElementById("RC-carousel");
-const rootCarousel = ReactDOM.createRoot(containerCarousel);
-rootCarousel.render(
-  <React.StrictMode>
-    <Carousel />
+    <CardPrestationContainer
+      cardContentPrestation={cardContentPrestationFr}
+      coachingType={"pageCoachingDeVie"}
+    />
   </React.StrictMode>
 );

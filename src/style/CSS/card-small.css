@@ -1,0 +1,39 @@
+.card-small {
+  position: relative;
+  height: 300px;
+  width: 400px;
+  border: 2px solid green;
+  /*clip-path: path(
+    "M143.314 151.994C74.66 152.519 -1 119.258 -1 119.258L-1 57L-1 1L401 1V139.907C401 139.907 399.837 126.65 349.278 125.302C264.01 123.027 211.969 151.469 143.314 151.994Z"
+  );*/
+}
+.card-small .card-title {
+  font-size: 10px;
+  height: 20%;
+  border: 2px solid pink;
+}
+.card-small .card-img {
+  height: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 60%;
+          flex: 0 0 60%;
+  overflow: hidden;
+  border: 2px solid blue;
+}
+.card-small .card-text {
+  height: 30%;
+  font-size: 1em;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 50px;
+          flex: 0 0 50px;
+  border: 2px solid red;
+}
+.card-small .card-btn {
+  position: absolute;
+  left: 0px;
+  bottom: -20%;
+  border: 2px solid orange;
+}
