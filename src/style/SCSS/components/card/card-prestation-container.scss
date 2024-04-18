@@ -1,0 +1,13 @@
+@import "../../utils/colors-rule/colors-rule.scss";
+@import "../../utils/mixins/responsive/responsive.scss";
+
+.container-card-prestation {
+  width: 100%;
+
+  &__li {
+    background-color: map-get($colors-rule, second-color);
+    margin: 100px 0px;
+    width: 100%;
+    //box-shadow: 0px 0px 2px 0px;
+  }
+}

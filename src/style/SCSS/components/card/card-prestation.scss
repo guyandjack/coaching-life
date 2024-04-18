@@ -1,30 +1,91 @@
+@import "../../utils/mixins/responsive/responsive.scss";
+@import "../../utils/colors-rule/colors-rule.scss";
+
 .card-prestation {
-  width: 450px;
-  height: 350px;
-  padding: 10px;
+  width: 100%;
+  flex-flow: column;
+  @include upper-medium-screen {
+    flex-flow: row;
+    height: 400px;
+  }
+  @include upper-large-screen {
+    flex-flow: row;
+    height: 400px;
+  }
   .container-text {
-    width: 50%;
+    //border: 2px solid blue;
+    height: 100%;
+    padding: 10px;
+    width: 100%;
+    & > h2 {
+      text-align: start;
+      align-self: flex-start;
+      //border: 2px solid green;
+      color: map-get($colors-rule, first-color);
+      width: 80%;
+    }
+    & > p {
+      //border: 2px solid red;
+      color: map-get($colors-rule, fifth-color);
+      width: 80%;
+      line-height: 150%;
+      font-size: 20px;
+    }
   }
 
   .container-picture {
     position: relative;
-    width: 50%;
-    height: 100%;
+    width: 100%;
+    height: 300px;
     .blob {
       position: absolute;
-      top: 0px;
+      top: 0%;
       left: 0px;
       width: 100%;
       height: 100%;
-      background-size: cover;
-      background-repeat: no-repeat;
+      object-fit: cover;
     }
+    .blob-left {
+      /*clip-path: path(
+        "M137.54,82.51c0,0,46.64-26.6,85.85-32.43c35.62-5.29,73.13-3.04,96.45,6.08c23.32,9.12,71.01,35.47,93.27,56.76c14.4,13.77,27.56,23.31,34.98,48.65c7.42,25.34,3.18,31.16-6.36,45.61s-27.56,27.36-38.16,42.57c-10.6,15.2-30.74,31.42-27.56,63.85c3.18,32.43-1.06,45.61-10.6,59.8c-9.54,14.19-28.62,35.47-47.7,48.65c-19.08,13.18-74.19,35.47-112.35,22.3s-100.69-48.65-122.95-81.08s-41.34-90.29-23.32-114.06s22.26-49.11,27.56-72.42c5.3-23.31,25.44-69.93,32.86-79.05C126.94,88.59,137.54,82.51,137.54,82.51z"
+      );*/
+    }
+    .blob-right {
+      /*clip-path: path(
+        "M137.54,82.51c0,0,46.64-26.6,85.85-32.43c35.62-5.29,73.13-3.04,96.45,6.08c23.32,9.12,71.01,35.47,93.27,56.76c14.4,13.77,27.56,23.31,34.98,48.65c7.42,25.34,3.18,31.16-6.36,45.61s-27.56,27.36-38.16,42.57c-10.6,15.2-30.74,31.42-27.56,63.85c3.18,32.43-1.06,45.61-10.6,59.8c-9.54,14.19-28.62,35.47-47.7,48.65c-19.08,13.18-74.19,35.47-112.35,22.3s-100.69-48.65-122.95-81.08s-41.34-90.29-23.32-114.06s22.26-49.11,27.56-72.42c5.3-23.31,25.44-69.93,32.86-79.05C126.94,88.59,137.54,82.51,137.54,82.51z"
+      );*/
+      //border-radius: 50% 5% 50% 30% / 25% 30% 10% 50%;
+    }
+
     .logo {
       position: absolute;
       top: 0px;
       left: 0px;
       width: 100%;
       height: 100%;
+      opacity: 0.3;
+      //border: 2px solid red;
+      overflow: hidden;
+      & > div {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  #logo-black {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 500px;
+    height: 500px;
+    fill: none;
+    stroke: black;
+    stroke-width: 4px;
+    .st0 {
+      stroke-width: 2px;
+    }
+    .st2 {
+      fill: black;
     }
   }
 }

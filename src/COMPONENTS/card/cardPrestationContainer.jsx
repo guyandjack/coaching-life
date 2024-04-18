@@ -16,10 +16,10 @@ function isPair(nbr) {
 // eslint-disable-next-line react/prop-types
 function CardPrestationContainer({ cardContentPrestation, coachingType }) {
   return (
-    <ul>
+    <ul className="flex-column-start-center container-card-prestation ">
       {cardContentPrestation[coachingType].map((content, index) => {
         return (
-          <li key={index}>
+          <li className="container-card-prestation__li" key={index}>
             {isPair(index) ? (
               <CardPrestationLeft
                 title={content["titre"]}

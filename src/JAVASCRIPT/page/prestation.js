@@ -21,7 +21,6 @@ let optionsDesktop = {
     let activeSlider = document.querySelector(".carousel-item , .active");
     console.log("aczive slider id: " + activeSlider.id);
   },
-  noWrap: true,
 };
 
 let optionMediumMobile = {
@@ -30,7 +29,6 @@ let optionMediumMobile = {
     let activeSlider = document.querySelector(".carousel-item , .active");
     console.log("aczive slider id: " + activeSlider.id);
   },
-  noWrap: true,
 };
 
 let optionSmallMobile = {
@@ -39,7 +37,6 @@ let optionSmallMobile = {
     let activeSlider = document.querySelector(".carousel-item , .active");
     console.log("aczive slider id: " + activeSlider.id);
   },
-  noWrap: true,
 };
 
 //declaration des functions

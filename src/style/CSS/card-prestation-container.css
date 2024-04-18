@@ -1,0 +1,8 @@
+.container-card-prestation {
+  width: 100%;
+}
+.container-card-prestation__li {
+  background-color: #1ba4e3;
+  margin: 100px 0px;
+  width: 100%;
+}

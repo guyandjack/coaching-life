@@ -3,7 +3,6 @@
 **********************************************************************************/
 
 //fichier outil
-@import "../../vendors/normalize.scss";
 @import "../../utils/colors-rule/colors-rule.scss";
 @import "../../utils/mixins/responsive/responsive.scss";
 @import "../fonts/font.scss";
@@ -117,6 +116,13 @@
   flex-flow: column;
   justify-content: space-evenly;
   align-items: start;
+}
+
+.flex-column-space_evenly-center {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 /****************************************************************************************

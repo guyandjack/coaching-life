@@ -4,47 +4,43 @@ let cardContentPrestationFr = {
       titre: "Trouver son équilibre entre vie privée – vie professionnelle",
       contenu:
         "Le coaching vous aide à définir des limites claires entre votre vie personnelle et professionnelle, vous permettant ainsi de trouver un équilibre qui favorise votre bien-être global.",
-      img500: "/src/assets/escalier1.jpg",
+      img500: "/src/assets/jared-rice-NTyBbu66_SI-unsplash-small.jpg",
     },
     {
       titre: "Développer sa confiance en soi et son estime de soi",
       contenu:
         "Grâce à des techniques et des exercices spécifiques, le coaching vous guide pour renforcer votre confiance en vous-même et augmenter votre estime personnelle",
-      img500: "",
+      img500: "/src/assets/jordan-opel-ybLtRkjHprE-unsplash.jpg",
     },
     {
       titre: "Gestion des émotions ",
       contenu:
         "Apprenez à reconnaître, comprendre et gérer vos émotions de manière saine et constructive, vous permettant ainsi de naviguer efficacement à travers les hauts et les bas de la vie quotidienne.",
-      img500: "",
+      img500: "/src/assets/escalier1.jpg",
     },
     {
       titre: "Gestion des relations et situations difficiles ",
       contenu:
         "Le coaching vous offre des outils et des stratégies pour améliorer vos relations interpersonnelles et vous aider à faire face aux situations difficiles avec calme et assurance.",
-      img500: "",
+      img500: "/src/assets/main-sur-table.jpg",
     },
     {
       titre: "Gestion des conflits ",
       contenu:
         "Apprenez à résoudre les conflits de manière constructive et respectueuse, favorisant ainsi des inte-ractions positives et des relations harmonieuses",
-      img500: "",
+      img500: "/src/assets/escalier1.jpg",
     },
     {
       titre: "Gestion du stress ",
       contenu:
         "Prenez conscience de vos ressources, développez votre boîte à outils et apprenez ainsi à mieux gérer les défis auxquels vous faites face au quotidien.Découvrez également la méditation de pleine conscience ou encore la cohérence cardiaque appliquées à la gestion du stress.Le coaching vous aide à réduire les tensions et à retrouver un état d'équilibre et de calme intérieur.",
-      img500: "",
+      img500: "/src/assets/main-sur-table.jpg",
     },
     {
       titre: "Gestion du temps et des priorités",
       contenu:
         "Développez des compétences organisationnelles pour gérer efficacement votre temps et vos priori-tés, vous permettant ainsi de maximiser votre productivité et d'atteindre vos objectifs avec succès",
-      img500: "",
-    },
-    {
-      resume:
-        "En résumé, le coaching de vie vous accompagne dans votre parcours personnel pour vous aider à surmonter les obstacles, réaliser votre plein potentiel et mener une vie épanouissante et équilibrée",
+      img500: "/src/assets/escalier1.jpg",
     },
   ],
   pageCoachingDeCarriere: [
@@ -98,10 +94,6 @@ let cardContentPrestationFr = {
         "Préparez-vous à cette transition importante en planifiant votre retraite de manière proactive et en explorant de nouvelles avenues pour rester actif et épanoui.",
       img500: "",
     },
-    {
-      resume:
-        "En résumé, le coaching de carrière vous aide à prendre le contrôle de votre trajectoire professionnelle, à surmonter les obstacles et à saisir les opportunités avec confiance et détermination. Prenez le premier pas vers un avenir professionnel épanouissant en explorant les possibilités offertes par le coaching de carrière.",
-    },
   ],
   pageCoachingEntreprise: [
     {
@@ -140,10 +132,6 @@ let cardContentPrestationFr = {
       contenu:
         "Nous mettons en place des programmes de prévention et d'intervention pour prévenir les risques psycho-sociaux et promouvoir le bien-être au travail, contribuant ainsi à la santé et à la performance de vos équipes.",
       img500: "",
-    },
-    {
-      resume:
-        "Que vous recherchiez une intervention ponctuelle ou un accompagnement à long terme, notre équipe de coaches expérimentés est là pour vous aider à atteindre vos objectifs en matière de développement organisationnel et de gestion des ressources humaines.",
     },
   ],
 };
