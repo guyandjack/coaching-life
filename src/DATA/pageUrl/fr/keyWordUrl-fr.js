@@ -3,7 +3,7 @@ let keyWordUrlFR = [
   ["index.html", "accueil"],
   ["prestations.html", "prestation"],
   ["qui-suis-je.html", "quisuisje"],
-  ["temoignage.html", "temoignage"],
+  ["temoignages.html", "temoignage"],
   ["contact.html", "contact"],
 ];
 

@@ -76,7 +76,7 @@ function getNavLinkToStyle(tabKeyWord, urlFinded) {
     if (urlFinded.includes(keyWord[0])) {
       console.log("id du lien selectionné: " + keyWord[1]);
       let elementLink = document.querySelector(`#${keyWord[1]} span`);
-      //let elementLink = document.querySelector("a");
+
       console.log(" lien selectionné: " + elementLink);
 
       result = elementLink;

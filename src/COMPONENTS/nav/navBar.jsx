@@ -31,36 +31,6 @@ function NavBar() {
     return () => {};
   });
 
-  /* //gere l' effet de style sur les liens lors du survol
-  useEffect(() => {
-    if (!isSmallScreen) {
-      let indicators = Array.from(document.querySelectorAll(".indicator"));
-      indicators.forEach((indicator, index) => {
-        console.log("indicator index: " + index);
-        indicator.classList.remove("active");
-      });
-
-      indicators.forEach((indicator) => {
-        indicator.addEventListener("mouseover", (e) => {
-          console.log("element survolé: " + e.target);
-          e.target.classList.add("active");
-        });
-        indicator.addEventListener("mouseleave", (e) => {
-          console.log("element quité " + e.target);
-          e.target.classList.remove("active");
-        });
-      });
-    }
-    return () => {
-      let indicators = Array.from(document.querySelectorAll(".indicator"));
-      indicators.forEach((indicator) => {
-        indicator.removeEventListener("mouseover", (e) => {
-          e.target.classList.add("active");
-        });
-      });
-    };
-  });
- */
   function clickBurger() {
     if (!isClicked) {
       setIsclicked(true);
@@ -112,52 +82,16 @@ function NavBar() {
           ) : null}
           {!isSmallScreen ? (
             <ul className="container-link flex-row-start-center">
-              <li>
-                <a id="accueil" className="nav-link" href="index.html">
-                  {selectedContent.accueil}
-                  <span className="indicator"></span>
-                </a>
-              </li>
-              <li>
-                <a
-                  id="prestation"
-                  className="nav-link"
-                  href="/src/HTML/prestation.html"
-                >
-                  {selectedContent.prestation}
-                  <span className="indicator "></span>
-                </a>
-              </li>
-              <li>
-                <a
-                  id="quisuisje"
-                  className="nav-link"
-                  href="/src/HTML/quisuisje.html"
-                >
-                  {selectedContent.quisuisje}
-                  <span className="indicator"></span>
-                </a>
-              </li>
-              <li>
-                <a
-                  id="temoignage"
-                  className="nav-link"
-                  href="/src/HTML/avis.html"
-                >
-                  {selectedContent.temoignage}
-                  <span className="indicator"></span>
-                </a>
-              </li>
-              <li>
-                <a
-                  id="contact"
-                  className="nav-link"
-                  href="/src/HTML/contact.html"
-                >
-                  {selectedContent.contact}
-                  <span className="indicator"></span>
-                </a>
-              </li>
+              {selectedContent.map((link, index) => {
+                return (
+                  <li key={index}>
+                    <a id={link.id} className="nav-link" href={link.href}>
+                      {link.text}
+                      <span className="indicator"></span>
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           ) : null}
         </div>
@@ -180,31 +114,15 @@ function NavBar() {
               className="icon-close-svg"
             />
           </li>
-          <li className="burger-menu-li">
-            <a className="burger-menu-li-a" href="index.html">
-              {selectedContent.accueil}
-            </a>
-          </li>
-          <li className="burger-menu-li">
-            <a className="burger-menu-li-a" href="/src/HTML/prestation.html">
-              {selectedContent.prestation}
-            </a>
-          </li>
-          <li className="burger-menu-li">
-            <a className="burger-menu-li-a" href="/src/HTML/quisuisje.html">
-              {selectedContent.quisuisje}
-            </a>
-          </li>
-          <li className="burger-menu-li">
-            <a className="burger-menu-li-a" href="/src/HTML/avis.html">
-              {selectedContent.temoignage}
-            </a>
-          </li>
-          <li className="burger-menu-li">
-            <a className="burger-menu-li-a" href="/src/HTML/contact.html">
-              {selectedContent.contact}
-            </a>
-          </li>
+          {selectedContent.map((link, index) => {
+            return (
+              <li key={index} className="burger-menu-li">
+                <a className="burger-menu-li-a" href={link.href}>
+                  {link.text}
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>
