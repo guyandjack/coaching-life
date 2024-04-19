@@ -1,10 +1,10 @@
 //Ensemble des mots clef d'une url
 let keyWordUrlEN = [
   ["home.html", "home"],
-  ["services.html", "services"],
+  ["services-of-individual-and-business-coaching.html", "services"],
   ["about-me.html", "about-me"],
-  ["testimonials.html", "testimonials"],
-  ["contact.html", "contact"],
+  ["customer-testimonials.html", "testimonials"],
+  ["contact-your-individual-and-business-coach.html", "contact"],
 ];
 
 export { keyWordUrlEN };

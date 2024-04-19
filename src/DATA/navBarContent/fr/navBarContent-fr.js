@@ -7,7 +7,7 @@ let navBarContentFR = [
   {
     id: "prestation",
     text: "Prestations",
-    href: "http://localhost:5173/src/HTML/fr/prestations.html",
+    href: "http://localhost:5173/src/HTML/fr/prestations-de-coaching-individuel-et-en-entreprise.html",
   },
   {
     id: "quisuisje",
@@ -17,12 +17,12 @@ let navBarContentFR = [
   {
     id: "temoignage",
     text: "Témoignages",
-    href: "http://localhost:5173/src/HTML/fr/temoignages.html",
+    href: "http://localhost:5173/src/HTML/fr/temoignages-clients.html",
   },
   {
     id: "contact",
     text: "Contact",
-    href: "http://localhost:5173/src/HTML/fr/contact.html",
+    href: "http://localhost:5173/src/HTML/fr/contactez-votre-coach-individuel-et-en-entreprise.html",
   },
 ];
 

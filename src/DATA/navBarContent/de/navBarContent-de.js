@@ -2,12 +2,12 @@ let navBarContentDE = [
   {
     id: "accueil",
     text: "Startseite",
-    href: "http://localhost:5173/src/HTML/de/index.html",
+    href: "http://localhost:5173/src/HTML/de/startseite.html",
   },
   {
     id: "prestation",
     text: "Dienstleistungen",
-    href: "http://localhost:5173/src/HTML/de/dienstleistungen.html",
+    href: "http://localhost:5173/src/HTML/de/dienstleistungen-des-individuellen-und-unternehmens-coachings.html",
   },
   {
     id: "quisuisje",
@@ -17,12 +17,12 @@ let navBarContentDE = [
   {
     id: "temoignage",
     text: "Kundenmeinungen",
-    href: "http://localhost:5173/src/HTML/de/kundenmeinungen.html",
+    href: "http://localhost:5173/src/HTML/de/kundenbewertungen.html",
   },
   {
     id: "contact",
     text: "Kontakt",
-    href: "http://localhost:5173/src/HTML/de/kontakt.html",
+    href: "http://localhost:5173/src/HTML/de/kontaktieren-sie-ihren-individuellen-und-unternehmenscoach.html",
   },
 ];
 
