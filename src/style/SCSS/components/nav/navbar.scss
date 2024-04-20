@@ -1,3 +1,8 @@
+/********************************************************************
+***************** concerne le style du composant "NavBar"************
+*********************************************************************/
+
+//import des fichiers util
 @import "../../utils/colors-rule/colors-rule.scss";
 @import "../../utils/mixins/responsive/responsive.scss";
 
@@ -7,12 +12,32 @@
   max-height: 100px;
   padding: 10px;
   height: fit-content;
+
   @include upper-medium-screen {
     margin-bottom: 60px;
   }
   @include upper-large-screen {
     margin-bottom: 70px;
   }
+}
+
+.nav-bar::after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    map-get($colors-rule, sixth-color) 20%,
+
+    map-get($colors-rule, second-color) 40%,
+
+    map-get($colors-rule, sixth-color) 60%
+  );
+  opacity: 0.3;
 }
 
 .container-logo {
@@ -91,12 +116,14 @@
     fill: #ff6e00;
   }
 }
-.container-link li {
-  //position: relative;
+.container-link > li {
+  position: relative;
+  height: 40px;
   margin-right: 40px;
-  //border: 2px solid red;
+  min-width: 50px;
+  // border: 2px solid green;
 
-  & a {
+  & .nav-link {
     display: block;
     position: relative;
     padding-bottom: 10px;
@@ -113,7 +140,8 @@
     }
   }
 
-  & a::after {
+  //transition au durvol des liens
+  & .nav-link::after {
     position: absolute;
     z-index: 2;
     top: 0px;
@@ -128,11 +156,13 @@
     transition: opacity 0s ease-in-out, transform 0.3s ease-in-out;
   }
 
-  & a:hover::after {
+  & .nav-link:hover::after {
     opacity: 1;
     transform: translateX(0%);
   }
 }
+
+//style appliquer au lien de la page courante (via js)
 .indicator {
   position: absolute;
   //z-index: 1;
@@ -148,14 +178,76 @@
   transition: opacity 0s ease-in-out, transform 0.3s ease-in-out;
 }
 
-/*.indicator:hover {
-  opacity: 1;
-  transform: translateX(0%);
-  //border: 2px solid red;
-}*/
 .active {
   opacity: 1;
   transform: translateX(0%);
+}
+
+//concerne le menu lang contenu dans nav link
+.container-lang {
+  position: relative;
+  height: 40px;
+  margin-right: 40px;
+  min-width: 50px;
+  //border: 2px solid red;
+
+  .list-lang {
+    position: absolute;
+    //left: 0px;
+    top: 100%;
+    max-height: 0px;
+    width: 100px;
+    overflow: hidden;
+    transition: max-height 150ms ease-in-out;
+    //border: 2px solid blue;
+  }
+  .list-lang-li {
+    //border: 2px solid blue;
+  }
+}
+.list-lang-li-a {
+  z-index: 5;
+  position: relative;
+  display: block;
+  color: map-get($colors-rule, first-color);
+  font-size: 1em;
+  //border: 2px solid green;
+  padding: 0px 5px;
+
+  @include upper-large-screen {
+    font-size: 1.1em;
+  }
+}
+.list-lang-li-a::after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  border-left: 2px solid map-get($colors-rule, fourth-color);
+  border-right: 2px solid map-get($colors-rule, fourth-color);
+
+  transform: translateY(-100%);
+
+  transition: transform 200ms ease-in-out;
+}
+.list-lang-li-a:hover::after {
+  transform: translateY(0%);
+
+  //background-color: blue;
+}
+
+.container-lang:hover .list-lang {
+  max-height: 100px;
+}
+
+#icon-language {
+  fill: black;
+
+  width: 24px;
+  height: 24px;
 }
 
 .menu-burger {
@@ -163,65 +255,58 @@
   top: 0px;
   left: 0px;
   width: 0%;
-  height: 0%;
+  height: 100%;
   overflow: hidden;
   z-index: 10;
   opacity: 0;
+  transition: width 300ms ease-in-out;
 
   .burger-menu-list {
     margin-top: 50px;
+    opacity: 0;
+    transform: translateX(-30%);
+  }
+
+  &.close .burger-menu-list {
+    transition: transform 200ms linear, opacity 100ms ease-in-out;
+  }
+
+  &.open .burger-menu-list {
+    transform: translateX(0%);
+    opacity: 1;
+    transition: transform 300ms ease-in-out 200ms, opacity 500ms linear 200ms;
   }
 
   .burger-menu-li {
-    margin: 20px 40px;
+    position: relative;
+    z-index: 1;
+    margin: 10px 0px 10px 40px;
+    min-width: 50px;
+    min-height: 50px;
   }
-
+  .burger-menu-li::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: map-get($colors-rule, first-color);
+    opacity: 0;
+  }
+  .burger-menu-li:active::after {
+    opacity: 1;
+  }
   .burger-menu-li-a {
     color: map-get($colors-rule, second-color);
-    border-left: 2px solid transparent;
-    font-size: 20px;
-    &:active {
-      color: lighten(map-get($colors-rule, second-color), 20%);
-      border-left: 2px solid lighten(map-get($colors-rule, second-color), 20%);
-    }
-  }
-  @keyframes animBtnClose {
-    0% {
-      transform: rotateZ(0deg);
-      right: 95%;
-      //right: 100%;
-    }
-    25% {
-      transform: rotateZ(90deg);
-      right: 75%;
-      //right: 100%;
-    }
-    50% {
-      transform: rotateZ(180deg);
-      right: 50%;
-      //right: 60%;
-    }
-    75% {
-      transform: rotateZ(270deg);
-      right: 25%;
-      //right: 30%;
-    }
-    95% {
-      transform: rotateZ(360deg);
-      right: 20%;
-      //right: 20%;
-    }
-    100% {
-      transform: rotateZ(540deg);
-      right: 5%;
-      //right: 20px;
-    }
+    font-size: 18px;
   }
 
   .burger-menu-li:first-child {
     position: absolute;
-    top: 0px;
-    right: 95%;
+    top: -50px;
+    right: 20px;
   }
 }
 .menu-burger::before {
@@ -239,12 +324,53 @@
 }
 
 .open {
-  width: 60%;
-  height: 60%;
+  width: 300px;
+  height: 100%;
+  transition: width 300ms ease-in-out;
   opacity: 1;
-  transition: all 200ms ease-in-out;
+}
+
+.close {
+  width: 0px;
+  height: 100%;
+  transition: width 300ms ease-in-out;
+  opacity: 1;
 }
 
 .menu-burger.open .burger-menu-li:first-child {
   animation: animBtnClose 0.5s ease-in-out 0.2s 1 normal forwards;
+}
+
+//concerne le menu lang dans le menu burger
+.burger-menu-lang {
+  margin: 10px 40px;
+  .burger-menu-lang-li {
+    position: relative;
+    z-index: 1;
+    min-width: 50px;
+    min-height: 50px;
+    margin-right: 10px;
+    //border: 2px solid red;
+  }
+  .burger-menu-lang-li::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: map-get($colors-rule, first-color);
+    opacity: 0;
+  }
+  .burger-menu-lang-li:active::after {
+    opacity: 1;
+  }
+  .burger-menu-lang-li-a {
+    font-size: 18px;
+    padding: 0px 5px;
+    border-left: 1px solid map-get($colors-rule, second-color);
+    border-right: 1px solid map-get($colors-rule, second-color);
+    //border: 2px solid blue;
+  }
 }

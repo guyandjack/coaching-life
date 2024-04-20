@@ -7,7 +7,7 @@ import { breakPoint } from "../breakpoint/break_point.js";
  * @return {*} boolean true if screen size < 769px
  */
 function isScreenMobil() {
-  if (window.innerWidth > breakPoint.medium_Max) {
+  if (window.innerWidth > breakPoint.large_Max) {
     return false;
   }
   return true;

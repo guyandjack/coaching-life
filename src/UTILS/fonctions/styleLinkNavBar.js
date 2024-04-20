@@ -128,4 +128,16 @@ function styleLinkNavBar() {
   styleNavLink(targetLink);
 }
 
-export { getNavBarContent, styleLinkNavBar, styleNavLink };
+function setHrefLinkLanguage() {
+  let divInfo = document.querySelector("#info-href");
+  let href_de = divInfo.dataset.de;
+  let href_en = divInfo.dataset.en;
+  let href_fr = divInfo.dataset.fr;
+  return {
+    de: `${href_de}`,
+    en: `${href_en}`,
+    fr: `${href_fr}`,
+  };
+}
+
+export { getNavBarContent, styleLinkNavBar, styleNavLink, setHrefLinkLanguage };
