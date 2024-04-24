@@ -21,9 +21,9 @@ let navBarContentDE = [
   {
     id: "quisuisje",
     text: "Über mich",
-    href: "http://localhost:5173/src/HTML/de/über-mich.html",
+    href: "http://localhost:5173/src/HTML/de/uber-mich.html",
     href_alt_fr: "http://localhost:5173/src/HTML/fr/qui-suis-je.html",
-    href_alt_de: "http://localhost:5173/src/HTML/de/über-mich.html",
+    href_alt_de: "http://localhost:5173/src/HTML/de/uber-mich.html",
     href_alt_en: "http://localhost:5173/src/HTML/en/about-me.html",
   },
   {

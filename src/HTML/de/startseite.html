@@ -8,9 +8,9 @@
 
     <!-- versions multilingue -->
     <link rel="alternate" hreflang="fr" href="../../../index.html" />
-    <link rel="alternate" hreflang="de" href="./startseite.html" />
+    <!-- <link rel="alternate" hreflang="de" href="./startseite.html" /> -->
     <link rel="alternate" hreflang="en" href="../en/home.html" />
-    <link rel="alternate" hreflang="x-default" href="../home.html" />
+    <link rel="alternate" hreflang="x-default" href="../../../index.html" />
 
     <!-- feuilles de style -->
     <link rel="stylesheet" href="../../style/CSS/normalize.css" />
@@ -26,10 +26,18 @@
     <!-- scripts JSX -->
     <script type="module" src="../../JSX/index.jsx"></script>
   </head>
-  <body>
-    <div class="container-page">
-      <div class="landing-page">
-        <div id="RC-nav-bar"></div>
+  <body class="body">
+    <header>
+      <div id="RC-nav-bar"></div>
+      <div
+        id="info-href"
+        data-fr="http://localhost:5173/index.html"
+        data-en="http://localhost:5173/src/HTML/en/home.html"
+        data-de="http://localhost:5173/src/HTML/de/startseite.html"
+      ></div>
+    </header>
+    <main>
+      <section>
         <div class="parallax-container">
           <!--<div id="RC-card-container"></div>-->
           <h1 class="h1 title-index">
@@ -60,10 +68,13 @@
             </a>
           </div>
           <div class="parallax">
-            <img src="./src/assets/hector-j-rivas-1FxMET2U5dU-unsplash.jpg" />
+            <img
+              src="./src/assets/hector-j-rivas-1FxMET2U5dU-unsplash.jpg"
+              alt="structure moderne"
+            />
           </div>
         </div>
-        <div class="section">
+        <article class="section">
           <!-- <div class="wave"></div> -->
           <div class="custom-container flex-column-center-start">
             <h4 class="h4 text-intro-title">Un coaching individuel ?</h4>
@@ -80,13 +91,16 @@
           </div>
 
           <!-- <div id="wave-bottom" class="wave"></div> -->
-        </div>
+        </article>
         <div class="parallax-container">
           <div class="parallax">
-            <img src="./src/assets/phare1.jpg" />
+            <img
+              src="./src/assets/phare1.jpg"
+              alt="un phare en bordure de rivage"
+            />
           </div>
         </div>
-        <div class="section">
+        <article class="section">
           <div class="custom-container flex-column-center-start">
             <h4 class="h4 text-intro-title">Engagement</h4>
             <p class="text-intro">
@@ -98,9 +112,11 @@
               concrétiser vos aspirations les plus profondes.
             </p>
           </div>
-        </div>
-        <div id="RC-footer"></div>
-      </div>
-    </div>
+        </article>
+      </section>
+    </main>
+    <footer>
+      <div id="RC-footer"></div>
+    </footer>
   </body>
 </html>

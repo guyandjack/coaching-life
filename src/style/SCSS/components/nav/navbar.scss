@@ -10,8 +10,9 @@
   position: relative;
   margin-bottom: 50px;
   max-height: 100px;
-  padding: 10px;
+  padding-bottom: 10px;
   height: fit-content;
+  border-bottom: 1px solid map-get($colors-rule, sixth-color);
 
   @include upper-medium-screen {
     margin-bottom: 60px;
@@ -193,7 +194,7 @@
 
   .list-lang {
     position: absolute;
-    //left: 0px;
+    right: 10px;
     top: 100%;
     max-height: 0px;
     width: 100px;

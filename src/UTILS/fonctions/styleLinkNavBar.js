@@ -124,10 +124,15 @@ function styleLinkNavBar() {
   let curentUrl = getCurentUrl();
 
   let targetLink = getNavLinkToStyle(keyWordSelected, curentUrl);
-  //console.log("lien a styliser: " + targetLink);
+  console.log("lien a styliser 2: " + targetLink);
   styleNavLink(targetLink);
 }
 
+/**
+ *
+ *
+ * @return {object} qui contient les liens des pages alternative à la page courante
+ */
 function setHrefLinkLanguage() {
   let divInfo = document.querySelector("#info-href");
   let href_de = divInfo.dataset.de;

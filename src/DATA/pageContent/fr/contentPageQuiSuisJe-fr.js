@@ -14,6 +14,10 @@ let contentPageQuiSuisJe = {
     contenu:
       "Fort de près de 15 ans d'expérience dans les domaines des ressources humaines et du management, je vous propose un accompagnement sur mesure, adapté à vos besoins spécifiques. Ayant vécu dans plusieurs pays européens, j'ai acquis une compréhension approfondie des défis interculturels. Mon parcours académique comprend un Master en Ressources Humaines de l'EM Strasbourg Business School, une certification en coaching professionnel délivrée par l'ICF, ainsi qu'une formation au bilan de compétences à l'Université de Genève. De plus, mon expertise est reconnue en analyse de la personnalité et en gestion du burn-out. J'ai également suivi une formation de secouriste en santé mentale à l'ENSA Zürich et je suis familière avec les méthodes présentées dans 'Burn-out: le détecter, le prévenir, le guérir' par C. Vasey à Lausanne.",
   },
+  formation: {
+    titre: "Mes formations",
+    contenu: "",
+  },
   conclusion: {
     titre: "créons ensemble",
     contenu:

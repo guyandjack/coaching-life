@@ -1,0 +1,80 @@
+/**************************************************************
+*************  police pour le site *****************************
+******************************************************************/
+/*@font-face {
+  font-family: "cantarel";
+  src: url("../../../../Font/cantarel/Cantarell-Regular.ttf");
+}
+
+@font-face {
+  font-family: "fjalla";
+  src: url("../../../../Font/fjalla/Inter-Regular.ttf");
+}*/
+@font-face {
+  font-family: "Oswald", sans-serif;
+  src: url("../../../../Fonts/static/Oswald-Regular.ttf");
+}
+@font-face {
+  font-family: "Mulish", sans-serif;
+  src: url("../../../../Fonts/static/Mulish-Regular.ttf");
+}
+@font-face {
+  font-family: "Oxygen", sans-serif;
+  src: url("../../../../Fonts/static/Oxygen-Regular.ttf");
+}
+@font-face {
+  font-family: "Source Code Pro", monospace;
+  src: url("../../../../Fonts/variable/SourceCodePro-VariableFont_wght.ttf");
+}
+.qui-suis-je h1 {
+  color: #142452;
+  padding-left: 0px;
+  margin: 40px 0px;
+}
+.qui-suis-je article {
+  z-index: 1;
+  position: relative;
+  margin: 40px 0px;
+  padding: 10px;
+  max-width: 90%;
+  border-radius: 20px;
+}
+@media screen and (min-width: 993px) {
+  .qui-suis-je article {
+    max-width: 50%;
+  }
+}
+.qui-suis-je article::after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: #9cd008;
+  opacity: 0.2;
+}
+.qui-suis-je .introduction-title {
+  font-size: 40px;
+}
+@media screen and (min-width: 769px) {
+  .qui-suis-je .introduction-title {
+    font-size: 45px;
+  }
+}
+@media screen and (min-width: 769px) {
+  .qui-suis-je .introduction-title {
+    font-size: 50px;
+  }
+}
+.qui-suis-je .introduction-content {
+  width: 70%;
+  line-height: 150%;
+}
+.qui-suis-je .content {
+  padding: 10px;
+  line-height: 130%;
+  color: #171717;
+}

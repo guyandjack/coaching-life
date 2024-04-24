@@ -1,79 +1,181 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <meta name="description" content="prestations de sophie" />
     <!-- versions multilingue -->
-    <link rel="alternate" hreflang="fr" href="/src/HTML/fr/prestation.html" />
-    <link rel="alternate" hreflang="de" href="/src/HTML/de/prestation.html" />
-    <link rel="alternate" hreflang="en" href="/src/HTML/en/prestation.html" />
+    <link
+      rel="alternate"
+      hreflang="fr"
+      href="../fr/prestations-de-coaching-individuel-et-en-entreprise.html"
+    />
+    <!-- <link
+      rel="alternate"
+      hreflang="de"
+      href="../de/dienstleistungen-des-individuellen-und-unternehmens-coachings.html"
+    /> -->
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="../en/services-of-individual-and-business-coaching.html"
+    />
     <link
       rel="alternate"
       hreflang="x-default"
-      href="/src/HTML/fr/prestation.html"
+      href="./prestations-de-coaching-individuel-et-en-entreprise.html"
     />
 
     <!-- feuilles de style -->
-    <link rel="stylesheet" href="./src/style/CSS/normalize.css" />
-    <link rel="stylesheet" href="./src/style/CSS/materialize.css" />
-    <link rel="stylesheet" href="./src/style/CSS/shared-class.css" />
-    <link rel="stylesheet" href="./src/style/CSS/index.css" />
+    <link rel="stylesheet" href="../../style/CSS/normalize.css" />
+    <link rel="stylesheet" href="../../style/CSS/materialize.css" />
+    <link rel="stylesheet" href="../../style/CSS/shared-class.css" />
+    <link rel="stylesheet" href="../../style/CSS/prestation.css" />
 
     <!-- scripts JS -->
-    <script src="./src/JAVASCRIPT/js/bin/materialize.js" defer></script>
-    <script src="./src/JAVASCRIPT/page/index/index.js" defer></script>
-    <script type="module" src="./src/JAVASCRIPT/page/index/index-2.js"></script>
+    <script src="../../JAVASCRIPT/js/bin/materialize.js" defer></script>
+    <script type="module" src="../../JAVASCRIPT/page/prestation.js"></script>
 
     <!-- scripts JSX -->
-    <script type="module" src="./src/JSX/index.jsx"></script>
-    <link rel="stylesheet" href="../style/CSS/materialize.css" />
-    <link rel="stylesheet" href="../style/CSS/class.css" />
-    <link rel="stylesheet" href="../style/CSS/prestation.css" />
-
-    <!--<script type="module" src="../JSX/prestation.jsx"></script>-->
-    <script src="../JAVASCRIPT/js/bin/materialize.js" defer></script>
-    <script type="module" src="../JAVASCRIPT/page/prestation.js"></script>
-    <script type="module" src="../JSX/prestation.jsx"></script>
+    <script type="module" src="../../JSX/prestation.jsx"></script>
   </head>
-  <body>
+  <body class="body">
     <div class="container-page">
-      <div id="RC-header"></div>
-      <h1>PAGE PRESTATION</h1>
-      <div class="container-carousel">
-        <div class="carousel carousel-slider">
-          <div id="slider-1" class="carousel-item">
-            <h2>Coaching de vie</h2>
-            <h3>Trouver votre équilibre et transformer votre quotidien.</h3>
-            <div></div>
-          </div>
-          <div id="slider-2" class="carousel-item">
-            <h2>Coaching de carriere</h2>
-            <h3>Un soutien strategique pour s'orienter vers les objectifs.</h3>
-            <div></div>
-          </div>
-          <div id="slider-3" class="carousel-item">
-            <h2>Coaching en entreprise</h2>
-            <h3>Optimisation de la gestion du capital humain</h3>
-            <div></div>
-          </div>
-        </div>
-        <div class="arrow-container flex-row-space_between-center">
-          <div id="arrow-prev" class="flex-colunm-center-center">
-            <svg class="icon-arrow-slider" viewBox="0 -960 960 960">
-              <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z" />
-            </svg>
-          </div>
-          <div id="arrow-next" class="flex-colunm-center-center">
-            <svg class="icon-arrow-slider" viewBox="0 -960 960 960">
-              <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
-            </svg>
-          </div>
-        </div>
-      </div>
+      <header>
+        <div id="RC-nav-bar"></div>
+        <div
+          id="info-href"
+          data-fr="http://localhost:5173/src/HTML/fr/prestations-de-coaching-individuel-et-en-entreprise.html"
+          data-en="http://localhost:5173/src/HTML/en/services-of-individual-and-business-coaching.html"
+          data-de="http://localhost:5173/src/HTML/de/dienstleistungen-des-individuellen-und-unternehmens-coachings.html"
+        ></div>
+      </header>
+      <main>
+        <section>
+          <h1>PRESTATION DE COACHING</h1>
 
-      <div id="RC-container-card-prestation"></div>
-      <div id="RC-footer"></div>
+          <div class="container-carousel">
+            <div class="carousel carousel-slider">
+              <div id="slider-1" class="carousel-item">
+                <h3>Coaching de vie</h3>
+                <h4>Trouver votre équilibre et transformer votre quotidien.</h4>
+                <div></div>
+              </div>
+              <div id="slider-2" class="carousel-item">
+                <h3>Coaching de carriere</h3>
+                <h4>
+                  Un soutien strategique pour s'orienter vers les objectifs.
+                </h4>
+                <div></div>
+              </div>
+              <div id="slider-3" class="carousel-item">
+                <h3>Coaching en entreprise</h3>
+                <h4>Optimisation de la gestion du capital humain</h4>
+                <div></div>
+              </div>
+            </div>
+            <div class="arrow-container flex-row-space_between-center">
+              <div id="arrow-prev" class="flex-colunm-center-center">
+                <svg class="icon-arrow-slider" viewBox="0 -960 960 960">
+                  <path
+                    d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"
+                  />
+                </svg>
+              </div>
+              <div id="arrow-next" class="flex-colunm-center-center">
+                <svg class="icon-arrow-slider" viewBox="0 -960 960 960">
+                  <path
+                    d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="intro-prestation">
+            <div class="intro-coaching-de-vie show">
+              <h2>
+                Le coaching de vie vous aide à naviguer à travers les défis de
+                la vie moderne. Trouvez un équilibre entre vie privée et
+                professionnelle, développez votre confiance et gérez vos
+                émotions. Imaginez : résoudre les conflits avec sérénité, gérer
+                le stress avec efficacité et maximiser votre productivité. Face
+                aux situations difficiles, le coach est là pour vous guider vers
+                des interactions positives. Grâce à des outils personnalisés,
+                surmontez les obstacles et atteignez vos objectifs. Libérez
+                votre potentiel et vivez une vie épanouie avec le soutien d'un
+                coach de vie.
+              </h2>
+            </div>
+            <p class="intro-coaching-de-carriere">
+              Vous cherchez à vous démarquer dans votre carrière ? Imaginez
+              bénéficier de conseils personnalisés pour réussir vos entretiens
+              et évaluations. Grâce à un coach de vie, identifiez vos forces et
+              explorez de nouvelles opportunités professionnelles, même après
+              une interruption. Traversez les transitions de carrière avec
+              assurance, que ce soit une expatriation ou une reconversion. En
+              période de licenciement ou de départ à la retraite, le coach vous
+              guide vers de nouveaux horizons. Libérez votre potentiel,
+              surmontez les obstacles et tracez le chemin vers une carrière
+              épanouissante avec le soutien d'un coach de vie
+            </p>
+            <div class="intro-coaching-en-entreprise">
+              <p>
+                Vous aspirez à optimiser la gestion de votre capital humain ?
+                Imaginez bénéficier d'un soutien complet en ressources humaines
+                pour répondre à vos besoins spécifiques. Avec notre coaching RH,
+                identifiez les talents pour vos recrutements et évaluez les
+                candidats avec précision.
+              </p>
+              <p>
+                Travaillez avec nous pour développer les compétences et
+                performances de vos employés, renforçant ainsi la cohésion
+                d'équipe et favorisant un environnement de travail harmonieux et
+                productif.
+              </p>
+              <p>
+                Offrez à vos cadres un accompagnement spécifique pour réussir
+                leur transition et performer dès le départ. Nous vous soutenons
+                également dans les processus de changement organisationnel et de
+                prévention des risques psycho-sociaux, assurant ainsi la santé
+                et la performance de vos équipes.
+              </p>
+              <p>
+                Que ce soit pour une intervention ponctuelle ou un
+                accompagnement à long terme, notre équipe de coaches
+                expérimentés est là pour vous aider à atteindre vos objectifs en
+                matière de développement organisationnel et de gestion des
+                ressources humaines.
+              </p>
+            </div>
+          </div>
+        </section>
+        <div id="RC-container-card-prestation"></div>
+        <div class="resume-prestation">
+          <div class="resume-coaching-de-vie">
+            Le coaching de vie vous accompagne dans votre parcours personnel
+            pour vous aider à surmonter les obstacles, réaliser votre plein
+            potentiel et mener une vie épanouissante et équilibrée.
+          </div>
+          <div class="resume-coaching-de-carriere">
+            Le coaching de carrière vous aide à prendre le contrôle de votre
+            trajectoire professionnelle, à surmonter les obstacles et à saisir
+            les opportunités avec confiance et détermination. Prenez le premier
+            pas vers un avenir professionnel épanouissant en explorant les
+            possibilités offertes par le coaching de carrière
+          </div>
+          <div class="resume-coaching-en entreprise">
+            Que vous recherchiez une intervention ponctuelle ou un
+            accompagnement à long terme, notre équipe de coaches expérimentés
+            est là pour vous aider à atteindre vos objectifs en matière de
+            développement organisationnel et de gestion des ressources humaines
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <div id="RC-footer"></div>
+      </footer>
     </div>
   </body>
 </html>

@@ -36,7 +36,7 @@ function NavBar() {
     return () => {};
   });
 
-  //modifie la route des liens de la liste choix des langues
+  //attribut la route des liens de la liste choix des langues
   useEffect(() => {
     let result = setHrefLinkLanguage();
 
@@ -82,7 +82,7 @@ function NavBar() {
         >
           <div className="container-logo">
             <ReactSVG
-              src="src\assets\logo\logo-coaching-bicolor-v2.svg"
+              src="/src/assets/logo/logo-coaching-bicolor-v2.svg"
               className="logo-coaching-svg"
             />
           </div>
@@ -109,7 +109,7 @@ function NavBar() {
                 })}
                 <li className="container-lang flex-column-start-center">
                   <ReactSVG
-                    src="src\assets\icons\icon-language.svg"
+                    src="/src/assets/icons/icon-language.svg"
                     beforeInjection={(svg) => {
                       svg.classList.add("icon-language");
                     }}

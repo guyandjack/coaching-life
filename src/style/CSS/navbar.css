@@ -5,10 +5,11 @@
   position: relative;
   margin-bottom: 50px;
   max-height: 100px;
-  padding: 10px;
+  padding-bottom: 10px;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  border-bottom: 1px solid #fbfffe;
 }
 @media screen and (min-width: 769px) {
   .nav-bar {
@@ -193,6 +194,7 @@
 }
 .container-lang .list-lang {
   position: absolute;
+  right: 10px;
   top: 100%;
   max-height: 0px;
   width: 100px;

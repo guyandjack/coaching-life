@@ -1,15 +1,15 @@
 //Ensemble des mots clef d'une url
 let keyWordUrlDE = [
-  ["startseite.html", "startseite"],
+  ["startseite.html", "accueil"],
   [
     "dienstleistungen-des-individuellen-und-unternehmens-coachings.html",
-    "dienstleistungen",
+    "prestation",
   ],
-  ["über-mich.html", "über-mich"],
-  ["kundenbewertungen.html", "kundenbewertungen"],
+  ["uber-mich.html", "quisuisje"],
+  ["kundenbewertungen.html", "temoignage"],
   [
     "kontaktieren-sie-ihren-individuellen-und-unternehmenscoach.html",
-    "kontaktieren",
+    "contact",
   ],
 ];
 

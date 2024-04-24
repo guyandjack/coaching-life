@@ -12,18 +12,26 @@
   </head>
   <body>
     <div class="container-page">
-      <div class="dashboard-page flex-column-start-center">
-        <header class="flex-row-">
-          <h1>Admin</h1>
-          <a href="" class="log-out">logout</a>
-        </header>
-
-        <div id="RC-form-change-password"></div>
-        <div id="RC-form-add-avis"></div>
-        <div id="RC-form-change-avis"></div>
-
-        <footer></footer>
-      </div>
+      <header class="flex-row-">
+        <div id="RC-nav-bar"></div>
+        <div
+          id="info-href"
+          data-fr="#"
+          data-en="#"
+          data-de="#"
+        ></div>
+        <a href="" class="log-out">logout</a>
+      </header>
+      <main>
+        <h1>Admin</h1>
+        <article><div id="RC-form-change-password"></div></article>
+        <article><div id="RC-form-add-avis"></div></article>
+        <article><div id="RC-form-change-avis"></div></article>
+        <article><div id="RC-form-delete-avis"></div></article>
+      </main>
+      <footer>
+        <div class="RC-footer"></div>
+      </footer>
     </div>
   </body>
 </html>
