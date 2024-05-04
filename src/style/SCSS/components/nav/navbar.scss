@@ -107,21 +107,18 @@
   flex: 1 0 auto;
 }
 
-.container-link>li {
+.container-link-li {
   position: relative;
   height: 40px;
   margin-right: 40px;
   min-width: 50px;
   // border: 2px solid green;
-
+  overflow: hidden;
 
   & .nav-link {
     position: relative;
     padding-bottom: 10px;
     //border-bottom: 4px solid blue;
-    overflow: hidden;
-
-    font-weight: 500;
     color: map-get($colors-rule, sixth-color);
 
     @include upper-medium-screen {
@@ -138,22 +135,18 @@
   & .nav-link::after {
     content: "";
     position: absolute;
-    z-index: 2;
     top: 0px;
     left: 0px;
     width: 100%;
     height: 100%;
-    border-bottom: 4px solid map-get($colors-rule, fourth-color);
+    border-bottom: 2px solid map-get($colors-rule, fourth-color);
     transform: translateX(-100%);
-
-
-
-
-    transition: transform 0.3s ease-in-out;
+    opacity: 0;
+    transition: transform 0.2s ease-in-out 0s, opacity 0s linear 0.3s;
   }
 
   & .nav-link:hover::after {
-
+    opacity: 1;
     transform: translateX(0%);
     transition: transform 0.3s ease-in-out;
 
@@ -163,22 +156,21 @@
 //style appliquer au lien de la page courante (via js)
 .indicator {
   position: absolute;
-  //z-index: 1;
+  content: "";
   top: 0px;
   left: 0px;
   width: 100%;
   height: 100%;
-  content: "";
-  border-bottom: 4px solid map-get($colors-rule, second-color);
-  //transform: translateX(-100%);
+  border-bottom: 2px solid map-get($colors-rule, second-color);
+  transform: translateY(2px); //correction de superposirion avec pseudo element du lien concerné
   opacity: 0;
 
-  transition: opacity 0s ease-in-out, transform 0.3s ease-in-out;
+
 }
 
 .active {
   opacity: 1;
-  transform: translateX(0%);
+
 }
 
 //concerne le menu lang contenu dans nav link
@@ -191,18 +183,17 @@
 
   .list-lang {
     position: absolute;
-    right: 10px;
     top: 100%;
+    right: 0px;
     max-height: 0px;
-    width: 100px;
+    width: 150px;
     overflow: hidden;
-    transition: max-height 150ms ease-in-out;
+    transition: max-height 150ms ease-in-out 0s;
     //border: 2px solid blue;
   }
 }
 
 .list-lang-li-a {
-  z-index: 5;
   position: relative;
   display: block;
   color: map-get($colors-rule, sixth-color);
@@ -216,7 +207,6 @@
 }
 
 .list-lang-li-a::after {
-  z-index: -1;
   content: "";
   position: absolute;
   top: 0px;
@@ -234,7 +224,6 @@
 .list-lang-li-a:hover::after {
   transform: translateY(0%);
 
-  //background-color: blue;
 }
 
 .container-lang:hover .list-lang {

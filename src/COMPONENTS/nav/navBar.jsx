@@ -99,7 +99,7 @@ function NavBar() {
             <ul className="container-link flex-row-start-center">
               {selectedContent.map((link, index) => {
                 return (
-                  <li key={index}>
+                  <li key={index} className="container-link-li">
                     <a id={link.id} className="nav-link" href={link.href}>
                       {link.text}
                       <span className="indicator"></span>
@@ -114,7 +114,7 @@ function NavBar() {
                     svg.classList.add("icon-language");
                   }}
                 />
-                <ul className="list-lang flex-row-space_between-center">
+                <ul className="list-lang flex-row-space_evenly-center">
                   <li className="list-lang-li">
                     <a className="list-lang-li-a" href={href_de.current}>
                       De
