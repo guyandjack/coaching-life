@@ -71,10 +71,10 @@
         -ms-transform: translateX(-100%);
             transform: translateX(-100%);
     opacity: 0;
-    -webkit-transition: -webkit-transform 0.2s ease-in-out 0s;
-    transition: -webkit-transform 0.2s ease-in-out 0s;
-    transition: transform 0.2s ease-in-out 0s;
-    transition: transform 0.2s ease-in-out 0s, -webkit-transform 0.2s ease-in-out 0s;
+    -webkit-transition: opacity 0s linear 0.2s, -webkit-transform 0.2s ease-in-out 0s;
+    transition: opacity 0s linear 0.2s, -webkit-transform 0.2s ease-in-out 0s;
+    transition: opacity 0s linear 0.2s, transform 0.2s ease-in-out 0s;
+    transition: opacity 0s linear 0.2s, transform 0.2s ease-in-out 0s, -webkit-transform 0.2s ease-in-out 0s;
   }
   .container-footer .footer .footer-list-li-a:hover::after {
     opacity: 1;
