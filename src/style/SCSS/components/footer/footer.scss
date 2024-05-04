@@ -84,7 +84,7 @@
         border-bottom: 2px solid map-get($colors-rule, fourth-color);
         transform: translateX(-100%);
         opacity: 0;
-        transition: transform 0.2s ease-in-out 0s;
+        transition: opacity 0s linear 0.2s, transform 0.2s ease-in-out 0s;
       }
 
       .footer-list-li-a:hover::after {
