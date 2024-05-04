@@ -72,71 +72,70 @@ function NavBar() {
   }, []);
   return (
     <div>
-      {!isSmallScreen || (isSmallScreen && !isClicked) ? (
-        <div
-          className={
-            isSmallScreen && !isClicked
-              ? "nav-bar flex-row_reverse-space_between-center"
-              : "nav-bar flex-row-space_between-center"
-          }
-        >
-          <div className="container-logo">
+      {/*!isSmallScreen || (isSmallScreen && !isClicked) ? () : null*/}
+      <div
+        className={
+          isSmallScreen /*&& !isClicked*/
+            ? "nav-bar flex-row_reverse-space_between-center"
+            : "nav-bar flex-row-space_between-center"
+        }
+      >
+        <div className="container-logo">
+          <ReactSVG
+            src="/src/assets/logo/logo-monogramme.svg"
+            className="logo-coaching-svg"
+          />
+        </div>
+        {isSmallScreen && !isClicked ? (
+          <div className="container-burger" onClick={() => clickBurger()}>
             <ReactSVG
-              src="/src/assets/logo/logo-coaching-bicolor-v2.svg"
-              className="logo-coaching-svg"
+              src="/src/assets/icons/menu-burger-v2.svg"
+              className="logo-burger-svg"
             />
           </div>
-          {isSmallScreen && !isClicked ? (
-            <div onClick={() => clickBurger()}>
-              <ReactSVG
-                src="/src/assets/icons/menu-burger-v2.svg"
-                className="logo-burger-svg"
-              />
-            </div>
-          ) : null}
-          {!isSmallScreen ? (
-            <div className="flex-row-start-center">
-              <ul className="container-link flex-row-start-center">
-                {selectedContent.map((link, index) => {
-                  return (
-                    <li key={index}>
-                      <a id={link.id} className="nav-link" href={link.href}>
-                        {link.text}
-                        <span className="indicator"></span>
-                      </a>
-                    </li>
-                  );
-                })}
-                <li className="container-lang flex-column-start-center">
-                  <ReactSVG
-                    src="/src/assets/icons/icon-language.svg"
-                    beforeInjection={(svg) => {
-                      svg.classList.add("icon-language");
-                    }}
-                  />
-                  <ul className="list-lang flex-row-space_between-center">
-                    <li className="list-lang-li">
-                      <a className="list-lang-li-a" href={href_de.current}>
-                        De
-                      </a>
-                    </li>
-                    <li className="list-lang-li">
-                      <a className="list-lang-li-a" href={href_en.current}>
-                        En
-                      </a>
-                    </li>
-                    <li className="list-lang-li">
-                      <a className="list-lang-li-a" href={href_fr.current}>
-                        Fr
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          ) : null}
-        </div>
-      ) : null}
+        ) : null}
+        {!isSmallScreen ? (
+          <div className="container-nav flex-row-end-center">
+            <ul className="container-link flex-row-start-center">
+              {selectedContent.map((link, index) => {
+                return (
+                  <li key={index}>
+                    <a id={link.id} className="nav-link" href={link.href}>
+                      {link.text}
+                      <span className="indicator"></span>
+                    </a>
+                  </li>
+                );
+              })}
+              <li className="container-lang flex-column-start-center">
+                <ReactSVG
+                  src="/src/assets/icons/icon-language.svg"
+                  beforeInjection={(svg) => {
+                    svg.classList.add("icon-language");
+                  }}
+                />
+                <ul className="list-lang flex-row-space_between-center">
+                  <li className="list-lang-li">
+                    <a className="list-lang-li-a" href={href_de.current}>
+                      De
+                    </a>
+                  </li>
+                  <li className="list-lang-li">
+                    <a className="list-lang-li-a" href={href_en.current}>
+                      En
+                    </a>
+                  </li>
+                  <li className="list-lang-li">
+                    <a className="list-lang-li-a" href={href_fr.current}>
+                      Fr
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        ) : null}
+      </div>
 
       <div
         className={

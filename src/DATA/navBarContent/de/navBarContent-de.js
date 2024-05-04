@@ -28,7 +28,7 @@ let navBarContentDE = [
   },
   {
     id: "temoignage",
-    text: "Kundenmeinungen",
+    text: "Kundenbewertungen",
     href: "http://localhost:5173/src/HTML/de/kundenbewertungen.html",
     href_alt_fr: "http://localhost:5173/src/HTML/fr/temoignages-clients.html",
     href_alt_de: "http://localhost:5173/src/HTML/de/kundenbewertungen.html",

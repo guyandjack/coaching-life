@@ -5,6 +5,6 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   serveur: {
-    open: "/index.html",
+    open: "./src/HTML/fr/prestations-de-coaching-individuel-et-en-entreprise.html",
   },
 });

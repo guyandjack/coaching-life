@@ -51,9 +51,28 @@
 /********  **************** main-container-page   **************** ******************/
 /**** start ******************************************************************************/
 .body {
+  position: relative;
+  z-index: 0;
   margin: 0 auto;
-  width: 100vw;
-  background: linear-gradient(40deg, #1ba4e3, 40%, #fbfffe);
+  width: 100%;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  /*background: linear-gradient(
+    40deg,
+    map-get($colors-rule, first-color),
+    40%,
+    map-get($colors-rule, sixth-color)
+  );*/
+  background-color: #142452;
+  opacity: 1;
 }
 
 .container-page {
@@ -73,7 +92,7 @@
   max-width: 2000px;
   min-width: 400px;
   width: 100%;
-  padding: 0px 20px;
+  padding: 0px 0px;
   margin: 0 auto;
 }
 
@@ -327,6 +346,22 @@ footer {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.flex-column-end-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;

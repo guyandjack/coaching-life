@@ -2,6 +2,8 @@
 @import "../../../SCSS/utils/mixins/responsive/responsive.scss";
 
 .container-footer {
+  position: relative;
+  z-index: 1;
   background-color: map-get($colors-rule, first-color);
 
   .footer {
@@ -20,71 +22,78 @@
       //border: 2px solid blue;
       width: 100%;
       margin-top: 30px;
+
       @include upper-large-screen {
         width: 50%;
         margin-top: 0px;
       }
     }
 
-    @include under-large-screen {
+
+    .footer-list-li {
+      z-index: 1;
+      position: relative;
+      //padding: 10px;
+      margin: 10px auto;
+      //border: 2px solid green;
+
+    }
+
+    .footer-list-li::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      //background-color: map-get($colors-rule, second-color);
+      opacity: 0;
+    }
+
+    .footer-list-li:active::after {
+      opacity: 0.3;
+    }
+
+
+    @include upper-large-screen {
       .footer-list-li {
-        z-index: 1;
-        position: relative;
-        padding: 10px;
-        margin: 10px auto;
-        //border: 2px solid green;
+
+        margin: 10px 0px 10px 50%;
+        padding: 10px 0px;
+        overflow: hidden;
+
       }
 
-      .footer-list-li::after {
-        z-index: -1;
+
+
+      .footer-list-li-a {
+        position: relative;
+        color: map-get($colors-rule, sixth-color);
+
+
+      }
+
+      .footer-list-li-a::after {
         content: "";
         position: absolute;
         top: 0px;
         left: 0px;
         width: 100%;
         height: 100%;
-        background-color: map-get($colors-rule, second-color);
-        opacity: 0;
-      }
-
-      .footer-list-li:active::after {
-        opacity: 0.3;
-      }
-    }
-
-    @include upper-large-screen {
-      .footer-list-li {
-        position: relative;
-        z-index: 1;
-        padding-bottom: 10px;
-        margin: 10px 0px 10px 50%;
-        overflow: hidden;
-        //border: 2px solid green;
-      }
-      .footer-list-li::after {
-        content: "";
-        position: absolute;
-        top: 0%;
-        left: 0%;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
         border-bottom: 2px solid map-get($colors-rule, fourth-color);
-        opacity: 0;
         transform: translateX(-100%);
-        transition: all 0.3s ease-in-out;
+        opacity: 0;
+        transition: transform 0.2s ease-in-out 0s;
       }
 
-      .footer-list-li:hover::after {
+      .footer-list-li-a:hover::after {
         opacity: 1;
         transform: translateX(0%);
+        transition: transform 0.3s ease-in-out 0s;
       }
     }
 
-    .footer-list-li-a {
-      color: map-get($colors-rule, sixth-color);
-      //border: 2px solid red;
-    }
   }
 
   .webmaster {
@@ -92,4 +101,16 @@
     height: 50px;
     background-color: map-get($colors-rule, sixth-color);
   }
+}
+
+.container-footer::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: map-get($colors-rule, fifth-color);
+  opacity: 0.8;
 }

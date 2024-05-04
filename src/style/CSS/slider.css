@@ -1,475 +1,32 @@
-/**************************************************************
-*************  police pour le site *****************************
-******************************************************************/
-/*@font-face {
-  font-family: "cantarel";
-  src: url("../../../../Font/cantarel/Cantarell-Regular.ttf");
-}
+/* //import des fichiers de style
+@import "../../utils/colors-rule/colors-rule.scss";
+@import "../../utils/breakpoint/breakpoint.scss";
+@import "../../utils/fonts/font.scss";
+@import "../../utils/shared-class/class.scss";
 
-@font-face {
-  font-family: "fjalla";
-  src: url("../../../../Font/fjalla/Inter-Regular.ttf");
-}*/
-@font-face {
-  font-family: "Oswald", sans-serif;
-  src: url("../../../../Fonts/static/Oswald-Regular.ttf");
-}
-@font-face {
-  font-family: "Mulish", sans-serif;
-  src: url("../../../../Fonts/static/Mulish-Regular.ttf");
-}
-@font-face {
-  font-family: "Oxygen", sans-serif;
-  src: url("../../../../Fonts/static/Oxygen-Regular.ttf");
-}
-@font-face {
-  font-family: "Source Code Pro", monospace;
-  src: url("../../../../Fonts/variable/SourceCodePro-VariableFont_wght.ttf");
-}
-/*******************************************************************************
-******************** class css *************************************************
-**********************************************************************************/
-/****************************************************************************************
-/********  **************** Layout **************** ******************/
-/****start******************************************************************************/
-/************ flex-box***********************************/
-.flex-row-start-center {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row;
-          flex-flow: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.flex-row-center-center {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row;
-          flex-flow: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.flex-row-space_evenly-center {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row;
-          flex-flow: row;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.flex-row-space_evenly-center-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.flex-row-space-evenly-start {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row;
-          flex-flow: row;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-}
-
-.flex-row-space_between-center {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row;
-          flex-flow: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.flex-row_reverse-space_between-center {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-flow: row-reverse;
-          flex-flow: row-reverse;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.flex-column-start-center {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.flex-column-start-start {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-}
-
-.flex-column-center-center {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.flex-column-center-start {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: start;
-}
-
-.flex-column-space_evenly-start {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: start;
-}
-
-/****************************************************************************************
-/********  **************** flex box **************** ******************/
-/**** end ******************************************************************************/
-.hide {
-  display: none;
-}
-
-.show {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-/**** start ********************** color ***********************************************/
-/****************************************************************************************
-/****************************************************************************************/
-.text-first {
-  color: #142452;
-}
-
-.text-second {
-  color: #1ba4e3;
-}
-
-.text-third {
-  color: #ff6e00;
-}
-
-.text-fourth {
-  color: #9cd008;
-}
-
-.text-fifth {
-  color: #171717;
-}
-
-.text-sixth {
-  color: #fbfffe;
-}
-
-.bg-first {
-  background-color: #142452;
-}
-
-.bg-second {
-  background-color: #1ba4e3;
-}
-
-.bg-third {
-  background-color: #ff6e00;
-}
-
-.bg-fourth {
-  background-color: #9cd008;
-}
-
-.bg-fifth {
-  background-color: #171717;
-}
-
-.bg-sixth {
-  background-color: #fbfffe;
-}
-
-/**** start ********************** color ***********************************************/
-/****************************************************************************************
-/****************************************************************************************/
-/**** start **********************formulaire***********************************************/
-/****************************************************************************************
-/****************************************************************************************/
-.form-text-error {
-  color: #ff6e00;
-}
-
-.form-border-error {
-  border: 1px solid #ff6e00;
-}
-
-.form-border-valid {
-  border: 1px solid #1ba4e3;
-}
-
-.form-bg-button-enabled {
-  background-color: #1ba4e3;
-}
-
-.form-bg-button-unebled {
-  background-color: #1ba4e3;
-  opacity: 0.7;
-}
-
-.input {
-  border: 1px solid #fbfffe;
-  padding: 0.5em;
-}
-
-.btn-submit {
-  padding: 0.5em;
-  margin: 1.5em;
-  border-radius: 1em;
-}
-
-/********  ****************  formulaire ************ ******************/
-/**** end ******************************************************************************/
-/****************************************************************************************
-
-
-
-
-
-/****************************************************************************************
-/********  **************** container-page   **************** ******************/
-/**** start ******************************************************************************/
-.container-page {
-  position: relative;
-  max-width: 1500px;
-  min-width: 400px;
-  width: 100%;
-  margin: 0 auto;
-}
-.container-page::after {
-  content: "";
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(40deg, #1ba4e3, 40%, #fbfffe);
-  z-index: -2;
-}
-
-/****************************************************************************************
-/********  **************** container-page  **************** ******************/
-/**** end ******************************************************************************/
-/****************************************************************************************
-/********  **************** titre Hn  **************** ******************/
-/**** start ******************************************************************************/
-.h1 {
-  padding-left: 5%;
-  font-family: "Source Code Pro", monospace;
-  font-size: 25px;
-  font-weight: 600;
-  max-width: 70%;
-  line-height: 120%;
-}
-@media screen and (min-width: 769px) {
-  .h1 {
-    font-size: 30px;
-    max-width: 60%;
-  }
-}
-@media screen and (min-width: 993px) {
-  .h1 {
-    font-size: 40px;
-    max-width: 50%;
-  }
-}
-
-.h2 {
-  font-family: "Source Code Pro", monospace;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.4em;
-}
-@media screen and (min-width: 769px) {
-  .h2 {
-    font-size: 25px;
-  }
-}
-@media screen and (min-width: 993px) {
-  .h2 {
-    font-size: 30px;
-  }
-}
-
-.h3 {
-  font-family: "Oxygen", sans-serif;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1.4em;
-}
-@media screen and (min-width: 769px) {
-  .h3 {
-    font-size: 25px;
-  }
-}
-@media screen and (min-width: 993px) {
-  .h3 {
-    font-size: 30px;
-  }
-}
-
-.h4 {
-  font-family: "Oxygen", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.4em;
-}
-@media screen and (min-width: 769px) {
-  .h4 {
-    font-size: 20px;
-  }
-}
-@media screen and (min-width: 993px) {
-  .h4 {
-    font-size: 25px;
-  }
-}
-
-/****************************************************************************************
-/********  **************** titre Hn  **************** ******************/
-/**** end ******************************************************************************/
 .main-container-slider {
   margin: 50px 0px;
 }
 
+//class contenu dans les settings du composant
 .slide {
   padding: 0.5em;
   max-width: 400px;
   max-height: 600px;
   border-radius: 10px;
-  border: 1px solid #171717;
-  -webkit-box-shadow: 2px 2px 10px 0px #4a4a4a;
-          box-shadow: 2px 2px 10px 0px #4a4a4a;
-}
-@media screen and (min-width: 769px) {
-  .slide {
+  border: 1px solid map-get($colors-rule, fifth-color);
+  box-shadow: 2px 2px 10px 0px lighten(map-get($colors-rule, fifth-color), 20%);
+  @include upper-medium-screen {
     max-width: 600px;
   }
 }
 
+//class des composants enfants du composant react-slick
 .container-slide-content {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .slide-title {
@@ -483,8 +40,7 @@
   font-size: 1.1em;
   opacity: 0.8;
   font-family: "Mulish", sans-serif;
-  -ms-flex-item-align: start;
-      align-self: flex-start;
+  align-self: flex-start;
 }
 
 .slide-content {
@@ -492,25 +48,18 @@
 }
 
 .arrow {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row;
-          flex-flow: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+
   position: absolute;
   bottom: -80px;
   font-size: 40px;
-  color: #fbfffe;
+  color: map-get($colors-rule, sixth-color);
+
   border-radius: 50%;
-  background-color: #1ba4e3;
+  background-color: map-get($colors-rule, second-color);
 }
 
 .arrow-prev {
@@ -521,6 +70,7 @@
   right: 5%;
 }
 
+//desactive les style original du composant react-slick
 .slick-dots li {
   width: unset;
   height: unset;
@@ -528,40 +78,31 @@
 }
 
 .dot-list {
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
   display: flex !important;
-  -webkit-box-orient: horizontal !important;
-  -webkit-box-direction: normal !important;
-      -ms-flex-flow: row !important;
-          flex-flow: row !important;
-  -webkit-box-pack: space-evenly !important;
-      -ms-flex-pack: space-evenly !important;
-          justify-content: space-evenly !important;
-  -webkit-box-align: center !important;
-      -ms-flex-align: center !important;
-          align-items: center !important;
+  flex-flow: row !important;
+  justify-content: space-evenly !important;
+  align-items: center !important;
   width: 50%;
   height: 30px !important;
   position: relative;
   left: 50%;
   bottom: -20px;
-  -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
+  //border: 2px solid blue;
 }
 
 .slider-state {
-  border-bottom: 2px solid #171717;
+  border-bottom: 2px solid map-get($colors-rule, fifth-color);
   width: 30px !important;
+
   margin: 0px 20px !important;
 }
 
+//modifie le style du state-slider lorsque la class active est genere par le composant react-slick
 .dot-list .slick-active .slider-state {
-  border-bottom: 4px solid #1ba4e3;
-  -webkit-box-shadow: 0px 0px 10px 1px #1ba4e3;
-          box-shadow: 0px 0px 10px 1px #1ba4e3;
-  background-color: #1ba4e3;
+  border-bottom: 4px solid map-get($colors-rule, second-color);
+  box-shadow: 0px 0px 10px 1px map-get($colors-rule, second-color);
+  background-color: map-get($colors-rule, second-color);
 }
 
 .container-carousel {
@@ -569,7 +110,6 @@
   max-height: 500px;
   border: 2px solid red;
 }
-
 .image {
   width: 400px;
   height: 300px;
@@ -578,3 +118,4 @@
 .swiper-slide {
   width: 80%;
 }
+ */

@@ -1,5 +1,6 @@
 //import des fichiers util
 @import "../../utils/colors-rule/colors-rule.scss";
+@import "../../utils/mixins/responsive/responsive.scss";
 
 .card-resume {
   position: relative;
@@ -15,8 +16,12 @@
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    border: 2px solid map-get($colors-rule, sixth-color);
+    border: 4px solid map-get($colors-rule, sixth-color);
     margin-right: 50px;
+    @include upper-large-screen {
+      width: 150px;
+      height: 150px;
+    }
   }
   .resume-info {
     margin-top: 10px;
@@ -37,41 +42,6 @@
   .resume-footer {
     position: relative;
   }
-  /*.container-icon-arrow {
-    position: absolute;
-    top: 50%;
-    left: 3%;
-    transform: translateY(-50%);
-    //animation: cardArrow 2s linear 0s infinite normal;
-  }*/
-  @keyframes cardArrow {
-    0% {
-      left: 3%;
-      transform: translateY(-50%) scale(1);
-      //opacity: 0.2;
-    }
-    50% {
-      left: 5%;
-      transform: translateY(-50%) scale(1.1);
-      //opacity: 0.5;
-    }
-    90% {
-      left: 7%;
-      transform: translateY(-50%) scale(1.2);
-      //opacity: 1;
-    }
-    100% {
-      left: 3%;
-      transform: translateY(-50%) scale(1);
-      //opacity: 0.2;
-    }
-  }
-  .icon-arrow-start {
-    transform: rotateZ(180deg);
-    width: 50px;
-    height: 50px;
-    fill: white;
-  }
 
   .resume-footer-link {
     display: block;
@@ -79,25 +49,15 @@
     width: 70%;
     font-size: 20px;
     color: map-get($colors-rule, sixth-color);
-    animation: colorText 5s linear 0s infinite normal;
+    animation: colorText 5s linear 0s infinite alternate;
   }
   @keyframes colorText {
     0% {
       transform: scale(1);
     }
-    20% {
-      transform: scale(1.3);
-    }
-
-    60% {
-      transform: scale(1.2);
-    }
-    80% {
-      transform: scale(1.1);
-    }
 
     100% {
-      transform: scale(1);
+      transform: scale(1.2);
     }
   }
 }
@@ -110,8 +70,8 @@
   left: 0px;
   width: 100%;
   height: 100%;
-  background-color: map-get($colors-rule, fourth-color);
-  opacity: 0.7;
+  background-color: map-get($colors-rule, second-color);
+  opacity: 0.9;
   border-radius: 20px;
   box-shadow: 0px 0px 5px 1px;
 }
