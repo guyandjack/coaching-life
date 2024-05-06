@@ -82,7 +82,7 @@ function NavBar() {
       >
         <div className="container-logo">
           <ReactSVG
-            src="/src/assets/logo/logo-monogramme.svg"
+            src="/src/assets/logo/logo-monogramme-v4.svg"
             className="logo-coaching-svg"
           />
         </div>
@@ -108,15 +108,21 @@ function NavBar() {
                 );
               })}
               <li className="container-lang flex-column-start-center">
-                <ReactSVG
-                  src="/src/assets/icons/icon-language.svg"
-                  beforeInjection={(svg) => {
-                    svg.classList.add("icon-language");
-                  }}
-                />
-                <ul className="list-lang flex-row-space_evenly-center">
-                  <li className="list-lang-li">
-                    <a className="list-lang-li-a" href={href_de.current}>
+                <div className="container-icon-lang">
+                  <ReactSVG
+                    src="/src/assets/icons/icon-language.svg"
+                    beforeInjection={(svg) => {
+                      svg.classList.add("icon-language");
+                    }}
+                  />
+                </div>
+
+                <ul className="list-lang flex-row-space_between-center">
+                  <li className="list-lang-li flex-column-center-center">
+                    <a
+                      className="list-lang-li-a flex-column-center-center"
+                      href={href_de.current}
+                    >
                       De
                     </a>
                   </li>

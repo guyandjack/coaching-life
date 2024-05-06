@@ -177,25 +177,44 @@
   position: relative;
   height: 40px;
   margin-right: 40px;
-  min-width: 50px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
-.container-lang .list-lang {
+
+.list-lang {
   position: absolute;
-  top: 100%;
+  top: 70%;
   right: 0px;
+  width: 100px;
+  opacity: 1;
   max-height: 0px;
-  width: 150px;
   overflow: hidden;
-  -webkit-transition: max-height 150ms ease-in-out 0s;
-  transition: max-height 150ms ease-in-out 0s;
+  -webkit-transform: translateY(-100%);
+      -ms-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: opacity 150ms ease-in-out 0s, max-height 0.2s ease-in-out 0s, -webkit-transform 0.2s ease-in-out 0s;
+  transition: opacity 150ms ease-in-out 0s, max-height 0.2s ease-in-out 0s, -webkit-transform 0.2s ease-in-out 0s;
+  transition: opacity 150ms ease-in-out 0s, transform 0.2s ease-in-out 0s, max-height 0.2s ease-in-out 0s;
+  transition: opacity 150ms ease-in-out 0s, transform 0.2s ease-in-out 0s, max-height 0.2s ease-in-out 0s, -webkit-transform 0.2s ease-in-out 0s;
+}
+
+.container-lang:hover .list-lang {
+  -webkit-transform: translateY(0%);
+      -ms-transform: translateY(0%);
+          transform: translateY(0%);
+  opacity: 1;
+  max-height: 20px;
+  -webkit-transition: opacity 0.2ms ease-in-out 0s, max-height 0s ease-in-out 0s, -webkit-transform 0.3s ease-in-out 0s;
+  transition: opacity 0.2ms ease-in-out 0s, max-height 0s ease-in-out 0s, -webkit-transform 0.3s ease-in-out 0s;
+  transition: opacity 0.2ms ease-in-out 0s, transform 0.3s ease-in-out 0s, max-height 0s ease-in-out 0s;
+  transition: opacity 0.2ms ease-in-out 0s, transform 0.3s ease-in-out 0s, max-height 0s ease-in-out 0s, -webkit-transform 0.3s ease-in-out 0s;
 }
 
 .list-lang-li-a {
   position: relative;
-  display: block;
-  color: #fbfffe;
+  color: white;
   font-size: 1em;
-  padding: 0px 5px;
 }
 @media screen and (min-width: 993px) {
   .list-lang-li-a {
@@ -203,32 +222,8 @@
   }
 }
 
-.list-lang-li-a::after {
-  content: "";
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  border-left: 2px solid #9cd008;
-  border-right: 2px solid #9cd008;
-  -webkit-transform: translateY(-100%);
-      -ms-transform: translateY(-100%);
-          transform: translateY(-100%);
-  -webkit-transition: -webkit-transform 200ms ease-in-out;
-  transition: -webkit-transform 200ms ease-in-out;
-  transition: transform 200ms ease-in-out;
-  transition: transform 200ms ease-in-out, -webkit-transform 200ms ease-in-out;
-}
-
-.list-lang-li-a:hover::after {
-  -webkit-transform: translateY(0%);
-      -ms-transform: translateY(0%);
-          transform: translateY(0%);
-}
-
-.container-lang:hover .list-lang {
-  max-height: 100px;
+.list-lang-li-a:hover {
+  color: #9cd008;
 }
 
 #icon-language {
