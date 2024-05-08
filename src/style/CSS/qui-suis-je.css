@@ -26,55 +26,180 @@
   font-family: "Source Code Pro", monospace;
   src: url("../../../../Fonts/variable/SourceCodePro-VariableFont_wght.ttf");
 }
-.qui-suis-je h1 {
-  color: #142452;
-  padding-left: 0px;
-  margin: 40px 0px;
+.qui-suis-je {
+  background: -webkit-gradient(linear, left bottom, left top, from(#fbfffe), to(#1ba4e3));
+  background: linear-gradient(to top, #fbfffe, #1ba4e3);
 }
-.qui-suis-je article {
-  z-index: 1;
+.qui-suis-je .introduction {
   position: relative;
-  margin: 40px 0px;
-  padding: 10px;
-  max-width: 90%;
-  border-radius: 20px;
+  z-index: 1;
+  width: 100%;
 }
 @media screen and (min-width: 993px) {
-  .qui-suis-je article {
-    max-width: 50%;
+  .qui-suis-je .introduction {
+    min-height: 500px;
   }
 }
-.qui-suis-je article::after {
-  z-index: -1;
-  content: "";
+.qui-suis-je .introduction .bg-img {
   position: absolute;
+  z-index: -1;
   top: 0px;
   left: 0px;
   width: 100%;
   height: 100%;
-  border-radius: 20px;
-  background-color: #9cd008;
-  opacity: 0.2;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 0.5;
 }
-.qui-suis-je .introduction-title {
+.qui-suis-je .introduction .page-title {
+  color: #001747;
+  padding-left: 0px;
+  margin: 40px 0px;
   font-size: 40px;
 }
 @media screen and (min-width: 769px) {
-  .qui-suis-je .introduction-title {
+  .qui-suis-je .introduction .page-title {
     font-size: 45px;
   }
 }
 @media screen and (min-width: 769px) {
-  .qui-suis-je .introduction-title {
+  .qui-suis-je .introduction .page-title {
     font-size: 50px;
   }
 }
-.qui-suis-je .introduction-content {
-  width: 70%;
-  line-height: 150%;
+.qui-suis-je .introduction::after {
+  content: "";
+  position: absolute;
+  z-index: -5;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #fbfffe;
+  opacity: 1;
 }
-.qui-suis-je .content {
-  padding: 10px;
-  line-height: 130%;
-  color: #171717;
+@media screen and (min-width: 993px) {
+  .qui-suis-je .article {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row;
+            flex-flow: row;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: 50px 0px;
+  }
+}
+.qui-suis-je > .container-avatar {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+@media screen and (min-width: 993px) {
+  .qui-suis-je > .container-avatar {
+    width: 300px;
+    height: 300px;
+  }
+  .qui-suis-je > .container-avatar::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 10px;
+    left: -10px;
+    width: 100%;
+    height: 100%;
+    background-color: #1ba4e3;
+  }
+  .qui-suis-je > .container-avatar::before {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    top: 20px;
+    left: -20px;
+    width: 100%;
+    height: 100%;
+    background-color: #fbfffe;
+  }
+}
+.qui-suis-je > .container-avatar .avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #fbfffe;
+}
+@media screen and (min-width: 993px) {
+  .qui-suis-je > .container-avatar .avatar {
+    border-radius: 0px;
+    border: none;
+    width: 300px;
+    height: 300px;
+  }
+}
+.qui-suis-je .container-content {
+  width: 100%;
+}
+@media screen and (min-width: 993px) {
+  .qui-suis-je .container-content {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 60%;
+            flex: 0 1 60%;
+  }
+}
+.qui-suis-je .container-content .value-list {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  font-size: 18px;
+  color: #001747;
+  max-width: 90%;
+}
+.qui-suis-je .container-content .value-list li {
+  margin-right: 15px;
+  margin-bottom: 5px;
+}
+.qui-suis-je .container-content .content-title {
+  margin: 20px 0px;
+  font-size: 25px;
+}
+@media screen and (min-width: 769px) {
+  .qui-suis-je .container-content .content-title {
+    font-size: 30px;
+  }
+}
+@media screen and (min-width: 993px) {
+  .qui-suis-je .container-content .content-title {
+    font-size: 35px;
+  }
+}
+.qui-suis-je .container-content .content-text {
+  width: 80%;
+  font-size: 20px;
+  line-height: 150%;
+  margin: 40px 0px;
+}
+@media screen and (min-width: 993px) {
+  .qui-suis-je .container-content .content-text {
+    width: 100%;
+    font-size: 22px;
+    padding: 15px 15px;
+  }
+}
+.qui-suis-je .container-img {
+  width: 100%;
+  max-height: 400px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  overflow: hidden;
+  margin: 30px 0px;
+}
+@media screen and (min-width: 993px) {
+  .qui-suis-je .container-img {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 40%;
+            flex: 1 1 40%;
+    height: 500px;
+  }
 }

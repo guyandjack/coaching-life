@@ -1,70 +1,102 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>qui suis je</title>
-    <meta name="description" content="A propos de moi" />
-    <!-- versions multilingue -->
-    <!-- <link rel="alternate" hreflang="fr" href="./prestation.html" /> -->
-    <link rel="alternate" hreflang="de" href="../de/uber-mich.html" />
-    <link rel="alternate" hreflang="en" href="../en/about-me.html" />
-    <link rel="alternate" hreflang="x-default" href="./qui-suis-je.html" />
 
-    <!-- feuilles de style -->
-    <link rel="stylesheet" href="../../style/CSS/normalize.css" />
-    <link rel="stylesheet" href="../../style/CSS/materialize.css" />
-    <link rel="stylesheet" href="../../style/CSS/shared-class.css" />
-    <link rel="stylesheet" href="../../style/CSS/qui-suis-je.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qui suis je</title>
+  <meta name="description" content="A propos de moi" />
+  <!-- versions multilingue -->
+  <!-- <link rel="alternate" hreflang="fr" href="./prestation.html" /> -->
+  <link rel="alternate" hreflang="de" href="../de/uber-mich.html" />
+  <link rel="alternate" hreflang="en" href="../en/about-me.html" />
+  <link rel="alternate" hreflang="x-default" href="./qui-suis-je.html" />
 
-    <!-- scripts JS -->
+  <!-- feuilles de style -->
+  <link rel="stylesheet" href="../../style/CSS/normalize.css" />
+  <!-- <link rel="stylesheet" href="../../style/CSS/materialize.css" /> -->
+  <link rel="stylesheet" href="../../style/CSS/shared-class.css" />
+  <link rel="stylesheet" href="../../style/CSS/qui-suis-je.css" />
 
-    <script type="module" src="../../JAVASCRIPT/page/quisuisje.js"></script>
+  <!-- scripts JS -->
 
-    <!-- scripts JSX -->
-    <script type="module" src="../../JSX/qui-suis-je.jsx"></script>
-  </head>
-  <body class="body">
-    <div class="container-page qui-suis-je">
-      <header>
-        <div id="RC-nav-bar"></div>
-        <div
-          id="info-href"
-          data-fr="http://localhost:5173/src/HTML/fr/qui-suis-je.html"
-          data-en="http://localhost:5173/src/HTML/en/about-me.html"
-          data-de="http://localhost:5173/src/HTML/de/uber-mich.html"
-        ></div>
-      </header>
+  <script type="module" src="../../JAVASCRIPT/page/quisuisje.js"></script>
 
-      <main>
-        <section class="flex-column-start-center">
-          <h1 class="h1 introduction-title">Qui suis-je?</h1>
-          <p class="content introduction-content">
-            Bonjour et bienvenue ! Je suis Sophie, une directrice des ressources
-            humaines passionnée, avec une expertise affirmée dans le coaching et
-            le développement personnel. Mon parcours professionnel m'a permis
-            d'évoluer dans différents contextes, à la fois en Suisse et à
-            l'international. Aujourd'hui, je mets à votre disposition mes
-            connaissances et mon expérience pour vous accompagner dans votre
-            épanouissement tant professionnel que personnel.
-          </p>
-          <article>
-            <h2 class="h2 value-title">
-              Les valeurs auxquelles je m’identifie
-            </h2>
-            <p class="content value-content">
+  <!-- scripts JSX -->
+  <script type="module" src="../../JSX/qui-suis-je.jsx"></script>
+</head>
+
+<body class="body">
+  <div class="container-page qui-suis-je">
+    <header>
+      <div id="RC-nav-bar"></div>
+      <div id="info-href" data-fr="http://localhost:5173/src/HTML/fr/qui-suis-je.html"
+        data-en="http://localhost:5173/src/HTML/en/about-me.html"
+        data-de="http://localhost:5173/src/HTML/de/uber-mich.html"></div>
+    </header>
+
+    <main>
+      <section class="flex-column-start-center">
+        <div class="introduction flex-column-start-center">
+          <img class="bg-img" src="/src/assets/zarema-ger-XawguWHS180-unsplash-herbe.jpg" alt="">
+          <h1 class="h1 page-title">A propos</h1>
+          <div class="flex-column-start-center article ">
+            <div class="flex-column-start-center container-avatar ">
+
+              <img class="avatar" src="/src/assets/sophie/sophie-chevrolet.jpg" alt="photo de sophie">
+            </div>
+            <div class="flex-column-start-center container-content ">
+              <h2 class="h2 content-title">Qui suis je ?</h2>
+              <p class="content-text">
+                Bonjour et bienvenue ! Je suis Sophie, une directrice des ressources
+                humaines passionnée, avec une expertise affirmée dans le coaching et
+                le développement personnel. Mon parcours professionnel m'a permis
+                d'évoluer dans différents contextes, à la fois en Suisse et à
+                l'international. Aujourd'hui, je mets à votre disposition mes
+                connaissances et mon expérience pour vous accompagner dans votre
+                épanouissement tant professionnel que personnel.
+              </p>
+            </div>
+          </div>
+        </div>
+        <article class="flex-column-start-center article ">
+          <div class="flex-column-start-center container-img">
+
+            <img src="/src/assets/value.jpg"
+              alt="représentation graphique des valeurs ethiques de l'entreprise 'SO COACHING'">
+          </div>
+          <div class="flex-column-start-center container-content">
+            <h2 class="h2 content-title">
+              Les valeurs auxquelles je m’identifie</h2>
+            <ul class="flex-row-start-center value-list">
+              <li>"Bienveillance"</li>
+              <li>"Ecoute"</li>
+              <li>"Empathie"</li>
+              <li>"Enthousiasme"</li>
+              <li>"Respect"</li>
+              <li>"Fiabilité"</li>
+            </ul>
+            <p class="content-text">
               L'empathie, l'authenticité et la collaboration sont les piliers de
               mon approche. Je crois fermement que chaque individu est unique et
               mérite un accompagnement personnalisé pour atteindre ses
               objectifs. Mon engagement envers le bien-être mental et
               professionnel guide chacune de mes actions. Mon objectif est de
               créer un environnement propice à votre épanouissement personnel et
-              professionnel, où vous pouvez vous épanouir pleinement.
-            </p>
-          </article>
-          <article>
-            <h2 class="h2 experience-title">Mon Expérience et Expertise</h2>
-            <p class="content">
+              professionnel, où vous pouvez vous épanouir pleinement.</p>
+          </div>
+
+        </article>
+
+
+        <article class="flex-column-start-center article">
+          <div class="flex-column-start-center container-img">
+            <img src="/src/assets/600x600-rh.jpg" alt="">
+
+          </div>
+          <div class="flex-column-start-center container-content">
+            <h2 class="h2 content-title">Mon Expérience et Expertise</h2>
+            <p class="content-text">
               Fort de près de 15 ans d'expérience dans les domaines des
               ressources humaines et du management, je vous propose un
               accompagnement sur mesure, adapté à vos besoins spécifiques. Ayant
@@ -80,25 +112,44 @@
               dans 'Burn-out: le détecter, le prévenir, le guérir' par C. Vasey
               à Lausanne.
             </p>
-          </article>
-          <article>
-            <h2 class="h2">Mes formations</h2>
-            <p class="content">
-              "Grâce aux services de Nom de Votre Entreprise, j'ai pu améliorer
-              ma présence en ligne et attirer de nouveaux clients. Leur approche
-              personnalisée a fait toute la différence."
-            </p>
-          </article>
-          <article>
-            <h2 class="h2">Mes formations</h2>
-            <p class="content"></p>
-          </article>
-        </section>
-      </main>
+          </div>
 
-      <footer>
-        <div id="RC-footer"></div>
-      </footer>
-    </div>
-  </body>
+        </article>
+        <article class="flex-column-start-center article">
+          <div class="flex-column-start-center container-img">
+
+            <img src="/src/assets/600x600-diplome-1.jpg" alt="">
+          </div>
+          <div class="flex-column-start-center container-content">
+
+            <h2 class="h2 content-title">Mes formations</h2>
+            <p class="content-text">
+              – Master universitaire RH - EM Strasbourg Business School
+              – Coach professionnelle certifiée ICF - Elty Coaching Genève
+              – Formée au bilan de compétences - Université de Genève
+              – Certifiée Master Person Analysis (Master Management Zumikon) et inventaire de personnalité de Bochum BIP
+              (Hogrefe
+              Berne)
+              – Secouriste en santé mentale - ENSA Zürich
+              – Burn-out: le détecter, le prévenir, le guérir - Noburnout C. Vasey Lausanne
+
+              – Près de 15 ans d'expérience professionnelle RH et managériale au sein d'entreprises privées et publiques
+              en Suisse et
+              à l'international.
+              – Expérience de vie privée et professionnelle au sein de plusieurs pays européens.
+              – Coaching possible dans plusieurs langues (FR - DE – EN).
+
+            </p>
+          </div>
+        </article>
+
+      </section>
+    </main>
+
+    <footer>
+      <div id="RC-footer"></div>
+    </footer>
+  </div>
+</body>
+
 </html>

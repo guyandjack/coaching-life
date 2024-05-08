@@ -71,7 +71,7 @@ body::after {
     40%,
     map-get($colors-rule, sixth-color)
   );*/
-  background-color: #142452;
+  background-color: #001747;
   opacity: 1;
 }
 
@@ -111,6 +111,22 @@ footer {
 /********  **************** display **************** ******************/
 /****start******************************************************************************/
 /************ flex-box***********************************/
+.flex-row-start-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .flex-row-start-center {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -384,7 +400,7 @@ footer {
 /****************************************************************************************
 /****************************************************************************************/
 .text-first {
-  color: #142452;
+  color: #001747;
 }
 
 .text-second {
@@ -408,7 +424,7 @@ footer {
 }
 
 .bg-first {
-  background-color: #142452;
+  background-color: #001747;
 }
 
 .bg-second {

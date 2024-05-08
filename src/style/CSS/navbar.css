@@ -5,6 +5,7 @@
   position: relative;
   z-index: 1;
   padding: 8px 0px 5px 0px;
+  background-color: #fbfffe;
 }
 
 .nav-bar::after {
@@ -16,7 +17,7 @@
   width: 100%;
   height: 100%;
   background-color: #171717;
-  opacity: 0.8;
+  opacity: 0;
 }
 
 .container-logo {
@@ -115,7 +116,7 @@
 .container-link-li .nav-link {
   position: relative;
   padding-bottom: 10px;
-  color: #fbfffe;
+  color: #001747;
 }
 @media screen and (min-width: 769px) {
   .container-link-li .nav-link {
@@ -213,7 +214,7 @@
 
 .list-lang-li-a {
   position: relative;
-  color: white;
+  color: #001747;
   font-size: 1em;
 }
 @media screen and (min-width: 993px) {
@@ -227,7 +228,7 @@
 }
 
 #icon-language {
-  fill: #fbfffe;
+  fill: #001747;
   width: 24px;
   height: 24px;
 }
@@ -282,7 +283,7 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-color: #142452;
+  background-color: #001747;
   opacity: 0;
 }
 .menu-burger .burger-menu-li:active::after {
@@ -352,7 +353,7 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-color: #142452;
+  background-color: #001747;
   opacity: 0;
 }
 .burger-menu-lang .burger-menu-lang-li:active::after {
