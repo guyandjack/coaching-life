@@ -10,7 +10,6 @@
   position: relative;
   z-index: 1;
   padding: 8px 0px 5px 0px; //correction aberation centrage
-  background-color: map-get($colors-rule, sixth-color);
 }
 
 .nav-bar::after {
@@ -21,8 +20,7 @@
   left: 0px;
   width: 100%;
   height: 100%;
-  background-color: map-get($colors-rule, fifth-color);
-  opacity: 0;
+  background-color: map-get($colors-rule, sixth-color);
 }
 
 .container-logo {
@@ -50,36 +48,7 @@
     margin-left: 100px;
   }
 
-  /* .st0 {
-    fill: none;
-    stroke: map-get($colors-rule, sixth-color);
-    stroke-width: 2;
-    stroke-miterlimit: 10;
-  }
-  .st1 {
-    fill: none;
-    stroke: map-get($colors-rule, sixth-color);
-    stroke-width: 5;
-    stroke-miterlimit: 10;
-  }
-  .st2 {
-    fill: map-get($colors-rule, sixth-color);
-  }
-  .st3 {
-    fill: map-get($colors-rule, sixth-color);
-    stroke: map-get($colors-rule, sixth-color);
-    stroke-width: 2;
-    stroke-miterlimit: 10;
-  }
-  .st4 {
-    //fill: map-get($colors-rule, sixth-color);
-  }
-  .st5 {
-    fill: none;
-    stroke: map-get($colors-rule, sixth-color);
-    stroke-width: 3;
-    stroke-miterlimit: 10;
-  } */
+
 }
 
 .logo-burger-svg {
@@ -87,7 +56,7 @@
     width: 50px;
     height: 50px;
     margin-left: 50px;
-    fill: white;
+    fill: map-get($colors-rule, second-color);
 
     @include upper-medium-screen {
       width: 60px;
@@ -100,7 +69,9 @@
   svg {
     width: 40px;
     height: 40px;
-    fill: #ff6e00;
+    fill: map-get($colors-rule , third-color);
+    box-shadow: 0 0 5px 1px map-get($colors-rule, third-color);
+    border-radius: 5px;
   }
 }
 
@@ -118,16 +89,14 @@
 
   & .nav-link {
     position: relative;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
     //border-bottom: 4px solid blue;
     color: map-get($colors-rule, first-color);
 
-    @include upper-medium-screen {
-      font-size: 1.1em;
-    }
+
 
     @include upper-large-screen {
-      font-size: 1.2em;
+      font-size: 1.1em;
     }
   }
 
@@ -302,10 +271,8 @@
   width: 100%;
   height: 100%;
   background-color: map-get($colors-rule, fifth-color);
-  border: 2px solid map-get($colors-rule, sixth-color);
   z-index: -1;
   opacity: 1;
-  box-shadow: 2px 2px 5px 2px lighten(map-get($colors-rule, fifth-color), 30);
 }
 
 .open {
@@ -322,9 +289,7 @@
   opacity: 1;
 }
 
-.menu-burger.open .burger-menu-li:first-child {
-  animation: animBtnClose 0.5s ease-in-out 0.2s 1 normal forwards;
-}
+
 
 //concerne le menu lang dans le menu burger
 .burger-menu-lang {
@@ -361,5 +326,6 @@
     border-left: 1px solid map-get($colors-rule, second-color);
     border-right: 1px solid map-get($colors-rule, second-color);
     //border: 2px solid blue;
+    color: map-get($colors-rule, second-color);
   }
 }
