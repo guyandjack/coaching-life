@@ -99,7 +99,10 @@ function NavBar() {
             <ul className="container-link flex-row-start-center">
               {selectedContent.map((link, index) => {
                 return (
-                  <li key={index} className="container-link-li">
+                  <li
+                    key={index}
+                    className="flex-row-center-center container-link-li"
+                  >
                     <a id={link.id} className="nav-link" href={link.href}>
                       {link.text}
                       <span className="indicator"></span>
@@ -107,7 +110,7 @@ function NavBar() {
                   </li>
                 );
               })}
-              <li className="container-lang flex-column-start-center">
+              <li className="container-lang flex-column-center-center">
                 <div className="container-icon-lang">
                   <ReactSVG
                     src="/src/assets/icons/icon-language.svg"

@@ -3,7 +3,7 @@
 *********************************************************************/
 .nav-bar {
   position: relative;
-  z-index: 1;
+  z-index: 10;
   padding: 8px 0px 5px 0px;
 }
 
@@ -86,12 +86,12 @@
 }
 .container-link-li .nav-link {
   position: relative;
-  padding-bottom: 5px;
+  font-size: 18px;
   color: #001747;
 }
 @media screen and (min-width: 993px) {
   .container-link-li .nav-link {
-    font-size: 1.1em;
+    font-size: 18px;
   }
 }
 .container-link-li .nav-link::after {
@@ -142,7 +142,7 @@
 
 .container-lang {
   position: relative;
-  height: 40px;
+  height: 50px;
   margin-right: 40px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -151,42 +151,41 @@
 
 .list-lang {
   position: absolute;
-  top: 70%;
+  z-index: 2;
+  top: 100%;
   right: 0px;
   width: 100px;
-  opacity: 1;
+  opacity: 0;
   max-height: 0px;
   overflow: hidden;
-  -webkit-transform: translateY(-100%);
-      -ms-transform: translateY(-100%);
-          transform: translateY(-100%);
-  -webkit-transition: opacity 150ms ease-in-out 0s, max-height 0.2s ease-in-out 0s, -webkit-transform 0.2s ease-in-out 0s;
-  transition: opacity 150ms ease-in-out 0s, max-height 0.2s ease-in-out 0s, -webkit-transform 0.2s ease-in-out 0s;
-  transition: opacity 150ms ease-in-out 0s, transform 0.2s ease-in-out 0s, max-height 0.2s ease-in-out 0s;
-  transition: opacity 150ms ease-in-out 0s, transform 0.2s ease-in-out 0s, max-height 0.2s ease-in-out 0s, -webkit-transform 0.2s ease-in-out 0s;
+  -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-transition: opacity 150ms ease-in-out 0.1s, max-height 0.2s ease-in-out 0.2s, padding 0.2s ease-in-out 0.2s, -webkit-transform 0.2s ease-in-out 0s;
+  transition: opacity 150ms ease-in-out 0.1s, max-height 0.2s ease-in-out 0.2s, padding 0.2s ease-in-out 0.2s, -webkit-transform 0.2s ease-in-out 0s;
+  transition: opacity 150ms ease-in-out 0.1s, transform 0.2s ease-in-out 0s, max-height 0.2s ease-in-out 0.2s, padding 0.2s ease-in-out 0.2s;
+  transition: opacity 150ms ease-in-out 0.1s, transform 0.2s ease-in-out 0s, max-height 0.2s ease-in-out 0.2s, padding 0.2s ease-in-out 0.2s, -webkit-transform 0.2s ease-in-out 0s;
+  background-color: #fbfffe;
 }
 
 .container-lang:hover .list-lang {
-  -webkit-transform: translateY(0%);
-      -ms-transform: translateY(0%);
-          transform: translateY(0%);
+  -webkit-transform: translateX(0%);
+      -ms-transform: translateX(0%);
+          transform: translateX(0%);
   opacity: 1;
-  max-height: 20px;
-  -webkit-transition: opacity 0.2ms ease-in-out 0s, max-height 0s ease-in-out 0s, -webkit-transform 0.3s ease-in-out 0s;
-  transition: opacity 0.2ms ease-in-out 0s, max-height 0s ease-in-out 0s, -webkit-transform 0.3s ease-in-out 0s;
-  transition: opacity 0.2ms ease-in-out 0s, transform 0.3s ease-in-out 0s, max-height 0s ease-in-out 0s;
-  transition: opacity 0.2ms ease-in-out 0s, transform 0.3s ease-in-out 0s, max-height 0s ease-in-out 0s, -webkit-transform 0.3s ease-in-out 0s;
+  max-height: 40px;
+  padding: 10px;
+  height: 100%;
+  -webkit-transition: opacity 0.2ms ease-in-out 0s, -webkit-transform 0.3s ease-in-out 0s;
+  transition: opacity 0.2ms ease-in-out 0s, -webkit-transform 0.3s ease-in-out 0s;
+  transition: opacity 0.2ms ease-in-out 0s, transform 0.3s ease-in-out 0s;
+  transition: opacity 0.2ms ease-in-out 0s, transform 0.3s ease-in-out 0s, -webkit-transform 0.3s ease-in-out 0s;
 }
 
 .list-lang-li-a {
   position: relative;
   color: #001747;
   font-size: 1em;
-}
-@media screen and (min-width: 993px) {
-  .list-lang-li-a {
-    font-size: 1.1em;
-  }
 }
 
 .list-lang-li-a:hover {

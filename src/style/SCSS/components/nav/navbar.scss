@@ -8,7 +8,7 @@
 
 .nav-bar {
   position: relative;
-  z-index: 1;
+  z-index: 10; // permet de passer au dessus du container parallax page index
   padding: 8px 0px 5px 0px; //correction aberation centrage
 }
 
@@ -77,6 +77,7 @@
 
 .container-nav {
   flex: 1 0 auto;
+  //border: 2px solid red;
 }
 
 .container-link-li {
@@ -84,19 +85,20 @@
   height: 40px;
   margin-right: 40px;
   min-width: 50px;
-  // border: 2px solid green;
+  //border: 2px solid green;
   overflow: hidden;
 
   & .nav-link {
     position: relative;
-    padding-bottom: 5px;
+    //padding: 5px 0px;
     //border-bottom: 4px solid blue;
+    font-size: 18px;
     color: map-get($colors-rule, first-color);
 
 
 
     @include upper-large-screen {
-      font-size: 1.1em;
+      font-size: 18px;
     }
   }
 
@@ -146,31 +148,39 @@
 //concerne le menu lang contenu dans nav link
 .container-lang {
   position: relative;
-  height: 40px;
+  height: 50px;
   margin-right: 40px;
   width: fit-content;
-  //border: 2px solid red;
+  //border: 2px solid orange;
 }
 
 
 .list-lang {
   position: absolute;
-  top: 70%;
+  z-index: 2;
+  top: 100%;
   right: 0px;
   width: 100px;
-  opacity: 1;
+  opacity: 0;
   max-height: 0px;
   overflow: hidden;
-  transform: translateY(-100%);
-  transition: opacity 150ms ease-in-out 0s, transform 0.2s ease-in-out 0s, max-height 0.2s ease-in-out 0s;
+  transform: translateX(100%);
+  transition:
+    opacity 150ms ease-in-out 0.1s,
+    transform 0.2s ease-in-out 0s,
+    max-height 0.2s ease-in-out 0.2s,
+    padding 0.2s ease-in-out 0.2s;
   //border: 2px solid blue;
+  background-color: map-get($colors-rule, sixth-color);
 }
 
 .container-lang:hover .list-lang {
-  transform: translateY(0%);
+  transform: translateX(0%);
   opacity: 1;
-  max-height: 20px;
-  transition: opacity 0.2ms ease-in-out 0s, transform 0.3s ease-in-out 0s, max-height 0s ease-in-out 0s;
+  max-height: 40px;
+  padding: 10px;
+  height: 100%;
+  transition: opacity 0.2ms ease-in-out 0s, transform 0.3s ease-in-out 0s;
 }
 
 .list-lang-li-a {
@@ -178,9 +188,7 @@
   color: map-get($colors-rule, first-color);
   font-size: 1em;
 
-  @include upper-large-screen {
-    font-size: 1.1em;
-  }
+
 }
 
 
