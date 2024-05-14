@@ -16,7 +16,7 @@ function Footer() {
   // eslint-disable-next-line no-unused-vars
   const [isLoged, setIsLoged] = useState(false);
 
-  let content = getFooterContent();
+  let contentFooter = getFooterContent();
 
   return (
     <div className="container-footer flex-column-start-center">
@@ -25,7 +25,7 @@ function Footer() {
           <CardResume />
         </div>
         <ul className="footer-list flex-column-start-start">
-          {content.map((link, index) => {
+          {contentFooter.header.map((link, index) => {
             return (
               <li key={index} className="footer-list-li">
                 <a className="footer-list-li-a" href={link.href}>
@@ -42,6 +42,17 @@ function Footer() {
               </a>
             </li>
           ) : null}
+        </ul>
+        <ul className="footer-list flex-column-start-start">
+          {contentFooter.footer.map((link, index) => {
+            return (
+              <li key={index} className="footer-list-li">
+                <a className="footer-list-li-a" href={link.href}>
+                  {link.text}
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </div>
       <div className="webmaster flex-row-center-center">

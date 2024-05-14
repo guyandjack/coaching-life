@@ -1,7 +1,7 @@
 .container-footer {
   position: relative;
   z-index: 1;
-  background-color: #142452;
+  background-color: #001747;
 }
 .container-footer .footer {
   padding: 20px;
@@ -16,6 +16,9 @@
     -webkit-box-pack: space-evenly;
         -ms-flex-pack: space-evenly;
             justify-content: space-evenly;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
     height: 500px;
   }
 }

@@ -3,6 +3,10 @@ import { footerContentFR } from "../../DATA/footerContent/fr/footerContent-fr.js
 import { footerContentDE } from "../../DATA/footerContent/de/footerContent-de.js";
 import { footerContentEN } from "../../DATA/footerContent/en/footerContent-en.js";
 
+import { navBarContentFR } from "../../DATA/navBarContent/fr/navBarContent-fr.js";
+import { navBarContentDE } from "../../DATA/navBarContent/de/navBarContent-de.js";
+import { navBarContentEN } from "../../DATA/navBarContent/en/navBarContent-en.js";
+
 /**
  *
  *
@@ -22,13 +26,13 @@ function getPageLanguage() {
 function getContentLanguage(countryCode) {
   switch (countryCode) {
     case "fr":
-      return footerContentFR;
+      return { footer: footerContentFR, header: navBarContentFR };
 
     case "de":
-      return footerContentDE;
+      return { footer: footerContentDE, header: navBarContentDE };
 
     case "en":
-      return footerContentEN;
+      return { footer: footerContentEN, header: navBarContentEN };
   }
 }
 
