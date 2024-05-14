@@ -53,9 +53,17 @@
     -webkit-transform: scale(1);
             transform: scale(1);
   }
-  100% {
+  50% {
     -webkit-transform: scale(1.2);
             transform: scale(1.2);
+  }
+  95% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  100% {
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
   }
 }
 @keyframes colorText {
@@ -63,9 +71,17 @@
     -webkit-transform: scale(1);
             transform: scale(1);
   }
-  100% {
+  50% {
     -webkit-transform: scale(1.2);
             transform: scale(1.2);
+  }
+  95% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  100% {
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
   }
 }
 
