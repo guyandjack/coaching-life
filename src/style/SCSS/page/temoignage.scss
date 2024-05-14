@@ -1,39 +1,46 @@
 //page avis
+@import "../utils/colors-rule/colors-rule.scss";
+@import "../utils/mixins/responsive/responsive.scss";
 
-#banner-avis {
-  padding: 1em;
-  background-color: lightcyan;
+.temoignage {
+  background-color: map-get($colors-rule, sixth-color);
 }
 
-.container-avis {
+.testimonial-container-title {
   position: relative;
-  padding: 1em;
-  border: 1px solid black;
-  min-height: 100px;
-}
+  z-index: 1;
+  width: 100%;
+  height: 400px;
+  background-color: map-get($colors-rule, first-color);
 
-.avis-avatar-img,
-.avis-avatar-bis {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  border-radius: 50%;
-  border: 2px solid white;
-  width: 80px;
-  height: 80px;
-}
+  @include upper-large-screen {
+    height: 600px;
+  }
 
-.avis-avatar-bis {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
+  .testimonial-title {
+    max-width: 100%;
+    transform: translateY(50px);
+    //border: 2px solid green;
 
-  font-size: 2em;
-  color: white;
-  background-color: lightskyblue;
-}
+    @include upper-large-screen {
+      transform: translateY(150px);
+      max-width: 70%;
+    }
+  }
 
-.avis-info-user {
-  text-transform: capitalize;
+  .testimonial-img-title {
+    position: absolute;
+    z-index: -1;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.7;
+
+    /*  @include upper-large-screen {
+      object-fit: scale-down;
+    } */
+  }
 }

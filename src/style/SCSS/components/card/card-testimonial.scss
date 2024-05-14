@@ -1,0 +1,127 @@
+@import "../../utils/colors-rule/colors-rule.scss";
+@import "../../utils/mixins/responsive/responsive.scss";
+
+
+.card-testimonial {
+    position: relative;
+    z-index: 1;
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+    /* border-top: 2px solid map-get($colors-rule, second-color);
+    border-bottom: 2px solid map-get($colors-rule, second-color); */
+    margin: 50px 0px;
+
+
+
+    @include upper-medium-screen {
+        width: 600px;
+        //height: 300px;
+    }
+
+
+
+    .testimonial-container-avatar {
+        position: absolute;
+        right: 0px;
+        top: 0%;
+        //border: 2px solid green;
+        transform: translateY(-50%);
+
+    }
+
+    .testimonial-avatar {
+        border: 5px solid map-get($colors-rule, second-color);
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+
+
+
+        @include upper-large-screen {
+            width: 120px;
+            height: 120px;
+        }
+
+    }
+
+    .border-second-color {
+        border: 4px solid map-get($colors-rule, second-color);
+    }
+
+    .border-fourth-color {
+        border: 4px solid map-get($colors-rule, fourth-color);
+    }
+
+    .testimonial-container-text {
+        position: relative;
+        z-index: 1;
+        padding: 10px;
+        margin-top: 50px;
+        line-height: 150%;
+        //border: 2px solid blue;
+    }
+
+    .testimonial-container-text::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        background-color: map-get($colors-rule, sixth-color);
+        opacity: 0;
+    }
+
+    .testimonial-container-info {
+        margin-top: 20px;
+        align-self: flex-end;
+        //border: 2px solid pink;
+
+        .hook {
+            font-size: 40px;
+        }
+
+        .hook-color-second {
+            color: map-get($colors-rule, second-color);
+        }
+
+        .hook-color-fourth {
+            color: map-get($colors-rule, fourth-color);
+        }
+    }
+
+    .testimonial-quote {
+        position: absolute;
+        z-index: -1;
+        top: 30px;
+        left: 0px;
+        width: 80px;
+        height: 80px;
+        opacity: 0.6;
+
+    }
+
+    .quote-color-second {
+        fill: map-get($colors-rule, second-color);
+    }
+
+    .quote-color-fourth {
+        fill: map-get($colors-rule, fourth-color);
+    }
+
+}
+
+.card-testimonial::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    /* background-color: map-get($colors-rule, sixth-color);
+    opacity: 0.8; */
+}
