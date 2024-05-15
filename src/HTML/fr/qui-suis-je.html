@@ -39,7 +39,15 @@
     <main>
       <section class="flex-column-start-center">
         <div class="flex-column-start-center introduction ">
-          <img class="bg-img" src="/src/assets/image/qui-suis-je.jpg" alt="">
+          <img class="bg-img" srcset="
+          /src/assets/image/500w-qui-suis-je.jpg 500w,
+          /src/assets/image/1000w-qui-suis-je.jpg 1000w,
+          /src/assets/image/1500w-qui-suis-je.jpg 1500w,
+          /src/assets/image/2000w-qui-suis-je.jpg 2000w " sizes="
+          (max-width: 575px) 300w,
+          (max-width: 992px) 800w,
+          (max-width: 1500px) 1200w,
+          1700w" src="/src/assets/image/500w-qui-suis-je.jpg" alt="femme au visage à demi masqué">
           <h1 class="h1 page-title">A propos</h1>
           <div class="flex-column-start-center article ">
             <div class="flex-column-start-center container-card-resume ">
