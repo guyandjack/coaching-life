@@ -49,10 +49,10 @@
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 .qui-suis-je .introduction .page-title {
-  color: #001747;
+  color: #fbfffe;
   padding-left: 0px;
   margin: 40px 0px;
   font-size: 40px;
@@ -67,6 +67,9 @@
     font-size: 50px;
   }
 }
+.qui-suis-je .introduction .intro-text {
+  color: #fbfffe;
+}
 .qui-suis-je .introduction::after {
   content: "";
   position: absolute;
@@ -75,7 +78,7 @@
   left: 0px;
   width: 100%;
   height: 100%;
-  background-color: #fbfffe;
+  background-color: #171717;
   opacity: 1;
 }
 @media screen and (min-width: 993px) {
@@ -92,49 +95,19 @@
     margin: 50px 0px;
   }
 }
-.qui-suis-je > .container-avatar {
-  width: 100%;
-  position: relative;
-  z-index: 2;
+.qui-suis-je .container-card-resume {
+  display: none;
 }
 @media screen and (min-width: 993px) {
-  .qui-suis-je > .container-avatar {
-    width: 300px;
-    height: 300px;
-  }
-  .qui-suis-je > .container-avatar::after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: 10px;
-    left: -10px;
+  .qui-suis-je .container-card-resume {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
     width: 100%;
-    height: 100%;
-    background-color: #1ba4e3;
-  }
-  .qui-suis-je > .container-avatar::before {
-    content: "";
-    position: absolute;
-    z-index: -2;
-    top: 20px;
-    left: -20px;
-    width: 100%;
-    height: 100%;
-    background-color: #fbfffe;
-  }
-}
-.qui-suis-je > .container-avatar .avatar {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  border: 4px solid #fbfffe;
-}
-@media screen and (min-width: 993px) {
-  .qui-suis-je > .container-avatar .avatar {
-    border-radius: 0px;
-    border: none;
-    width: 300px;
-    height: 300px;
+    position: relative;
+    z-index: 2;
+    opacity: 0.8;
+    width: 50%;
   }
 }
 .qui-suis-je .container-content {

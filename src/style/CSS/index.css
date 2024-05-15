@@ -12,7 +12,7 @@
 .svg-deco-point {
   position: absolute;
   top: -30%;
-  left: -100%;
+  left: -80%;
   -webkit-clip-path: polygon(75% 6%, 98% 50%, 75% 94%, 0 94%, 25% 50%, 0 6%);
           clip-path: polygon(75% 6%, 98% 50%, 75% 94%, 0 94%, 25% 50%, 0 6%);
 }
