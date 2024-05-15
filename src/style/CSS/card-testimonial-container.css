@@ -1,10 +1,18 @@
-.error {
-  font-size: 30px;
-  color: white;
-  border: 2px solid red;
-  padding: 15px;
-}
-
 .card-testimonial-container {
   width: 100%;
+  padding: 20px 0px;
+}
+@media screen and (min-width: 993px) {
+  .card-testimonial-container {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
 }

@@ -19,6 +19,10 @@
         //height: 300px;
     }
 
+    @include upper-large-screen {
+        margin: 50px 50px;
+    }
+
 
 
     .testimonial-container-avatar {

@@ -21,9 +21,9 @@ async function getAllAvis() {
     });
 
     let jsonResult = await resultFetch.json();
-    console.log("jsonResult: " + jsonResult[0]);
+    console.log("new array: " + Array.from(jsonResult));
 
-    return jsonResult;
+    return Array.from(jsonResult);
   } catch (error) {
     console.log("imposiible de faire la requette fetch: " + error);
   }
@@ -48,8 +48,6 @@ function CardTestimonialContainer() {
       allAvis.then((result) => {
         arrayAvis.current = result;
         setIsloaded(true);
-        console.log("valeur de isloaded:  " + isLoaded);
-        console.log("valeur de arrayAvis:  " + arrayAvis["current"]);
       });
     }
   });
@@ -57,9 +55,8 @@ function CardTestimonialContainer() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
 
   return isLoaded ? (
-    <ul className="flex-column-start-center card-testimonial-container">
+    <ul className="flex-column-start-center card-testimonial-container animation-slider">
       {arrayAvis["current"].map((card, index) => {
-        console.log("contenu de une carte: " + card);
         return (
           <li key={index}>
             <CardTestimonial
@@ -73,9 +70,7 @@ function CardTestimonialContainer() {
         );
       })}
     </ul>
-  ) : (
-    <div className="error">que des bugs</div>
-  );
+  ) : null;
 }
 
 export { CardTestimonialContainer };
