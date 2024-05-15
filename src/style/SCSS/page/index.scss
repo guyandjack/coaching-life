@@ -147,7 +147,10 @@
     @include upper-large-screen {
       font-size: 35px;
     }
+
   }
+
+
 
 
 
@@ -164,4 +167,54 @@
       font-size: 25px;
     }
   }
+}
+
+.design-transition {
+  height: 0px;
+  width: 0%;
+  overflow: hidden;
+
+  @include upper-large-screen {
+    overflow: visible;
+    position: absolute;
+    height: 250px;
+    width: 400%;
+    top: 85%;
+    left: 0px;
+    z-index: -1;
+    //border: 2px solid red;
+    transform: translateX(-40%);
+    background-color: map-get($colors-rule, second-color);
+    clip-path: polygon(100% 15%, 100% 0, 100% 100%, 100% 85%, 0 100%, 0 0);
+    opacity: 0.7;
+  }
+
+}
+
+.svg-deco {
+  position: absolute;
+  bottom: -10%;
+
+
+}
+
+.svg-deco-1 {
+  display: none;
+
+  @include upper-large-screen {
+    display: flex;
+    right: -40%;
+  }
+
+}
+
+.svg-deco-2 {
+  display: none;
+
+  @include upper-large-screen {
+    display: flex;
+    left: -60%;
+    transform: rotateZ(90deg);
+  }
+
 }

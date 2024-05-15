@@ -94,6 +94,7 @@ body::after {
   width: 100%;
   padding: 0px 0px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 header,
@@ -423,6 +424,10 @@ footer {
   color: #fbfffe;
 }
 
+.text-seventh {
+  color: #D9DFFB;
+}
+
 .bg-first {
   background-color: #001747;
 }
@@ -445,6 +450,10 @@ footer {
 
 .bg-sixth {
   background-color: #fbfffe;
+}
+
+.bg-seventh {
+  background-color: #D9DFFB;
 }
 
 /**** start ********************** color ***********************************************/

@@ -7,18 +7,28 @@
 .container-article {
   width: 100%;
   margin: 0px auto;
+  //border: 2px solid red;
 
-  @include upper-large-screen {
+  /* @include upper-large-screen {
     width: 80%;
-  }
+  } */
+}
+
+.svg-deco-point {
+  position: absolute;
+  top: -30%;
+  left: -80%;
+
+  clip-path: polygon(75% 6%, 98% 50%, 75% 94%, 0 94%, 25% 50%, 0 6%);
 }
 
 .index-article-container {
 
   position: relative;
+  z-index: 5;
   width: 450px;
   height: 800px;
-  margin: 40px 0px;
+  margin: 50px 10%;
   border-radius: 10px;
   //border: 2px solid yellow;
 
@@ -37,42 +47,6 @@
       justify-content: flex-end;
       flex: 0 1 100%;
     }
-  }
-
-  @keyframes opacity {
-    0% {
-      opacity: 1;
-      left: 0px;
-    }
-
-    100% {
-      opacity: 0;
-      left: 50px;
-    }
-  }
-
-  .svg-deco-green {
-    position: absolute;
-    top: -20px;
-    left: 20px;
-    transform: translateX(-50%) rotateZ(90deg);
-    animation: opacity 10s ease-in-out 0s alternate infinite;
-  }
-
-  .svg-deco-orange {
-    position: absolute;
-    top: -20px;
-    left: 20px;
-    transform: translateX(-50%);
-    animation: opacity 10s ease-in-out 4s alternate infinite;
-  }
-
-  .svg-deco-blue {
-    position: absolute;
-    top: 50%;
-    left: 100%;
-    transform: translate(-50%, -50%) rotateZ(90deg);
-    animation: opacity 10s ease-in-out 8s alternate infinite;
   }
 
 
@@ -249,6 +223,33 @@
     }
   }
 
+  @keyframes opacity {
+    0% {
+      opacity: 0.2;
+      transform: translate(0%, 5%);
+    }
+
+    33% {
+      opacity: 0.3;
+      transform: translate(5%, 0%);
+    }
+
+    66% {
+      opacity: 0.2;
+      transform: translate(0%, -5%);
+    }
+
+
+    100% {
+
+      opacity: 0.3;
+      transform: translate(-5%, 0%);
+      //left: 50px;
+    }
+
+
+  }
+
   .icon-help {
     position: absolute;
     z-index: 1;
@@ -268,6 +269,10 @@
       opacity: 0.2;
     }
 
+  }
+
+  .svg-animation-help {
+    animation: opacity 15s ease-in-out 0s alternate infinite both;
   }
 }
 
