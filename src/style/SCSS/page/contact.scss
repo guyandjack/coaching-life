@@ -1,0 +1,77 @@
+//page avis
+@import "../utils/colors-rule/colors-rule.scss";
+@import "../utils/mixins/responsive/responsive.scss";
+
+.page-contact {
+    background-color: map-get($colors-rule, sixth-color);
+}
+
+.contact-container-title {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 400px;
+    background-color: map-get($colors-rule, first-color);
+
+    @include upper-large-screen {
+        height: 600px;
+    }
+
+    .contact-title {
+
+        position: absolute;
+        bottom: 5%;
+        left: 10px;
+        width: 100%;
+        //border: 2px solid green;
+        padding: 0px;
+
+        @include upper-large-screen {
+            top: 50%;
+            left: 20px;
+            max-width: 70%;
+        }
+    }
+
+    .contact-img-title {
+        position: absolute;
+        z-index: -1;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        opacity: 0.8;
+
+
+    }
+}
+
+
+.container-form-article {
+    width: 100%;
+    border: 2px solid green;
+
+    @include upper-large-screen {
+        flex-flow: row-reverse nowrap;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+}
+
+.article {
+    padding: 0px 10px;
+    margin: 20px 0px;
+    border: 2px solid orange;
+
+    .article-intro {
+        text-align: left;
+        line-height: 150%;
+    }
+}
+
+.container-form {
+    width: 100%;
+    border: 2px solid red;
+}

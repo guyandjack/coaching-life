@@ -19,7 +19,6 @@
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
-    height: 500px;
   }
 }
 .container-footer .footer .footer-card,

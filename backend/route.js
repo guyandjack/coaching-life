@@ -32,6 +32,10 @@ const logUser = require("./controlers/user/loginUser.js");
 // eslint-disable-next-line no-unused-vars, no-undef
 const changePassword = require("./controlers/user/changePassword.js");
 
+/************ import des controlers pour le formulaire de contact *************/
+// eslint-disable-next-line no-undef
+const contact = require("./controlers/contact/contact.js");
+
 /************ import des middelware ***************** */
 
 // authentification du user par token
@@ -43,7 +47,7 @@ const auth = require("./middelware/authentification/auth.js");
 const checkData = require("./middelware/checkUserData.js");
 
 // eslint-disable-next-line no-undef
-const setHeaderSecurityCORS = require("./middelware/CORS.js");
+//const setHeaderSecurityCORS = require("./middelware/CORS.js");
 
 /***********************************************
  * ************* creation des enpoints************
@@ -52,11 +56,10 @@ const setHeaderSecurityCORS = require("./middelware/CORS.js");
 /*********** route get **************
  * **********************************/
 
-routeur.get("/avis", setHeaderSecurityCORS, getAllAvis);
+routeur.get("/avis", getAllAvis);
 
 routeur.get(
   "/avis/avatar",
-  setHeaderSecurityCORS,
   // eslint-disable-next-line no-undef
   express.static(path.join(__dirname, "images"))
 );
@@ -69,6 +72,12 @@ routeur.post("/login", checkData, logUser);
 
 // routes Ajouter avis
 routeur.post("/avis", auth, checkData, addOneAvis);
+
+//route Contact SoCoaching - send mail
+routeur.post("/contact", checkData, contact);
+/* routeur.post("/contact", (req, res) => {
+  res.status(200).json({ message: "test ok de la route contact" });
+}); */
 
 /*********** route put   **************
  * ************************************/

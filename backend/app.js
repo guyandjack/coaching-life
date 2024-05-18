@@ -4,6 +4,9 @@ const express = require("express");
 const path = require("path");
 
 // eslint-disable-next-line no-undef
+
+// eslint-disable-next-line no-undef, no-unused-vars
+const setHeaderSecurityCORS = require("./middelware/CORS.js");
 //const path = require("path");
 
 // eslint-disable-next-line no-undef
@@ -44,6 +47,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //permet de recuperer les fichier dans le corps de la requte
 app.use(fileUpload());
+
+app.use("/api", setHeaderSecurityCORS);
 
 app.use("/api", routeApi);
 

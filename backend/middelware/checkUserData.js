@@ -78,6 +78,7 @@ function isDataValid(req, res, next) {
         break;
 
       default:
+        tabError.push("property undefined");
         break;
     }
   });
