@@ -33,12 +33,16 @@ async function fetchApi(data) {
 }
 
 function FormContact() {
+  console.log("hello render");
   const {
     register,
     handleSubmit,
     formState: { errors, isValid, isSubmitting },
-  } = useForm({ mode: "onChange" });
+  } = useForm({ mode: "onTouched" });
   //use state
+
+  console.log("isValid: " + isValid);
+  console.log("issubmiting: " + isSubmitting);
 
   return (
     <form
@@ -63,13 +67,14 @@ function FormContact() {
             })}
           />
         </div>
-        {/* {console.log(errors)} */}
-        {errors?.lastname?.type == "pattern" ? (
-          <span className="form-text-error">{"Format non valide"}</span>
-        ) : null}
-        {errors?.lastname?.type == "required" ? (
-          <span className="form-text-error">{"Votre nom est requis"}</span>
-        ) : null}
+        <div className="container-span-error">
+          {errors?.lastname?.type == "pattern" ? (
+            <span className="form-text-error">{"Format non valide"}</span>
+          ) : null}
+          {errors?.lastname?.type == "required" ? (
+            <span className="form-text-error">{"Votre nom est requis"}</span>
+          ) : null}
+        </div>
       </div>
       <div className="flex-column-start-start cont-input-label">
         <label htmlFor="input-text-firstname" className="label">
@@ -88,13 +93,16 @@ function FormContact() {
             })}
           />
         </div>
-        {/* {console.log(errors)} */}
-        {errors?.firstname?.type == "pattern" ? (
-          <span className="form-text-error">{"Format non valide"}</span>
-        ) : null}
-        {errors?.firstname?.type == "required" ? (
-          <span className="form-text-error">{"Votre prénom est requis !"}</span>
-        ) : null}
+        <div className="container-span-error">
+          {errors?.firstname?.type == "pattern" ? (
+            <span className="form-text-error">{"Format non valide"}</span>
+          ) : null}
+          {errors?.firstname?.type == "required" ? (
+            <span className="form-text-error">
+              {"Votre prénom est requis !"}
+            </span>
+          ) : null}
+        </div>
       </div>
       <div className="flex-column-start-start cont-input-label">
         <label htmlFor="input-mail" className="label">
@@ -113,13 +121,14 @@ function FormContact() {
             })}
           />
         </div>
-        {/* {console.log(errors)} */}
-        {errors?.mail?.type == "pattern" ? (
-          <span className="form-text-error">{"Format non valide"}</span>
-        ) : null}
-        {errors?.mail?.type == "required" ? (
-          <span className="form-text-error">{"Votre email est requis"}</span>
-        ) : null}
+        <div className="container-span-error">
+          {errors?.mail?.type == "pattern" ? (
+            <span className="form-text-error">{"Format non valide"}</span>
+          ) : null}
+          {errors?.mail?.type == "required" ? (
+            <span className="form-text-error">{"Votre email est requis"}</span>
+          ) : null}
+        </div>
       </div>
       <div className="flex-column-start-start cont-input-label">
         <label htmlFor="input-text-area" className="label">
@@ -138,13 +147,14 @@ function FormContact() {
             })}
           />
         </div>
-        {/* {console.log(errors)} */}
-        {errors?.message?.type == "pattern" ? (
-          <span className="form-text-error">{"Format non valide"}</span>
-        ) : null}
-        {errors?.message?.type == "required" ? (
-          <span className="form-text-error">{"Un message est requis"}</span>
-        ) : null}
+        <div className="container-span-error">
+          {errors?.message?.type == "pattern" ? (
+            <span className="form-text-error">{"Format non valide"}</span>
+          ) : null}
+          {errors?.message?.type == "required" ? (
+            <span className="form-text-error">{"Un message est requis"}</span>
+          ) : null}
+        </div>
       </div>
       <ReCAPTCHA
         sitekey="6Lc1298pAAAAAC-zSvl1zap4B66RY2_x3dQK2r1J"
