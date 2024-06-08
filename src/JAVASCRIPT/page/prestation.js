@@ -12,36 +12,42 @@ let arrowPrev = document.querySelector("#arrow-prev");
 
 let elem = document.querySelector(".carousel");
 
+let articleLife = document.getElementById("coaching-de-vie");
+let articleJob = document.getElementById("coaching-de-cariere");
+let articleEntreprise = document.getElementById("coaching-en-entreprise");
+
 //Objet option d'initialisation du carousel
 let option = {};
 
 //instance du carousel
 let instance = null;
 
+let activeSliderId = null;
+
 // options pour initialiser le caroussel
 let optionsDesktop = {
   dist: -100,
   numVisible: 3,
   shift: 200,
-  onCycleTo: function findActiveSlider() {
-    let activeSlider = document.querySelector(".carousel-item , .active");
-    //console.log("aczive slider id: " + activeSlider.id);
+  onCycleTo: () => {
+    getActiveSliderId();
+    displaySelectedService(activeSliderId);
   },
 };
 
 let optionMediumMobile = {
   fullWidth: true,
-  onCycleTo: function findActiveSlider() {
-    let activeSlider = document.querySelector(".carousel-item , .active");
-    //console.log("aczive slider id: " + activeSlider.id);
+  onCycleTo: () => {
+    getActiveSliderId();
+    displaySelectedService(activeSliderId);
   },
 };
 
 let optionSmallMobile = {
   fullWidth: true,
-  onCycleTo: function findActiveSlider() {
-    let activeSlider = document.querySelector(".carousel-item , .active");
-    //console.log("aczive slider id: " + activeSlider.id);
+  onCycleTo: () => {
+    getActiveSliderId();
+    displaySelectedService(activeSliderId);
   },
 };
 
@@ -115,34 +121,66 @@ function storeIdSliderInLocalStorage(id) {
   localStorage.setItem("idSlider", id);
 }
 
-//scrip principal
-await changeCarousselClass();
-initCarouselOption();
-//console.log(instance.center);
+function getActiveSliderId() {
+  let activeSlider = document.querySelector(".carousel-item.active");
+
+  activeSliderId = activeSlider.id;
+  storeIdSliderInLocalStorage(activeSliderId);
+  return activeSliderId;
+}
+
+async function nextSlide() {
+  instance.next(1);
+}
+async function prevSlide() {
+  instance.prev(1);
+}
+
+function displaySelectedService(activeSliderId) {
+  switch (activeSliderId) {
+    case "slider-1":
+      articleLife.classList.remove("hide");
+      articleJob.classList.add("hide");
+      articleEntreprise.classList.add("hide");
+
+      break;
+    case "slider-2":
+      articleJob.classList.remove("hide");
+      articleEntreprise.classList.add("hide");
+      articleLife.classList.add("hide");
+      break;
+    case "slider-3":
+      articleEntreprise.classList.remove("hide");
+      articleJob.classList.add("hide");
+      articleLife.classList.add("hide");
+      break;
+
+    default:
+      articleLife.classList.remove("hide");
+      articleJob.classList.add("hide");
+      articleEntreprise.classList.add("hide");
+      break;
+  }
+}
 
 arrowNext.addEventListener("click", () => {
-  //console.log("next arrow clicked");
   instance.next(1);
-  let activeSlider = document.querySelector(".carousel-item , .active");
-  //console.log("aczive slider id: " + activeSlider.id);
-
-  let idSlider = instance.center;
-  //console.log("id slider: " + idSlider);
-  storeIdSliderInLocalStorage("idSlider", idSlider);
 });
 
 arrowPrev.addEventListener("click", () => {
-  //console.log("prev arrow clicked");
   instance.prev(1);
-  let activeSlider = document.querySelector(".carousel-item , .active");
-  //console.log("aczive slider id: " + activeSlider.id);
-
-  let idSlider = instance.center;
-  //console.log("id slider: " + idSlider);
-  storeIdSliderInLocalStorage("idSlider", idSlider);
 });
+
+//scrip principal
+await changeCarousselClass();
+initCarouselOption();
+getActiveSliderId();
+displaySelectedService(activeSliderId);
+//console.log(instance.center);
 
 window.addEventListener("resize", async () => {
   await changeCarousselClass();
   initCarouselOption();
+  getActiveSliderId();
+  displaySelectedService(activeSliderId);
 });

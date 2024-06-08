@@ -1,179 +1,547 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <meta name="description" content="prestations de sophie" />
-    <!-- versions multilingue -->
-    <!-- <link rel="alternate" hreflang="fr" href="./prestation.html" /> -->
-    <link
-      rel="alternate"
-      hreflang="de"
-      href="../de/dienstleistungen-des-individuellen-und-unternehmens-coachings.html"
-    />
-    <link
-      rel="alternate"
-      hreflang="en"
-      href="../en/services-of-individual-and-business-coaching.html"
-    />
-    <link
-      rel="alternate"
-      hreflang="x-default"
-      href="./prestations-de-coaching-individuel-et-en-entreprise.html"
-    />
 
-    <!-- feuilles de style -->
-    <link rel="stylesheet" href="../../style/CSS/normalize.css" />
-    <link rel="stylesheet" href="../../style/CSS/materialize.css" />
-    <link rel="stylesheet" href="../../style/CSS/shared-class.css" />
-    <link rel="stylesheet" href="../../style/CSS/prestation.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <meta name="description" content="prestations de sophie" />
+  <!-- versions multilingue -->
+  <!-- <link rel="alternate" hreflang="fr" href="./prestation.html" /> -->
+  <link rel="alternate" hreflang="de" href="../de/dienstleistungen-des-individuellen-und-unternehmens-coachings.html" />
+  <link rel="alternate" hreflang="en" href="../en/services-of-individual-and-business-coaching.html" />
+  <link rel="alternate" hreflang="x-default" href="./prestations-de-coaching-individuel-et-en-entreprise.html" />
 
-    <!-- scripts JS -->
-    <script src="../../JAVASCRIPT/js/bin/materialize.js" defer></script>
-    <script type="module" src="../../JAVASCRIPT/page/prestation.js"></script>
+  <!-- feuilles de style -->
+  <link rel="stylesheet" href="../../style/CSS/normalize.css" />
+  <link rel="stylesheet" href="../../style/CSS/materialize.css" />
+  <link rel="stylesheet" href="../../style/CSS/shared-class.css" />
+  <link rel="stylesheet" href="../../style/CSS/prestation.css" />
+  <link rel="stylesheet" href="../../style/CSS/card-prestation.css" />
 
-    <!-- scripts JSX -->
-    <script type="module" src="../../JSX/prestation.jsx"></script>
-  </head>
-  <body class="body">
-    <div class="container-page">
-      <header>
-        <div id="RC-nav-bar"></div>
-        <div
-          id="info-href"
-          data-fr="http://localhost:5173/src/HTML/fr/prestations-de-coaching-individuel-et-en-entreprise.html"
-          data-en="http://localhost:5173/src/HTML/en/services-of-individual-and-business-coaching.html"
-          data-de="http://localhost:5173/src/HTML/de/dienstleistungen-des-individuellen-und-unternehmens-coachings.html"
-        ></div>
-      </header>
-      <main>
-        <section>
-          <h1>PRESTATION DE COACHING</h1>
+  <!-- scripts JS -->
+  <script src="../../JAVASCRIPT/js/bin/materialize.js" defer></script>
+  <script type="module" src="../../JAVASCRIPT/page/prestation.js"></script>
+
+  <!-- scripts JSX -->
+  <script type="module" src="../../JSX/prestation.jsx"></script>
+</head>
+
+<body class="body">
+  <div class="container-page page-prestation">
+    <header>
+      <div id="RC-nav-bar"></div>
+      <div id="info-href"
+        data-fr="http://localhost:5173/src/HTML/fr/prestations-de-coaching-individuel-et-en-entreprise.html"
+        data-en="http://localhost:5173/src/HTML/en/services-of-individual-and-business-coaching.html"
+        data-de="http://localhost:5173/src/HTML/de/dienstleistungen-des-individuellen-und-unternehmens-coachings.html">
+      </div>
+    </header>
+    <main>
+      <section>
+        <div class="container-title-carousel">
+          <h1 class="h1 page-title">Prestations de coaching</h1>
 
           <div class="container-carousel">
             <div class="carousel carousel-slider">
-              <div id="slider-1" class="carousel-item">
-                <h3>Coaching de vie</h3>
-                <h4>Trouver votre équilibre et transformer votre quotidien.</h4>
+              <div id="slider-1" class="flex-row-center-center carousel-item">
+                <h2 class="h2 title-slider ">Coaching de vie</h2>
+                <!-- <h4>Trouver votre équilibre et transformer votre quotidien.</h4> -->
                 <div></div>
               </div>
-              <div id="slider-2" class="carousel-item">
-                <h3>Coaching de carriere</h3>
-                <h4>
+              <div id="slider-2" class="flex-row-center-center carousel-item">
+                <h2 class="h2 title-slider ">Coaching de carriere</h2>
+                <!-- <h4>
                   Un soutien strategique pour s'orienter vers les objectifs.
-                </h4>
+                </h4> -->
                 <div></div>
               </div>
-              <div id="slider-3" class="carousel-item">
-                <h3>Coaching en entreprise</h3>
-                <h4>Optimisation de la gestion du capital humain</h4>
+              <div id="slider-3" class="flex-row-center-center carousel-item">
+                <h2 class="h2 title-slider ">Coaching en entreprise</h2>
+                <!-- <h4>Optimisation de la gestion du capital humain</h4> -->
                 <div></div>
               </div>
             </div>
             <div class="arrow-container flex-row-space_between-center">
               <div id="arrow-prev" class="flex-colunm-center-center">
                 <svg class="icon-arrow-slider" viewBox="0 -960 960 960">
-                  <path
-                    d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"
-                  />
+                  <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z" />
                 </svg>
               </div>
               <div id="arrow-next" class="flex-colunm-center-center">
                 <svg class="icon-arrow-slider" viewBox="0 -960 960 960">
-                  <path
-                    d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
-                  />
+                  <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
                 </svg>
               </div>
             </div>
           </div>
-          <div class="intro-prestation">
-            <div class="intro-coaching-de-vie show">
-              <h2>
-                Le coaching de vie vous aide à naviguer à travers les défis de
-                la vie moderne. Trouvez un équilibre entre vie privée et
-                professionnelle, développez votre confiance et gérez vos
-                émotions. Imaginez : résoudre les conflits avec sérénité, gérer
-                le stress avec efficacité et maximiser votre productivité. Face
-                aux situations difficiles, le coach est là pour vous guider vers
-                des interactions positives. Grâce à des outils personnalisés,
-                surmontez les obstacles et atteignez vos objectifs. Libérez
-                votre potentiel et vivez une vie épanouie avec le soutien d'un
-                coach de vie.
-              </h2>
+        </div>
+        <article class="flex-column-start-center main-container-prestation">
+          <!--------------------------------------------------------------------------------
+          -----------------------concerne la prestation coaching de vie---------------------
+          --------start-------------------------------------------------------------------->
+          <article id="coaching-de-vie" class="flex-column-start-center prestation">
+            <h3 class="h2 title-prestation bg-color-vie">Coaching de vie</h3>
+            <h4 class="intro-prestation">
+              Le coaching de vie vous aide à naviguer à travers les défis de
+              la vie moderne. <br>
+              Trouvez un équilibre entre vie privée et
+              professionnelle, développez votre confiance et gérez vos
+              émotions. <br>
+              Imaginez : résoudre les conflits avec sérénité, gérer
+              le stress avec efficacité et maximiser votre productivité.<br>
+              Face aux situations difficiles, le coach est là pour vous guider vers
+              des interactions positives.<br>
+              Grâce à des outils personnalisés, surmontez les obstacles et atteignez vos objectifs.Libérez
+              votre potentiel et vivez une vie épanouie avec le soutien d'un
+              coach de vie.
+            </h4>
+            <div class="flex-column-start-center container-card-prestation">
+
+              <div class="card-prestation flex-row-space_between-center">
+                <div class="container-text flex-column-space_evenly-center">
+                  <h5 class="h2">Trouver son équilibre entre vie privée – vie professionnelle</h5>
+                  <p class="card-prestation-text">
+                    Le coaching vous aide à définir des limites claires entre votre vie personnelle et professionnelle,
+                    vous permettant
+                    ainsi de trouver un équilibre qui favorise votre bien-être global.
+                  </p>
+                </div>
+                <div class="container-picture">
+                  <img class="logo" src="/src/assets/logo/logo-coaching-black.svg" />
+                  <img class="blob blob-right" src=/src/assets/jared-rice-NTyBbu66_SI-unsplash-small.jpg alt=""></img>
+                </div>
+              </div>
+              <div class="card-prestation flex-row-space_between-center card-prestation-pair">
+                <div class="container-text flex-column-space_evenly-center">
+                  <h5 class="h2">Développer sa confiance en soi et son estime de soi</h5>
+                  <p class="card-prestation-text">
+                    Grâce à des techniques et des exercices spécifiques, le coaching vous guide pour renforcer votre
+                    confiance en vous-même et augmenter votre estime personnelle
+                  </p>
+                </div>
+                <div class="container-picture">
+                  <img class="logo" src="/src/assets/logo/logo-coaching-black.svg" />
+                  <img class="blob blob-right" src=/src/assets/jordan-opel-ybLtRkjHprE-unsplash.jpg alt=""></img>
+                </div>
+              </div>
+              <div class="card-prestation flex-row-space_between-center">
+                <div class="container-text flex-column-space_evenly-center">
+                  <h5 class="h2">Gestion des émotions</h5>
+                  <p class="card-prestation-text">
+                    Apprenez à reconnaître, comprendre et gérer vos émotions de manière saine et constructive, vous
+                    permettant ainsi de
+                    naviguer efficacement à travers les hauts et les bas de la vie quotidienne
+                  </p>
+                </div>
+                <div class="container-picture">
+                  <img class="logo" src="/src/assets/logo/logo-coaching-black.svg" />
+                  <img class="blob blob-right" src=/src/assets/escalier1.jpg alt=""></img>
+                </div>
+              </div>
+              <div class="card-prestation flex-row-space_between-center card-prestation-pair">
+                <div class="container-text flex-column-space_evenly-center">
+                  <h5 class="h2">Gestion des relations et situations difficiles</h5>
+                  <p class="card-prestation-text">
+                    Le coaching vous offre des outils et des stratégies pour améliorer vos relations interpersonnelles
+                    et vous aider à faire
+                    face aux situations difficiles avec calme et assurance.
+                  </p>
+                </div>
+                <div class="container-picture">
+                  <img class="logo" src="/src/assets/logo/logo-coaching-black.svg" />
+                  <img class="blob blob-right" src=/src/assets/main-sur-table.jpg alt=""></img>
+                </div>
+              </div>
+              <div class="card-prestation flex-row-space_between-center">
+                <div class="container-text flex-column-space_evenly-center">
+                  <h5 class="h2">Gestion des conflits</h5>
+                  <p class="card-prestation-text">
+                    Apprenez à résoudre les conflits de manière constructive et respectueuse, favorisant ainsi des
+                    inte-ractions positives et des relations harmonieuses
+                  </p>
+                </div>
+                <div class="container-picture">
+                  <img class="logo" src="/src/assets/logo/logo-coaching-black.svg" />
+                  <img class="blob blob-right" src=/src/assets/escalier1.jpg alt=""></img>
+                </div>
+              </div>
+              <div class="card-prestation flex-row-space_between-center card-prestation-pair">
+                <div class="container-text flex-column-space_evenly-center">
+                  <h5 class="h2">Gestion du stress</h5>
+                  <p class="card-prestation-text">
+                    Prenez conscience de vos ressources, développez votre boîte à outils et apprenez ainsi à mieux gérer
+                    les défis auxquels
+                    vous faites face au quotidien.Découvrez également la méditation de pleine conscience ou encore la
+                    cohérence cardiaque
+                    appliquées à la gestion du stress.Le coaching vous aide à réduire les tensions et à retrouver un
+                    état d'équilibre et de
+                    calme intérieur.
+                  </p>
+                </div>
+                <div class="container-picture">
+                  <img class="logo" src="/src/assets/logo/logo-coaching-black.svg" />
+                  <img class="blob blob-right" src=/src/assets/main-sur-table.jpg alt=""></img>
+                </div>
+              </div>
+              <div class="card-prestation flex-row-space_between-center">
+                <div class="container-text flex-column-space_evenly-center">
+                  <h5 class="h2">Gestion du temps et des priorités</h5>
+                  <p class="card-prestation-text">
+                    Développez des compétences organisationnelles pour gérer efficacement votre temps et vos priori-tés,
+                    vous permettant
+                    ainsi de maximiser votre productivité et d'atteindre vos objectifs avec succès
+                  </p>
+                </div>
+                <div class="container-picture">
+                  <img class="logo" src="/src/assets/logo/logo-coaching-black.svg" />
+                  <img class="blob blob-right" src=/src/assets/escalier1.jpg alt=""></img>
+                </div>
+              </div>
+
             </div>
-            <p class="intro-coaching-de-carriere">
-              Vous cherchez à vous démarquer dans votre carrière ? Imaginez
-              bénéficier de conseils personnalisés pour réussir vos entretiens
-              et évaluations. Grâce à un coach de vie, identifiez vos forces et
-              explorez de nouvelles opportunités professionnelles, même après
-              une interruption. Traversez les transitions de carrière avec
-              assurance, que ce soit une expatriation ou une reconversion. En
-              période de licenciement ou de départ à la retraite, le coach vous
-              guide vers de nouveaux horizons. Libérez votre potentiel,
-              surmontez les obstacles et tracez le chemin vers une carrière
-              épanouissante avec le soutien d'un coach de vie
+
+          </article>
+          <!--------------------------------------------------------------------------------
+          -----------------------concerne la prestation coaching de vie---------------------
+          --------end-------------------------------------------------------------------->
+          <!--------------------------------------------------------------------------------
+          -----------------------concerne la prestation coaching de carierre-------------
+          --------start-------------------------------------------------------------------->
+          <article id="coaching-de-cariere" class="flex-column-start-center prestation">
+            <h3 class="h2 title-prestation bg-color-cariere">Coaching de carriere</h3>
+            <h4 class="intro-prestation">
+              Le coaching de vie vous aide à naviguer à travers les défis de
+              la vie moderne. <br>
+              Trouvez un équilibre entre vie privée et
+              professionnelle, développez votre confiance et gérez vos
+              émotions. <br>
+              Imaginez : résoudre les conflits avec sérénité, gérer
+              le stress avec efficacité et maximiser votre productivité.<br>
+              Face aux situations difficiles, le coach est là pour vous guider vers
+              des interactions positives.<br>
+              Grâce à des outils personnalisés, surmontez les obstacles et atteignez vos objectifs.Libérez
+              votre potentiel et vivez une vie épanouie avec le soutien d'un
+              coach de vie.
+            </h4>
+            <div class="flex-column-start-center container-card-prestation">
+
+              <div class="card-prestation flex-row-space_between-center">
+                <div class="container-text flex-column-space_evenly-center">
+                  <h5 class="h2">Trouver son équilibre entre vie privée – vie professionnelle</h5>
+                  <p class="card-prestation-text">
+                    Le coaching vous aide à définir des limites claires entre votre vie personnelle et professionnelle,
+                    vous permettant
+                    ainsi de trouver un équilibre qui favorise votre bien-être global.
+                  </p>
+                </div>
+                <div class="container-picture">
+                  <img class="logo" src="/src/assets/logo/logo-coaching-black.svg" />
+                  <img class="blob blob-right" src=/src/assets/jared-rice-NTyBbu66_SI-unsplash-small.jpg alt=""></img>
+                </div>
+              </div>
+              <div class="card-prestation flex-row-space_between-center card-prestation-pair">
+                <div class="container-text flex-column-space_evenly-center">
+                  <h5 class="h2">Développer sa confiance en soi et son estime de soi</h5>
+                  <p class="card-prestation-text">
+                    Grâce à des techniques et des exercices spécifiques, le coaching vous guide pour renforcer votre
+                    confiance en vous-même et augmenter votre estime personnelle
+                  </p>
+                </div>
+                <div class="container-picture">
+                  <img class="logo" src="/src/assets/logo/logo-coaching-black.svg" />
+                  <img class="blob blob-right" src=/src/assets/jordan-opel-ybLtRkjHprE-unsplash.jpg alt=""></img>
+                </div>
+              </div>
+              <div class="card-prestation flex-row-space_between-center">
+                <div class="container-text flex-column-space_evenly-center">
+                  <h5 class="h2">Gestion des émotions</h5>
+                  <p class="card-prestation-text">
+                    Apprenez à reconnaître, comprendre et gérer vos émotions de manière saine et constructive, vous
+                    permettant ainsi de
+                    naviguer efficacement à travers les hauts et les bas de la vie quotidienne
+                  </p>
+                </div>
+                <div class="container-picture">
+                  <img class="logo" src="/src/assets/logo/logo-coaching-black.svg" />
+                  <img class="blob blob-right" src=/src/assets/escalier1.jpg alt=""></img>
+                </div>
+              </div>
+              <div class="card-prestation flex-row-space_between-center card-prestation-pair">
+                <div class="container-text flex-column-space_evenly-center">
+                  <h5 class="h2">Gestion des relations et situations difficiles</h5>
+                  <p class="card-prestation-text">
+                    Le coaching vous offre des outils et des stratégies pour améliorer vos relations interpersonnelles
+                    et vous aider à faire
+                    face aux situations difficiles avec calme et assurance.
+                  </p>
+                </div>
+                <div class="container-picture">
+                  <img class="logo" src="/src/assets/logo/logo-coaching-black.svg" />
+                  <img class="blob blob-right" src=/src/assets/main-sur-table.jpg alt=""></img>
+                </div>
+              </div>
+              <div class="card-prestation flex-row-space_between-center">
+                <div class="container-text flex-column-space_evenly-center">
+                  <h5 class="h2">Gestion des conflits</h5>
+                  <p class="card-prestation-text">
+                    Apprenez à résoudre les conflits de manière constructive et respectueuse, favorisant ainsi des
+                    inte-ractions positives et des relations harmonieuses
+                  </p>
+                </div>
+                <div class="container-picture">
+                  <img class="logo" src="/src/assets/logo/logo-coaching-black.svg" />
+                  <img class="blob blob-right" src=/src/assets/escalier1.jpg alt=""></img>
+                </div>
+              </div>
+              <div class="card-prestation flex-row-space_between-center card-prestation-pair">
+                <div class="container-text flex-column-space_evenly-center">
+                  <h5 class="h2">Gestion du stress</h5>
+                  <p class="card-prestation-text">
+                    Prenez conscience de vos ressources, développez votre boîte à outils et apprenez ainsi à mieux gérer
+                    les défis auxquels
+                    vous faites face au quotidien.Découvrez également la méditation de pleine conscience ou encore la
+                    cohérence cardiaque
+                    appliquées à la gestion du stress.Le coaching vous aide à réduire les tensions et à retrouver un
+                    état d'équilibre et de
+                    calme intérieur.
+                  </p>
+                </div>
+                <div class="container-picture">
+                  <img class="logo" src="/src/assets/logo/logo-coaching-black.svg" />
+                  <img class="blob blob-right" src=/src/assets/main-sur-table.jpg alt=""></img>
+                </div>
+              </div>
+              <div class="card-prestation flex-row-space_between-center">
+                <div class="container-text flex-column-space_evenly-center">
+                  <h5 class="h2">Gestion du temps et des priorités</h5>
+                  <p class="card-prestation-text">
+                    Développez des compétences organisationnelles pour gérer efficacement votre temps et vos priori-tés,
+                    vous permettant
+                    ainsi de maximiser votre productivité et d'atteindre vos objectifs avec succès
+                  </p>
+                </div>
+                <div class="container-picture">
+                  <img class="logo" src="/src/assets/logo/logo-coaching-black.svg" />
+                  <img class="blob blob-right" src=/src/assets/escalier1.jpg alt=""></img>
+                </div>
+              </div>
+
+            </div>
+
+          </article>
+          <!--------------------------------------------------------------------------------
+          -----------------------concerne la prestation coaching de carierre-------------
+          --------end-------------------------------------------------------------------->
+
+
+          <!--------------------------------------------------------------------------------
+          -----------------------concerne la prestation coaching en entreprise-------------
+          --------start-------------------------------------------------------------------->
+          <article id="coaching-en-entreprise" class="flex-column-start-center prestation">
+            <h3 class="h2 title-prestation bg-color-entreprise">Coaching en entreprise</h3>
+            <h4 class="intro-prestation">
+              Le coaching de vie vous aide à naviguer à travers les défis de
+              la vie moderne. <br>
+              Trouvez un équilibre entre vie privée et
+              professionnelle, développez votre confiance et gérez vos
+              émotions. <br>
+              Imaginez : résoudre les conflits avec sérénité, gérer
+              le stress avec efficacité et maximiser votre productivité.<br>
+              Face aux situations difficiles, le coach est là pour vous guider vers
+              des interactions positives.<br>
+              Grâce à des outils personnalisés, surmontez les obstacles et atteignez vos objectifs.Libérez
+              votre potentiel et vivez une vie épanouie avec le soutien d'un
+              coach de vie.
+            </h4>
+            <div class="flex-column-start-center container-card-prestation">
+
+              <div class="card-prestation flex-row-space_between-center">
+                <div class="container-text flex-column-space_evenly-center">
+                  <h5 class="h2">Trouver son équilibre entre vie privée – vie professionnelle</h5>
+                  <p class="card-prestation-text">
+                    Le coaching vous aide à définir des limites claires entre votre vie personnelle et professionnelle,
+                    vous permettant
+                    ainsi de trouver un équilibre qui favorise votre bien-être global.
+                  </p>
+                </div>
+                <div class="container-picture">
+                  <img class="logo" src="/src/assets/logo/logo-coaching-black.svg" />
+                  <img class="blob blob-right" src=/src/assets/jared-rice-NTyBbu66_SI-unsplash-small.jpg alt=""></img>
+                </div>
+              </div>
+              <div class="card-prestation flex-row-space_between-center card-prestation-pair">
+                <div class="container-text flex-column-space_evenly-center">
+                  <h5 class="h2">Développer sa confiance en soi et son estime de soi</h5>
+                  <p class="card-prestation-text">
+                    Grâce à des techniques et des exercices spécifiques, le coaching vous guide pour renforcer votre
+                    confiance en vous-même et augmenter votre estime personnelle
+                  </p>
+                </div>
+                <div class="container-picture">
+                  <img class="logo" src="/src/assets/logo/logo-coaching-black.svg" />
+                  <img class="blob blob-right" src=/src/assets/jordan-opel-ybLtRkjHprE-unsplash.jpg alt=""></img>
+                </div>
+              </div>
+              <div class="card-prestation flex-row-space_between-center">
+                <div class="container-text flex-column-space_evenly-center">
+                  <h5 class="h2">Gestion des émotions</h5>
+                  <p class="card-prestation-text">
+                    Apprenez à reconnaître, comprendre et gérer vos émotions de manière saine et constructive, vous
+                    permettant ainsi de
+                    naviguer efficacement à travers les hauts et les bas de la vie quotidienne
+                  </p>
+                </div>
+                <div class="container-picture">
+                  <img class="logo" src="/src/assets/logo/logo-coaching-black.svg" />
+                  <img class="blob blob-right" src=/src/assets/escalier1.jpg alt=""></img>
+                </div>
+              </div>
+              <div class="card-prestation flex-row-space_between-center card-prestation-pair">
+                <div class="container-text flex-column-space_evenly-center">
+                  <h5 class="h2">Gestion des relations et situations difficiles</h5>
+                  <p class="card-prestation-text">
+                    Le coaching vous offre des outils et des stratégies pour améliorer vos relations interpersonnelles
+                    et vous aider à faire
+                    face aux situations difficiles avec calme et assurance.
+                  </p>
+                </div>
+                <div class="container-picture">
+                  <img class="logo" src="/src/assets/logo/logo-coaching-black.svg" />
+                  <img class="blob blob-right" src=/src/assets/main-sur-table.jpg alt=""></img>
+                </div>
+              </div>
+              <div class="card-prestation flex-row-space_between-center">
+                <div class="container-text flex-column-space_evenly-center">
+                  <h5 class="h2">Gestion des conflits</h5>
+                  <p class="card-prestation-text">
+                    Apprenez à résoudre les conflits de manière constructive et respectueuse, favorisant ainsi des
+                    inte-ractions positives et des relations harmonieuses
+                  </p>
+                </div>
+                <div class="container-picture">
+                  <img class="logo" src="/src/assets/logo/logo-coaching-black.svg" />
+                  <img class="blob blob-right" src=/src/assets/escalier1.jpg alt=""></img>
+                </div>
+              </div>
+              <div class="card-prestation flex-row-space_between-center card-prestation-pair">
+                <div class="container-text flex-column-space_evenly-center">
+                  <h5 class="h2">Gestion du stress</h5>
+                  <p class="card-prestation-text">
+                    Prenez conscience de vos ressources, développez votre boîte à outils et apprenez ainsi à mieux gérer
+                    les défis auxquels
+                    vous faites face au quotidien.Découvrez également la méditation de pleine conscience ou encore la
+                    cohérence cardiaque
+                    appliquées à la gestion du stress.Le coaching vous aide à réduire les tensions et à retrouver un
+                    état d'équilibre et de
+                    calme intérieur.
+                  </p>
+                </div>
+                <div class="container-picture">
+                  <img class="logo" src="/src/assets/logo/logo-coaching-black.svg" />
+                  <img class="blob blob-right" src=/src/assets/main-sur-table.jpg alt=""></img>
+                </div>
+              </div>
+              <div class="card-prestation flex-row-space_between-center">
+                <div class="container-text flex-column-space_evenly-center">
+                  <h5 class="h2">Gestion du temps et des priorités</h5>
+                  <p class="card-prestation-text">
+                    Développez des compétences organisationnelles pour gérer efficacement votre temps et vos priori-tés,
+                    vous permettant
+                    ainsi de maximiser votre productivité et d'atteindre vos objectifs avec succès
+                  </p>
+                </div>
+                <div class="container-picture">
+                  <img class="logo" src="/src/assets/logo/logo-coaching-black.svg" />
+                  <img class="blob blob-right" src=/src/assets/escalier1.jpg alt=""></img>
+                </div>
+              </div>
+
+            </div>
+
+          </article>
+          <!--------------------------------------------------------------------------------
+          -----------------------concerne la prestation coaching en entreprise-------------
+          --------end-------------------------------------------------------------------->
+        </article>
+        <!-- <div class="intro-prestation">
+          <div class="intro-coaching-de-vie show">
+            <h2>
+
+            </h2>
+          </div>
+          <p class="intro-coaching-de-carriere">
+            Vous cherchez à vous démarquer dans votre carrière ? Imaginez
+            bénéficier de conseils personnalisés pour réussir vos entretiens
+            et évaluations. Grâce à un coach de vie, identifiez vos forces et
+            explorez de nouvelles opportunités professionnelles, même après
+            une interruption. Traversez les transitions de carrière avec
+            assurance, que ce soit une expatriation ou une reconversion. En
+            période de licenciement ou de départ à la retraite, le coach vous
+            guide vers de nouveaux horizons. Libérez votre potentiel,
+            surmontez les obstacles et tracez le chemin vers une carrière
+            épanouissante avec le soutien d'un coach de vie
+          </p>
+          <div class="intro-coaching-en-entreprise">
+            <p>
+              Vous aspirez à optimiser la gestion de votre capital humain ?
+              Imaginez bénéficier d'un soutien complet en ressources humaines
+              pour répondre à vos besoins spécifiques. Avec notre coaching RH,
+              identifiez les talents pour vos recrutements et évaluez les
+              candidats avec précision.
             </p>
-            <div class="intro-coaching-en-entreprise">
-              <p>
-                Vous aspirez à optimiser la gestion de votre capital humain ?
-                Imaginez bénéficier d'un soutien complet en ressources humaines
-                pour répondre à vos besoins spécifiques. Avec notre coaching RH,
-                identifiez les talents pour vos recrutements et évaluez les
-                candidats avec précision.
-              </p>
-              <p>
-                Travaillez avec nous pour développer les compétences et
-                performances de vos employés, renforçant ainsi la cohésion
-                d'équipe et favorisant un environnement de travail harmonieux et
-                productif.
-              </p>
-              <p>
-                Offrez à vos cadres un accompagnement spécifique pour réussir
-                leur transition et performer dès le départ. Nous vous soutenons
-                également dans les processus de changement organisationnel et de
-                prévention des risques psycho-sociaux, assurant ainsi la santé
-                et la performance de vos équipes.
-              </p>
-              <p>
-                Que ce soit pour une intervention ponctuelle ou un
-                accompagnement à long terme, notre équipe de coaches
-                expérimentés est là pour vous aider à atteindre vos objectifs en
-                matière de développement organisationnel et de gestion des
-                ressources humaines.
-              </p>
-            </div>
+            <p>
+              Travaillez avec nous pour développer les compétences et
+              performances de vos employés, renforçant ainsi la cohésion
+              d'équipe et favorisant un environnement de travail harmonieux et
+              productif.
+            </p>
+            <p>
+              Offrez à vos cadres un accompagnement spécifique pour réussir
+              leur transition et performer dès le départ. Nous vous soutenons
+              également dans les processus de changement organisationnel et de
+              prévention des risques psycho-sociaux, assurant ainsi la santé
+              et la performance de vos équipes.
+            </p>
+            <p>
+              Que ce soit pour une intervention ponctuelle ou un
+              accompagnement à long terme, notre équipe de coaches
+              expérimentés est là pour vous aider à atteindre vos objectifs en
+              matière de développement organisationnel et de gestion des
+              ressources humaines.
+            </p>
           </div>
+        </div> -->
 
-          <div id="RC-container-card-prestation"></div>
-          <div class="resume-prestation">
-            <div class="resume-coaching-de-vie">
-              Le coaching de vie vous accompagne dans votre parcours personnel
-              pour vous aider à surmonter les obstacles, réaliser votre plein
-              potentiel et mener une vie épanouissante et équilibrée.
-            </div>
-            <div class="resume-coaching-de-carriere">
-              Le coaching de carrière vous aide à prendre le contrôle de votre
-              trajectoire professionnelle, à surmonter les obstacles et à saisir
-              les opportunités avec confiance et détermination. Prenez le
-              premier pas vers un avenir professionnel épanouissant en explorant
-              les possibilités offertes par le coaching de carrière
-            </div>
-            <div class="resume-coaching-en entreprise">
-              Que vous recherchiez une intervention ponctuelle ou un
-              accompagnement à long terme, notre équipe de coaches expérimentés
-              est là pour vous aider à atteindre vos objectifs en matière de
-              développement organisationnel et de gestion des ressources
-              humaines
-            </div>
+        <div id="RC-container-card-prestation"></div>
+        <!-- <div class="resume-prestation">
+          <div class="resume-coaching-de-vie">
+            Le coaching de vie vous accompagne dans votre parcours personnel
+            pour vous aider à surmonter les obstacles, réaliser votre plein
+            potentiel et mener une vie épanouissante et équilibrée.
           </div>
-        </section>
-      </main>
+          <div class="resume-coaching-de-carriere">
+            Le coaching de carrière vous aide à prendre le contrôle de votre
+            trajectoire professionnelle, à surmonter les obstacles et à saisir
+            les opportunités avec confiance et détermination. Prenez le
+            premier pas vers un avenir professionnel épanouissant en explorant
+            les possibilités offertes par le coaching de carrière
+          </div>
+          <div class="resume-coaching-en entreprise">
+            Que vous recherchiez une intervention ponctuelle ou un
+            accompagnement à long terme, notre équipe de coaches expérimentés
+            est là pour vous aider à atteindre vos objectifs en matière de
+            développement organisationnel et de gestion des ressources
+            humaines
+          </div>
+        </div> -->
+      </section>
+    </main>
 
-      <footer>
-        <div id="RC-footer"></div>
-      </footer>
-    </div>
-  </body>
+    <footer>
+      <div id="RC-footer"></div>
+    </footer>
+  </div>
+</body>
+
 </html>

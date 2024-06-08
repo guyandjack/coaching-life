@@ -1,15 +1,46 @@
 @import "../utils/mixins/responsive/responsive.scss";
 @import "../utils/colors-rule/colors-rule.scss";
 
+.page-prestation {
+  background-color: map-get($colors-rule, sixth-color);
+}
+
+.container-title-carousel {
+  background-color: map-get($colors-rule, sixth-color);
+  background: url("http://localhost:5173/src/assets/image/telephone.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.page-title {
+  padding: 30px 0px 30px 30px;
+
+  //color: map-get($colors-rule, first-color);
+
+  @include upper-large-screen {
+
+    padding: 50px 0px 50px 50px;
+  }
+}
+
 .container-carousel {
   position: relative;
-  border: 2px solid transparent;
+
+  @include upper-large-screen {
+
+    height: 450px;
+  }
+
+  //background-color: map-get($colors-rule, first-color);
+  //border: 2px solid transparent;
 }
 
 .carousel {
   @include upper-large-screen {
     margin-bottom: 100px;
   }
+
   .carousel-item {
     width: 400px;
     height: 300px;
@@ -18,14 +49,58 @@
     background-position: center !important;
   }
 
+  .title-slider {
+    position: relative;
+    z-index: 1;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .title-slider::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: map-get($colors-rule, fifth-color);
+    opacity: 0.7;
+  }
+
   #slider-1 {
-    background: url("http://localhost:5173/src/assets/escqlier1.jpg");
+    background: url("http://localhost:5173/src/assets/image/coaching-de-vie.jpg");
+    border: 1px solid map-get($colors-rule, second-color);
+
+    &>h2 {
+
+      color: map-get($colors-rule, second-color);
+
+
+    }
   }
+
   #slider-2 {
-    background: url("http://localhost:5173/src/assets/fresh.jpg");
+    background: url("http://localhost:5173/src/assets/image/coaching-de-cariere.jpg");
+    border: 1px solid map-get($colors-rule, third-color);
+
+    &>h2 {
+
+      color: map-get($colors-rule, third-color);
+
+    }
   }
+
   #slider-3 {
-    background: url("http://localhost:5173/src/assets/lake.jpg");
+    background: url("http://localhost:5173/src/assets/image/coaching-en-entreprise.jpg");
+    border: 1px solid map-get($colors-rule, fourth-color);
+
+    &>h2 {
+
+      color: map-get($colors-rule, fourth-color);
+
+    }
   }
 }
 
@@ -39,7 +114,7 @@
   border: 2px solid transparent;
 
   @include upper-large-screen {
-    bottom: 0%;
+    bottom: 0px;
   }
 }
 
@@ -52,6 +127,7 @@
   width: 40px;
   height: 40px;
   fill: #fbfffe;
+
   //stroke: #fbfffe;
   @include upper-small-screen {
     width: 80px;
@@ -66,4 +142,62 @@
 
 .suite {
   margin-top: 50px;
+}
+
+
+.main-container-prestation {
+  border: 2px solid green;
+}
+
+.prestation {
+  .title-prestation {
+    position: relative;
+    z-index: 1;
+
+    align-self: flex-start;
+    width: 100%;
+    padding: 30px;
+    color: map-get($colors-rule, sixth-color);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0% 100%);
+
+  }
+
+
+
+  /* .title-prestation::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: map-get($colors-rule, second-color);
+    opacity: 0.6;
+  } */
+
+  .intro-prestation {
+    font-size: 18px;
+    line-height: 150%;
+    width: 100%;
+    //background-color: map-get($colors-rule, first-color);
+    padding: 50px;
+
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.bg-color-vie {
+  background-color: map-get($colors-rule, second-color);
+}
+
+.bg-color-cariere {
+  background-color: map-get($colors-rule, third-color);
+}
+
+.bg-color-entreprise {
+  background-color: map-get($colors-rule, fourth-color);
 }
