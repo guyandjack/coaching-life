@@ -167,7 +167,7 @@
 }
 
 .container-text {
-  background-color: white;
+  background-color: #fbfffe;
   height: 50%;
   width: 100%;
   border-bottom-left-radius: 10px;
@@ -185,11 +185,10 @@
 }
 .container-text .index-article-text {
   width: 100%;
-  height: 100%;
   padding: 0px 10px;
   font-size: 18px;
   line-height: 150%;
-  text-align: center;
+  text-align: match-parent;
   color: black;
   opacity: 0.8;
 }
@@ -197,7 +196,6 @@
   .container-text .index-article-text {
     font-size: 20px;
     width: 80%;
-    height: 100%;
     -ms-flex-item-align: end;
         align-self: flex-end;
   }

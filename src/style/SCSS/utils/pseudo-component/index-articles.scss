@@ -189,12 +189,13 @@
 }
 
 .container-text {
-  background-color: white;
+  background-color: map-get($colors-rule, sixth-color);
   height: 50%;
   width: 100%;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   overflow: hidden;
+  //border: 10px solid red;
 
   @include upper-large-screen {
 
@@ -206,11 +207,10 @@
 
   .index-article-text {
     width: 100%;
-    height: 100%;
     padding: 0px 10px;
     font-size: 18px;
     line-height: 150%;
-    text-align: center;
+    text-align: match-parent;
     //border: 2px solid pink;
     color: black;
     opacity: 0.8;
@@ -218,7 +218,6 @@
     @include upper-large-screen {
       font-size: 20px;
       width: 80%;
-      height: 100%;
       align-self: flex-end;
     }
   }

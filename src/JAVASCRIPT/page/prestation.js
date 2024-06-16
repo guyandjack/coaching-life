@@ -117,23 +117,11 @@ async function changeCarousselClass() {
   }
 }
 
-function storeIdSliderInLocalStorage(id) {
-  localStorage.setItem("idSlider", id);
-}
-
 function getActiveSliderId() {
   let activeSlider = document.querySelector(".carousel-item.active");
 
   activeSliderId = activeSlider.id;
-  storeIdSliderInLocalStorage(activeSliderId);
   return activeSliderId;
-}
-
-async function nextSlide() {
-  instance.next(1);
-}
-async function prevSlide() {
-  instance.prev(1);
 }
 
 function displaySelectedService(activeSliderId) {
