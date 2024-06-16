@@ -51,16 +51,31 @@
 
 }
 
+.container-burger {
+  margin-left: 50px;
+  background-color: map-get($colors-rule, second-color);
+  border-radius: 50%;
+  padding: 5px;
+  //border: 2px solid red;
+  width: 50px;
+  height: 50px;
+
+  @include upper-medium-screen {
+    width: 60px;
+    height: 60px;
+  }
+}
+
 .logo-burger-svg {
   svg {
-    width: 50px;
-    height: 50px;
-    margin-left: 50px;
-    fill: map-get($colors-rule, second-color);
+    width: 40px;
+    height: 40px;
+
+    fill: map-get($colors-rule, sixth-color);
 
     @include upper-medium-screen {
-      width: 60px;
-      height: 60px;
+      width: 50px;
+      height: 50px;
     }
   }
 }
@@ -92,12 +107,12 @@
     position: relative;
     //padding: 5px 0px;
     //border-bottom: 4px solid blue;
-    font-size: 18px;
+    font-size: 16px;
     color: map-get($colors-rule, first-color);
 
 
 
-    @include upper-large-screen {
+    @include upper-x-large-screen {
       font-size: 18px;
     }
   }
@@ -188,13 +203,13 @@
   color: map-get($colors-rule, first-color);
   font-size: 1em;
 
-
 }
 
 
 
 .list-lang-li-a:hover {
   color: map-get($colors-rule, fourth-color);
+  transform: scale(1.2);
 }
 
 

@@ -87,9 +87,9 @@ function NavBar() {
           />
         </div>
         {isSmallScreen && !isClicked ? (
-          <div className="container-burger" onClick={() => clickBurger()}>
+          <div className=" container-burger" onClick={() => clickBurger()}>
             <ReactSVG
-              src="/src/assets/icons/menu-burger-v2.svg"
+              src="/src/assets/icons/menu-burger-40x40.svg"
               className="logo-burger-svg"
             />
           </div>
@@ -130,12 +130,18 @@ function NavBar() {
                     </a>
                   </li>
                   <li className="list-lang-li">
-                    <a className="list-lang-li-a" href={href_en.current}>
+                    <a
+                      className="list-lang-li-a flex-column-center-center"
+                      href={href_en.current}
+                    >
                       En
                     </a>
                   </li>
                   <li className="list-lang-li">
-                    <a className="list-lang-li-a" href={href_fr.current}>
+                    <a
+                      className="list-lang-li-a flex-column-center-center"
+                      href={href_fr.current}
+                    >
                       Fr
                     </a>
                   </li>
