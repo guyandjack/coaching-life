@@ -17,12 +17,12 @@ ReactDOM.createRoot(rootElement).render(
 );
 
 //insertion du menu de navigation
-const containerCardResume = document.getElementById("RC-card-resume");
+/*const containerCardResume = document.getElementById("RC-card-resume");
 ReactDOM.createRoot(containerCardResume).render(
   <React.StrictMode>
     <CardResume />
   </React.StrictMode>
-);
+);*/
 
 //insertion du footer
 const footerContainer = document.getElementById("RC-footer");
