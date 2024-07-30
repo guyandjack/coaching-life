@@ -14,13 +14,13 @@
 }
 
 .page-title {
-  padding: 30px 0px 30px 30px;
-
+  padding: 30px 0px 0px 30px;
+  //border: 2px solid red;
   //color: map-get($colors-rule, first-color);
 
   @include upper-large-screen {
 
-    padding: 50px 0px 50px 50px;
+    padding: 30px 0px 0px 50px;
   }
 }
 
@@ -145,9 +145,7 @@
 }
 
 
-.main-container-prestation {
-  border: 2px solid green;
-}
+
 
 .prestation {
   .title-prestation {
@@ -156,6 +154,7 @@
 
     align-self: flex-start;
     width: 100%;
+    height: 150px;
     padding: 30px;
     color: map-get($colors-rule, sixth-color);
     clip-path: polygon(0 0, 100% 0, 100% 0, 0% 100%);
@@ -164,17 +163,7 @@
 
 
 
-  /* .title-prestation::after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    background-color: map-get($colors-rule, second-color);
-    opacity: 0.6;
-  } */
+
 
   .intro-prestation {
     font-size: 18px;
@@ -185,6 +174,13 @@
 
   }
 }
+
+.container-card-prestation {
+  width: 100%;
+
+
+}
+
 
 .hide {
   display: none;

@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 //import des composants enfants
 import { NavBar } from "../COMPONENTS/nav/navBar.jsx";
 import { Footer } from "../COMPONENTS/footer/footer.jsx";
-import { CardResume } from "../COMPONENTS/card/cardResume.jsx";
+//import { CardResume } from "../COMPONENTS/card/cardResume.jsx";
 
 //import du contenu des cartes
 
