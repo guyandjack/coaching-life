@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /login.html
+Disallow: /dashboard.html
+
+Sitemap: https://socoaching.ch/sitemap.xml
+Sitemap: https://www.socoaching.ch/sitemap.xml
