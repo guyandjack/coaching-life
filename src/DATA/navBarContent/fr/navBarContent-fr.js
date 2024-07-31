@@ -1,49 +1,47 @@
+import { localOrProd } from "../../../UTILS/fonctions/testEnvironement";
+
+let url = localOrProd();
+
 let navBarContentFR = [
   {
     id: "accueil",
     text: "Accueil",
-    href: "http://localhost:5173/index.html",
-    href_alt_fr: "http://localhost:5173/index.html",
-    href_alt_de: "http://localhost:5173/src/HTML/de/startseite.html",
-    href_alt_en: "http://localhost:5173/src/HTML/en/home.html",
+    href: `${url}/index.html`,
+    href_alt_fr: `${url}/index.html`,
+    href_alt_de: `${url}/public/de/startseite.html`,
+    href_alt_en: `${url}/public/en/home.html`,
   },
   {
     id: "quisuisje",
     text: "Qui suis-je",
-    href: "http://localhost:5173/src/HTML/fr/qui-suis-je.html",
-    href_alt_fr: "http://localhost:5173/src/HTML/fr/qui-suis-je.html",
-    href_alt_de: "http://localhost:5173/src/HTML/de/über-mich.html",
-    href_alt_en: "http://localhost:5173/src/HTML/en/about-me.html",
+    href: `${url}/public/fr/qui-suis-je.html`,
+    href_alt_fr: `${url}/public/fr/qui-suis-je.html`,
+    href_alt_de: `${url}/public/de/über-mich.html`,
+    href_alt_en: `${url}/public/en/about-me.html`,
   },
   {
     id: "prestation",
     text: "Prestations",
-    href: "http://localhost:5173/src/HTML/fr/prestations-de-coaching-individuel-et-en-entreprise.html",
-    href_alt_fr:
-      "http://localhost:5173/src/HTML/fr/prestations-de-coaching-individuel-et-en-entreprise.html",
-    href_alt_de:
-      "http://localhost:5173/src/HTML/de/dienstleistungen-des-individuellen-und-unternehmens-coachings.html",
-    href_alt_en:
-      "http://localhost:5173/src/HTML/en/services-of-individual-and-business-coaching.html",
+    href: `${url}/public/fr/prestations-de-coaching-individuel-et-en-entreprise.html`,
+    href_alt_fr: `${url}/public/fr/prestations-de-coaching-individuel-et-en-entreprise.html`,
+    href_alt_de: `${url}/public/de/dienstleistungen-des-individuellen-und-unternehmens-coachings.html`,
+    href_alt_en: `${url}/public/en/services-of-individual-and-business-coaching.html`,
   },
   {
     id: "temoignage",
     text: "Témoignages",
-    href: "http://localhost:5173/src/HTML/fr/temoignages-clients.html",
-    href_alt_fr: "http://localhost:5173/src/HTML/fr/temoignages-clients.html",
-    href_alt_de: "http://localhost:5173/src/HTML/de/kundenbewertungen.html",
-    href_alt_en: "http://localhost:5173/src/HTML/en/customer-testimonials.html",
+    href: `${url}/public/fr/temoignages-clients.html`,
+    href_alt_fr: `${url}/public/fr/temoignages-clients.html`,
+    href_alt_de: `${url}/public/de/kundenbewertungen.html`,
+    href_alt_en: `${url}/public/en/customer-testimonials.html`,
   },
   {
     id: "contact",
     text: "Contact",
-    href: "http://localhost:5173/src/HTML/fr/contactez-votre-coach-individuel-et-en-entreprise.html",
-    href_alt_fr:
-      "http://localhost:5173/src/HTML/fr/contactez-votre-coach-individuel-et-en-entreprise.html",
-    href_alt_de:
-      "http://localhost:5173/src/HTML/de/kontaktieren-sie-ihren-individuellen-und-unternehmenscoach.html",
-    href_alt_en:
-      "http://localhost:5173/src/HTML/en/contact-your-individual-and-business-coach.html",
+    href: `${url}/public/fr/contactez-votre-coach-individuel-et-en-entreprise.html`,
+    href_alt_fr: `${url}/public/fr/contactez-votre-coach-individuel-et-en-entreprise.html`,
+    href_alt_de: `${url}/public/de/kontaktieren-sie-ihren-individuellen-und-unternehmenscoach.html`,
+    href_alt_en: `${url}/public/en/contact-your-individual-and-business-coach.html`,
   },
 ];
 

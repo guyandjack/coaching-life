@@ -1,19 +1,20 @@
+import { localOrProd } from "../../../UTILS/fonctions/testEnvironement";
+
+let url = localOrProd();
+
 let footerContentEN = [
   {
     text: "Legal Notice",
-    href: "/src/HTML/en/legal-notice.html#legal-notice",
+    href: `${url}/public/en/legal-notice.html`,
   },
-  {
-    text: "Cookie Policy",
-    href: "/src/HTML/en/legal-notice.html#cookie-policy",
-  },
+
   {
     text: "Privacy Policy",
-    href: "/src/HTML/en/legal-notice.html#privacy-policy",
+    href: `${url}/public/en/privacy-policy.html`,
   },
   {
     text: "Terms of Use",
-    href: "/src/HTML/en/legal-notice.html#terms-of-use",
+    href: `${url}/public/en/terms-of-use.html`,
   },
 ];
 

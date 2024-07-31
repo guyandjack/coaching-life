@@ -1,19 +1,20 @@
+import { localOrProd } from "../../../UTILS/fonctions/testEnvironement";
+
+let url = localOrProd();
+
 let footerContentDE = [
   {
     text: "Impressum",
-    href: "/src/HTML/de/impressum.html#impressum",
+    href: `${url}/de/impressum.html`,
   },
-  {
-    text: "Cookie-Richtlinies",
-    href: "/src/HTML/de/impressum.html#cookie-richtlinies",
-  },
+
   {
     text: "Datenschutzrichtlinie",
-    href: "/src/HTML/de/impressum.html#datenschutzrichtlinie",
+    href: `${url}/de/datenschutzrichtlinie.html`,
   },
   {
     text: "Nutzungsbedingungen",
-    href: "/src/HTML/de/impressum.html#nutzungsbedingungen",
+    href: `${url}/de/nutzungsbedingungen.html`,
   },
 ];
 

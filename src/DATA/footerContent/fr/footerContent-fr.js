@@ -1,24 +1,25 @@
+import { localOrProd } from "../../../UTILS/fonctions/testEnvironement";
+
+let url = localOrProd();
+
 let footerContentFR = [
   {
     text: "Mentions Légales",
-    href: "/src/HTML/fr/mentions-legales.html#mentions-legales",
+    href: `${url}/fr/mentions-legales.html`,
   },
-  {
-    text: "Politique de cookies",
-    href: "/src/HTML/fr/mentions-legales.html#politique-de-cookies",
-  },
+
   {
     text: "politique de confidentialité",
-    href: "/src/HTML/fr/mentions-legales.html#politique-de-confidentialite",
+    href: `${url}/fr/politique-de-confidencialite.html`,
   },
   {
     text: "Conditions générales d'utilisation",
-    href: "/src/HTML/fr/mentions-legales.html#cgu",
+    href: `${url}/fr/conditions-generales-utilisation.html`,
   },
 
   {
     text: "login",
-    href: "/src/HTML/login.html",
+    href: `${url}/fr/login.html`,
   },
 ];
 
