@@ -418,27 +418,33 @@
 .link-container .link-cta:active .text-inside {
   background-color: #526e04;
 }
-.link-container .link-cta:hover .text-aside {
-  -webkit-transform: translateY(-100%);
-      -ms-transform: translateY(-100%);
-          transform: translateY(-100%);
-  -webkit-transition: all 0.3s linear;
-  transition: all 0.3s linear;
+@media screen and (min-width: 993px) {
+  .link-container .link-cta:hover .text-aside {
+    -webkit-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+            transform: translateY(-100%);
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+  }
 }
-.link-container .link-cta:hover .text-inside {
-  -webkit-transform: translateY(100%);
-      -ms-transform: translateY(100%);
-          transform: translateY(100%);
-  -webkit-transition: all 0.3s linear;
-  transition: all 0.3s linear;
+@media screen and (min-width: 993px) {
+  .link-container .link-cta:hover .text-inside {
+    -webkit-transform: translateY(100%);
+        -ms-transform: translateY(100%);
+            transform: translateY(100%);
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+  }
 }
-.link-container .link-cta:hover {
-  -webkit-box-shadow: inset 0px 0px 40px 2px #9cd008;
-          box-shadow: inset 0px 0px 40px 2px #9cd008;
-  -webkit-transition: -webkit-box-shadow 0.4s linear;
-  transition: -webkit-box-shadow 0.4s linear;
-  transition: box-shadow 0.4s linear;
-  transition: box-shadow 0.4s linear, -webkit-box-shadow 0.4s linear;
+@media screen and (min-width: 993px) {
+  .link-container .link-cta:hover {
+    -webkit-box-shadow: inset 0px 0px 40px 2px #9cd008;
+            box-shadow: inset 0px 0px 40px 2px #9cd008;
+    -webkit-transition: -webkit-box-shadow 0.4s linear;
+    transition: -webkit-box-shadow 0.4s linear;
+    transition: box-shadow 0.4s linear;
+    transition: box-shadow 0.4s linear, -webkit-box-shadow 0.4s linear;
+  }
 }
 .link-container .text-aside,
 .link-container .text-inside {

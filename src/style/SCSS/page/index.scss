@@ -146,18 +146,28 @@
   } */
 
   .link-cta:hover .text-aside {
-    transform: translateY(-100%);
-    transition: all 0.3s linear;
+    @include upper-large-screen {
+
+
+      transform: translateY(-100%);
+      transition: all 0.3s linear;
+    }
   }
 
   .link-cta:hover .text-inside {
-    transform: translateY(100%);
-    transition: all 0.3s linear;
+    @include upper-large-screen {
+
+
+      transform: translateY(100%);
+      transition: all 0.3s linear;
+    }
   }
 
   .link-cta:hover {
-    box-shadow: inset 0px 0px 40px 2px darken(map-get($colors-rule, fourth-color), 0%);
-    transition: box-shadow 0.4s linear;
+    @include upper-large-screen {
+      box-shadow: inset 0px 0px 40px 2px map-get($colors-rule, fourth-color);
+      transition: box-shadow 0.4s linear;
+    }
   }
 
   .text-aside,
