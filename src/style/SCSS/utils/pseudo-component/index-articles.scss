@@ -30,7 +30,8 @@
   height: 800px;
   margin: 50px 10%;
   border-radius: 10px;
-  //border: 2px solid yellow;
+  //border: 10px solid map-get($colors-rule, fourth-color);
+  //box-shadow: 0px 0px 10px 0px map-get($colors-rule, fourth-color);
 
   @include upper-large-screen {
     max-width: 900px;
@@ -62,11 +63,11 @@
     //border: 2px solid red;
     overflow: hidden;
     font-weight: 600;
-    color: map-get($colors-rule, sixth-color);
+    color: map-get($colors-rule, first-color);
 
 
     @include upper-large-screen {
-      font-size: 35px;
+      font-size: 30px;
       //border-bottom: 4px solid map-get($colors-rule, second-color);
     }
 
@@ -80,10 +81,17 @@
       left: 0px;
       width: 100%;
       height: 100%;
-      background-color: map-get($colors-rule, second-color);
+      background-color: map-get($colors-rule, fourth-color);
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
-      opacity: 1;
+      opacity: 0.9;
+
+    }
+  }
+
+  .bg {
+    &::after {
+      background-color: map-get($colors-rule, third-color);
 
     }
   }
@@ -109,9 +117,9 @@
 
     height: 100%;
     flex: 1 1 20%;
-    background-color: map-get($colors-rule, second-color);
+    background-color: map-get($colors-rule, sixth-color);
     border-bottom-left-radius: 10px;
-    opacity: 0.7;
+    //opacity: 0.7;
   }
 }
 
@@ -151,7 +159,7 @@
       width: 100%;
       font-size: 35px;
       text-align: center;
-      color: white;
+      color: map-get($colors-rule, first-color);
       font-weight: 600;
 
       transition: top 0.3s ease-in-out 0s;
@@ -161,11 +169,11 @@
         content: "";
         position: absolute;
         z-index: -1;
-        top: 0px;
+        top: 25%;
         left: 0px;
-        height: 100%;
+        height: 50%;
         width: 100%;
-        background-color: map-get($colors-rule, third-color);
+        background-color: map-get($colors-rule, fourth-color);
         opacity: 0.8;
       }
 

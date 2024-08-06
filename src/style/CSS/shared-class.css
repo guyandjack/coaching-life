@@ -57,7 +57,7 @@
   width: 100%;
 }
 
-body::after {
+.body::after {
   content: "";
   position: absolute;
   z-index: -1;

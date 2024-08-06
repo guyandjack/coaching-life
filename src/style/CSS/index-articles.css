@@ -60,11 +60,11 @@
   text-align: center;
   overflow: hidden;
   font-weight: 600;
-  color: #fbfffe;
+  color: #001747;
 }
 @media screen and (min-width: 993px) {
   .index-article-container .index-article-title {
-    font-size: 35px;
+    font-size: 30px;
   }
 }
 .index-article-container .index-article-title::after {
@@ -75,10 +75,13 @@
   left: 0px;
   width: 100%;
   height: 100%;
-  background-color: #1ba4e3;
+  background-color: #9cd008;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  opacity: 1;
+  opacity: 0.9;
+}
+.index-article-container .bg::after {
+  background-color: #ff6e00;
 }
 
 .index-container-content {
@@ -97,9 +100,8 @@
     -webkit-box-flex: 1;
         -ms-flex: 1 1 20%;
             flex: 1 1 20%;
-    background-color: #1ba4e3;
+    background-color: #fbfffe;
     border-bottom-left-radius: 10px;
-    opacity: 0.7;
   }
 }
 
@@ -138,7 +140,7 @@
     width: 100%;
     font-size: 35px;
     text-align: center;
-    color: white;
+    color: #001747;
     font-weight: 600;
     -webkit-transition: top 0.3s ease-in-out 0s;
     transition: top 0.3s ease-in-out 0s;
@@ -147,11 +149,11 @@
     content: "";
     position: absolute;
     z-index: -1;
-    top: 0px;
+    top: 25%;
     left: 0px;
-    height: 100%;
+    height: 50%;
     width: 100%;
-    background-color: #ff6e00;
+    background-color: #9cd008;
     opacity: 0.8;
   }
   .container-img:hover .message {

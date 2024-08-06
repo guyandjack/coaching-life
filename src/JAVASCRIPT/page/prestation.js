@@ -1,4 +1,6 @@
 /* eslint-disable no-unused-vars */
+import { localOrProd } from "../../UTILS/fonctions/testEnvironement.js";
+
 /*************************************************
  * ********concerne la gestion du carousel*******
  * **********************************************/
@@ -172,3 +174,24 @@ window.addEventListener("resize", async () => {
   getActiveSliderId();
   displaySelectedService(activeSliderId);
 });
+
+/*************************************************
+ * ********concerne le div href lang*******
+ * **********************************************/
+
+const divData = document.querySelector("#info-href");
+
+let url = localOrProd();
+
+divData.setAttribute(
+  "data-fr",
+  `${url}/fr/prestations-de-coaching-individuel-et-en-entreprise.html`
+);
+divData.setAttribute(
+  "data-de",
+  `${url}/de/dienstleistungen-des-individuellen-und-unternehmens-coachings.html`
+);
+divData.setAttribute(
+  "data-en",
+  `${url}/en/services-of-individual-and-business-coaching.html`
+);

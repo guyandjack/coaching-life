@@ -2,7 +2,10 @@
 @import "../utils/mixins/responsive/responsive.scss";
 @import "../utils/pseudo-component/index-articles.scss";
 
-
+.body::after {
+  background-color: map-get($colors-rule, second-color);
+  opacity: 0.7;
+}
 
 .main-parallax-container {
   position: relative;
@@ -24,27 +27,17 @@
 
 .parallax-container-title {
   //border: 2px solid orange;
-  //height: 100%;
+
 
   @include upper-large-screen {
     height: 100%;
     width: 100%;
-    flex-flow: row;
     justify-content: space-evenly;
     align-items: center;
   }
 }
 
-.title-index {
-  //border: 2px solid red;
-  text-align: center;
-  color: map-get($colors-rule, sixth-color);
 
-  @include under-large-screen {
-    margin: 30px 0px;
-  }
-
-}
 
 .parallax {
   position: absolute;
@@ -66,26 +59,80 @@
   }
 }
 
-.link-container {
+//concerne le titre de la page
 
-  color: map-get($colors-rule, sixth-color);
-  width: 100%;
-  //border: 2px solid green;
-  flex: 1 1 100%;
+
+.title-index {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  text-align: center;
+
+  color: map-get($colors-rule, first-color);
 
   @include upper-large-screen {
-    align-items: flex-start;
-    flex: 0 1 30%;
+
+    margin: 30px 0px;
+    width: 100%;
+    padding: 20px;
+
+    &::after {
+      content: "";
+      z-index: -1;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      background-color: map-get($colors-rule, sixth-color);
+      opacity: 0.9;
+    }
+
+    .main-title {
+      font-size: 50px;
+      font-family: "Source Code Pro", monospace;
+      font-weight: 600;
+    }
+  }
+
+
+
+}
+
+//concerne les liens sur l' image d accueil
+
+.link-container {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  //border: 2px solid green;
+  //flex: 1 1 100%;
+
+  @include upper-large-screen {
+    //align-items: flex-start;
+    flex-flow: row;
+    justify-content: space-evenly;
+    align-items: center;
+    //padding-left: 60px;
+    //flex: 0 1 20%;
 
   }
 
   .link-cta {
     margin: 20px 0px;
+
     //height: 30%;
     //border: 2px solid red;
 
+
+
     @include upper-large-screen {
-      align-items: flex-start;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 30px;
+      border-radius: 50px;
+      transition: box-shadow 0.2s linear;
     }
   }
 
@@ -93,9 +140,31 @@
     background-color: darken(map-get($colors-rule, fourth-color), 20%);
   }
 
+  /* .link-cta:hover .text-inside {
+    background-color: darken(map-get($colors-rule, fourth-color), 20%);
+    color: map-get($colors-rule, sixth-color);
+  } */
+
+  .link-cta:hover .text-aside {
+    transform: translateY(-100%);
+    transition: all 0.3s linear;
+  }
+
+  .link-cta:hover .text-inside {
+    transform: translateY(100%);
+    transition: all 0.3s linear;
+  }
+
+  .link-cta:hover {
+    box-shadow: inset 0px 0px 40px 2px darken(map-get($colors-rule, fourth-color), 0%);
+    transition: box-shadow 0.4s linear;
+  }
+
   .text-aside,
   .text-inside {
     font-size: 1em;
+    color: map-get($colors-rule, first-color);
+    transition: transform 0.2s linear;
 
     @include upper-medium-screen {
       font-size: 1.1em;
@@ -114,10 +183,25 @@
   }
 
   .text-aside {
-    //font-size: 20px;
-    margin: 0px 0px 0px 30px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: map-get($colors-rule, first-color);
+    color: map-get($colors-rule, sixth-color);
+    //margin: 0px 0px 0px 30px;
   }
 }
+
+/* .link-container::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  //background-color: map-get($colors-rule, first-color);
+  opacity: 0.5;
+} */
 
 
 
@@ -127,7 +211,7 @@
   z-index: 0;
   top: -50px;
 
-  color: darken(map-get($colors-rule, third-color), 10%);
+  color: darken(map-get($colors-rule, third-color), 20%);
   height: 300px;
   background-color: map-get($colors-rule, sixth-color);
   //clip-path: polygon(50% 37%, 100% 0, 100% 100%, 50% 100%, 0 100%, 0 0);
@@ -144,9 +228,7 @@
       font-size: 25px;
     }
 
-    @include upper-large-screen {
-      font-size: 35px;
-    }
+
 
   }
 
@@ -158,14 +240,13 @@
     font-size: 18px;
 
     margin: 20px 0px 0px 20px;
+    font-weight: 600;
 
     @include upper-medium-screen {
       font-size: 20px;
     }
 
-    @include upper-large-screen {
-      font-size: 25px;
-    }
+
   }
 }
 
@@ -175,21 +256,65 @@
   overflow: hidden;
 
   @include upper-large-screen {
-    overflow: visible;
-    position: absolute;
-    height: 250px;
-    width: 400%;
-    top: 85%;
-    left: 0px;
-    z-index: -1;
+    //overflow: visible;
+    //position: absolute;
+    height: 200px;
+    width: 100%;
+    //top: 85%;
+    //left: 0px;
+    //z-index: ;
     //border: 2px solid red;
-    transform: translateX(-40%);
-    background-color: map-get($colors-rule, second-color);
-    clip-path: polygon(100% 15%, 100% 0, 100% 100%, 100% 85%, 0 100%, 0 0);
-    opacity: 0.7;
+    //transform: translateX(-40%);
+    //background-color: map-get($colors-rule, sixth-color);
+    clip-path: polygon(100% 0%, 100% 0, 100% 100%, 100% 40%, 0 100%, 0 0);
+    opacity: 0.9;
   }
 
 }
+
+.container-transi {
+  width: 100%;
+  //font-size: 0px;
+  //background-color: red;
+}
+
+.transi-fourth-color {
+  background-color: map-get($colors-rule, fourth-color);
+
+}
+
+.transi-second-color {
+  background-color: map-get($colors-rule, second-color);
+
+}
+
+.transi-third-color {
+  //background-color: darken(map-get($colors-rule, sixth-color), 10%);
+  background-color: map-get($colors-rule, third-color);
+  opacity: 1;
+
+}
+
+.transi-sixth-color {
+  background-color: map-get($colors-rule, sixth-color);
+
+
+}
+
+.transi-rotate-z {
+  transform: rotateZ(180deg);
+}
+
+.transi-rotate-x {
+  transform: rotateX(180deg);
+}
+
+/* .design-transi-split {
+  width: 100%;
+  height: 50px;
+  background-color: map-get($colors-rule, sixth-color);
+  //opacity: 
+} */
 
 .svg-deco {
   position: absolute;
@@ -217,4 +342,27 @@
     transform: rotateZ(90deg);
   }
 
+}
+
+.lieu-des-prestations {
+  position: relative;
+  z-index: 1;
+  color: map-get($colors-rule, sixth-color);
+  font-size: 25px;
+  padding: 20px;
+  height: 200px;
+  line-height: 150%;
+  margin: 50px 0px;
+}
+
+.lieu-des-prestations::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: map-get($colors-rule, first-color);
+  //opacity: 0.8;
 }

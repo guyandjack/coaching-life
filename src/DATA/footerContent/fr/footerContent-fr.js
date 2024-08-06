@@ -10,7 +10,7 @@ let footerContentFR = [
 
   {
     text: "politique de confidentialité",
-    href: `${url}/fr/politique-de-confidencialite.html`,
+    href: `${url}/fr/politique-de-confidancialite.html`,
   },
   {
     text: "Conditions générales d'utilisation",
