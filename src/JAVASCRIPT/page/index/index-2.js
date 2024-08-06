@@ -1,6 +1,13 @@
 //import des fonctions
 import { isScreenMobil } from "../../../UTILS/fonctions/isScreenMobil.js";
 
+import { localOrProd } from "../../../UTILS/fonctions/testEnvironement.js";
+
+//Variables representant les liens de la bannierre
+const linkTitleVie = document.querySelector("#vie");
+const linkTitleCarriere = document.querySelector("#carriere");
+const linkTitleEntreprise = document.querySelector("#entreprise");
+
 //gere l' afficha des liens sur ecran mobile < 700
 
 function displayLink() {
@@ -20,7 +27,30 @@ function displayLink() {
   }
 }
 
+function setUrlLink(url) {
+  linkTitleVie.setAttribute(
+    "href",
+    `${url}/fr/prestations-de-coaching-individuel-et-en-entreprise.html#vie`
+  );
+  linkTitleCarriere.setAttribute(
+    "href",
+    `${url}/fr/prestations-de-coaching-individuel-et-en-entreprise.html#carriere`
+  );
+  linkTitleEntreprise.setAttribute(
+    "href",
+    `${url}/fr/prestations-de-coaching-individuel-et-en-entreprise.html#entreprise`
+  );
+}
+
+// script principal
+
 window.document.addEventListener("resize", function (e) {
   console.log("evenement resize: " + e);
   displayLink();
 });
+
+//determine l' url entre dev et prod
+let url = localOrProd();
+
+//modifie l' attribut href des liens
+setUrlLink(url);
