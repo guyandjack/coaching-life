@@ -161,6 +161,36 @@ arrowPrev.addEventListener("click", () => {
   instance.prev(1);
 });
 
+/**
+ *detrmine l' url courante et affiche le contenu correspondant vie/carriere/entreprise
+ *
+ */
+function displayContent() {
+  const activeUrl = new URL(window.location.href);
+  let hash = activeUrl.hash;
+  if (hash !== undefined && hash !== null) {
+    console.log("url de la page: " + activeUrl.hash);
+
+    switch (hash) {
+      case "#vie":
+        break;
+      case "#carriere":
+        instance.next(1);
+
+        break;
+      case "#entreprise":
+        instance.next(2);
+
+        break;
+
+      default:
+        undefined;
+
+        break;
+    }
+  }
+}
+
 //scrip principal
 await changeCarousselClass();
 initCarouselOption();
@@ -195,3 +225,5 @@ divData.setAttribute(
   "data-en",
   `${url}/en/services-of-individual-and-business-coaching.html`
 );
+
+displayContent();

@@ -30,15 +30,15 @@ function displayLink() {
 function setUrlLink(url) {
   linkTitleVie.setAttribute(
     "href",
-    `${url}/fr/prestations-de-coaching-individuel-et-en-entreprise.html#vie`
+    `${url}/public/fr/prestations-de-coaching-individuel-et-en-entreprise.html#vie`
   );
   linkTitleCarriere.setAttribute(
     "href",
-    `${url}/fr/prestations-de-coaching-individuel-et-en-entreprise.html#carriere`
+    `${url}/public/fr/prestations-de-coaching-individuel-et-en-entreprise.html#carriere`
   );
   linkTitleEntreprise.setAttribute(
     "href",
-    `${url}/fr/prestations-de-coaching-individuel-et-en-entreprise.html#entreprise`
+    `${url}/public/fr/prestations-de-coaching-individuel-et-en-entreprise.html#entreprise`
   );
 }
 
