@@ -348,11 +348,15 @@
   position: relative;
   z-index: 1;
   color: map-get($colors-rule, sixth-color);
-  font-size: 25px;
+  font-size: 18px;
   padding: 20px;
-  height: 200px;
+  min-height: 200px;
   line-height: 150%;
   margin: 50px 0px;
+
+  @include upper-large-screen {
+    font-size: 25px;
+  }
 }
 
 .lieu-des-prestations::after {

@@ -167,11 +167,16 @@
   position: relative;
   z-index: 1;
   color: #fbfffe;
-  font-size: 25px;
+  font-size: 18px;
   padding: 20px;
-  height: 200px;
+  min-height: 200px;
   line-height: 150%;
   margin: 50px 0px;
+}
+@media screen and (min-width: 993px) {
+  .lieu-des-prestations {
+    font-size: 25px;
+  }
 }
 
 .lieu-des-prestations::after {
