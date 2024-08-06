@@ -4,6 +4,6 @@ const divData = document.querySelector("#info-href");
 
 let url = localOrProd();
 
-divData.setAttribute("data-fr", `${url}/fr/mentions-legales.html`);
-divData.setAttribute("data-de", `${url}/de/impressum.html`);
-divData.setAttribute("data-en", `${url}/en/legal-notice.html`);
+divData.setAttribute("data-fr", `${url}/public/fr/mentions-legales.html`);
+divData.setAttribute("data-de", `${url}/public/de/impressum.html`);
+divData.setAttribute("data-en", `${url}/public/en/legal-notice.html`);

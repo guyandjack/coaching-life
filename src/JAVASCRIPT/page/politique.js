@@ -4,6 +4,9 @@ const divData = document.querySelector("#info-href");
 
 let url = localOrProd();
 
-divData.setAttribute("data-fr", `${url}/fr/politique-de-confidancialite.html`);
-divData.setAttribute("data-de", `${url}/de/`);
-divData.setAttribute("data-en", `${url}/en/`);
+divData.setAttribute(
+  "data-fr",
+  `${url}/public/fr/politique-de-confidancialite.html`
+);
+divData.setAttribute("data-de", `${url}/public/de/`);
+divData.setAttribute("data-en", `${url}/public/en/`);

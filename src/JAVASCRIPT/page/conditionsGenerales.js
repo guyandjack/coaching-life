@@ -1,12 +1,15 @@
 import { localOrProd } from "../../UTILS/fonctions/testEnvironement.js";
 
 const divData = document.querySelector("#info-href");
+const link = document.querySelector("#link-politique");
 
 let url = localOrProd();
 
 divData.setAttribute(
   "data-fr",
-  `${url}/fr//conditions-generales-utilisation.html`
+  `${url}/public/fr/conditions-generales-utilisation.html`
 );
-divData.setAttribute("data-de", `${url}/de/kundenbewertungen.html`);
-divData.setAttribute("data-en", `${url}/en/legal-notice.html`);
+divData.setAttribute("data-de", `${url}/public/de/kundenbewertungen.html`);
+divData.setAttribute("data-en", `${url}/public/en/legal-notice.html`);
+
+link.setAttribute("href", `${url}/public/fr/politique-de-confidentialite.html`);
