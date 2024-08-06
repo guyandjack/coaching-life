@@ -92,12 +92,14 @@ function getNavLinkToStyle(tabKeyWord, urlFinded) {
  * @param {htmlElementLink} elementLinkFinded
  */
 function styleNavLink(elementLinkFinded) {
-  let allIndicators = document.querySelectorAll(".indicator");
-  allIndicators.forEach((indicator) => {
-    indicator.classList.remove("active");
-  });
-  console.log("link element a styliser: " + elementLinkFinded);
-  elementLinkFinded.classList.add("active");
+  if (elementLinkFinded !== null && elementLinkFinded !== "undefined") {
+    let allIndicators = document.querySelectorAll(".indicator");
+    allIndicators.forEach((indicator) => {
+      indicator.classList.remove("active");
+    });
+    console.log("link element a styliser: " + elementLinkFinded);
+    elementLinkFinded.classList.add("active");
+  }
 }
 
 /***************** fonction globales de niveau superieur a exporter *******************/
@@ -125,7 +127,8 @@ function styleLinkNavBar() {
 
   let targetLink = getNavLinkToStyle(keyWordSelected, curentUrl);
   console.log("lien a styliser 2: " + targetLink);
-  styleNavLink(targetLink);
+  if (targetLink !== null && targetLink !== "undefined")
+    styleNavLink(targetLink);
 }
 
 /**

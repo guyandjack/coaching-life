@@ -5,21 +5,21 @@ let url = localOrProd();
 let footerContentFR = [
   {
     text: "Mentions Légales",
-    href: `${url}/fr/mentions-legales.html`,
+    href: `${url}/public/fr/mentions-legales.html`,
   },
 
   {
     text: "politique de confidentialité",
-    href: `${url}/fr/politique-de-confidancialite.html`,
+    href: `${url}/public/fr/politique-de-confidancialite.html`,
   },
   {
     text: "Conditions générales d'utilisation",
-    href: `${url}/fr/conditions-generales-utilisation.html`,
+    href: `${url}/public/fr/conditions-generales-utilisation.html`,
   },
 
   {
     text: "login",
-    href: `${url}/fr/login.html`,
+    href: `${url}/public/fr/login.html`,
   },
 ];
 

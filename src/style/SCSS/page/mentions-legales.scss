@@ -1,3 +1,44 @@
-.mention-legales {
-  background-color: green;
+/*****************************************************************************************
+********** feuilles de style pour les pages **********************************************
+********** CGU ***************************************************************************
+********** mentions légales **************************************************************
+********** politique de confidencialite **************************************************/
+
+@import "../utils/colors-rule/colors-rule.scss";
+@import "../utils/mixins/responsive/responsive.scss";
+
+.page-title {
+  color: map-get($colors-rule, first-color);
+  align-self: center;
+  margin: 30px 0px 30px 0px;
+  padding-left: 0px;
+}
+
+.container-article {
+  padding: 10px;
+
+}
+
+.article {
+  margin-top: 50px;
+  width: 100%;
+
+  @include upper-large-screen {
+    width: 60%;
+    justify-self: center;
+  }
+}
+
+.article-title {
+  line-height: 150%;
+  font-size: 18px;
+  color: map-get($colors-rule, first-color);
+
+  @include upper-large-screen {
+    font-size: 20px;
+  }
+}
+
+.article p {
+  line-height: 150%;
 }

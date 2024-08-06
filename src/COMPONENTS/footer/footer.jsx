@@ -3,6 +3,8 @@
 //import des hook
 import { useState } from "react";
 
+//import librairie emoji
+import * as emoji from "node-emoji";
 //import des fonctions
 import { getFooterContent } from "../../UTILS/fonctions/styleLinkFooter.js";
 
@@ -56,7 +58,9 @@ function Footer() {
         </ul>
       </div>
       <div className="webmaster flex-row-center-center">
-        <span>{"Powered by Norbert's development"} </span>
+        <span>{"Powered with "}</span>
+        <span>{emoji.emojify("  :heart:  ")}</span>
+        <span>{" by Norbert's development"}</span>
       </div>
     </div>
   );

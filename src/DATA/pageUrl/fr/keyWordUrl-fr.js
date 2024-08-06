@@ -5,6 +5,10 @@ let keyWordUrlFR = [
   ["qui-suis-je.html", "quisuisje"],
   ["temoignages-clients.html", "temoignage"],
   ["contactez-votre-coach-individuel-et-en-entreprise.html", "contact"],
+  ["conditions-generales-utilisation.html", "cgu"],
+  ["mentions-legales.html", "mentions"],
+  ["politique-de-confidencialite.html", "politique"],
+  ["login", "login"],
 ];
 
 export { keyWordUrlFR };
