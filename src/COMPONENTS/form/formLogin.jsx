@@ -38,7 +38,6 @@ function FormLogin() {
     input.focus();
     input.setSelectionRange(inputValue.length, inputValue.length);
   }
-  console.log("bonjour");
 
   return (
     <form
@@ -108,12 +107,16 @@ function FormLogin() {
 
       <button
         id="login-submit"
-        className="btn-submit"
+        className={
+          !isValid || isSubmitting
+            ? "btn-submit-login-novalid"
+            : "btn-submit-login-valid"
+        }
         type="submit"
         form="form-login"
         disabled={!isValid || isSubmitting}
       >
-        Connexion
+        Login
       </button>
     </form>
   );
