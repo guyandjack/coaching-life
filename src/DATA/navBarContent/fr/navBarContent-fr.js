@@ -1,6 +1,7 @@
 import { localOrProd } from "../../../UTILS/fonctions/testEnvironement";
 
-let url = localOrProd();
+let objectUrl = localOrProd();
+let url = objectUrl.url;
 
 let navBarContentFR = [
   {

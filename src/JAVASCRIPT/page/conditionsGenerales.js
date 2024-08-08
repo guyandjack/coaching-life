@@ -3,7 +3,8 @@ import { localOrProd } from "../../UTILS/fonctions/testEnvironement.js";
 const divData = document.querySelector("#info-href");
 const link = document.querySelector("#link-politique");
 
-let url = localOrProd();
+let objectUrl = localOrProd();
+let url = objectUrl.url;
 
 divData.setAttribute(
   "data-fr",

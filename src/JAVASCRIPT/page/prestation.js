@@ -211,7 +211,8 @@ window.addEventListener("resize", async () => {
 
 const divData = document.querySelector("#info-href");
 
-let url = localOrProd();
+let objectUrl = localOrProd();
+let url = objectUrl.url;
 
 divData.setAttribute(
   "data-fr",

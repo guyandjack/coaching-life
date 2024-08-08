@@ -4,9 +4,15 @@ import { useState, useEffect, useRef } from "react";
 //import ds composants enfants
 import { CardTestimonial } from "../../COMPONENTS/card/cardTestimonial.jsx";
 
+//import des functions
+import { localOrProd } from "../../UTILS/fonctions/testEnvironement.js";
+
 //import des feuilles de style
 import "../../style/CSS/card-testimonial-container.css";
 
+let objectUrl = localOrProd();
+let apiUrl = objectUrl.urlApi;
+console.log("apiUrl: " + apiUrl);
 //declaration des fonctions
 
 /**
@@ -16,7 +22,7 @@ import "../../style/CSS/card-testimonial-container.css";
  */
 async function getAllAvis() {
   try {
-    const resultFetch = await fetch("http://localhost:5500/api/avis", {
+    const resultFetch = await fetch(`${apiUrl}/avis`, {
       method: "GET",
     });
 

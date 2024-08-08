@@ -50,7 +50,8 @@ window.document.addEventListener("resize", function (e) {
 });
 
 //determine l' url entre dev et prod
-let url = localOrProd();
+let objectUrl = localOrProd();
+let url = objectUrl.url;
 
 //modifie l' attribut href des liens
 setUrlLink(url);
