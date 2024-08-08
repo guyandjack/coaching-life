@@ -1,20 +1,43 @@
-// function qui permet de se connecter a la bdd "coaching-life"
-// eslint-disable-next-line no-undef
-
-// eslint-disable-next-line no-undef
+/* eslint-disable no-undef */
 require("dotenv").config();
+const checkEnv = require("../functions/checkEnvironement");
 
-//Option de connexion à la bdd sql
-let connectionConfigCoaching = {
-  // eslint-disable-next-line no-undef
-  host: process.env.HOST,
-  // eslint-disable-next-line no-undef
-  user: process.env.USER_ADMIN,
-  // eslint-disable-next-line no-undef
-  password: process.env.PASSWORD,
-  // eslint-disable-next-line no-undef
-  database: process.env.DATABASE,
-};
+async function doConfig() {
+  const envType = await checkEnv.devOrProd();
+  console.log("Environment Type: " + envType);
 
-// eslint-disable-next-line no-undef
-module.exports = connectionConfigCoaching;
+  if (!envType || envType === "unknown") {
+    console.error("Environnement non défini ou inconnu");
+    return undefined;
+  }
+
+  let objectConfig = {};
+
+  switch (envType) {
+    case "dev":
+      objectConfig = {
+        host: process.env.HOST_DEV,
+        user: process.env.USER_DEV,
+        database: process.env.DATABASE_DEV,
+        password: process.env.PASSWORD_DEV,
+      };
+      break;
+
+    case "prod":
+      objectConfig = {
+        host: process.env.HOST_PROD,
+        user: process.env.USER_PROD,
+        database: process.env.DATABASE_PROD,
+        password: process.env.PASSWORD_PROD,
+      };
+      break;
+
+    default:
+      console.error("Type d'environnement non pris en charge");
+      return undefined;
+  }
+
+  return objectConfig;
+}
+
+module.exports = { doConfig };

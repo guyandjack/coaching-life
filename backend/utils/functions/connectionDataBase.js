@@ -1,21 +1,28 @@
-// eslint-disable-next-line no-undef
-const mysql = require("mysql");
+/* eslint-disable no-undef */
+const mysql = require("mysql2/promise");
+const createConfig = require("../../utils/data/dataBaseConnectionConfig.js");
 
-//connexion à une bdd
-function connectToDataBase(connectionConfig) {
-  return new Promise((resolve, reject) => {
-    let connection = mysql.createConnection(connectionConfig);
-    connection.connect(function (err) {
-      if (err) {
-        console.error("error connecting: " + err.stack);
-        reject(null);
-      }
+async function connectToDataBase() {
+  try {
+    const config = await createConfig.doConfig();
+    console.log("Configuration utilisée: ", config);
 
-      console.log("connected as id " + connection.threadId);
-      resolve(connection);
-    });
-  });
+    if (!config || Object.keys(config).length === 0) {
+      throw new Error(
+        "La configuration de la base de données est vide ou non définie"
+      );
+    }
+
+    const connection = await mysql.createConnection(config);
+    console.log("Connexion réussie à la base de données.");
+    return connection;
+  } catch (error) {
+    console.error(
+      "Erreur lors de la connexion à la base de données: ",
+      error.message
+    );
+    return null;
+  }
 }
 
-// eslint-disable-next-line no-undef
-module.exports = connectToDataBase;
+module.exports = { connectToDataBase };
