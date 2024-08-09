@@ -6,12 +6,16 @@ import { useState, useEffect, useRef } from "react";
 import { ReactSVG } from "react-svg";
 
 //import des fonctions
+import { localOrProd } from "../../UTILS/fonctions/testEnvironement";
 import { isScreenMobil } from "../../UTILS/fonctions/isScreenMobil.js";
 import {
   styleLinkNavBar,
   getNavBarContent,
   setHrefLinkLanguage,
 } from "../../UTILS/fonctions/styleLinkNavBar.js";
+
+let objectUrl = localOrProd();
+let url = objectUrl.url;
 
 //import de feuilles de style
 import "../../style/CSS/navbar.css";
@@ -81,10 +85,12 @@ function NavBar() {
         }
       >
         <div className="container-logo">
-          <ReactSVG
-            src="/src/assets/logo/logo-monogramme-v4.svg"
-            className="logo-coaching-svg"
-          />
+          <a href={`${url}/index.html`}>
+            <ReactSVG
+              src="/src/assets/logo/logo-monogramme-v4.svg"
+              className="logo-coaching-svg"
+            />
+          </a>
         </div>
         {isSmallScreen && !isClicked ? (
           <div className=" container-burger" onClick={() => clickBurger()}>
