@@ -1,9 +1,12 @@
 //Composant "formLogin"
 //import des librairies
-
+//import { useState } from "react";
 import { useForm } from "react-hook-form";
 import ReCAPTCHA from "react-google-recaptcha";
 //import { useEffect } from "react";
+
+// eslint-disable-next-line no-unused-vars
+//const mode = import.meta.env.MODE;
 
 //import des functions
 import { localOrProd } from "../../UTILS/fonctions/testEnvironement.js";
@@ -17,61 +20,91 @@ import {
 
 //import des fichiers de style du composant
 import "../../style/CSS/form-contact.css";
+import { useState } from "react";
 
 //declaration des functions
+let objectUrl = localOrProd();
+let url = objectUrl.urlApi;
 
-function onChange(value) {
-  console.log("Captcha value:", value);
-}
+//variables et constante
+// eslint-disable-next-line no-undef
+const siteKey = import.meta.env.VITE_SITE_KEY_RECAPTCHA;
 
-async function fetchApi(data) {
-  let objectUrl = localOrProd();
-  let url = objectUrl.urlApi;
-
-  let content = JSON.stringify(data);
-  let response = await fetch(`${url}/contact`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: content,
-  });
-  if (response.ok) {
-    let data = await response.json();
-    // eslint-disable-next-line no-unused-vars
-    const toasterValid = document.querySelector("#toaster-valid");
-
-    if (data.message_status == "sended") {
-      toasterValid.classList.add("visible");
-      setTimeout(() => {
-        toasterValid.classList.remove("visible");
-      }, 3000);
-    }
-  } else {
-    // eslint-disable-next-line no-unused-vars
-    const toasterInvalid = document.querySelector("#toaster-invalid");
-    toasterInvalid.classList.add("visible");
-    setTimeout(() => {
-      toasterInvalid.classList.remove("visible");
-    }, 3000);
-  }
-}
+// eslint-disable-next-line no-unused-vars
 
 //script principal
 
 // composant formulaire de contact
 function FormContact() {
-  console.log("hello render");
+  const [isCaptchaValid, setIsCaptchaValid] = useState(false);
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isValid, isSubmitting },
   } = useForm({ mode: "onTouched" });
-  //use state
 
-  console.log("isValid: " + isValid);
-  console.log("issubmiting: " + isSubmitting);
+  //declaration des functions
+  async function handleSubmitCaptcha(recaptchaToken) {
+    if (!recaptchaToken) {
+      alert("Please complete the reCAPTCHA");
+      return;
+    }
+
+    // Envoie le token au backend pour la vérification
+    const response = await fetch(`${url}/verify-recaptcha`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ token: recaptchaToken }),
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      alert("reCAPTCHA validé avec succès!");
+      // Procéder à l'envoi du formulaire ou autre action
+      setIsCaptchaValid(true);
+    } else {
+      alert("Échec de la validation du reCAPTCHA");
+      setIsCaptchaValid(false);
+    }
+  }
+
+  async function fetchApi(data) {
+    let content = JSON.stringify(data);
+    let response = await fetch(`${url}/contact`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: content,
+    });
+    if (response.ok) {
+      let data = await response.json();
+      // eslint-disable-next-line no-unused-vars
+      const toasterValid = document.querySelector("#toaster-valid");
+
+      if (data.message_status == "sended") {
+        toasterValid.classList.add("visible");
+        setTimeout(() => {
+          toasterValid.classList.remove("visible");
+          reset();
+          setIsCaptchaValid(false);
+        }, 3000);
+      }
+    } else {
+      // eslint-disable-next-line no-unused-vars
+      const toasterInvalid = document.querySelector("#toaster-invalid");
+      toasterInvalid.classList.add("visible");
+      setTimeout(() => {
+        toasterInvalid.classList.remove("visible");
+      }, 3000);
+      setIsCaptchaValid(false);
+    }
+  }
 
   return (
     <form
@@ -151,10 +184,10 @@ function FormContact() {
           />
         </div>
         <div className="container-span-error">
-          {errors?.mail?.type == "pattern" ? (
+          {errors?.email?.type == "pattern" ? (
             <span className="form-text-error">{"Format non valide"}</span>
           ) : null}
-          {errors?.mail?.type == "required" ? (
+          {errors?.email?.type == "required" ? (
             <span className="form-text-error">{"Votre email est requis"}</span>
           ) : null}
         </div>
@@ -177,17 +210,21 @@ function FormContact() {
           />
         </div>
         <div className="container-span-error">
-          {errors?.message?.type == "pattern" ? (
+          {errors?.content?.type == "pattern" ? (
             <span className="form-text-error">{"Format non valide"}</span>
           ) : null}
-          {errors?.message?.type == "required" ? (
+          {errors?.content?.type == "required" ? (
             <span className="form-text-error">{"Un message est requis"}</span>
           ) : null}
         </div>
       </div>
       <ReCAPTCHA
-        sitekey="6Lc1298pAAAAAC-zSvl1zap4B66RY2_x3dQK2r1J"
-        onChange={onChange}
+        // eslint-disable-next-line no-undef
+        sitekey={siteKey}
+        onChange={handleSubmitCaptcha}
+        onExpired={() => {
+          setIsCaptchaValid(false);
+        }}
       />
       ;
       <button
@@ -195,7 +232,7 @@ function FormContact() {
         className="btn-submit"
         type="submit"
         form="form-contact"
-        disabled={!isValid || isSubmitting}
+        disabled={!isValid || isSubmitting || !isCaptchaValid}
       >
         Envoyer votre message
       </button>
