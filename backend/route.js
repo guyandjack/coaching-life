@@ -5,6 +5,10 @@ const routeur = express.Router();
 // eslint-disable-next-line no-undef
 const path = require("path");
 
+/********* import du controler pour la verification de recapcha ************/
+// eslint-disable-next-line no-undef
+const checkRecaptcha = require("./controlers/recaptcha/verifyRecaptcha.js");
+
 /********* import des controlers pour les avis clients ************/
 
 // eslint-disable-next-line no-undef
@@ -66,6 +70,9 @@ routeur.get(
 
 /*********** route post **************
  * **************************************/
+
+//verification reCaptcha
+routeur.post("/verify-recaptcha", checkRecaptcha);
 
 // routes login utilisateur
 routeur.post("/login", checkData, logUser);
