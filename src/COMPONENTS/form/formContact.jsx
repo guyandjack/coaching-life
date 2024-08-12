@@ -3,10 +3,10 @@
 
 import { useForm } from "react-hook-form";
 import ReCAPTCHA from "react-google-recaptcha";
+//import { useEffect } from "react";
 
-function onChange(value) {
-  console.log("Captcha value:", value);
-}
+//import des functions
+import { localOrProd } from "../../UTILS/fonctions/testEnvironement.js";
 
 //import des fichiers RegEx
 import {
@@ -19,9 +19,17 @@ import {
 import "../../style/CSS/form-contact.css";
 
 //declaration des functions
+
+function onChange(value) {
+  console.log("Captcha value:", value);
+}
+
 async function fetchApi(data) {
+  let objectUrl = localOrProd();
+  let url = objectUrl.urlApi;
+
   let content = JSON.stringify(data);
-  let result = await fetch("http://localhost:5500/api/contact", {
+  let response = await fetch(`${url}/contact`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -29,9 +37,30 @@ async function fetchApi(data) {
     },
     body: content,
   });
-  console.log("reponse du serveur" + JSON.stringify(result));
+  if (response.ok) {
+    let data = await response.json();
+    // eslint-disable-next-line no-unused-vars
+    const toasterValid = document.querySelector("#toaster-valid");
+
+    if (data.message_status == "sended") {
+      toasterValid.classList.add("visible");
+      setTimeout(() => {
+        toasterValid.classList.remove("visible");
+      }, 3000);
+    }
+  } else {
+    // eslint-disable-next-line no-unused-vars
+    const toasterInvalid = document.querySelector("#toaster-invalid");
+    toasterInvalid.classList.add("visible");
+    setTimeout(() => {
+      toasterInvalid.classList.remove("visible");
+    }, 3000);
+  }
 }
 
+//script principal
+
+// composant formulaire de contact
 function FormContact() {
   console.log("hello render");
   const {
@@ -113,8 +142,8 @@ function FormContact() {
             id="input-mail"
             className="input"
             type="mail"
-            name="mail"
-            {...register("mail", {
+            name="email"
+            {...register("email", {
               required: true,
 
               pattern: masqueMail,
@@ -139,8 +168,8 @@ function FormContact() {
             id="input-text-area"
             className="input text-area"
             type=""
-            name="message"
-            {...register("message", {
+            name="content"
+            {...register("content", {
               required: true,
 
               pattern: masqueMessage,
@@ -170,6 +199,12 @@ function FormContact() {
       >
         Envoyer votre message
       </button>
+      <div id="toaster-valid" className="toaster valid">
+        {"Message reçu"}
+      </div>
+      <div id="toaster-invalid" className="toaster invalid">
+        {"Oups! une erreur c'est produite"}
+      </div>
     </form>
   );
 }

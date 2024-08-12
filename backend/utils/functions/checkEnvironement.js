@@ -7,7 +7,7 @@ const ENV_PROD = "prod";
 // eslint-disable-next-line no-undef
 console.log("NODE_ENV: " + process.env.NODE_ENV);
 
-async function devOrProd() {
+function devOrProd() {
   // eslint-disable-next-line no-undef
   switch (process.env.NODE_ENV) {
     case ENV_DEV:

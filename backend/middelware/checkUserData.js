@@ -9,7 +9,7 @@ function isDataValid(req, res, next) {
 
   //extrait le type de donnéé du corps de la requete
   for (const property in req.body) {
-    console.log("properiete:" + property);
+    console.log("properiete detectee dans le req:" + property);
     tabOfProperty.push(property);
   }
 

@@ -4,9 +4,63 @@
 // eslint-disable-next-line no-undef
 const nodemailer = require("nodemailer");
 
+//import des functions
+// eslint-disable-next-line no-undef
+const testEnv = require("../../utils/functions/checkEnvironement");
+
+// objet de configuration pour nodeMailer et sendMail
+let objectConfigTransporter = {};
+
+let envType = testEnv.devOrProd();
+
+switch (envType) {
+  case "dev":
+    objectConfigTransporter = {
+      // eslint-disable-next-line no-undef
+      host: process.env.MAILBOX_DEV_HOST,
+      auth: {
+        // eslint-disable-next-line no-undef
+        user: process.env.MAILBOX_DEV_ADRESS,
+        // eslint-disable-next-line no-undef
+        pass: process.env.MAILBOX_DEV_PASSWORD,
+      },
+      tls: {
+        rejectUnauthorized: false,
+      }, // Use
+    };
+    console.log(
+      "objet de config de transporter en dev:" + objectConfigTransporter
+    );
+
+    break;
+  case "prod":
+    objectConfigTransporter = {
+      // eslint-disable-next-line no-undef
+      host: process.env.MAILBOX_PROD_HOST,
+      auth: {
+        // eslint-disable-next-line no-undef
+        user: process.env.MAILBOX_PROD_ADRESS,
+        // eslint-disable-next-line no-undef
+        pass: process.env.MAILBOX_PROD_PASSWORD,
+      },
+      tls: {
+        rejectUnauthorized: false,
+      }, // Use
+    };
+    console.log(
+      "objet de config de transporter en prod:" + objectConfigTransporter
+    );
+    break;
+
+  default:
+    console.log("imposssible de creer l' objet de config");
+    break;
+}
+
 //objet de configuration pour sendMail
-const transporter = nodemailer.createTransport({
-  host: "smtp.orange.fr",
+const transporter = nodemailer.createTransport(
+  /* {
+  host: "smtp.tutanota.com",
   auth: {
     // eslint-disable-next-line no-undef
     user: process.env.MAILBOX_DEV_ADRESS,
@@ -16,7 +70,9 @@ const transporter = nodemailer.createTransport({
   tls: {
     rejectUnauthorized: false,
   }, // Use `true` for port 465, `false` for all other ports
-});
+}; */
+  objectConfigTransporter
+);
 
 //variable locale
 let isValid = null;
@@ -92,16 +148,19 @@ async function getFormDataContact(req) {
 
 async function postMail(req, res, userdata) {
   console.log("email du user:" + userdata.mail);
+  console.log("object config: " + JSON.stringify(objectConfigTransporter));
+  let mailTo = objectConfigTransporter["auth"]["user"];
   let mailOptions = {
     from: userdata.mail,
-    to: "g-dupanloup@wanadoo.fr",
+    to: mailTo,
     subject: "user message from 'SO-COACHING.ch'",
     text: userdata.message,
   };
   // send mail with defined transport object
   transporter.sendMail(mailOptions, function (error) {
     if (error) {
-      res.status(300).json({ message_status: error });
+      res.status(500).json({ message_status: "error" });
+      console.log("erreur d'envois du mail: " + error.message);
     } else {
       res.status(201).json({ message_status: "sended" });
     }
