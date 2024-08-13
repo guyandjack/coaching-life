@@ -13,20 +13,21 @@
   <link rel="alternate" hreflang="en" href="../en/services-of-individual-and-business-coaching.html" />
   <link rel="alternate" hreflang="x-default" href="./prestations-de-coaching-individuel-et-en-entreprise.html" />
 
-  <!-- feuilles de style -->
-  <link rel="stylesheet" href="../../../src/style/CSS/normalize.css" />
-  <link rel="stylesheet" href="../../../src/style/CSS/materialize.css" />
-  <link rel="stylesheet" href="../../../src/style/CSS/shared-class.css" />
-  <link rel="stylesheet" href="../../../src/style/CSS/prestation.css" />
-  <link rel="stylesheet" href="../../../src/style/CSS/card-prestation.css" />
+  <!-- scripts JSX -->
+  <script type="module" src="../../../src/JSX/prestation.jsx"></script>
 
   <!-- scripts JS -->
   <script src="../../../src/JAVASCRIPT/js/bin/materialize.js" defer></script>
   <script type="module" src="../../../src/JAVASCRIPT/page/prestation.js"></script>
 
-  <!-- scripts JSX -->
-  <script type="module" src="../../../src/JSX/prestation.jsx"></script>
 </head>
+<!-- feuilles de style -->
+<link rel="stylesheet" href="../../../src/style/CSS/normalize.css" />
+<link rel="stylesheet" href="../../../src/style/CSS/materialize.css" />
+<link rel="stylesheet" href="../../../src/style/CSS/shared-class.css" />
+<link rel="stylesheet" href="../../../src/style/CSS/prestation.css" />
+<link rel="stylesheet" href="../../../src/style/CSS/card-prestation.css" />
+
 
 <body class="body">
   <div class="container-page page-prestation">
@@ -36,7 +37,8 @@
       </div>
     </header>
     <main>
-      <section>
+      <section class="relative">
+        <div id="RC-spinner"></div>
         <div class="container-title-carousel">
           <h1 class="h1 page-title">Prestations de coaching</h1>
 

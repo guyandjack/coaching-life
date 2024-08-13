@@ -1,6 +1,6 @@
 @import "../utils/colors-rule/colors-rule.scss";
 @import "../utils/mixins/responsive/responsive.scss";
-@import "../utils/pseudo-component/index-articles.scss";
+//@import "../utils/pseudo-component/index-articles.scss";
 
 .body::after {
   background-color: map-get($colors-rule, second-color);

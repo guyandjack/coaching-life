@@ -16,19 +16,22 @@
   <link rel="alternate" hreflang="en" href="./src/HTML/en/home.html" />
   <link rel="alternate" hreflang="x-default" href="./index.html" />
 
-  <!-- feuilles de style -->
-  <link rel="stylesheet" href=".src/style/CSS/normalize.css" />
-  <!-- <link rel="stylesheet" href="./src/style/CSS/materialize.css" /> -->
-  <link rel="stylesheet" href="./src/style/CSS/shared-class.css" />
-  <link rel="stylesheet" href="./src/style/CSS/index.css" />
+  <!-- scripts JSX -->
+  <script type="module" src="./src/JSX/index.jsx"></script>
 
   <!-- scripts JS -->
   <script src="./src/JAVASCRIPT/js/bin/materialize.js" defer></script>
   <script src="./src/JAVASCRIPT/page/index/index.js" defer></script>
   <script type="module" src="./src/JAVASCRIPT/page/index/index-2.js"></script>
 
-  <!-- scripts JSX -->
-  <script type="module" src="./src/JSX/index.jsx"></script>
+
+  <!-- feuilles de style -->
+  <link rel="stylesheet" href=".src/style/CSS/normalize.css" />
+  <!-- <link rel="stylesheet" href="./src/style/CSS/materialize.css" /> -->
+  <link rel="stylesheet" href="./src/style/CSS/shared-class.css" />
+  <link rel="stylesheet" href="./src/style/CSS/index.css" />
+  <link rel="stylesheet" href="./src/style/CSS/index-articles.css" />
+
 </head>
 
 <body class="body">
@@ -47,7 +50,10 @@
         data-de="http://localhost:5173/src/HTML/de/startseite.html"></div>
     </header>
     <main>
-      <section>
+      <section class="relative">
+
+        <div id="RC-spinner"></div>
+
         <div class="main-parallax-container">
           <div class="parallax-container">
             <!--<div id="RC-card-container"></div>-->
@@ -101,7 +107,8 @@
               <div class="div-style"></div>
               <a class="container-img flex-column-center-center"
                 href="http://localhost:5173/src/HTML/fr/prestations-de-coaching-individuel-et-en-entreprise.html">
-                <img class="index-article-img" src="/src/assets/what.jpg" alt="" />
+                <!-- <img id="img-1" class="index-article-img" src="/src/assets/what.jpg" alt="" /> -->
+                <div id="img-1">blabbla</div>
                 <span class="message flex-column-center-center">Découvrir les prestations</span>
               </a>
               <div class="flex-column-center-start container-text">

@@ -15,18 +15,18 @@
   <link rel="alternate" hreflang="en" href="../en/about-me.html" />
   <link rel="alternate" hreflang="x-default" href="./qui-suis-je.html" />
 
+  <!-- scripts JSX -->
+  <script type="module" src="../../src/JSX/qui-suis-je.jsx"></script>
+
+  <!-- scripts JS -->
+  <script type="module" src="../../src/JAVASCRIPT/page/quisuisje.js"></script>
+
   <!-- feuilles de style -->
   <link rel="stylesheet" href="../../src/style/CSS/normalize.css" />
   <!-- <link rel="stylesheet" href="../../style/CSS/materialize.css" /> -->
   <link rel="stylesheet" href="../../src/style/CSS/shared-class.css" />
   <link rel="stylesheet" href="../../src/style/CSS/qui-suis-je.css" />
 
-  <!-- scripts JS -->
-
-  <script type="module" src="../../src/JAVASCRIPT/page/quisuisje.js"></script>
-
-  <!-- scripts JSX -->
-  <script type="module" src="../../src/JSX/qui-suis-je.jsx"></script>
 </head>
 
 <body class="body">
@@ -38,9 +38,10 @@
     </header>
 
     <main>
-      <section class="flex-column-start-center">
+      <section class="flex-column-start-center relative">
+        <div id="RC-spinner"></div>
         <div class="flex-column-center-center introduction ">
-          <img class="bg-img" srcset="
+          <!-- <img class="bg-img" srcset="
           /src/assets/image/500w-qui-suis-je.jpg 500w,
           /src/assets/image/1000w-qui-suis-je.jpg 1000w,
           /src/assets/image/1500w-qui-suis-je.jpg 1500w,
@@ -48,8 +49,8 @@
           (max-width: 575px) 300w,
           (max-width: 992px) 800w,
           (max-width: 1500px) 1200w,
-          1700w" src="/src/assets/image/500w-qui-suis-je.jpg" alt="femme au visage à demi masqué">
-
+          1700w" src="/src/assets/image/ombre-personne.jpg" alt="femme au visage à demi masqué"> -->
+          <img class="bg-img" src="/src/assets/image/qui-suis-je.jpg">
           <div class="flex-column-start-center article ">
             <div class="flex-column-start-center container-card-resume ">
               <div id="RC-card-resume"></div>

@@ -15,18 +15,18 @@
   <link rel="alternate" hreflang="en" href="../en/customer-testimonials.html" />
   <link rel="alternate" hreflang="x-default" href="./temoignages-clients.html" />
 
+  <!-- scripts JSX -->
+  <script type="module" src="../../../src/JSX/temoignage.jsx"></script>
+  <!-- scripts JS -->
+  <!--  <script src="../../JAVASCRIPT/js/bin/materialize.js" defer></script>-->
+  <script type="module" src="../../../src/JAVASCRIPT/page/temoignage.js"></script>
+
   <!-- feuilles de style -->
   <link rel="stylesheet" href="../../../src/style/CSS/normalize.css" />
   <!-- <link rel="stylesheet" href="../../style/CSS/materialize.css" /> -->
   <link rel="stylesheet" href="../../../src/style/CSS/shared-class.css" />
   <link rel="stylesheet" href="../../../src/style/CSS/temoignage.css" />
 
-  <!-- scripts JS -->
-  <!--  <script src="../../JAVASCRIPT/js/bin/materialize.js" defer></script>-->
-  <script type="module" src="../../../src/JAVASCRIPT/page/temoignage.js"></script>
-
-  <!-- scripts JSX -->
-  <script type="module" src="../../../src/JSX/temoignage.jsx"></script>
 </head>
 
 <body class="body">
@@ -37,27 +37,30 @@
     </header>
 
     <main>
-      <div class="testimonial-container-title">
-        <h1 class="h1 testimonial-title">Témoignages des personnes et entreprises qui m'on fait confiance</h1>
-        <img srcset="
+      <section class="relative">
+        <div id="RC-spinner"></div>
+        <div class="testimonial-container-title">
+          <h1 class="h1 testimonial-title">Témoignages des personnes et entreprises qui m'on fait confiance</h1>
+          <img srcset="
         /src/assets/image/500w-temoignage.jpg 500w,
         /src/assets/image/1000w-temoignage.jpg 1000w,
         /src/assets/image/1500w-temoignage.jpg 1500w
         " sizes="(max-height: 575px) 500px, (max-height: 993px) 1000px, 1500px "
-          src="/src/assets/image/500w-temoignage.jpg" class="testimonial-img-title">
+            src="/src/assets/image/500w-temoignage.jpg" class="testimonial-img-title">
 
-      </div>
-      <section id="banner-avis"></section>
-      <section id="RC-container-avis"></section>
-      <div class="flex-column-center-center lieu-des-prestations">
-        <p>
-          Mes prestations de coaching se déroulent à Sion, en Valais et partout en Suisse via la visio.<br> En
-          fonction des
-          besoins, les séances de coaching peuvent se dérouler à votre domicile ou dans votre
-          entreprise.<br>
-          Les sessions de coaching sont proposées en français, en allemand ou en anglais.
-        </p>
-      </div>
+        </div>
+        <section id="banner-avis"></section>
+        <section id="RC-container-avis"></section>
+        <div class="flex-column-center-center lieu-des-prestations">
+          <p>
+            Mes prestations de coaching se déroulent à Sion, en Valais et partout en Suisse via la visio.<br> En
+            fonction des
+            besoins, les séances de coaching peuvent se dérouler à votre domicile ou dans votre
+            entreprise.<br>
+            Les sessions de coaching sont proposées en français, en allemand ou en anglais.
+          </p>
+        </div>
+      </section>
     </main>
 
     <footer>

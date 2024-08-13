@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 //import des composants enfants
 import { NavBar } from "../COMPONENTS/nav/navBar.jsx";
 import { Footer } from "../COMPONENTS/footer/footer.jsx";
-//import { FormContact } from "../COMPONENTS/form/formContact.jsx";
+import { Spinner } from "../COMPONENTS/spinner/spinner.jsx";
 
 //import du contenu des cartes
 
@@ -16,13 +16,15 @@ ReactDOM.createRoot(rootElement).render(
   </React.StrictMode>
 );
 
-/* //insertion du formulaire de contact
-const containerFormContact = document.getElementById("RC-form-contact");
-ReactDOM.createRoot(containerFormContact).render(
+// Rendu du composant Spinner dans le DOM
+const spinnerElement = document.getElementById("RC-spinner");
+ReactDOM.createRoot(spinnerElement).render(
   <React.StrictMode>
-    <FormContact />
+    <Spinner />
   </React.StrictMode>
-); */
+);
+
+
 
 //insertion du footer
 const footerContainer = document.getElementById("RC-footer");

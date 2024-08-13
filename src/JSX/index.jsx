@@ -9,6 +9,10 @@ import { NavBar } from "../COMPONENTS/nav/navBar.jsx";
 //import { CardSmallContainer } from "../COMPONENTS/card/cardSmallContainer.jsx";
 import { Footer } from "../COMPONENTS/footer/footer.jsx";
 
+import { Spinner } from "../COMPONENTS/spinner/spinner.jsx";
+
+//insertion des composants
+
 const rootElement = document.getElementById("RC-nav-bar");
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
@@ -16,12 +20,13 @@ ReactDOM.createRoot(rootElement).render(
   </React.StrictMode>
 );
 
-/*const cardContainer = document.getElementById("RC-card-container");
-ReactDOM.createRoot(cardContainer).render(
+// Rendu du composant Spinner dans le DOM
+const spinnerElement = document.getElementById("RC-spinner");
+ReactDOM.createRoot(spinnerElement).render(
   <React.StrictMode>
-    <CardSmallContainer />
+    <Spinner />
   </React.StrictMode>
-);*/
+);
 
 const footerContainer = document.getElementById("RC-footer");
 ReactDOM.createRoot(footerContainer).render(

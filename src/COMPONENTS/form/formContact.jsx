@@ -63,11 +63,11 @@ function FormContact() {
     const result = await response.json();
 
     if (result.success) {
-      alert("reCAPTCHA validé avec succès!");
+      // alert("reCAPTCHA validé avec succès!");
       // Procéder à l'envoi du formulaire ou autre action
       setIsCaptchaValid(true);
     } else {
-      alert("Échec de la validation du reCAPTCHA");
+      //alert("Échec de la validation du reCAPTCHA");
       setIsCaptchaValid(false);
     }
   }
