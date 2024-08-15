@@ -86,13 +86,13 @@ routeur.post("/verify-recaptcha", checkRecaptcha);
 routeur.post("/login", checkData, logUser);
 
 // routes Ajouter avis
-routeur.post("/avis", auth, checkData, addOneAvis);
+routeur.post("/avis", checkData, addOneAvis);
 
 //route Contact SoCoaching - send mail
 routeur.post("/contact", checkData, contact);
 
 //route Contact SoCoaching - Ajouter un article
-routeur.post("/addArticle", addArticleOnBlog);
+routeur.post("/article", addArticleOnBlog);
 
 /*********** route put   **************
  * ************************************/

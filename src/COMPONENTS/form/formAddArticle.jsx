@@ -58,8 +58,6 @@ function FormAddArticle() {
     const fileList = event.target.files;
     let arrayList = Array.from(fileList);
 
-    //setImageFile(arrayList); // stocke les fichiers images pour etre envoyées au serveur
-
     // Crée des URLs pour l'aperçu des images dans les miniatures
     const previewUrls = arrayList.map((file) => URL.createObjectURL(file));
     setImagePreview(previewUrls);
@@ -81,7 +79,7 @@ function FormAddArticle() {
       }
     }
 
-    let response = await fetch(`${url}/addArticle`, {
+    let response = await fetch(`${url}/article`, {
       method: "POST",
       /* headers: {
         "Content-Type": "application/json",
@@ -179,7 +177,7 @@ function FormAddArticle() {
 
       <div className="flex-column-start-start cont-input-label">
         <label htmlFor="input-add-file-img" className="label">
-          {"Choisir une ou deux images jpeg/jpg"}
+          {"Choisir une plusieurs images jpeg/jpg/png"}
         </label>
         <div className="flex-row-center-center cont-input">
           <input
@@ -213,7 +211,7 @@ function FormAddArticle() {
           )}
           {errors.addFile?.type === "isjpeg" && (
             <span className="form-text-error">
-              {"Mauvais type de fichier image uniquemnt jpeg/jpg/png! "}
+              {"Mauvais type de fichier image uniquemnt jpeg / jpg / png ! "}
             </span>
           )}
         </div>
@@ -285,7 +283,7 @@ function FormAddArticle() {
         form="form-add-article"
         disabled={!isValid || isSubmitting}
       >
-        {"Ajouter l'article"}
+        {"Ajouter un article"}
       </button>
       <div id="toaster-valid" className="toaster valid">
         {"Message reçu"}

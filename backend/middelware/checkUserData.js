@@ -7,6 +7,8 @@ function isDataValid(req, res, next) {
   let tabOfProperty = [];
   let tabError = [];
 
+  console.log("corps de la requette add avis: " + req.body);
+
   //extrait le type de donnéé du corps de la requete
   for (const property in req.body) {
     console.log("properiete detectee dans le req:" + property);
@@ -66,11 +68,11 @@ function isDataValid(req, res, next) {
           tabError.push("error socialurl");
         }
         break;
-      case "avatarurl":
+      /* case "avatarurl":
         if (!functionControl.checkImg(req.body.avatarurl)) {
           tabError.push("error avatarurl");
         }
-        break;
+        break; */
       case "avisid":
         if (!functionControl.checkNumber(req.body.avisid)) {
           tabError.push("error avatarurl");

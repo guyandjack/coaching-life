@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-undef
-const connectDB = require("../../utils/functions/connectionDataBase.js");
+const connectToDataBase = require("../../utils/functions/connectionDataBase.js");
 // eslint-disable-next-line no-undef
 const sendRequest = require("../../utils/functions/requestDataBase.js");
 
@@ -23,7 +23,7 @@ async function globalGetAllAvis(req, res) {
 
   try {
     // Connexion à la base de données
-    const connect = await connectDB.connectToDataBase();
+    const connect = await connectToDataBase();
 
     if (!connect) {
       return res
