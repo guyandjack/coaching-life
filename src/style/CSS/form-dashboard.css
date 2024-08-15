@@ -1,5 +1,5 @@
 /***************************************************
-** concerne l' ensemble des formulaires du dasboard
+** concerne l' ensemble des formulaires du dashboard
 *****************************************************
 ****start********************************************/
 .form-dashboard {
@@ -10,10 +10,14 @@
   margin: 50px 0px;
 }
 .form-dashboard .cont-input-label {
+  max-width: 350px;
+  width: 100%;
   margin: 20px 0px;
 }
-.form-dashboard .label {
-  color: #001747;
+@media screen and (min-width: 769px) {
+  .form-dashboard .cont-input-label {
+    max-width: 500px;
+  }
 }
 .form-dashboard .form-title {
   font-size: 25px;
@@ -31,28 +35,45 @@
     margin-left: 40px;
   }
 }
+.form-dashboard .label {
+  color: #001747;
+}
+.form-dashboard .cont-input {
+  width: 100%;
+}
 .form-dashboard .input {
-  width: 350px;
   border: 2px solid #001747;
   border-radius: 10px;
   background-color: #fbfffe;
   resize: vertical;
+  width: 100%;
 }
-@media screen and (min-width: 769px) {
-  .form-dashboard .input {
-    width: 400px;
-  }
+.form-dashboard .container-span-error {
+  height: 50px;
+}
+.form-dashboard .container-span-error span {
+  background-color: #ff6e00;
+  border: 2px solid #994200;
+  color: #fbfffe;
+  border-radius: 10px;
+  padding: 10px;
+  opacity: 0.9;
+}
+.form-dashboard .title-mini-img {
+  margin: 10px 0px;
+  color: #001747;
 }
 .form-dashboard .display-image {
   width: 100px;
   height: 100px;
+  margin: 5px;
 }
 .form-dashboard .viewer {
-  height: 100px;
+  min-height: 100px;
 }
 .form-dashboard .btn-submit {
   position: relative;
-  z-index: 1;
+  z-index: 100;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
@@ -69,15 +90,15 @@
     width: 400px;
   }
 }
-.form-dashboard .btn-submit:hover::after {
-  opacity: 0.9;
-}
 .form-dashboard .btn-submit:disabled {
-  opacity: 0.2;
+  opacity: 0.5;
   cursor: default;
 }
 .form-dashboard .btn-submit:disabled:hover::after {
-  opacity: 0.6;
+  opacity: 0.7;
+}
+.form-dashboard .btn-submit:hover::after {
+  opacity: 1;
 }
 .form-dashboard .btn-submit::after {
   content: "";
@@ -88,7 +109,7 @@
   width: 100%;
   height: 100%;
   background-color: #9cd008;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 .form-dashboard .toaster {
   opacity: 0;
@@ -130,7 +151,7 @@
   left: 0px;
   width: 100%;
   height: 100%;
-  background-color: #001747;
+  background-color: #106288;
   border-radius: 10px;
   opacity: 0.5;
 }

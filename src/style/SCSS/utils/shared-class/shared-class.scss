@@ -137,6 +137,14 @@ footer {
   align-items: flex-start;
 }
 
+.flex-row-space_between-wrap-start {
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: start;
+}
+
 .flex-row-space_between-center {
   display: flex;
   flex-flow: row;

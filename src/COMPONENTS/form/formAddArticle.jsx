@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 //import des fichiers RegEx
 // eslint-disable-next-line no-unused-vars
 import {
+  masqueMessage,
   masqueExtensionHtml,
   masqueExtensionImg,
 } from "../../UTILS/RegEx/regEx.js";
@@ -120,11 +121,11 @@ function FormAddArticle() {
       })}
     >
       <p className="form-title">Ajouter un article sur le blog</p>
-      <div className="cont-input-label">
+      <div className="flex-column-start-start cont-input-label">
         {/* <label htmlFor="input-text-add-title" className="label">
           {"Titre de l' article"}
         </label> */}
-        <div className="cont-input-span flex-row-start-center">
+        <div className="flex-row-center-center cont-input">
           <textarea
             id="input-text-add-title"
             className="input"
@@ -133,23 +134,24 @@ function FormAddArticle() {
             {...register("addTitle", {
               required: true,
 
-              //pattern: masqueMessage,
+              pattern: masqueMessage,
             })}
           />
         </div>
-
-        {errors?.addTitle?.type == "pattern" ? (
-          <span className="form-text-error">{"Format non valide!"}</span>
-        ) : null}
-        {errors?.addTitle?.type == "required" ? (
-          <span className="form-text-error">{"Le titre est requis!"}</span>
-        ) : null}
+        <div className="flex-column-center-center container-span-error">
+          {errors?.addTitle?.type == "pattern" ? (
+            <span className="form-text-error">{"Format non valide!"}</span>
+          ) : null}
+          {errors?.addTitle?.type == "required" ? (
+            <span className="form-text-error">{"Le titre est requis!"}</span>
+          ) : null}
+        </div>
       </div>
-      <div className="cont-input-label">
+      <div className="flex-column-start-start cont-input-label">
         {/* <label htmlFor="input-text-add-resume" className="label">
           {"Resumé de l' article"}
         </label> */}
-        <div className="cont-input-span flex-row-start-center">
+        <div className="flex-row-center-center cont-input">
           <textarea
             id="input-text-add-resume"
             className="input"
@@ -159,26 +161,27 @@ function FormAddArticle() {
             {...register("addResume", {
               required: true,
 
-              //pattern: masqueMessage,
+              pattern: masqueMessage,
             })}
           />
         </div>
-
-        {errors?.addResume?.type == "pattern" ? (
-          <span className="form-text-error">{"Format non valide"}</span>
-        ) : null}
-        {errors?.addResume?.type == "required" ? (
-          <span className="form-text-error">
-            {"Le resumé de l' article est requis !"}
-          </span>
-        ) : null}
+        <div className="flex-column-center-center container-span-error">
+          {errors?.addResume?.type == "pattern" ? (
+            <span className="form-text-error">{"Format non valide"}</span>
+          ) : null}
+          {errors?.addResume?.type == "required" ? (
+            <span className="form-text-error">
+              {"Le resumé de l' article est requis !"}
+            </span>
+          ) : null}
+        </div>
       </div>
 
-      <div className="cont-input-label">
+      <div className="flex-column-start-start cont-input-label">
         <label htmlFor="input-add-file-img" className="label">
           {"Choisir une ou deux images jpeg/jpg"}
         </label>
-        <div className="flex-row-start-center cont-input-span ">
+        <div className="flex-row-center-center cont-input">
           <input
             id="input-add-file-img"
             className="input"
@@ -204,17 +207,19 @@ function FormAddArticle() {
             })}
           />
         </div>
-        {errors.addFile?.type === "required" && (
-          <span className="form-text-error">{"Le fichier est requis !"}</span>
-        )}
-        {errors.addFile?.type === "isjpeg" && (
-          <span className="form-text-error">
-            {"Mauvais type de fichier image uniquemnt jpeg/jpg/png! "}
-          </span>
-        )}
+        <div className="flex-column-center-center container-span-error">
+          {errors.addFile?.type === "required" && (
+            <span className="form-text-error">{"Le fichier est requis !"}</span>
+          )}
+          {errors.addFile?.type === "isjpeg" && (
+            <span className="form-text-error">
+              {"Mauvais type de fichier image uniquemnt jpeg/jpg/png! "}
+            </span>
+          )}
+        </div>
       </div>
-      <div className="flex-row-start-space_evenly viewer">
-        <p>{"Miniature des images selectionées: "}</p>
+      <p className="title-mini-img">{"Miniature des images selectionées: "}</p>
+      <div className="flex-row-space_between-wrap-start  viewer">
         {imagePreview.length > 0
           ? imagePreview.map((img, index) => {
               return (
@@ -230,13 +235,13 @@ function FormAddArticle() {
           : null}
       </div>
 
-      <div className="cont-input-label">
+      <div className="flex-column-start-start cont-input-label">
         {
           <label htmlFor="input-text-add-article" className="label">
             {"Choisir un article au format html"}
           </label>
         }
-        <div className="cont-input-span flex-row-start-center">
+        <div className="flex-row-center-center cont-input">
           <input
             id="input-file-add-article"
             className="input"
@@ -259,17 +264,18 @@ function FormAddArticle() {
             })}
           />
         </div>
-
-        {errors.addArticle?.type === "ishtml" ? (
-          <span className="form-text-error">
-            {"Mauvaise extension de fichier!"}
-          </span>
-        ) : null}
-        {errors.addArticle?.type === "required" ? (
-          <span className="form-text-error">
-            {"Un fichier HTML est requis!"}
-          </span>
-        ) : null}
+        <div className="flex-column-center-center container-span-error">
+          {errors.addArticle?.type === "ishtml" ? (
+            <span className="form-text-error">
+              {"Mauvaise extension de fichier!"}
+            </span>
+          ) : null}
+          {errors.addArticle?.type === "required" ? (
+            <span className="form-text-error">
+              {"Un fichier HTML est requis!"}
+            </span>
+          ) : null}
+        </div>
       </div>
 
       <button
