@@ -1,37 +1,59 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta name="robots" content="noindex" />
-    <title>Dashboard-Admin</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <script type="module" src="../JSX/dashboard.jsx"></script>
+<head>
+  <meta name="robots" content="noindex" />
+  <title>Dashboard-Admin</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="../style/CSS/dashboard.css" />
-  </head>
-  <body>
-    <div class="container-page">
-      <header class="flex-row-">
-        <div id="RC-nav-bar"></div>
-        <div
-          id="info-href"
-          data-fr="#"
-          data-en="#"
-          data-de="#"
-        ></div>
-        <a href="" class="log-out">logout</a>
-      </header>
-      <main>
+  <!-- scripts JSX -->
+  <script type="module" src="../../src/JSX/dashboard.jsx"></script>
+
+
+  <!-- fichier de style CSS -->
+  <link rel="stylesheet" href="../../src/style/CSS/normalize.css" />
+
+  <link rel="stylesheet" href="../../src/style/CSS/shared-class.css" />
+
+  <link rel="stylesheet" href="../../src/style/CSS/dashboard.css" />
+</head>
+
+<body>
+  <div class="flex-column-center-center container-page-dashboard">
+    <header class="">
+      <div id="RC-nav-bar"></div>
+      <div id="info-href" data-fr="http://localhost:5173/index.html"
+        data-en="http://localhost:5173/src/HTML/en/home.html"
+        data-de="http://localhost:5173/src/HTML/de/startseite.html"></div>
+      <a href="" class="log-out">logout</a>
+    </header>
+    <main>
+      <section class="relative">
+        <div id="RC-spinner"></div>
         <h1>Admin</h1>
-        <article><div id="RC-form-change-password"></div></article>
-        <article><div id="RC-form-add-avis"></div></article>
-        <article><div id="RC-form-change-avis"></div></article>
-        <article><div id="RC-form-delete-avis"></div></article>
-      </main>
-      <footer>
-        <div class="RC-footer"></div>
-      </footer>
-    </div>
-  </body>
+
+        <article class="flex-column-start-center ">
+          <div id="RC-form-change-password" class="container-form"></div>
+        </article>
+        <article class="flex-column-start-center ">
+          <div id="RC-form-add-avis" class="container-form"></div>
+        </article>
+        <article class="flex-column-start-center ">
+          <div id="RC-form-change-avis" class="container-form"></div>
+        </article>
+        <article class="flex-column-start-center ">
+          <div id="RC-form-delete-avis" class="container-form"></div>
+        </article>
+        <article class="flex-column-start-center ">
+          <div id="RC-form-add-article" class="container-form"></div>
+        </article>
+    </main>
+    </section>
+    <footer>
+      <div id="RC-footer"></div>
+    </footer>
+  </div>
+</body>
+
 </html>

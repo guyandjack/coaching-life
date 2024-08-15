@@ -4,6 +4,10 @@ const express = require("express");
 const routeur = express.Router();
 // eslint-disable-next-line no-undef
 const path = require("path");
+// eslint-disable-next-line no-undef
+//const multer = require("multer");
+
+//const upload = multer({ dest: "uploads/" });
 
 /********* import du controler pour la verification de recapcha ************/
 // eslint-disable-next-line no-undef
@@ -35,6 +39,10 @@ const logUser = require("./controlers/user/loginUser.js");
 //changement du mot de passe
 // eslint-disable-next-line no-unused-vars, no-undef
 const changePassword = require("./controlers/user/changePassword.js");
+
+//changement du mot de passe
+// eslint-disable-next-line no-unused-vars, no-undef
+const addArticleOnBlog = require("./controlers/user/addArticle.js");
 
 /************ import des controlers pour le formulaire de contact *************/
 // eslint-disable-next-line no-undef
@@ -82,9 +90,9 @@ routeur.post("/avis", auth, checkData, addOneAvis);
 
 //route Contact SoCoaching - send mail
 routeur.post("/contact", checkData, contact);
-/* routeur.post("/contact", (req, res) => {
-  res.status(200).json({ message: "test ok de la route contact" });
-}); */
+
+//route Contact SoCoaching - Ajouter un article
+routeur.post("/addArticle", addArticleOnBlog);
 
 /*********** route put   **************
  * ************************************/

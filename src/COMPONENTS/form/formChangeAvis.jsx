@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { masqueText, masqueMessage } from "../../UTILS/RegEx/regEx.js";
 
 //import des fichiers de style du composant
-//import "../../style/CSS/form-add-avis.css";
+import "../../style/CSS/form-dashboard.css";
 
 function FormChangeAvis() {
   const {
@@ -23,7 +23,7 @@ function FormChangeAvis() {
   return (
     <form
       id="form-change-avis"
-      className="form flex-column-start-start"
+      className="flex-column-start-start form-dashboard"
       onSubmit={handleSubmit((data) => console.log(data))}
     >
       <div className="cont-input-label">

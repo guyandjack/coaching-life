@@ -200,7 +200,6 @@ function FormContact() {
           <textarea
             id="input-text-area"
             className="input text-area"
-            type=""
             name="content"
             {...register("content", {
               required: true,

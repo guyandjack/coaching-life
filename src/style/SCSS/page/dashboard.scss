@@ -1,10 +1,25 @@
 //feuille de style page dashboard
+//import des fichiers utils
+@import "../utils/colors-rule/colors-rule.scss";
+@import "../utils/mixins/responsive/responsive.scss";
+
+
 .container-page-dashboard {
   width: 100%;
-  border: 2px solid green;
   padding: 1em;
 
-  h1 {
-    align-items: start;
+
+}
+
+.container-form {
+  width: 100%;
+
+  @include upper-medium-screen {
+    width: 80%;
   }
+
+  @include upper-large-screen {
+    width: 60%;
+  }
+
 }

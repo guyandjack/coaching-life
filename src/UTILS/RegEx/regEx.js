@@ -37,6 +37,10 @@ const masquePassWord =
   /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\S+$).{8,}$/;
 
 const masqueAlphanumeric = /^[0-9A-Za-z_'.-\s]{2,50}$/;
+
+//masque qui permet de controler si une chaine de caractere a une extension jpg/jpeg/png
+const masqueExtensionImg = /^[\w-]{2,}(\.jpg|\.jpeg|\.png)$/i;
+const masqueExtensionHtml = /^[\w-]{2,}(\.html)$/i;
 export {
   masqueCivilite,
   masqueText,
@@ -46,4 +50,6 @@ export {
   masqueNumberFloat,
   masquePassWord,
   masqueAlphanumeric,
+  masqueExtensionImg,
+  masqueExtensionHtml,
 };

@@ -15,7 +15,7 @@ import { BsFillEyeFill } from "react-icons/bs";
 import { masquePassWord } from "../../UTILS/RegEx/regEx.js";
 
 //feuille de style du composant
-import "../../style/CSS/formchangepassword.css";
+import "../../style/CSS/form-dashboard.css";
 
 function FormChangePassword() {
   const {
@@ -44,9 +44,10 @@ function FormChangePassword() {
   return (
     <form
       id="form-change-password"
-      className="form flex-column-start-start"
+      className="flex-column-start-start form-dashboard"
       onSubmit={handleSubmit((data) => console.log(data))}
     >
+      <p className="form-title">Changer le mot de passe</p>
       <p>
         Le mot de passe doit contenir au moins:<br></br>8 caractères <br></br>1
         chiffre <br></br>1 lettre majuscule<br></br>un carractere spécial

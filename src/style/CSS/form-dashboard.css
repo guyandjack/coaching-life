@@ -1,0 +1,181 @@
+/***************************************************
+** concerne l' ensemble des formulaires du dasboard
+*****************************************************
+****start********************************************/
+.form-dashboard {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  padding: 10px;
+  margin: 50px 0px;
+}
+.form-dashboard .cont-input-label {
+  margin: 20px 0px;
+}
+.form-dashboard .label {
+  color: #001747;
+}
+.form-dashboard .form-title {
+  font-size: 25px;
+  margin: 30px 0px;
+  padding: 10px;
+  border-left: 5px solid #001747;
+  border-right: 5px solid #001747;
+  color: #fbfffe;
+}
+@media screen and (min-width: 993px) {
+  .form-dashboard .form-title {
+    font-size: 30px;
+    -ms-flex-item-align: start;
+        align-self: start;
+    margin-left: 40px;
+  }
+}
+.form-dashboard .input {
+  width: 350px;
+  border: 2px solid #001747;
+  border-radius: 10px;
+  background-color: #fbfffe;
+  resize: vertical;
+}
+@media screen and (min-width: 769px) {
+  .form-dashboard .input {
+    width: 400px;
+  }
+}
+.form-dashboard .display-image {
+  width: 100px;
+  height: 100px;
+}
+.form-dashboard .viewer {
+  height: 100px;
+}
+.form-dashboard .btn-submit {
+  position: relative;
+  z-index: 1;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 10px;
+  margin: 20px 0px;
+  border-radius: 0px;
+  color: #fbfffe;
+  cursor: pointer;
+  width: 350px;
+  text-align: center;
+}
+@media screen and (min-width: 769px) {
+  .form-dashboard .btn-submit {
+    width: 400px;
+  }
+}
+.form-dashboard .btn-submit:hover::after {
+  opacity: 0.9;
+}
+.form-dashboard .btn-submit:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+.form-dashboard .btn-submit:disabled:hover::after {
+  opacity: 0.6;
+}
+.form-dashboard .btn-submit::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #9cd008;
+  opacity: 0.6;
+}
+.form-dashboard .toaster {
+  opacity: 0;
+  position: absolute;
+  left: 50%;
+  bottom: -20px;
+  width: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  padding: 10px;
+  border: 1px solid #fbfffe;
+  border-radius: 5px;
+  color: #fbfffe;
+  text-align: center;
+}
+.form-dashboard .valid {
+  background-color: #9cd008;
+}
+.form-dashboard .invalid {
+  background-color: #ff6e00;
+}
+.form-dashboard .visible {
+  -webkit-transition: opacity 1s linear, -webkit-transform 1s linear;
+  transition: opacity 1s linear, -webkit-transform 1s linear;
+  transition: opacity 1s linear, transform 1s linear;
+  transition: opacity 1s linear, transform 1s linear, -webkit-transform 1s linear;
+  opacity: 1;
+  -webkit-transform: translate(-50%, 40px);
+      -ms-transform: translate(-50%, 40px);
+          transform: translate(-50%, 40px);
+}
+
+.form-dashboard::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #001747;
+  border-radius: 10px;
+  opacity: 0.5;
+}
+
+/***************************************************
+** concerne l' ensemble des formulaires du dashboard
+*****************************************************
+**** end ********************************************/
+/***************************************************
+** concerne le formulaire "changePassword"
+*****************************************************
+**** start ********************************************/
+/***************************************************
+** concerne le formulaire "changePassword"
+*****************************************************
+**** end ********************************************/
+/***************************************************
+** concerne le formulaire "AddAvis"
+*****************************************************
+**** start ********************************************/
+/***************************************************
+** concerne le formulaire "AddAvis"
+*****************************************************
+**** end ********************************************/
+/***************************************************
+** concerne le formulaire "DeleteAvis"
+*****************************************************
+**** start ********************************************/
+/***************************************************
+** concerne le formulaire "DeleteAvis"
+*****************************************************
+**** end ********************************************/
+/***************************************************
+** concerne le formulaire "AddArticle"
+*****************************************************
+**** start ********************************************/
+/***************************************************
+** concerne le formulaire "AddArticle"
+*****************************************************
+**** end ********************************************/
+/***************************************************
+** concerne le formulaire "DeleteArticle"
+*****************************************************
+**** start ********************************************/
+/***************************************************
+** concerne le formulaire "DeleteArticle"
+*****************************************************
+**** end ********************************************/
