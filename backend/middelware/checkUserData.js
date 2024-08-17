@@ -7,6 +7,42 @@ function isDataValid(req, res, next) {
   let tabOfProperty = [];
   let tabError = [];
 
+  //controle des data de type fichier
+  //peu etre attendu comme typemime .jpeg, .jpg, .png, .html
+
+  // eslint-disable-next-line no-unused-vars
+  function isValidTypeManyFiles(files, validType) {
+    return files.some((file) => {
+      validType.includes(file.mimetype);
+    });
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  function isValideTypeSingleFile(file, validType) {
+    return validType.includes(file.mimetype);
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  let bodyFiles = req.files ? req.files : null;
+  let bodyFile = req.file ? req.file : null;
+
+  /* console.log(" tableau ou objet : " + typeof bodyFiles);
+  console.log("  tableau ou objet : " + typeof bodyFile); */
+
+  const typeMimeValid = ["image/jpeg", "image/jpg", "image/png", "text/html"];
+  let isValid = false;
+
+  if (typeof bodyFiles == "object" && bodyFiles !== null) {
+    isValid = isValideTypeSingleFile(bodyFile, typeMimeValid);
+  }
+
+  isValid = isValidTypeManyFiles(bodyFile, typeMimeValid);
+
+  if (!isValid) {
+    res.status(401).json({ message: "format des fichiers invalides" });
+  }
+
+  //controle des data de type lastname, name etc....
   console.log("corps de la requette add avis: " + req.body);
 
   //extrait le type de donnéé du corps de la requete
@@ -63,11 +99,11 @@ function isDataValid(req, res, next) {
           tabError.push("error content");
         }
         break;
-      case "socialurl":
+      /* case "socialurl":
         if (!functionControl.checkUrl(req.body.socialurl)) {
           tabError.push("error socialurl");
         }
-        break;
+        break; */
       /* case "avatarurl":
         if (!functionControl.checkImg(req.body.avatarurl)) {
           tabError.push("error avatarurl");

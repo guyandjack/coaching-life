@@ -7,7 +7,7 @@
 
 .container-title-carousel {
   background-color: map-get($colors-rule, sixth-color);
-  background: url("@/assets/image/tableau-opportunity.jpg");
+  background-image: url("@/assets/image/page-prestation/tableau-opportunity.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -70,7 +70,7 @@
   }
 
   #slider-1 {
-    background: url("http://localhost:5173/src/assets/image/coaching-de-vie.jpg");
+    background-image: url("@/assets/image/page-prestation/coaching-de-vie.jpg");
     border: 1px solid map-get($colors-rule, second-color);
 
     &>h2 {
@@ -82,7 +82,7 @@
   }
 
   #slider-2 {
-    background: url("http://localhost:5173/src/assets/image/coaching-de-cariere.jpg");
+    background-image: url("@/assets/image/page-prestation/coaching-de-cariere.jpg");
     border: 1px solid map-get($colors-rule, third-color);
 
     &>h2 {
@@ -93,7 +93,7 @@
   }
 
   #slider-3 {
-    background: url("http://localhost:5173/src/assets/image/coaching-en-entreprise.jpg");
+    background-image: url("@/assets/image/page-prestation/coaching-en-entreprise.jpg");
     border: 1px solid map-get($colors-rule, fourth-color);
 
     &>h2 {

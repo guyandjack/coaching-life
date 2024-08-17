@@ -2,8 +2,8 @@
 @import "../utils/colors-rule/colors-rule.scss";
 @import "../utils/mixins/responsive/responsive.scss";
 
-.page-contact {
-    //background-color: map-get($colors-rule, sixth-color);
+.body::after {
+    background: linear-gradient(90deg, map-get($colors-rule, first-color), map-get($colors-rule, first-color));
 }
 
 .contact-container-title {

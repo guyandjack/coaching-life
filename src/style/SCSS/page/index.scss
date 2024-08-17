@@ -2,10 +2,10 @@
 @import "../utils/mixins/responsive/responsive.scss";
 //@import "../utils/pseudo-component/index-articles.scss";
 
-.body::after {
+/* .body::after {
   background-color: map-get($colors-rule, second-color);
   opacity: 0.7;
-}
+} */
 
 .main-parallax-container {
   position: relative;

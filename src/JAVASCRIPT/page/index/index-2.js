@@ -44,6 +44,30 @@ function setUrlLink(url) {
 
 // script principal
 
+//permet de declencher les animation lorsque l' element est visible
+document.addEventListener("DOMContentLoaded", function () {
+  const observerOptions = {
+    root: null, // null signifie que l'élément sera observé par rapport au viewport
+    rootMargin: "0px",
+    threshold: 0.2, // 10% de l'élément doit être visible pour déclencher l'observation
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target); // arrêter d'observer une fois que la classe est ajoutée
+      }
+    });
+  }, observerOptions);
+
+  // Sélectionner les éléments que vous voulez observer
+  const elements = document.querySelectorAll(".link-article");
+  elements.forEach((element) => {
+    observer.observe(element);
+  });
+});
+
 window.document.addEventListener("resize", function (e) {
   console.log("evenement resize: " + e);
   displayLink();

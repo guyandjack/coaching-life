@@ -1,6 +1,254 @@
 /*************************************************************************************
 ********************* concerne les articles page index *********************************
 **** start  ********************************************************************************/
+.example {
+  /* .link-article::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    //background-color: darken(map-get($colors-rule, second-color), 0%);
+    //background-color: map-get($colors-rule, first-color);
+    //opacity: 0.5;
+    border-radius: 10px;
+  } */
+  /* .title-article::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    //box-shadow: inset 0px 0px 20px 0px map-get($colors-rule, first-color);
+    background-color: map-get($colors-rule, first-color);
+    border-radius: 10px;
+    opacity: 0.8;
+
+  } */
+  /*  .container-text-card {
+    width: 100%;
+
+    background: linear-gradient(90deg, map-get($colors-rule, sixth-color), map-get($colors-rule, second-color));
+
+  } */
+}
+.example .link-article {
+  z-index: 1;
+  max-width: 400px;
+  width: 100%;
+  max-height: 1000px;
+  margin: 200px 0px;
+}
+@media screen and (min-width: 769px) {
+  .example .link-article {
+    max-width: 500px;
+    opacity: 0.3;
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+    -webkit-transition: opacity 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+  }
+}
+@media screen and (min-width: 993px) {
+  .example .link-article {
+    max-width: 600px;
+  }
+}
+.example .visible {
+  opacity: 1;
+  -webkit-transform: translateX(0%);
+      -ms-transform: translateX(0%);
+          transform: translateX(0%);
+}
+.example .container-image {
+  position: relative;
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.example .image-article {
+  width: 100%;
+  height: 300px;
+  background-color: #001747;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-left: 2px solid #8ab707;
+}
+@media screen and (min-width: 769px) {
+  .example .image-article {
+    height: 350px;
+  }
+}
+@media screen and (min-width: 993px) {
+  .example .image-article {
+    height: 400px;
+  }
+}
+.example #img-1 {
+  background-image: url("/src/assets/image/page-index/what.jpg");
+  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgb(0, 0, 0)), to(transparent));
+  -webkit-mask-image: linear-gradient(180deg, rgb(0, 0, 0), transparent);
+          mask-image: -webkit-gradient(linear, left top, left bottom, from(rgb(0, 0, 0)), to(transparent));
+          mask-image: linear-gradient(180deg, rgb(0, 0, 0), transparent);
+  background-position: bottom;
+}
+.example #img-2 {
+  background-image: url("/src/assets/image/page-index/pense.jpg");
+  -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, from(rgb(0, 0, 0)), to(transparent));
+  -webkit-mask-image: linear-gradient(0deg, rgb(0, 0, 0), transparent);
+          mask-image: -webkit-gradient(linear, left bottom, left top, from(rgb(0, 0, 0)), to(transparent));
+          mask-image: linear-gradient(0deg, rgb(0, 0, 0), transparent);
+}
+.example #img-3 {
+  background-image: url("/src/assets/image/page-index/desert.jpg");
+  -webkit-mask-image: url("/src/assets/masque/blob-index-bar-horizontal.svg");
+          mask-image: url("/src/assets/masque/blob-index-bar-horizontal.svg");
+}
+.example .title-article {
+  position: absolute;
+  top: -15%;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+      -ms-transform: translate(-50%);
+          transform: translate(-50%);
+  font-weight: 600;
+  font-size: 25px;
+  padding: 30px 10px 30px 10px;
+  width: 100%;
+  -webkit-backdrop-filter: brightness(60%) blur(2px);
+          backdrop-filter: brightness(60%) blur(2px);
+  background-color: #8ab707;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-left: 2px solid #8ab707;
+}
+.example .text-1,
+.example .text-2,
+.example .text-3 {
+  margin: 20px 0px;
+  line-height: 150%;
+  text-align: left;
+  font-size: 18px;
+}
+.example .text-1 {
+  font-weight: 600;
+  text-align: left;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  width: 70%;
+  color: #fbfffe;
+}
+@media screen and (min-width: 769px) {
+  .example .text-1 {
+    -webkit-transform: translateX(-20%);
+        -ms-transform: translateX(-20%);
+            transform: translateX(-20%);
+    font-size: 22px;
+  }
+}
+.example .container-text-2 .svg-card-index-arrow-right,
+.example .container-text-3 .svg-card-index-arrow-right {
+  display: none;
+}
+@media screen and (min-width: 769px) {
+  .example .container-text-2 .svg-card-index-arrow-right,
+  .example .container-text-3 .svg-card-index-arrow-right {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100px;
+  }
+}
+@media screen and (min-width: 769px) {
+  .example .container-text-2 {
+    -webkit-transform: translateX(-20%);
+        -ms-transform: translateX(-20%);
+            transform: translateX(-20%);
+  }
+}
+.example .text-2,
+.example .text-3 {
+  width: 100%;
+  color: #001747;
+  padding: 10px;
+  border-radius: 10px;
+  -webkit-backdrop-filter: brightness(90%);
+          backdrop-filter: brightness(90%);
+}
+@media screen and (min-width: 769px) {
+  .example .text-2,
+  .example .text-3 {
+    margin-left: 20px;
+  }
+}
+.example #img-text-3-1 {
+  background-image: url("/src/assets/image/page-index/what.jpg");
+  background-position: bottom;
+}
+.example #img-text-3-2 {
+  background-image: url("/src/assets/image/page-index/pense.jpg");
+}
+.example #img-text-3-3 {
+  background-image: url("/src/assets/image/page-index/desert.jpg");
+}
+
+.example-2 {
+  width: 500px;
+  height: 500px;
+  background-image: url("/src/assets/image/page-index/abeille.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.example-2 .filtre-2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* width: 250px;
+  height: 250px; */
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-backdrop-filter: brightness(80%);
+          backdrop-filter: brightness(80%);
+  border: 2px solid red;
+  color: pink;
+  padding: 50px;
+  text-align: center;
+}
+
+.example-3 {
+  width: 500px;
+  height: 500px;
+  background-image: url("/src/assets/image/page-index/pense.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-filter: blur(5px);
+          filter: blur(5px);
+  /* &.filtre-3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250px;
+    height: 250px;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    backdrop-filter: grayscale(100%);
+    border: 2px solid red;
+    border-radius: 50%;
+    color: pink;
+  } */
+}
+
 .container-article {
   width: 100%;
   margin: 0px auto;

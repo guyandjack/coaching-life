@@ -50,7 +50,7 @@
     40%,
     map-get($colors-rule, sixth-color)
   );*/
-  background-color: map-get($colors-rule, first-color);
+  background: linear-gradient(90deg, map-get($colors-rule, second-color), map-get($colors-rule, sixth-color));
   opacity: 1;
 }
 
@@ -226,6 +226,10 @@ footer {
 
 .relative {
   position: relative;
+}
+
+.block {
+  display: block;
 }
 
 /****************************************************************************************

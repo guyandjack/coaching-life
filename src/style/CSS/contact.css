@@ -1,3 +1,8 @@
+.body::after {
+  background: -webkit-gradient(linear, left top, right top, from(#001747), to(#001747));
+  background: linear-gradient(90deg, #001747, #001747);
+}
+
 .contact-container-title {
   position: relative;
   z-index: 1;

@@ -71,7 +71,8 @@
     40%,
     map-get($colors-rule, sixth-color)
   );*/
-  background-color: #001747;
+  background: -webkit-gradient(linear, left top, right top, from(#1ba4e3), to(#fbfffe));
+  background: linear-gradient(90deg, #1ba4e3, #fbfffe);
   opacity: 1;
 }
 
@@ -408,6 +409,10 @@ footer {
 /**** start ******************************************************************************/
 .relative {
   position: relative;
+}
+
+.block {
+  display: block;
 }
 
 /****************************************************************************************
