@@ -11,9 +11,6 @@
   $image-3: url("/src/assets/image/page-index/desert.jpg");
 
   .link-article {
-
-
-
     z-index: 1;
     max-width: 400px;
     width: 100%;
@@ -24,7 +21,7 @@
     @include upper-medium-screen {
       max-width: 500px;
       //valeur debut transition
-      opacity: 0.3;
+      opacity: 0;
       transform: translateX(-50%);
       transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
     }
@@ -36,40 +33,19 @@
   }
 
   //concerne la transition des elements "link-article"
-  .visible {
+  .transition-article {
     opacity: 1;
     transform: translateX(0%);
 
   }
 
 
-
-
-  /* .link-article::after {
-    content: "";
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    //background-color: darken(map-get($colors-rule, second-color), 0%);
-    //background-color: map-get($colors-rule, first-color);
-    //opacity: 0.5;
-    border-radius: 10px;
-  } */
-
   .container-image {
     position: relative;
-    //top: 0px;
-    //left: 50%;
     width: 100%;
-    //margin-left: 50%;
-    //transform: translateX(-50%);
-
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    //overflow: hidden;
+    //border: 2px solid red;
   }
 
   .image-article {
@@ -79,8 +55,9 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    //border-right: 2px solid darken(map-get($colors-rule, fourth-color), 5%);
-    border-left: 2px solid darken(map-get($colors-rule, fourth-color), 5%);
+    mask-repeat: no-repeat;
+    mask-size: cover;
+    mask-position: center;
 
     @include upper-medium-screen {
       height: 350px;
@@ -99,21 +76,28 @@
       linear-gradient(180deg, rgba(0, 0, 0, 1), transparent),
       //url("/src/assets/masque/blob-index-bar-vert.svg"),
     ;
+    border-left: 2px solid map-get($colors-rule-darked-5, fourth-color);
 
     background-position: bottom;
   }
 
   #img-2 {
     background-image: $image-2;
-    mask-image: linear-gradient(0deg, rgba(0, 0, 0, 1), transparent),
-      /* url("/src/assets/masque/blob-index-track.svg"), */
-    ;
+    mask-image:
+      //url("/src/assets/masque/blob-index-bar-horizontal.svg"),
+      linear-gradient(180deg, rgba(0, 0, 0, 1), transparent), ;
+
+
     //mask-image: ;
+    border-left: 2px solid map-get($colors-rule, first-color);
   }
 
   #img-3 {
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 1), transparent);
     background-image: $image-3;
-    mask-image: url("/src/assets/masque/blob-index-bar-horizontal.svg");
+    //mask-image: url("/src/assets/masque/blob-index-bar-horizontal.svg");
+    background-position: bottom;
+    border-left: 2px solid map-get($colors-rule-darked-5, third-color);
   }
 
   .title-article {
@@ -123,31 +107,87 @@
     transform: translate(-50%);
     font-weight: 600;
     font-size: 25px;
-    padding: 30px 10px 30px 10px;
+    padding: 40px 10px 40px 10px;
     width: 100%;
     backdrop-filter: brightness(60%) blur(2px);
-    background-color: darken(map-get($colors-rule, fourth-color), 5%);
     //opacity: 0.9;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     //border-right: 2px solid darken(map-get($colors-rule, fourth-color), 5%);
-    border-left: 2px solid darken(map-get($colors-rule, fourth-color), 5%);
+    font-family: "Oxygen", sans-serif;
+
+    @include upper-medium-screen {
+      font-size: 30px;
+    }
+
+    @include upper-large-screen {
+      font-size: 35px;
+    }
   }
 
-  /* .title-article::after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    //box-shadow: inset 0px 0px 20px 0px map-get($colors-rule, first-color);
-    background-color: map-get($colors-rule, first-color);
-    border-radius: 10px;
-    opacity: 0.8;
+  #title-article-1 {
+    background-color: map-get($colors-rule-darked-5, fourth-color);
+    border-left: 2px solid map-get($colors-rule-darked-5, fourth-color);
 
-  } */
+  }
+
+  #title-article-2 {
+    background-color: map-get($colors-rule, first-color);
+    border-left: 2px solid map-get($colors-rule, first-color);
+
+  }
+
+  #title-article-3 {
+    background-color: map-get($colors-rule-darked-5, third-color);
+    border-left: 2px solid map-get($colors-rule-darked-5, third-color);
+
+  }
+
+  .collapse {
+    position: absolute;
+    bottom: 0px;
+    right: -15%;
+    z-index: 1;
+    padding: 20px;
+    font-size: 22px;
+    color: map-get($colors-rule, sixth-color);
+    transition: opacity 0.2s ease-in-out 0.2s, transform 0.2s linear 0.2s;
+    opacity: 0;
+    clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+    width: 200px;
+    height: 200px;
+
+    & p {
+      text-align: center;
+    }
+  }
+
+  @include upper-large-screen {
+
+    &:hover .collapse {
+      opacity: 1;
+      transform: translateY(80%);
+      transition: opacity 0.3s ease-in-out, transform 0.3s linear;
+    }
+  }
+
+
+  #collapse-img-1 {
+    background-color: map-get($colors-rule, fourth-color);
+  }
+
+  #collapse-img-2 {
+    background-color: map-get($colors-rule, first-color);
+  }
+
+  #collapse-img-3 {
+    background-color: map-get($colors-rule-darked-5, third-color);
+  }
+
+  .svg-object {
+    width: 50px;
+
+  }
 
   .text-1,
   .text-2,
@@ -161,7 +201,6 @@
   }
 
   .text-1 {
-    //transform: translateY(-50%);
     font-weight: 600;
     text-align: left;
     align-self: flex-start;
@@ -173,36 +212,72 @@
       font-size: 22px;
     }
 
+    @include upper-large-screen {
+      min-height: 150px;
+    }
+
   }
 
 
-  /*  .container-text-card {
-    width: 100%;
-
-    background: linear-gradient(90deg, map-get($colors-rule, sixth-color), map-get($colors-rule, second-color));
-
-  } */
 
 
   .container-text-2,
   .container-text-3 {
-    .svg-card-index-arrow-right {
+    @include upper-medium-screen {
+      opacity: 0;
+      transform: translateX(-50%);
+      transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    }
+
+    .svg-arrow-right {
       display: none;
 
       @include upper-medium-screen {
         display: flex;
-        width: 100px;
+        min-width: 100px;
+        min-height: 100px;
+        mask-image: url('/src/assets/svg/page-index/fleche/card-arrow-right.svg');
+        mask-repeat: no-repeat;
+        mask-size: contain;
+
       }
     }
 
+  }
+
+  .card-1 {
+    @include upper-medium-screen {
+
+      background-color: map-get($colors-rule-darked-5, fourth-color);
+    }
+  }
+
+  .card-2 {
+    @include upper-medium-screen {
+
+      background-color: map-get($colors-rule, first-color);
+    }
+  }
+
+  .card-3 {
+    @include upper-medium-screen {
+
+      background-color: map-get($colors-rule-darked-5, third-color);
+    }
   }
 
   .container-text-2 {
     @include upper-medium-screen {
 
 
-      transform: translateX(-20%);
+      margin-left: -20%;
     }
+  }
+
+  .transition-text {
+    opacity: 1;
+    transform: translateX(0%);
+
   }
 
 
@@ -210,6 +285,7 @@
   .text-3 {
     @include upper-medium-screen {
       margin-left: 20px;
+
 
     }
 
@@ -237,65 +313,7 @@
 
 }
 
-.example-2 {
-  width: 500px;
-  height: 500px;
-  background-image: url("/src/assets/image/page-index/abeille.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 
-  & .filtre-2 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    //z-index: 1;
-    /* width: 250px;
-    height: 250px; */
-    transform: translate(-50%, -50%);
-    //opacity: 0.9;
-    //backdrop-filter: blur(5px);
-    backdrop-filter: brightness(80%);
-    //backdrop-filter: contrast(40%);
-    //backdrop-filter: drop-shadow(20px 20px 10px blue);
-    //backdrop-filter: grayscale(130%);
-    //backdrop-filter: hue-rotate(120deg);
-    // backdrop-filter: invert(70%);
-    //backdrop-filter: opacity(80%);
-    //backdrop-filter: sepia(90%);
-    //backdrop-filter: saturate(80%);
-    border: 2px solid red;
-    //border-radius: 50%;
-    color: pink;
-    padding: 50px;
-    text-align: center;
-  }
-}
-
-.example-3 {
-  width: 500px;
-  height: 500px;
-  background-image: url("/src/assets/image/page-index/pense.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  filter: blur(5px);
-
-  /* &.filtre-3 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 250px;
-    height: 250px;
-    transform: translate(-50%, -50%);
-    opacity: 1;
-    backdrop-filter: grayscale(100%);
-    border: 2px solid red;
-    border-radius: 50%;
-    color: pink;
-  } */
-}
 
 .container-article {
   width: 100%;

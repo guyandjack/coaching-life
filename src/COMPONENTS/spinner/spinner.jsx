@@ -18,11 +18,11 @@ function Spinner() {
     // Cacher le spinner lorsque la page est complètement chargée
 
     function hideLoader() {
-      setIsVisible(true);
+      setIsVisible(false);
     }
 
     window.addEventListener("load", () => {
-      setTimeout(hideLoader, 1000);
+      setTimeout(hideLoader, 500);
     });
 
     // Nettoyage de l'événement pour éviter les fuites de mémoire

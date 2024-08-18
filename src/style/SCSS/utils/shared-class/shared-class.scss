@@ -44,14 +44,8 @@
   left: 0px;
   width: 100%;
   height: 100%;
-  /*background: linear-gradient(
-    40deg,
-    map-get($colors-rule, first-color),
-    40%,
-    map-get($colors-rule, sixth-color)
-  );*/
   background: linear-gradient(90deg, map-get($colors-rule, second-color), map-get($colors-rule, sixth-color));
-  opacity: 1;
+
 }
 
 .container-page {
