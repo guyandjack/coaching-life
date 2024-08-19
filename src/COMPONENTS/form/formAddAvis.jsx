@@ -31,6 +31,8 @@ function FormAddAvis() {
     register,
     handleSubmit,
     reset,
+    // eslint-disable-next-line no-unused-vars
+    setError,
     formState: { errors, isValid, isSubmitting },
   } = useForm({ mode: "onChange" });
 
@@ -80,10 +82,10 @@ function FormAddAvis() {
 
     let response = await fetch(`${url}/avis`, {
       method: "POST",
-      /* headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      }, */
+      /*headers: {
+        "Content-Type": "multipart/form-data",
+        //Accept: "application/json",
+      },*/
       body: formData,
     });
     if (response.ok) {
@@ -112,9 +114,13 @@ function FormAddAvis() {
     <form
       id="form-add-avis"
       className="flex-column-start-center form-dashboard"
-      onSubmit={handleSubmit((data) => fetchApi(data))}
+      onSubmit={handleSubmit((data) => {
+        fetchApi(data);
+      })}
+      encType="multipart/form-data"
     >
       <p className="form-title">Ajouter un avis</p>
+
       <div className="flex-column-start-start cont-input-label">
         {/* <label htmlFor="input-text-add-lastname" className="label">
           {"Nom"}
@@ -212,8 +218,8 @@ function FormAddAvis() {
             id="input-add-file-avatar"
             className="input"
             type="file"
-            name="avatar"
-            {...register("avatar", {
+            name="image"
+            {...register("image", {
               //required: true,
               validate: {
                 isjpeg: (fileList) => {
@@ -233,7 +239,7 @@ function FormAddAvis() {
           />
         </div>
         <div className="flex-column-center-center container-span-error">
-          {errors.avatar?.type === "isjpeg" && (
+          {errors.image?.type === "isjpeg" && (
             <span className="form-text-error">
               {"Mauvais type de fichier image uniquemnt jpeg / jpg / png ! "}
             </span>

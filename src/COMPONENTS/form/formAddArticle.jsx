@@ -117,6 +117,7 @@ function FormAddArticle() {
         console.log(data);
         fetchApi(data);
       })}
+      encType="multipart/form-data"
     >
       <p className="form-title">Ajouter un article sur le blog</p>
       <div className="flex-column-start-start cont-input-label">
@@ -127,9 +128,9 @@ function FormAddArticle() {
           <textarea
             id="input-text-add-title"
             className="input"
-            name="addTitle"
+            name="title"
             placeholder="Titre de l'article"
-            {...register("addTitle", {
+            {...register("title", {
               required: true,
 
               pattern: masqueMessage,
@@ -137,10 +138,10 @@ function FormAddArticle() {
           />
         </div>
         <div className="flex-column-center-center container-span-error">
-          {errors?.addTitle?.type == "pattern" ? (
+          {errors?.title?.type == "pattern" ? (
             <span className="form-text-error">{"Format non valide!"}</span>
           ) : null}
-          {errors?.addTitle?.type == "required" ? (
+          {errors?.title?.type == "required" ? (
             <span className="form-text-error">{"Le titre est requis!"}</span>
           ) : null}
         </div>
@@ -153,10 +154,10 @@ function FormAddArticle() {
           <textarea
             id="input-text-add-resume"
             className="input"
-            name="addResume"
+            name="content"
             placeholder="Résumé de l'article"
             rows="5"
-            {...register("addResume", {
+            {...register("content", {
               required: true,
 
               pattern: masqueMessage,
@@ -164,10 +165,10 @@ function FormAddArticle() {
           />
         </div>
         <div className="flex-column-center-center container-span-error">
-          {errors?.addResume?.type == "pattern" ? (
+          {errors?.content?.type == "pattern" ? (
             <span className="form-text-error">{"Format non valide"}</span>
           ) : null}
-          {errors?.addResume?.type == "required" ? (
+          {errors?.content?.type == "required" ? (
             <span className="form-text-error">
               {"Le resumé de l' article est requis !"}
             </span>
@@ -185,8 +186,8 @@ function FormAddArticle() {
             className="input"
             type="file"
             multiple
-            name="addFile"
-            {...register("addFile", {
+            name="image"
+            {...register("image", {
               required: true,
               validate: {
                 isjpeg: (fileList) => {
@@ -206,10 +207,10 @@ function FormAddArticle() {
           />
         </div>
         <div className="flex-column-center-center container-span-error">
-          {errors.addFile?.type === "required" && (
+          {errors.image?.type === "required" && (
             <span className="form-text-error">{"Le fichier est requis !"}</span>
           )}
-          {errors.addFile?.type === "isjpeg" && (
+          {errors.image?.type === "isjpeg" && (
             <span className="form-text-error">
               {"Mauvais type de fichier image uniquemnt jpeg / jpg / png ! "}
             </span>
@@ -244,8 +245,8 @@ function FormAddArticle() {
             id="input-file-add-article"
             className="input"
             type="file"
-            name="addArticle"
-            {...register("addArticle", {
+            name="article"
+            {...register("article", {
               required: true,
               validate: {
                 ishtml: (fileList) => {
@@ -263,12 +264,12 @@ function FormAddArticle() {
           />
         </div>
         <div className="flex-column-center-center container-span-error">
-          {errors.addArticle?.type === "ishtml" ? (
+          {errors.article?.type === "ishtml" ? (
             <span className="form-text-error">
               {"Mauvaise extension de fichier!"}
             </span>
           ) : null}
-          {errors.addArticle?.type === "required" ? (
+          {errors.article?.type === "required" ? (
             <span className="form-text-error">
               {"Un fichier HTML est requis!"}
             </span>

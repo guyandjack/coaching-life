@@ -4,7 +4,7 @@
 function addArticleOnBlog(req, res) {
   // eslint-disable-next-line no-unused-vars
   let masque = /\W/g;
-  let title = req.body.addTitle;
+  let title = req.body.title;
   let filesList = req.files.addFile;
   console.log("copi du tableau addFile: " + filesList);
   let newTitle = title.split(masque).join("").toLowerCase();

@@ -7,6 +7,17 @@ const path = require("path");
 // eslint-disable-next-line no-undef
 //const multer = require("multer");
 
+//import de differentes instances de multer
+// eslint-disable-next-line no-undef
+const {
+  uploadAvisAvatar,
+  // eslint-disable-next-line no-unused-vars
+  uploadArticleImages,
+  // eslint-disable-next-line no-unused-vars
+  uploadArticleHTML,
+  // eslint-disable-next-line no-undef
+} = require("./middelware/multer/multerConfig.js");
+
 //const upload = multer({ dest: "uploads/" });
 
 /********* import du controler pour la verification de recapcha ************/
@@ -86,13 +97,19 @@ routeur.post("/verify-recaptcha", checkRecaptcha);
 routeur.post("/login", checkData, logUser);
 
 // routes Ajouter avis
-routeur.post("/avis", checkData, addOneAvis);
+routeur.post("/avis", checkData, uploadAvisAvatar.any(""), addOneAvis);
 
 //route Contact SoCoaching - send mail
 routeur.post("/contact", checkData, contact);
 
 //route Contact SoCoaching - Ajouter un article
-routeur.post("/article", addArticleOnBlog);
+routeur.post(
+  "/article",
+  checkData,
+  uploadArticleImages.array("image"),
+  uploadArticleHTML.single("article"),
+  addArticleOnBlog
+);
 
 /*********** route put   **************
  * ************************************/
