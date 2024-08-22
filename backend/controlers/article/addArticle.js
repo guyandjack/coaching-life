@@ -14,14 +14,14 @@ const sendRequest = require("../../utils/functions/requestDataBase.js");
 const checkLanguageFileHtml = require("../../utils/functions/checkLanguageFileHtml.js");
 
 // eslint-disable-next-line no-undef
-let urlImageDEV = process.env.URL_BASE_UPLOAD_IMAGE_DEV;
+let urlImageDEV = process.env.URL_BASE_IMAGE_ARTICLE_DEV;
 // eslint-disable-next-line no-undef
 //let urlArticleDEV = process.env.URL_BASE_UPLOAD_HTML_DEV;
 // eslint-disable-next-line no-undef
 //let urlImagePROD = process.env.URL_BASE_UPLOAD_IMAGE_PROD;
 //declaration des fonctions
 function changePathForDB(urlBase, imagePathStore) {
- return path.join(`${urlBase}`+ imagePathStore)
+ return (`${urlBase}`+ imagePathStore)
 }
 
 async function storeOneImage(req, imagePathStore) {

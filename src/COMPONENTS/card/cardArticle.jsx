@@ -48,10 +48,18 @@ function CardArticle({ title, imgUrl, resume, index, id }) {
   return (
     <form
       id={`form-delete-article-${index}`}
-      className="flex-column-start-center form-dashboard card-article"
+      className="flex-column-space_evenly-center form-dashboard card-article"
       onSubmit={handleSubmit(() => setShowConfirmDialog(true))}
     >
-      <label className="label">Titre</label>
+      <input
+        className="input"
+        name="_id"
+        {...register("_id", { required: true })}
+        readOnly
+        hidden
+        value={id}
+      />
+      {/* <label className="label">Titre</label> */}
       <textarea
         className="input textarea"
         name="title"
@@ -59,7 +67,7 @@ function CardArticle({ title, imgUrl, resume, index, id }) {
         readOnly
         value={title}
       />
-      <label className="label">{"Résumé de l'article"}</label>
+      {/* <label className="label">{"Résumé de l'article"}</label> */}
       <textarea
         className="input textarea"
         name="resume"
@@ -69,14 +77,7 @@ function CardArticle({ title, imgUrl, resume, index, id }) {
         rows={5}
       />
       <img className="card-img" src={imgUrl} alt="Décoration de la carte" />
-      <input
-        className="input"
-        name="_id"
-        {...register("_id", { required: true })}
-        readOnly
-        hidden
-        value={id}
-      />
+
       <button className="btn-submit btn-submit-card" type="submit">
         {" Supprimer l'article"}
       </button>
