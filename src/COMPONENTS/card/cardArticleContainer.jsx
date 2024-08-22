@@ -76,7 +76,7 @@ function CardArticleContainer() {
   
   return (
     <div className="flex-column-start-center form-dashboard">
-      <div className="form-title">Gestions des articles</div>
+      <div className="form-title">Suprimer un article</div>
       <div className="btn-container flex-row-space_evenly-center">
         <button
           className="btn-update-article "

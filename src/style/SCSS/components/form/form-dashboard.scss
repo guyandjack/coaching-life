@@ -14,13 +14,13 @@
     z-index: 1;
 
     padding: 10px;
-    margin: 50px 0px 100px 0px;
+    margin-top: 25px;
 
     .cont-input-label {
         //position: relative;
         max-width: 350px;
         width: 100%;
-        margin: 20px 0px;
+        margin-top: 25px ;
         //border: 2px solid red;
 
         @include upper-medium-screen {
@@ -34,10 +34,12 @@
         font-size: 25px;
         margin: 30px 0px;
         padding: 10px;
-        border-left: 5px solid map-get($colors-rule, first-color);
-        border-right: 5px solid map-get($colors-rule, first-color);
+        //border-top: 2px solid map-get($colors-rule, first-color);
+        border: 1px solid map-get($colors-rule, sixth-color);
+        //border-right: 5px solid map-get($colors-rule, first-color);
         color: map-get($colors-rule, sixth-color);
         width: fit-content;
+        border-radius: 10px;
 
         @include upper-large-screen {
 
@@ -102,7 +104,7 @@
 
     .btn-submit {
         position: relative;
-        z-index: 100;
+        z-index: 1;
         align-items: flex-start;
         padding: 10px;
         margin: 20px 0px;
@@ -157,10 +159,9 @@
     .toaster {
         opacity: 0;
         position: absolute;
-        //z-index: 100;
         left: 50%;
         bottom: -20px;
-        max-width: 0px;
+        //max-width: 0px;
         height: 0px;
         width: 0px;
         transform: translateX(-50%);
@@ -190,7 +191,7 @@
         opacity: 1;
         transform: translate(-50%, 40px);
         max-width: 350px;
-            width: 100%;
+        width: 100%;
         transition: opacity 1s linear, transform 1s linear;
         @include upper-medium-screen {
                 width: 50%;
@@ -209,9 +210,9 @@
     left: 0px;
     width: 100%;
     height: 100%;
-    background-color: darken(map-get($colors-rule, second-color), 30%);
+    background-color: map-get($colors-rule-darked-10, second-color);
     border-radius: 10px;
-    opacity: 0.7;
+    opacity: 0.5;
 
 }
 

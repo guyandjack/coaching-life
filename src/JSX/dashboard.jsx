@@ -12,7 +12,7 @@ import { Footer } from "../COMPONENTS/footer/footer.jsx";
 import { Spinner } from "../COMPONENTS/spinner/spinner.jsx";
 import { FormChangePassword } from "../COMPONENTS/form/formChangePassword.jsx";
 import { FormAddAvis } from "../COMPONENTS/form/formAddAvis.jsx";
-import { FormChangeAvis } from "../COMPONENTS/form/formChangeAvis.jsx";
+//import { FormChangeAvis } from "../COMPONENTS/form/formChangeAvis.jsx";
 import { FormAddArticle } from "../COMPONENTS/form/formAddArticle.jsx";
 import { CardArticleContainer } from "../COMPONENTS/card/cardArticleContainer.jsx";
 
@@ -63,13 +63,13 @@ rootFormAddAvis.render(
 
 //affiche le composant "ChangeAvis"
 
-const containerFormChangeAvis = document.getElementById("RC-form-change-avis");
+/* const containerFormChangeAvis = document.getElementById("RC-form-change-avis");
 const rootFormChangeAvis = ReactDOM.createRoot(containerFormChangeAvis);
 rootFormChangeAvis.render(
   <React.StrictMode>
     <FormChangeAvis />
   </React.StrictMode>
-);
+); */
 
 // Rendu du composant formAddArticle dans le DOM
 const formAddArticleElement = document.getElementById("RC-form-add-article");

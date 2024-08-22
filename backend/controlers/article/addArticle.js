@@ -10,15 +10,29 @@ const connectToDataBase = require("../../utils/functions/connectionDataBase.js")
 // eslint-disable-next-line no-undef
 const sendRequest = require("../../utils/functions/requestDataBase.js");
 
-//declaration des functions
+// eslint-disable-next-line no-undef
+const checkLanguageFileHtml = require("../../utils/functions/checkLanguageFileHtml.js");
+
+// eslint-disable-next-line no-undef
+let urlImageDEV = process.env.URL_BASE_UPLOAD_IMAGE_DEV;
+// eslint-disable-next-line no-undef
+//let urlArticleDEV = process.env.URL_BASE_UPLOAD_HTML_DEV;
+// eslint-disable-next-line no-undef
+//let urlImagePROD = process.env.URL_BASE_UPLOAD_IMAGE_PROD;
 //declaration des fonctions
-async function storeOneImage(req, imagePath) {
-  if (imagePath == null || imagePath == undefined) {
+function changePathForDB(urlBase, imagePathStore) {
+ return path.join(`${urlBase}`+ imagePathStore)
+}
+
+async function storeOneImage(req, imagePathStore) {
+  if (imagePathStore == null || imagePathStore == undefined) {
     console.log("url de l' image non valid");
     return false;
   }
   //enregistrement dans un fichier du serveur si le rete des information est enregister sur la bdd
-  req.files.image.mv(imagePath, (err) => {
+  
+  console.log("url relative de l' image pour enregistrement fichier: " + imagePathStore)
+  req.files.image.mv(imagePathStore, (err) => {
     if (err) {
       console.log("impossible d' enregistrer une image: " + err);
       return false;
@@ -60,23 +74,27 @@ async function storeOneArticle(req, res, articlePath) {
   return true;
 }
 
-function imagePathForDataBase(newName, imgExt) {
+function createImagePathForStore(newName, imgExt) {
   // eslint-disable-next-line no-undef
-  let url = process.env.URL_BASE_ARTICLE_IMAGE_DEV;
-  let imagePath = path.join(
+  
+  let imagePathStore = path.join(
     // eslint-disable-next-line no-undef
-
-    `${url}/uploads/article/images/` +
-      "img-" +
-      Date.now() +
-      "-" +
-      newName +
-      "." +
-      imgExt
+    
+    "upload/article/image/" +
+    "img-" +
+    Date.now() +
+    "-" +
+    newName +
+    "." +
+    imgExt
   );
-  return imagePath;
+  console.log("url de l^image uplode:" + imagePathStore)
+  return imagePathStore;
 }
-function articlePathForDataBase(newName, imgExt) {
+function articlePathForDataBase(req, newName, imgExt) {
+  //let fileHtmlStringed = req.files.article;
+  //let languageFile = checkLanguageFileHtml(fileHtmlStringed)
+ // console.log("detection de la langue: " + languageFile);
   let articlePath = path.join(
     // eslint-disable-next-line no-undef
 
@@ -98,28 +116,31 @@ function createArrayImagePath(imageList, titleArticle, masque) {
 
   arrayImg.forEach((img, index) => {
     let imageName = img.name; //nom original du fichier image
-    let imageExt = imageName.split(".").pop(); //recupere l' extension du fichier image
+    let imageExt = imageName.split(".").pop(); //recupere l'extension du fichier image
     let newImageName =
       titleArticle.split(masque).join("").toLowerCase() + `-${index}`; // renomage du fichier image avec titre de l'article
-    let imagePath = imagePathForDataBase(newImageName, imageExt);
-    arrayPathImg.push(imagePath);
+    let imagePathStore = createImagePathForStore(newImageName, imageExt);
+    arrayPathImg.push(imagePathStore);
   });
   return arrayPathImg; // sous forme de chaine de caractere pour la bdd
 }
 
 // eslint-disable-next-line no-unused-vars
 async function addOneArticle(req, res) {
+
+  
   // eslint-disable-next-line no-unused-vars
   let masque = /[^a-zA-Z0-9]/g; // exclu tout sauf les lettre minuscules majuscules et les chiffres
   let titleArticle = req.body.title;
   let resumeArticle = req.body.content;
   let imageList = req.files.image;
 
-  let imagePath = null;
-  let arrayImagePath = []; //variable ou sera enregistrer le chemin du fichier image
+  let imagePathStore = null;
+  let arrayImagePath = [];
+  let imagePathDB = null;//variable ou sera enregistrer le chemin du fichier image
   //let arrayImagePath = []; //tableau ou sera enregistrer l' ensemble des chemins des fichiers images
   let articlePath = null; //variable  ou sera enregisterer le chemin de l' article .html
-
+  //let articlePathDB = null;
   let isOneImage = undefined;
   let isImageStored = false;
 
@@ -130,26 +151,30 @@ async function addOneArticle(req, res) {
     let imageName = req.files.image.name; //nom original du fichier image
     let imageExt = imageName.split(".").pop(); //recupere l' extension du fichier image
     let newImageName = titleArticle.split(masque).join("").toLowerCase(); // renomage du fichier image avec titre de l'article
-    imagePath = imagePathForDataBase(newImageName, imageExt);
+    imagePathStore = createImagePathForStore(newImageName, imageExt);
   } else {
     console.log("plusieurs images a enregistrer.");
     isOneImage = false;
     arrayImagePath = createArrayImagePath(imageList, titleArticle, masque);
-    imagePath = arrayImagePath.toString();
+    imagePathStore = arrayImagePath.toString();
   }
 
   //creation d' un chemin pour enregistrer le fichier article
   let articleName = req.files.article.name;
   let articleExt = articleName.split(".").pop();
   let newArticleName = titleArticle.split(masque).join("").toLowerCase();
-  articlePath = articlePathForDataBase(newArticleName, articleExt);
+  articlePath = articlePathForDataBase(req, newArticleName, articleExt);
+
+  //creation d' une url pour la DB
+  imagePathDB = changePathForDB(urlImageDEV, imagePathStore);
+  console.log("url image pour data base: " + imagePathDB);
 
   //Requete preparée pour inserer un article  dans la bdd avis
   const requeteAddArticle = `INSERT INTO article (created_at, title, resume, url_img, url_article)  VALUES (NOW(),?,?,?,?) `;
   const paramRequeteAddArticle = [
     titleArticle,
     resumeArticle,
-    imagePath,
+    imagePathDB,
     articlePath,
   ];
 
@@ -175,7 +200,7 @@ async function addOneArticle(req, res) {
 
     // "if-2"utilise une fonction d'enregistremenet pour une seuleimage
     if (isOneImage) {
-      isImageStored = await storeOneImage(req, imagePath);
+      isImageStored = await storeOneImage(req, imagePathStore);
       console.log("une seule image enregistré? :" + isImageStored);
     } else {
       //"else-2" utilise une fonction pour enregistrer plusieurs images

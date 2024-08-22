@@ -33,7 +33,7 @@ function FormAddArticle() {
   const {
     register,
     handleSubmit,
-    reset,
+    //reset,
     formState: { errors, isValid, isSubmitting },
   } = useForm({ mode: "onChange" });
 
@@ -98,8 +98,8 @@ function FormAddArticle() {
 
         setTimeout(() => {
           toasterValid.classList.remove("visible");
-          reset();
-          setImagePreview([]);
+          //reset();
+          //setImagePreview([]);
         }, 3000);
         
       }

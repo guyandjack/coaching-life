@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { localOrProd } from "../../UTILS/fonctions/testEnvironement.js";
-import "../../style/CSS/form-dashboard.css";
 import "../../style/CSS/card-article.css";
+import "../../style/CSS/form-dashboard.css";
 
 let objectUrl = localOrProd();
 let url = objectUrl.urlApi;
@@ -51,21 +51,22 @@ function CardArticle({ title, imgUrl, resume, index, id }) {
       className="flex-column-start-center form-dashboard card-article"
       onSubmit={handleSubmit(() => setShowConfirmDialog(true))}
     >
-      <label>Titre</label>
+      <label className="label">Titre</label>
       <textarea
-        className="input"
+        className="input textarea"
         name="title"
         {...register("title", { required: true })}
         readOnly
         value={title}
       />
-      <label>{"Résumé de l'article"}</label>
+      <label className="label">{"Résumé de l'article"}</label>
       <textarea
-        className="input"
+        className="input textarea"
         name="resume"
         {...register("resume", { required: true })}
         readOnly
         value={resume}
+        rows={5}
       />
       <img className="card-img" src={imgUrl} alt="Décoration de la carte" />
       <input
@@ -76,8 +77,8 @@ function CardArticle({ title, imgUrl, resume, index, id }) {
         hidden
         value={id}
       />
-      <button className="btn-submit" type="submit">
-       {" Supprimer l'article"}
+      <button className="btn-submit btn-submit-card" type="submit">
+        {" Supprimer l'article"}
       </button>
 
       <div id="toaster-valid-delete-article" className="toaster valid">
@@ -88,25 +89,27 @@ function CardArticle({ title, imgUrl, resume, index, id }) {
       </div>
 
       {showConfirmDialog && (
-        <div className="flex-column-start-center confirm">
-          <div className="confirm-text">
-            {"Confirmer la suppression de l'article"}
-          </div>
-          <div className="flex-row-space_evenly-center container-btn-confirm">
-            <button
-              className="btn-confirm canceled"
-              type="button"
-              onClick={() => setShowConfirmDialog(false)}
-            >
-              Annuler
-            </button>
-            <button
-              className="btn-confirm confirmed"
-              type="button"
-              onClick={handleSubmit(onDeleteConfirm)}
-            >
-              Confirmer
-            </button>
+        <div className="bg-card">
+          <div className="flex-column-start-center confirm">
+            <div className="confirm-text">
+              {"Confirmer la suppression de l'article"}
+            </div>
+            <div className="flex-row-space_evenly-center container-btn-confirm">
+              <button
+                className="btn-confirm canceled"
+                type="button"
+                onClick={() => setShowConfirmDialog(false)}
+              >
+                Annuler
+              </button>
+              <button
+                className="btn-confirm confirmed"
+                type="button"
+                onClick={handleSubmit(onDeleteConfirm)}
+              >
+                Confirmer
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -115,3 +118,4 @@ function CardArticle({ title, imgUrl, resume, index, id }) {
 }
 
 export { CardArticle };
+

@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="../../src/style/CSS/dashboard.css" />
 </head>
 
-<body>
+<body class="body">
   <div class="flex-column-center-center container-page-dashboard">
     <header class="">
       <div id="RC-nav-bar"></div>
@@ -32,25 +32,30 @@
       <section class="relative">
         <div id="RC-spinner"></div>
         <h1>Admin</h1>
-
+        <div class="flex-column-start-center main-container-form">
+<div class="dashboard-title">Gestion des mots de passe</div>
         <article class="flex-column-start-center ">
           <div id="RC-form-change-password" class="container-form"></div>
         </article>
+      </div>
+        <div class="flex-column-start-center main-container-form">
+          <div class="dashboard-title">Gestion des avis</div>
         <article class="flex-column-start-center ">
           <div id="RC-form-add-avis" class="container-form"></div>
         </article>
         <article class="flex-column-start-center ">
-          <div id="RC-form-change-avis" class="container-form"></div>
-        </article>
-        <article class="flex-column-start-center ">
           <div id="RC-form-delete-avis" class="container-form"></div>
         </article>
+        </div>
+        <div class="flex-column-start-center main-container-form">
+          <div class="dashboard-title">Gestion des articles</div>
         <article class="flex-column-start-center ">
           <div id="RC-form-add-article" class="container-form"></div>
         </article>
         <article class="flex-column-start-center ">
           <div id="RC-container-delete-article" class="container-form"></div>
         </article>
+      </div>
         
     </main>
     </section>
