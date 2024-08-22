@@ -1,0 +1,75 @@
+@import "../../utils/colors-rule/colors-rule.scss";
+@import "../../utils/mixins/responsive/responsive.scss";
+
+.card-article {
+  position: relative;
+  z-index: 1;
+  width: 350px;
+  height: 300px;
+ //border: 2px solid green;
+ border-radius: 10px;
+ box-shadow: 0px 0px 10px 0px map-get($colors-rule, first-color);
+
+  
+
+  .card-img {
+    position:absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+    //background-color: red;
+    border-radius: 10px;
+    
+  }
+
+  .confirm{
+    position:absolute;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    height: 40%;
+    transform: translate(-50%,-50%);
+    //border: 2px solid blue;
+    background-color: map-get($colors-rule-darked-10, second-color);
+    border-radius: 10px;
+    //border: 4px solid map-get($colors-rule, first-color);
+    box-shadow: inset 0px 0px 10px 0px;
+    color:map-get($colors-rule, sixth-color);
+
+    .confirm-text{
+      text-align: left;
+      padding: 10px;
+      //background-color: orange;
+      margin: 10px 0px 10px 0px;
+    }
+
+    .container-btn-confirm{
+      margin: 10px 0px 10px 0px;
+    }
+    
+    .btn-confirm{
+      padding: 10px;
+      //border: 2px solid red;
+      width: 80px;
+      //height: 50px;
+      text-align: center;
+    }
+    .canceled{
+      background-color: map-get($colors-rule-darked-5, fourth-color);
+    }
+    .confirmed{
+      background-color: map-get($colors-rule-darked-5, third-color);
+    }
+  }
+
+  
+
+  
+
+  
+}

@@ -1,0 +1,25 @@
+.card-article-container {
+  position: relative;
+  width: 100%;
+}
+
+.hide-list {
+  display: none;
+}
+
+.btn-container {
+  width: 100%;
+}
+
+.btn-display-article, .btn-update-article {
+  padding: 20px;
+  border: 1px solid #001747;
+  color: #001747;
+  text-align: center;
+  background-color: #fbfffe;
+  margin: 50px 0px;
+}
+.btn-display-article:hover, .btn-update-article:hover {
+  background-color: #c8fff1;
+  cursor: pointer;
+}

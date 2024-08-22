@@ -14,6 +14,8 @@ import { FormChangePassword } from "../COMPONENTS/form/formChangePassword.jsx";
 import { FormAddAvis } from "../COMPONENTS/form/formAddAvis.jsx";
 import { FormChangeAvis } from "../COMPONENTS/form/formChangeAvis.jsx";
 import { FormAddArticle } from "../COMPONENTS/form/formAddArticle.jsx";
+import { CardArticleContainer } from "../COMPONENTS/card/cardArticleContainer.jsx";
+
 
 const rootElement = document.getElementById("RC-nav-bar");
 ReactDOM.createRoot(rootElement).render(
@@ -74,5 +76,13 @@ const formAddArticleElement = document.getElementById("RC-form-add-article");
 ReactDOM.createRoot(formAddArticleElement).render(
   <React.StrictMode>
     <FormAddArticle />
+  </React.StrictMode>
+);
+
+// Rendu du composant formAddArticle dans le DOM
+const cardArticleContainerdelete = document.getElementById("RC-container-delete-article");
+ReactDOM.createRoot(cardArticleContainerdelete).render(
+  <React.StrictMode>
+    <CardArticleContainer />
   </React.StrictMode>
 );

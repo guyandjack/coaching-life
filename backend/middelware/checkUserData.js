@@ -45,9 +45,16 @@ function isDataValid(req, res, next) {
     }
   }
 
-  //fonction a utiliser si un seul fichier a controler
-  function isValideTypeSingleFile(req, validType) {
+  //fonction a utiliser si un seul fichier image a controler
+  function isValideTypeSingleFileImage(req, validType) {
     let fileMimetype = req.files.image.mimetype;
+    return validType.includes(fileMimetype);
+  }
+
+  //fonction a utiliser si un seul fichier article a controler
+  function isValideTypeSingleFileArticle(req, validType) {
+    let fileMimetype = req.files.article.mimetype;
+    console.log("type mime de l' article: " + fileMimetype);
     return validType.includes(fileMimetype);
   }
 
@@ -61,7 +68,7 @@ function isDataValid(req, res, next) {
 
     if (imageList !== null && Object.keys(imageList).length == 9) {
       console.log("un fichier image detecté " + Object.keys(imageList).length);
-      isValidImage = isValideTypeSingleFile(req, mimeTypeValid);
+      isValidImage = isValideTypeSingleFileImage(req, mimeTypeValid);
     }
     if (
       imageList !== null &&
@@ -90,15 +97,12 @@ function isDataValid(req, res, next) {
     req.files.article &&
     Object.keys(req.files.article).length > 0
   ) {
+    console.log("un fichier article detecté 1 ");
     //Corps de la requette qui contient le fichier article
     let articleList = req.files.article ? req.files.article : null;
-    if (
-      articleList !== null &&
-      articleList !== undefined &&
-      articleList.length == 1
-    ) {
-      isValidArticle = isValideTypeSingleFile(req, mimeTypeValid);
-    }
+    console.log("valeur de  article detecté 1 " + articleList);
+
+    isValidArticle = isValideTypeSingleFileArticle(req, mimeTypeValid);
     if (!isValidArticle) {
       res.status(401).json({ message: "format du fichier article invalide" });
     }

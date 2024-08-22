@@ -5,43 +5,24 @@ const routeur = express.Router();
 // eslint-disable-next-line no-undef
 const path = require("path");
 // eslint-disable-next-line no-undef
-//const multer = require("multer");
 
-//import de differentes instances de multer
-// eslint-disable-next-line no-undef
-const {
-  uploadAvisAvatar,
-  // eslint-disable-next-line no-unused-vars
-  uploadArticleImages,
-  // eslint-disable-next-line no-unused-vars
-  uploadArticleHTML,
-  // eslint-disable-next-line no-undef
-} = require("./middelware/multer/multerConfig.js");
 
-//const upload = multer({ dest: "uploads/" });
-
-/********* import du controler pour la verification de recapcha ************/
+/********* import du controler pour la verification de recatpcha ***********
+ * **************************************************************************/
 // eslint-disable-next-line no-undef
 const checkRecaptcha = require("./controlers/recaptcha/verifyRecaptcha.js");
 
-/********* import des controlers pour les avis clients ************/
 
+
+/************ import des controlers pour le formulaire de contact *************/
 // eslint-disable-next-line no-undef
-const getAllAvis = require("./controlers/avis/getAllAvis.js");
+const contact = require("./controlers/contact/contact.js");
 
-// eslint-disable-next-line no-undef
-const addOneAvis = require("./controlers/avis/addAvis.js");
 
-// eslint-disable-next-line no-undef
-const changeOneAvis = require("./controlers/avis/changeAvis.js");
+/************ import des controlers pour les routes "admin" ************
+ * *********************************************************************/
 
-// eslint-disable-next-line no-undef
-const deleteAvis = require("./controlers/avis/deleteAvis.js");
-
-/*// eslint-disable-next-line no-undef
-const testPostman = require("./controlers/avis/test.js");*/
-
-/************ import des controlers pour l' admin *************/
+/*********  admin ************/
 
 //connection de l' admin
 // eslint-disable-next-line no-undef
@@ -51,13 +32,33 @@ const logUser = require("./controlers/user/loginUser.js");
 // eslint-disable-next-line no-unused-vars, no-undef
 const changePassword = require("./controlers/user/changePassword.js");
 
-//changement du mot de passe
-// eslint-disable-next-line no-unused-vars, no-undef
-const addArticleOnBlog = require("./controlers/user/addArticle.js");
 
-/************ import des controlers pour le formulaire de contact *************/
+/*********  avis clients ************/
+
 // eslint-disable-next-line no-undef
-const contact = require("./controlers/contact/contact.js");
+const getAllAvis = require("./controlers/avis/getAllAvis.js");
+
+// eslint-disable-next-line no-undef
+const addOneAvis = require("./controlers/avis/addAvis.js");
+
+// eslint-disable-next-line no-undef
+const deleteAvis = require("./controlers/avis/deleteAvis.js");
+
+
+/*********  article admin ************/
+
+//recupere tous les articles
+// eslint-disable-next-line no-undef
+const getAllArticle = require("./controlers/article/getAllArticle.js");
+
+
+//ajouter un article
+// eslint-disable-next-line no-unused-vars, no-undef
+const addOneArticle = require("./controlers/article/addArticle.js");
+
+//suprime un article
+// eslint-disable-next-line no-undef
+const deleteOneArticle = require("./controlers/article/deleteArticle.js");
 
 /************ import des middelware ***************** */
 
@@ -65,7 +66,7 @@ const contact = require("./controlers/contact/contact.js");
 // eslint-disable-next-line no-undef
 const auth = require("./middelware/authentification/auth.js");
 
-//controle des donnees envoyées par le user
+//controle des donnees envoyées par les formulaires clients
 // eslint-disable-next-line no-undef
 const checkData = require("./middelware/checkUserData.js");
 
@@ -73,60 +74,60 @@ const checkData = require("./middelware/checkUserData.js");
 //const setHeaderSecurityCORS = require("./middelware/CORS.js");
 
 /***********************************************
- * ************* creation des enpoints************
+ * ************* creation des end points************
  * ********************************************/
 
 /*********** route get **************
  * **********************************/
 
+//route temoignage socoaching - recupere les avis clients
 routeur.get("/avis", getAllAvis);
 
-routeur.get(
-  "/avis/avatar",
-  // eslint-disable-next-line no-undef
-  express.static(path.join(__dirname, "images"))
-);
+
+//route temoignage socoaching - recupere les avatars avis clients
+// eslint-disable-next-line no-undef
+routeur.get("/avis/avatar", express.static(path.join(__dirname, "images")));
+
+
+//route admin  socoaching - recupere tous les article de la base de donnée
+routeur.get("/article", getAllArticle);
 
 /*********** route post **************
- * **************************************/
+ ****************************************/
 
 //verification reCaptcha
 routeur.post("/verify-recaptcha", checkRecaptcha);
 
-// routes login utilisateur
+// routes Admin  - login admin
 routeur.post("/login", checkData, logUser);
 
-// routes Ajouter avis
-routeur.post("/avis", checkData, uploadAvisAvatar.any(""), addOneAvis);
+// routes Admin  - Ajouter un avis
+routeur.post("/avis", checkData, addOneAvis);
 
 //route Contact SoCoaching - send mail
 routeur.post("/contact", checkData, contact);
 
-//route Contact SoCoaching - Ajouter un article
-routeur.post(
-  "/article",
-  checkData,
-  uploadArticleImages.array("image"),
-  uploadArticleHTML.single("article"),
-  addArticleOnBlog
-);
+//route Admin - Ajouter un article
+routeur.post("/article", checkData, addOneArticle);
+
+
 
 /*********** route put   **************
  * ************************************/
 
-//Modif mot de passe
+//Route Admin - Modifier mot de passe
 routeur.put("/password", auth, checkData, changePassword);
 
-//Modif avis
-routeur.put("/avis", auth, checkData, changeOneAvis);
+
 
 /*********** route delete   **************
  * *****************************************/
 
+//route Admin - Suprimer un avis
 routeur.delete("/avis/:_id", auth, checkData, deleteAvis);
 
-/*//route de test
-routeur.post("/test", testPostman);*/
+//route Admin - Ajouter un article
+routeur.delete("/article", checkData, deleteOneArticle);
 
 // eslint-disable-next-line no-undef
 module.exports = routeur;
