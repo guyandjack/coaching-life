@@ -184,8 +184,8 @@ function isDataValid(req, res, next) {
         }
         break;
 
-      case "avisid":
-        if (!functionControl.checkNumber(req.body.avisid)) {
+      case "id":
+        if (!functionControl.checkNumber(req.body.id)) {
           tabError.push("error avatarurl");
         }
         break;

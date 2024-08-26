@@ -9,8 +9,13 @@
 async function sendRequest(connection, requestType, requestParam) {
   try {
     const [result] = await connection.execute(requestType, requestParam);
-    return result;
+    if (result !== null) {
+      
+      return result;
+    }
+    return null
   } catch (err) {
+    
     console.error(`Erreur lors de l'exécution de la requête : ${err.message}`);
     return null;
   }

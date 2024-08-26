@@ -53,8 +53,8 @@ function CardArticle({ title, imgUrl, resume, index, id }) {
     >
       <input
         className="input"
-        name="_id"
-        {...register("_id", { required: true })}
+        name="id"
+        {...register("id", { required: true })}
         readOnly
         hidden
         value={id}
@@ -71,7 +71,7 @@ function CardArticle({ title, imgUrl, resume, index, id }) {
       <textarea
         className="input textarea"
         name="resume"
-        {...register("resume", { required: true })}
+        {...register("content", { required: true })}
         readOnly
         value={resume}
         rows={5}

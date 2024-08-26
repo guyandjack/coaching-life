@@ -13,11 +13,14 @@ const connectToDataBase = require("../../utils/functions/connectionDataBase.js")
 // eslint-disable-next-line no-undef
 const sendRequest = require("../../utils/functions/requestDataBase.js");
 
+
 //declaration des variables
+// eslint-disable-next-line no-undef
+let urlImageDEV = process.env.URL_BASE_IMAGE_ARTICLE_DEV;
 let avatarPathDataBase = null;
 let avatarPath = null;
 
-async function globalAddOneAvis(req, res) {
+async function addOneAvis(req, res) {
   const lastName = req.body.lastname;
   const firstName = req.body.firstname;
   const content = req.body.content;
@@ -44,8 +47,8 @@ async function globalAddOneAvis(req, res) {
 
     avatarPathDataBase = path.join(
       // eslint-disable-next-line no-undef
-
-      "uploads/avis/avatars" +
+      `${urlImageDEV}`+
+      "upload/avis/avatar/" +
         "avatar-" +
         Date.now() +
         "-" +
@@ -57,7 +60,7 @@ async function globalAddOneAvis(req, res) {
     );
     avatarPath = path.join(
       // eslint-disable-next-line no-undef
-      "uploads/avis/avatars" +
+      "upload/avis/avatar/" +
         "avatar-" +
         Date.now() +
         "-" +
@@ -99,9 +102,7 @@ async function globalAddOneAvis(req, res) {
   return res.status(201).json({ message: "avis enregistré" });
 }
 
-function addOneAvis(req, res) {
-  globalAddOneAvis(req, res);
-}
+
 
 // eslint-disable-next-line no-undef
 module.exports = addOneAvis;

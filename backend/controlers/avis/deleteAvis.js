@@ -3,7 +3,7 @@
 //import des librairies
 // eslint-disable-next-line no-undef
 const fs = require("fs");
-// eslint-disable-next-line no-undef
+// eslint-disable-next-line no-undef, no-unused-vars
 const path = require("path");
 
 //import des fonctions
@@ -15,74 +15,86 @@ const connectToDataBase = require("../../utils/functions/connectionDataBase.js")
 // eslint-disable-next-line no-undef
 const sendRequest = require("../../utils/functions/requestDataBase.js");
 
+
+// eslint-disable-next-line no-undef
+let urlImageDEV = process.env.URL_BASE_IMAGE_ARTICLE_DEV;
 //declaration des fonctions
 
-//recupere l' id de l' avis à effacer
-async function getAvisId(req) {
-  return req.params._id;
-}
 
-async function globalDeleteOneAvis(req, res) {
-  const avisId = await getAvisId(req);
+
+async function deleteOneAvis(req, res) {
+  const avisId = req.body._id;
   let connect = await connectToDataBase(connectionConfig);
+
+  let tabErrorDeleteFile = [];
 
   //requette préparé de type select
   const requeteSelectUrl = `SELECT url_img FROM avis WHERE id = ?`;
-  const paramRequeteSelectUrl = avisId;
+  const paramRequeteSelectUrl = [avisId];
 
-  const requestResultUrl = await sendRequest(
-    res,
+  const response = await sendRequest(
     connect,
     requeteSelectUrl,
     paramRequeteSelectUrl
   );
-  console.log("url recuperer de la bdd: " + requestResultUrl + "fin de chaine");
+  
+  if (response == null) {
+    res
+      .status(500)
+      .json({ message_status: "une erreur est survenue lors de la requete" });
+  }
+
+  let result = await response.json();
 
   //si la requete abouti à un resultat nnon null
-  console.log("resultat url: " + requestResultUrl.length);
-  if (requestResultUrl.length > 0) {
-    console.log("resultat url-2: " + requestResultUrl.length);
+  let objectResult = JSON.parse(JSON.stringify(result));
+  let stringUrl = objectResult[0].url_img?  objectResult[0].url_img : null;
+  
+  if (stringUrl !== null) {
+      
     //modification du chemin de l'image a suprimer
-    let avatarUrl = path.join("images/" + requestResultUrl[0]["url_img"]);
+    let urlRelative = stringUrl.replace(urlImageDEV, "");
+    console.log(" url relative  de image: " + urlRelative);
+    fs.rm(urlRelative, (err) => {
+      if (err) {
+        console.error("Erreur lors de la suppression du fichier :", err);
+        tabErrorDeleteFile.push("error file: impossible de suprimer avatar");
+      } else {
 
-    console.log("url de la bdd + /images : " + avatarUrl);
+        console.log("Fichier image supprimé avec succès.");
+        //res.status(500).json({ message: "impossible le fichier image l'avis" });
+      }
+    }); 
+    }
+  
+  if (tabErrorDeleteFile.length < 1) {
+    //requette preparéé de type delete
+    const requeteDeleteAvis = `DELETE FROM avis WHERE id = ?`;
+    const paramRequetedeleteAvis = [avisId];
 
-    //suppression du fichier image
-    fs.unlink(avatarUrl, (err) => {
-      if (err) throw err;
-      console.log(avatarUrl + " deleted");
-    });
-  }
+    const requestResult = await sendRequest(
+      connect,
+      requeteDeleteAvis,
+      paramRequetedeleteAvis
+    );
 
-  //requette preparéé de type delete
-  const requeteDeleteAvis = `DELETE FROM avis WHERE id = ?`;
-  const paramRequetedeleteAvis = avisId;
+    connect.end();
 
-  const requestResult = await sendRequest(
-    res,
-    connect,
-    requeteDeleteAvis,
-    paramRequetedeleteAvis
-  );
+    //si l'objet result de la requete delete n' existe pas
+    if (!requestResult) {
+      res.status(500).json({ message: "impossible de suprimer l'avis" });
+    }
 
-  connect.end();
-
-  //si l'objet result de la requete delete n' existe pas
-  if (!requestResult) {
-    res.status(500).json({ message: "impossible de suprimer l'avis" });
-  }
-
-  //si nombre de ligne affectées ets differents de 1
-  if (requestResult["affectedRows"] !== 1) {
-    res.status(500).json({ message: "impossible de suprimer l'avis" });
-  }
-  //console.log("objet retour delete: " + Object.entries(requestResult));
-  res.status(200).json({ message: "avis supprimé" });
+    //si nombre de ligne affectées ets differents de 1
+    if (requestResult["affectedRows"] !== 1) {
+      res.status(500).json({ message: "impossible de suprimer l'avis" });
+    }
+    //console.log("objet retour delete: " + Object.entries(requestResult));
+    res.status(200).json({ message: "avis supprimé" });
+  } 
 }
 
-function deleteOneAvis(req, res) {
-  globalDeleteOneAvis(req, res);
-}
+
 
 // eslint-disable-next-line no-undef
 module.exports = deleteOneAvis;
