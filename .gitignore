@@ -25,5 +25,10 @@ dist-ssr
 *.sw?
 
 images
-uploads
+upload
+
+public/fr/article
+public/en/article
+public/de/artikle
+
 

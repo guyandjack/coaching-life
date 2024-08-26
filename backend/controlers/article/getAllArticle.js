@@ -24,7 +24,7 @@ async function getAllArticle(req, res) {
     }
 
     // Exécution de la requête préparée
-    const requestResult = await sendRequest(
+    let requestResult = await sendRequest(
       connect,
       requeteGetAllArticle,
       paramRequeteGetAllArticle
@@ -38,17 +38,27 @@ async function getAllArticle(req, res) {
     // Retourne les avis avec un statut HTTP 200
     connect.end();
 
-    //modification du contenu de la requete on envoi une seule image
-    
-    let resultParsed = JSON.parse(requestResult[0].url_img);
-    console.log("contenu de la requette get image 1: " + resultParsed[0])
-    resultParsed = [resultParsed[0]];
-    //let resultParsedString = JSON.stringify[resultParsed[0]];
-    console.log("tableau finally :" + resultParsed);
+    //modification du contenu de la requete on envoi une seule image pour le front end la premiere du tableau d'image
 
+    // eslint-disable-next-line no-unused-vars
+    requestResult.forEach((article, index) => {
+       
+      let tabUrlClean;
+            // eslint-disable-next-line no-useless-escape
+       if (article.url_img.startsWith("[")) {
+         
+         tabUrlClean = article.url_img.split('["')[1].split('"')[0];
+         article.url_img = tabUrlClean;
+            
+            console.log("tab of url img : " + tabUrlClean)
+            
+            console.log("article urlimg :  " + article.url_img)
+         }
+      })
+     
     return res.status(200).json(requestResult);
   } catch (error) {
-    console.error("Erreur lors de la récupération des avis: ", error.message);
+    console.error("Erreur lors de la récupération des articles: ", error.message);
     return res.status(500).json({ message: "Erreur interne du serveur" });
   } 
 }

@@ -94,7 +94,7 @@ function createImagePathForStore(newName, imgExt) {
     "." +
     imgExt
   );
-  console.log("url de l^image uplode:" + imagePathStore)
+  
   return imagePathStore;
 }
 function articlePathForDataBase(req, newName, imgExt) {
@@ -178,6 +178,7 @@ async function addOneArticle(req, res) {
     let imageExt = imageName.split(".").pop(); //recupere l' extension du fichier image
     let newImageName = titleArticle.split(masque).join("").toLowerCase(); // renomage du fichier image avec titre de l'article
     imagePathStore = createImagePathForStore(newImageName, imageExt);
+    //imagePathStore = createArrayImagePath(imageList, titleArticle, masque);
   } else {
     console.log("plusieurs images a enregistrer.");
     isOneImage = false;
@@ -185,7 +186,7 @@ async function addOneArticle(req, res) {
     imagePathStore = arrayImagePath;
   }
 
-  //creation d' un chemin pour enregistrer le fichier article
+  //creation d'un chemin pour enregistrer le fichier article
   let articleName = req.files.article.name;
   let articleExt = articleName.split(".").pop();
   let newArticleName = titleArticle.split(masque).join("").toLowerCase();
