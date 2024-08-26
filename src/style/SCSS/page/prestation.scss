@@ -6,8 +6,8 @@
 }
 
 .container-title-carousel {
-  background-color: map-get($colors-rule, sixth-color);
-  background-image: url("@/assets/image/page-prestation/tableau-opportunity.jpg");
+  background-color: map-get($colors-rule, fifth-color);
+  //background-image: url("@/assets/image/page-prestation/");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -17,6 +17,9 @@
   padding: 30px 0px 0px 30px;
   //border: 2px solid red;
   //color: map-get($colors-rule, first-color);
+  font-family: Montserrat;
+    font-weight: 800;
+    font-size: 32px;
 
   @include upper-large-screen {
 
@@ -71,7 +74,8 @@
 
   #slider-1 {
     background-image: url("@/assets/image/page-prestation/coaching-de-vie.jpg");
-    border: 1px solid map-get($colors-rule, second-color);
+    //border: 1px solid map-get($colors-rule, second-color);
+    box-shadow: inset 0px 0px 20px 0px map-get($colors-rule, second-color ) ;
 
     &>h2 {
 
@@ -149,6 +153,9 @@
 
 .prestation {
   .title-prestation {
+    font-family: Montserrat;
+    font-weight: 800;
+    font-size: 32px;
     position: relative;
     z-index: 1;
 

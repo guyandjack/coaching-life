@@ -41,6 +41,8 @@ const masqueUrl =
   // eslint-disable-next-line no-useless-escape
   /^(((https?):\/\/)|(www\.)|((https?):\/\/www\.))[a-z_\.\-]{1,15}\.[a-z_\.\-]{1,20}[a-z0-9\/:%_+.,#?!@&=-]+$/;
 
+//motif qui permet de controler la balise "<html lang="">" existe"
+const masqueLang = /<html\s+lang=["']?([a-zA-Z-]+)["']?/i;
 // eslint-disable-next-line no-undef
 module.exports = {
   masqueCivilite,
@@ -50,4 +52,5 @@ module.exports = {
   masqueNumber,
   masquePassword,
   masqueUrl,
+  masqueLang
 };

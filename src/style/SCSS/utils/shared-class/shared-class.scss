@@ -360,7 +360,7 @@ footer {
 
 .h1 {
   padding-left: 5%;
-  font-family: "Source Code Pro", monospace;
+  font-family: "Montserrat", sans-serif;
   font-size: 25px;
   font-weight: 600;
   max-width: 70%;
@@ -369,11 +369,13 @@ footer {
   @include upper-medium-screen {
     font-size: 30px;
     max-width: 60%;
+    font-weight: 700;
   }
 
   @include upper-large-screen {
     font-size: 40px;
     max-width: 50%;
+    font-weight: 800;
   }
 }
 

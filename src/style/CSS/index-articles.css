@@ -59,15 +59,15 @@
 }
 @media screen and (min-width: 993px) {
   .example .image-article {
-    height: 400px;
+    height: 300px;
   }
 }
 .example #img-1 {
-  background-image: url("/src/assets/image/page-index/what.jpg");
-  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgb(0, 0, 0)), to(transparent));
-  -webkit-mask-image: linear-gradient(180deg, rgb(0, 0, 0), transparent);
-          mask-image: -webkit-gradient(linear, left top, left bottom, from(rgb(0, 0, 0)), to(transparent));
-          mask-image: linear-gradient(180deg, rgb(0, 0, 0), transparent);
+  background-image: url("/src/assets/image/page-index/what-2.jpg");
+  /*mask-image:
+    linear-gradient(180deg, rgba(0, 0, 0, 1), transparent),
+    //url("/src/assets/masque/blob-index-bar-vert.svg"),
+  ;*/
   border-left: 2px solid #8ab707;
   background-position: bottom;
 }
@@ -97,7 +97,7 @@
           transform: translate(-50%);
   font-weight: 600;
   font-size: 25px;
-  padding: 40px 10px 40px 10px;
+  padding: 20px 10px 20px 10px;
   width: 100%;
   -webkit-backdrop-filter: brightness(60%) blur(2px);
           backdrop-filter: brightness(60%) blur(2px);
@@ -263,11 +263,10 @@
 .example .text-2,
 .example .text-3 {
   width: 100%;
-  color: #001747;
+  color: #171717;
   padding: 10px;
   border-radius: 10px;
-  -webkit-backdrop-filter: brightness(90%);
-          backdrop-filter: brightness(90%);
+  background-color: #fbfffe;
 }
 @media screen and (min-width: 769px) {
   .example .text-2,
@@ -276,7 +275,7 @@
   }
 }
 .example #img-text-3-1 {
-  background-image: url("/src/assets/image/page-index/what.jpg");
+  background-image: url("/src/assets/image/page-index/what-2.jpg");
   background-position: bottom;
 }
 .example #img-text-3-2 {

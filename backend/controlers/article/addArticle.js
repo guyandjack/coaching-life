@@ -15,14 +15,20 @@ const checkLanguageFileHtml = require("../../utils/functions/checkLanguageFileHt
 
 // eslint-disable-next-line no-undef
 let urlImageDEV = process.env.URL_BASE_IMAGE_ARTICLE_DEV;
-// eslint-disable-next-line no-undef
-//let urlArticleDEV = process.env.URL_BASE_UPLOAD_HTML_DEV;
-// eslint-disable-next-line no-undef
-//let urlImagePROD = process.env.URL_BASE_UPLOAD_IMAGE_PROD;
-//declaration des fonctions
+
 function changePathForDB(urlBase, imagePathStore) {
- return (`${urlBase}`+ imagePathStore)
+  if (typeof imagePathStore === "string") {
+    return `${urlBase}${imagePathStore}`;
+  }
+
+  if (Array.isArray(imagePathStore)) {
+    return imagePathStore.map((path) => `${urlBase}${path}`);
+  }
+
+  // Optionnel : gérer les cas où imagePathStore n'est ni une string ni un tableau
+  throw new Error("imagePathStore must be a string or an array.");
 }
+
 
 async function storeOneImage(req, imagePathStore) {
   if (imagePathStore == null || imagePathStore == undefined) {
@@ -93,13 +99,32 @@ function createImagePathForStore(newName, imgExt) {
 }
 function articlePathForDataBase(req, newName, imgExt) {
   //let fileHtmlStringed = req.files.article;
-  //let languageFile = checkLanguageFileHtml(fileHtmlStringed)
- // console.log("detection de la langue: " + languageFile);
+  let languageFile = checkLanguageFileHtml(req.files.article);
+  let endPath = "";
+  switch (languageFile) {
+    case "fr":
+      endPath = "article"
+      
+      break;
+    case "de":
+      endPath = "artikle"
+      
+      break;
+    case "en":
+      endPath = "article"
+      
+      break;
+  
+    default:
+      break;
+  }
+  console.log("detection de la langue: " + languageFile);
+  
   let articlePath = path.join(
     // eslint-disable-next-line no-undef
 
-    "../public/fr/article/" +
-      "article-" +
+    `../public/${languageFile}/${endPath}/` +
+      `${endPath}-` +
       Date.now() +
       "-" +
       newName +
@@ -122,6 +147,7 @@ function createArrayImagePath(imageList, titleArticle, masque) {
     let imagePathStore = createImagePathForStore(newImageName, imageExt);
     arrayPathImg.push(imagePathStore);
   });
+  console.log("tableau des path image: " + arrayPathImg)
   return arrayPathImg; // sous forme de chaine de caractere pour la bdd
 }
 
@@ -156,7 +182,7 @@ async function addOneArticle(req, res) {
     console.log("plusieurs images a enregistrer.");
     isOneImage = false;
     arrayImagePath = createArrayImagePath(imageList, titleArticle, masque);
-    imagePathStore = arrayImagePath.toString();
+    imagePathStore = arrayImagePath;
   }
 
   //creation d' un chemin pour enregistrer le fichier article
@@ -165,9 +191,11 @@ async function addOneArticle(req, res) {
   let newArticleName = titleArticle.split(masque).join("").toLowerCase();
   articlePath = articlePathForDataBase(req, newArticleName, articleExt);
 
-  //creation d' une url pour la DB
+  //daptation de l' url pour la DB
   imagePathDB = changePathForDB(urlImageDEV, imagePathStore);
   console.log("url image pour data base: " + imagePathDB);
+
+  
 
   //Requete preparée pour inserer un article  dans la bdd avis
   const requeteAddArticle = `INSERT INTO article (created_at, title, resume, url_img, url_article)  VALUES (NOW(),?,?,?,?) `;

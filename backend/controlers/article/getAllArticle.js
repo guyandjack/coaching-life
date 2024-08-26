@@ -37,6 +37,15 @@ async function getAllArticle(req, res) {
 
     // Retourne les avis avec un statut HTTP 200
     connect.end();
+
+    //modification du contenu de la requete on envoi une seule image
+    
+    let resultParsed = JSON.parse(requestResult[0].url_img);
+    console.log("contenu de la requette get image 1: " + resultParsed[0])
+    resultParsed = [resultParsed[0]];
+    //let resultParsedString = JSON.stringify[resultParsed[0]];
+    console.log("tableau finally :" + resultParsed);
+
     return res.status(200).json(requestResult);
   } catch (error) {
     console.error("Erreur lors de la récupération des avis: ", error.message);

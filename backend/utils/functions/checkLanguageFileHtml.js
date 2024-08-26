@@ -1,17 +1,24 @@
+// eslint-disable-next-line no-undef
+const { masqueLang } = require("../data/regEx/regEx.js");
+
 // Fonction pour détecter la langue du contenu HTML
 
-function detectLanguage(content) {
 
+ function detectLanguage(article) {
+ 
+  
+  let contents = article.data.toString("utf8");
+  let value = contents.match(masqueLang);
+  console.log("retour du tableau match regex " + value); 
 
-  if (content.includes('<html lang="fr">')) {
-    return "fr";
-  } else if (content.includes('<html lang="de">')) {
-    return "de";
-  } else if (content.includes('<html lang="en">')) {
-    return "en";
+  
+  if (value && value[1]) {
+    return value[1].toLowerCase();
   } else {
     return "unknown";
   }
+
+
 }
 
 // eslint-disable-next-line no-undef

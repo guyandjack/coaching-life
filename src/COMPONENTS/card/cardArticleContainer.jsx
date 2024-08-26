@@ -23,6 +23,8 @@ function CardArticleContainer() {
   const [arrayArticle, setArrayArticle] = useState([]);
   const [displayList, setDisplayList] = useState(true);
 
+  //const isArray = useRef(false);
+
   useEffect(() => {
     let cardContainer = document.querySelector(".card-article-container");
     
@@ -49,7 +51,7 @@ function CardArticleContainer() {
   function getAllArticle() {
 
           
-      let response = fetch(`${url}/article`, {
+      let promesse = fetch(`${url}/article`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -57,18 +59,22 @@ function CardArticleContainer() {
       
       });
 
-      response.then((response) => {
+      
+    promesse
+      .then((response) => {
         if (response.ok) {
-          response.json().then((result) => {
-            setArrayArticle(result);
-            setDisplayList(true);
-                      
-          });
-        }
-        else {
-          alert("impossible d' afficher les articles")
-        }
-      });
+          response.json()
+            .then((result) => {
+              setArrayArticle(result);
+              setDisplayList(true);
+            })
+          .catch((e)=>{console.log(e)})
+        } else {
+          setArrayArticle([]);
+          setDisplayList(true);
+      }
+    })
+      
     
     
   }
@@ -100,20 +106,27 @@ function CardArticleContainer() {
         ) : null}
       </div>
       <ul className="flex-row-space_evenly-center-wrap card-article-container">
-        {arrayArticle.map((card, index) => {
-          return (
-            <li key={index}>
-              <CardArticle
-                title={card.title}
-                resume={card.resume}
-                imgUrl={card.url_img}
-                index={index}
-                id={card.id}
-              />
-            </li>
-          );
-        })}
-      </ul>
+  {arrayArticle.length > 0 ? (
+    arrayArticle.map((card, index) => {
+      
+
+      return (
+        <li key={index}>
+          <CardArticle
+            title={card.title}
+            resume={card.resume}
+            imgUrl={card.url_img}
+            index={index}
+            id={card.id}
+          />
+        </li>
+      );
+    })
+  ) : (
+    <div>{"Aucun article sur le site"}</div>
+  )}
+</ul>
+      
     </div>
   );
 }

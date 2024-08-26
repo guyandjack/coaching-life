@@ -6,7 +6,7 @@
 
 .example {
 
-  $image-1: url("/src/assets/image/page-index/what.jpg");
+  $image-1: url("/src/assets/image/page-index/what-2.jpg");
   $image-2: url("/src/assets/image/page-index/pense.jpg");
   $image-3: url("/src/assets/image/page-index/desert.jpg");
 
@@ -64,7 +64,7 @@
     }
 
     @include upper-large-screen {
-      height: 400px;
+      height: 300px;
     }
 
 
@@ -72,10 +72,10 @@
 
   #img-1 {
     background-image: $image-1;
-    mask-image:
+    /*mask-image:
       linear-gradient(180deg, rgba(0, 0, 0, 1), transparent),
       //url("/src/assets/masque/blob-index-bar-vert.svg"),
-    ;
+    ;*/
     border-left: 2px solid map-get($colors-rule-darked-5, fourth-color);
 
     background-position: bottom;
@@ -107,10 +107,10 @@
     transform: translate(-50%);
     font-weight: 600;
     font-size: 25px;
-    padding: 40px 10px 40px 10px;
+    padding: 20px 10px 20px 10px;
     width: 100%;
     backdrop-filter: brightness(60%) blur(2px);
-    //opacity: 0.9;
+    //opacity: 0.5;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     //border-right: 2px solid darken(map-get($colors-rule, fourth-color), 5%);
@@ -223,6 +223,9 @@
 
   .container-text-2,
   .container-text-3 {
+    
+    
+    //background-color: map-get($colors-rule, sixth-color);
     @include upper-medium-screen {
       opacity: 0;
       transform: translateX(-50%);
@@ -290,10 +293,11 @@
     }
 
     width: 100%;
-    color: map-get($colors-rule, first-color);
+    color: map-get($colors-rule, fifth-color);
     padding: 10px;
     border-radius: 10px;
-    backdrop-filter: brightness(90%);
+    //backdrop-filter: brightness(90%);
+    background-color: map-get($colors-rule, sixth-color);
   }
 
 
