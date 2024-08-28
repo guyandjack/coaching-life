@@ -85,14 +85,11 @@ const checkData = require("./middelware/checkUserData.js");
 //route temoignage socoaching - recupere les avis clients
 routeur.get("/avis", auth, getAllAvis);
 
-
-//route temoignage socoaching - recupere les avatars avis clients
-// eslint-disable-next-line no-undef
-//routeur.get("/avis/avatar", express.static(path.join(__dirname, "upload/avis/avatar")));
-
-
 //route admin  socoaching - recupere tous les article de la base de donnée
 routeur.get("/article", auth, getAllArticle);
+
+
+
 
 /*********** route post *****************
  ****************************************/
@@ -118,7 +115,7 @@ routeur.post("/article", checkData, auth, addOneArticle);
  * ************************************/
 
 //Route Admin - Modifier mot de passe
-routeur.put("/password", auth, checkData, changePassword);
+routeur.put("/password", checkData, auth, changePassword);
 
 
 

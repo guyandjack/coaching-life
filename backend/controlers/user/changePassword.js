@@ -1,131 +1,69 @@
-// middelware qui permet de changer de mot de passe
+/* eslint-disable no-undef */
+// Import des librairies
+const bcrypt = require("bcrypt");
 
-//import des librairies
-// eslint-disable-next-line no-undef, no-unused-vars
-const crypt = require("bcrypt");
-// eslint-disable-next-line no-undef, no-unused-vars
-
-//import des fonctions
-// eslint-disable-next-line no-undef
-const connectionConfig = require("../../utils/data/dataBaseConnectionConfig.js");
-// eslint-disable-next-line no-undef
+// Import des fonctions
 const connectToDataBase = require("../../utils/functions/connectionDataBase.js");
-
-// eslint-disable-next-line no-undef
 const sendRequest = require("../../utils/functions/requestDataBase.js");
 
-//declarartion des fonctions
-async function getActualPassword(bodyparsed) {
-  return bodyparsed.actualpassword;
-}
+async function changePassword(req, res) {
+  // Vérification de la présence des données nécessaires dans le corps de la requête
+  const {
+    password: actualPassword,
+    newpassword: newPassword,
+    
+  } = req.body;
+  const adminId = req.auth.admin;
 
-async function getNewPassword(bodyparsed) {
-  return bodyparsed.newpassword;
-}
+  
 
-async function getConfirmPassword(bodyparsed) {
-  return bodyparsed.confirmpassword;
-}
+  try {
+    const connect = await connectToDataBase();
+    // Récupération du mot de passe actuel de l'admin dans la base de données
+    const requetePasswordAdmin = `SELECT password FROM admin WHERE id = ?`;
+    const [requestResult] = await sendRequest(connect, requetePasswordAdmin, [
+      adminId,
+    ]);
 
-async function getBodyAuth(req) {
-  return req.auth.admin;
-}
-
-async function globalChangePassword(req, res) {
-  if (Object.keys(req.body).length < 1) {
-    return res.status(500).json({ message: "corps de la requette vide" });
-  }
-
-  let bodyParsed = JSON.parse(req.body.dataput);
-
-  const actualPassword = await getActualPassword(bodyParsed);
-  const newPassword = await getNewPassword(bodyParsed);
-  const confirmPassword = await getConfirmPassword(bodyParsed);
-  const adminId = await getBodyAuth(req);
-
-  //verifie si l' actuel password correspond a celui de la bdd
-
-  //Requette preparée pour recuperer le password de l'admin coorespondant au token dans la bdd
-  const requetePasswordAdmin = `SELECT password FROM user_admin WHERE id = ?`;
-  const paramRequetePasswordAdmin = adminId;
-
-  console.log("adminId: " + adminId);
-
-  let connect = await connectToDataBase(connectionConfig);
-
-  const requestResult = await sendRequest(
-    res,
-    connect,
-    requetePasswordAdmin,
-    paramRequetePasswordAdmin
-  );
-
-  if (requestResult.length < 1) {
-    connect.end();
-    res.status(401).json({ message: "pas d'admin correspondant" });
-    return;
-  }
-
-  //gestion du resultat
-  crypt
-    .compare(actualPassword, requestResult[0].password)
-    .then((isValid) => {
-      if (!isValid) {
-        connect.end();
-        res.status(500).json({ message: "mot de passe actuel erromé" });
-        return;
-      }
-    })
-    .catch(() => {
+    if (!requestResult) {
       connect.end();
-      res.status(500).json({ message: "erreur dans le cryptage" });
-      return;
-    });
+      return res.status(404).json({ message: "Admin introuvable" });
+    }
 
-  //test si la validite du nouveau mot de passe
-  if (newPassword !== confirmPassword) {
+    // Vérification du mot de passe actuel
+    const isValid = await bcrypt.compare(
+      actualPassword,
+      requestResult.password
+    );
+    if (!isValid) {
+      connect.end();
+      return res.status(401).json({ message: "Mot de passe actuel incorrect" });
+    }
+
+    // Hachage du nouveau mot de passe
+    const hashedPassword = await bcrypt.hash(newPassword, 5);
+
+    // Mise à jour du mot de passe dans la base de données
+    const requeteChangePassword = `UPDATE admin SET password = ? WHERE id = ?`;
+    const updateResult = await sendRequest(connect, requeteChangePassword, [
+      hashedPassword,
+      adminId,
+    ]);
+
     connect.end();
+
+    if (!updateResult) {
+      return res
+        .status(500)
+        .json({ message: "Impossible de changer le mot de passe" });
+    }
+
     res
-      .status(400)
-      .json({ message: "les mots de passes ne correspondent pas" });
+      .status(200)
+      .json({ "message": "succes" });
+  } catch (error) {
+    res.status(500).json({ message: "Erreur serveur", error: error.message });
   }
-
-  //hachage du nouveau mot de paase
-  crypt
-    .hash(confirmPassword, 5)
-    .then(async (mdpHashed) => {
-      //Requette preparée pour recuperer les infos de l'utilisateur dans la bdd
-      const requeteChangePassword = `UPDATE user_admin SET password = ?`;
-      const paramRequeteChangePassword = mdpHashed;
-
-      const requestResult2 = await sendRequest(
-        res,
-        connect,
-        requeteChangePassword,
-        paramRequeteChangePassword
-      );
-
-      if (!requestResult2) {
-        connect.end();
-        res
-          .status(500)
-          .json({ message: "impossible de changer le mot de passe" });
-        return;
-      }
-
-      //gestion du resultat
-      connect.end();
-      res.status(201).json({ message: "Nouveau mot de passe enregistré!" });
-    })
-    // eslint-disable-next-line no-unused-vars
-    .catch(() => {
-      connect.end();
-      res.status(500).json({ message: "impossible de asher le mot de passe" });
-    });
-}
-
-function changePassword(req, res) {
-  globalChangePassword(req, res);
 }
 
 // eslint-disable-next-line no-undef

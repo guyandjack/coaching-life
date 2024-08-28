@@ -121,7 +121,7 @@ function FormAddArticle() {
       id="form-add-article"
       className="flex-column-start-center form-dashboard"
       onSubmit={handleSubmit((data) => {
-        console.log(data);
+       
         fetchApi(data);
       })}
       encType="multipart/form-data"

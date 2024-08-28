@@ -51,6 +51,9 @@
   resize: vertical;
   width: 100%;
 }
+.form-dashboard .eye {
+  margin-left: 20px;
+}
 .form-dashboard .container-span-error {
   height: 50px;
 }

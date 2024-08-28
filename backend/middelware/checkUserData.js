@@ -163,11 +163,7 @@ function isDataValid(req, res, next) {
           tabError.push("error newpassword");
         }
         break;
-      case "actualpassword":
-        if (!functionControl.checkPassword(req.body.actualpassword)) {
-          tabError.push("error actualpassword");
-        }
-        break;
+      
       case "confirmpassword":
         if (!functionControl.checkPassword(req.body.confirmpassword)) {
           tabError.push("error confirmpassword");
