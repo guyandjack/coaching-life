@@ -39,12 +39,17 @@ let navBarContentEN = [
     id: "contact",
     text: "Contact",
     href: `${url}/public/en/contact-your-individual-and-business-coach.html`,
-    href_alt_fr:
-      `${url}/public/fr/contactez-votre-coach-individuel-et-en-entreprise.html`,
-    href_alt_de:
-      `${url}/public/de/kontaktieren-sie-ihren-individuellen-und-unternehmenscoach.html`,
-    href_alt_en:
-      `${url}/public/en/contact-your-individual-and-business-coach.html`,
+    href_alt_fr: `${url}/public/fr/contactez-votre-coach-individuel-et-en-entreprise.html`,
+    href_alt_de: `${url}/public/de/kontaktieren-sie-ihren-individuellen-und-unternehmenscoach.html`,
+    href_alt_en: `${url}/public/en/contact-your-individual-and-business-coach.html`,
+  },
+  {
+    id: "article",
+    text: "Article",
+    href: `${url}/public/public/en/article-coaching-personal-development-business.html`,
+    href_alt_fr: `${url}/public/fr/article-coaching-developpement-personel-entreprise.html`,
+    href_alt_de: `${url}/public/de/artikle-coaching-persönlichkeitsentwicklung-unternehmen.html`,
+    href_alt_en: `${url}/public/en/article-coaching-personal-development-business.html`,
   },
 ];
 export { navBarContentEN };
