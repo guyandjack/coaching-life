@@ -11,7 +11,7 @@
   width: 100%;
 }
 
-.btn-display-article, .btn-update-article {
+.btn-display-article, .btn-update-article, .btn-display-avis, .btn-update-avis {
   padding: 20px;
   border: 1px solid #001747;
   color: #001747;
@@ -19,7 +19,7 @@
   background-color: #fbfffe;
   margin: 50px 0px;
 }
-.btn-display-article:hover, .btn-update-article:hover {
+.btn-display-article:hover, .btn-update-article:hover, .btn-display-avis:hover, .btn-update-avis:hover {
   background-color: #c8fff1;
   cursor: pointer;
 }

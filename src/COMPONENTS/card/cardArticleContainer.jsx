@@ -49,14 +49,14 @@ function CardArticleContainer() {
   
 
   function getAllArticle() {
-
+    const token = localStorage.getItem("token");
           
       let promesse = fetch(`${url}/article`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
-      
       });
 
       

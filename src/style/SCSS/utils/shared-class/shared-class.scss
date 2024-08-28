@@ -359,22 +359,24 @@ footer {
 }
 
 .h1 {
-  padding-left: 5%;
+  //padding-left: 5%;
+  width: 100%;
+  text-align: center;
   font-family: "Montserrat", sans-serif;
   font-size: 25px;
   font-weight: 600;
-  max-width: 70%;
+  //max-width: 70%;
   line-height: 120%;
-
+padding: 20px ;
   @include upper-medium-screen {
     font-size: 30px;
-    max-width: 60%;
+    //max-width: 60%;
     font-weight: 700;
   }
 
   @include upper-large-screen {
     font-size: 40px;
-    max-width: 50%;
+    //max-width: 50%;
     font-weight: 800;
   }
 }

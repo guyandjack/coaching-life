@@ -23,75 +23,86 @@ let urlImageDEV = process.env.URL_BASE_IMAGE_ARTICLE_DEV;
 
 
 async function deleteOneAvis(req, res) {
-  const avisId = req.body._id;
+  const avisId = req.body.id;
   let connect = await connectToDataBase(connectionConfig);
 
   let tabErrorDeleteFile = [];
 
   //requette préparé de type select
-  const requeteSelectUrl = `SELECT url_img FROM avis WHERE id = ?`;
-  const paramRequeteSelectUrl = [avisId];
-
-  const response = await sendRequest(
-    connect,
-    requeteSelectUrl,
-    paramRequeteSelectUrl
-  );
   
-  if (response == null) {
-    res
-      .status(500)
-      .json({ message_status: "une erreur est survenue lors de la requete" });
-  }
+  try {
+    const requeteSelectUrl = `SELECT url_img FROM avis WHERE id = ?`;
+    const paramRequeteSelectUrl = [avisId];
 
-  let result = await response.json();
-
-  //si la requete abouti à un resultat nnon null
-  let objectResult = JSON.parse(JSON.stringify(result));
-  let stringUrl = objectResult[0].url_img?  objectResult[0].url_img : null;
-  
-  if (stringUrl !== null) {
-      
-    //modification du chemin de l'image a suprimer
-    let urlRelative = stringUrl.replace(urlImageDEV, "");
-    console.log(" url relative  de image: " + urlRelative);
-    fs.rm(urlRelative, (err) => {
-      if (err) {
-        console.error("Erreur lors de la suppression du fichier :", err);
-        tabErrorDeleteFile.push("error file: impossible de suprimer avatar");
-      } else {
-
-        console.log("Fichier image supprimé avec succès.");
-        //res.status(500).json({ message: "impossible le fichier image l'avis" });
-      }
-    }); 
-    }
-  
-  if (tabErrorDeleteFile.length < 1) {
-    //requette preparéé de type delete
-    const requeteDeleteAvis = `DELETE FROM avis WHERE id = ?`;
-    const paramRequetedeleteAvis = [avisId];
-
-    const requestResult = await sendRequest(
+    const response = await sendRequest(
       connect,
-      requeteDeleteAvis,
-      paramRequetedeleteAvis
+      requeteSelectUrl,
+      paramRequeteSelectUrl
     );
 
-    connect.end();
-
-    //si l'objet result de la requete delete n' existe pas
-    if (!requestResult) {
-      res.status(500).json({ message: "impossible de suprimer l'avis" });
+    if (!response) {
+      return res
+        .status(500)
+        .json({ message_status: "Une erreur est survenue lors de la requête" });
     }
 
-    //si nombre de ligne affectées ets differents de 1
-    if (requestResult["affectedRows"] !== 1) {
-      res.status(500).json({ message: "impossible de suprimer l'avis" });
+    const result = JSON.parse(JSON.stringify(response));
+
+    const stringUrl = result[0]?.url_img || null;
+
+    if (stringUrl) {
+      // Modification du chemin de l'image à supprimer
+      const urlRelative = stringUrl.replace(urlImageDEV, "");
+      console.log("URL relative de l'image : " + urlRelative);
+
+      fs.rm(urlRelative, (err) => {
+        if (err) {
+          console.error("Erreur lors de la suppression du fichier :", err);
+          tabErrorDeleteFile.push(
+            "Erreur de fichier : impossible de supprimer l'avatar"
+          );
+        } else {
+          console.log("Fichier image supprimé avec succès.");
+        }
+      });
     }
-    //console.log("objet retour delete: " + Object.entries(requestResult));
-    res.status(200).json({ message: "avis supprimé" });
-  } 
+  } catch (error) {
+    console.error("Erreur lors de l'exécution de la requête :", error);
+    res
+      .status(500)
+      .json({ message_status: "Erreur interne lors de la requête" });
+  }
+
+  
+  if (tabErrorDeleteFile.length === 0) {
+    try {
+      // Requête préparée de type DELETE
+      const requeteDeleteAvis = `DELETE FROM avis WHERE id = ?`;
+      const paramRequetedeleteAvis = [avisId];
+
+      const requestResult = await sendRequest(
+        connect,
+        requeteDeleteAvis,
+        paramRequetedeleteAvis
+      );
+
+      connect.end();
+
+      if (!requestResult || requestResult.affectedRows !== 1) {
+        return res
+          .status(500)
+          .json({ message: "Impossible de supprimer l'avis" });
+      }
+
+      res.status(200).json({ message: "Avis supprimé" });
+    } catch (error) {
+      console.error("Erreur lors de la suppression de l'avis:", error);
+      res
+        .status(500)
+        .json({ message: "Erreur interne lors de la suppression de l'avis" });
+    }
+  }
+
 }
 
 

@@ -2,8 +2,10 @@
 // eslint-disable-next-line no-undef
 const express = require("express");
 const routeur = express.Router();
-// eslint-disable-next-line no-undef
+// eslint-disable-next-line no-undef, no-unused-vars
 const path = require("path");
+// eslint-disable-next-line no-undef
+//test hash
 // eslint-disable-next-line no-undef
 
 
@@ -81,18 +83,18 @@ const checkData = require("./middelware/checkUserData.js");
  * **********************************/
 
 //route temoignage socoaching - recupere les avis clients
-routeur.get("/avis", getAllAvis);
+routeur.get("/avis", auth, getAllAvis);
 
 
 //route temoignage socoaching - recupere les avatars avis clients
 // eslint-disable-next-line no-undef
-routeur.get("/avis/avatar", express.static(path.join(__dirname, "images")));
+//routeur.get("/avis/avatar", express.static(path.join(__dirname, "upload/avis/avatar")));
 
 
 //route admin  socoaching - recupere tous les article de la base de donnée
-routeur.get("/article", getAllArticle);
+routeur.get("/article", auth, getAllArticle);
 
-/*********** route post **************
+/*********** route post *****************
  ****************************************/
 
 //verification reCaptcha
@@ -102,13 +104,13 @@ routeur.post("/verify-recaptcha", checkRecaptcha);
 routeur.post("/login", checkData, logUser);
 
 // routes Admin  - Ajouter un avis
-routeur.post("/avis", checkData, addOneAvis);
+routeur.post("/avis", checkData, auth, addOneAvis);
 
 //route Contact SoCoaching - send mail
 routeur.post("/contact", checkData, contact);
 
 //route Admin - Ajouter un article
-routeur.post("/article", checkData, addOneArticle);
+routeur.post("/article", checkData, auth, addOneArticle);
 
 
 
@@ -124,10 +126,10 @@ routeur.put("/password", auth, checkData, changePassword);
  * *****************************************/
 
 //route Admin - Suprimer un avis
-routeur.delete("/avis/:_id", auth, checkData, deleteAvis);
+routeur.delete("/avis", checkData, auth, deleteAvis);
 
 //route Admin - Ajouter un article
-routeur.delete("/article", checkData, deleteOneArticle);
+routeur.delete("/article", checkData, auth, deleteOneArticle);
 
 // eslint-disable-next-line no-undef
 module.exports = routeur;

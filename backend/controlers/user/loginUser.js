@@ -1,118 +1,73 @@
-//controler identification Login
-
-//import des librairies
-// eslint-disable-next-line no-undef, no-unused-vars
-const crypt = require("bcrypt");
-// eslint-disable-next-line no-undef, no-unused-vars
+/* eslint-disable no-undef */
+// Import des librairies
+const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
-//import des fonctions
-// eslint-disable-next-line no-undef
-const connectionConfig = require("../../utils/data/dataBaseConnectionConfig.js");
-// eslint-disable-next-line no-undef
 const connectToDataBase = require("../../utils/functions/connectionDataBase.js");
-
-// eslint-disable-next-line no-undef
 const sendRequest = require("../../utils/functions/requestDataBase.js");
 
-// eslint-disable-next-line no-undef
-//const { connect } = require("../../route.js");
+async function checkUserLogin(req, res) {
+  const { email: userEmail, password: userPassword } = req.body;
 
-//definition des fonctions
-
-//getuserEmail
-async function getEmail(bodyparsed) {
-  return bodyparsed.email;
-}
-//getuserPassword
-async function getPassword(bodyparsed) {
-  return bodyparsed.password;
-}
-
-async function globalcheckUserLogin(req, res) {
-  if (Object.keys(req.body).length < 1) {
-    return res.status(500).json({ message: "corps de la requette vide" });
+  if (!userEmail || !userPassword) {
+    return res.status(400).json({ message: "Email et mot de passe requis" });
   }
 
-  let bodyParsed = JSON.parse(req.body.datalogin);
-  console.log("bodyparsed: " + bodyParsed);
-  //variable locale
-  let isValid = false;
+  // Requête préparée
+  const requeteEmail = `SELECT * FROM admin WHERE email = ?`;
+  const paramRequeteEmail = [userEmail];
 
-  //recuperation valeur de email dans le body
-  const userEmail = await getEmail(bodyParsed);
-  console.log("useremail: " + userEmail);
+  try {
+    // Connexion à la base de données
+    const connect = await connectToDataBase();
+    if (!connect) {
+      return res
+        .status(500)
+        .json({ message: "Erreur de connexion à la base de données" });
+    }
 
-  //requete preparée
-  const requeteEmail = `SELECT id, email, lastname, firstname, password FROM user_admin WHERE email = ? `;
-  const paramRequeteEmail = userEmail;
-
-  //connexion a la bdd
-  const connect = await connectToDataBase(connectionConfig);
-  console.log("connect: " + connect);
-
-  if (connect !== null) {
-    //requette de type select vers la bdd
-
+    // Exécution de la requête
     const requestResult = await sendRequest(
-      res,
       connect,
       requeteEmail,
       paramRequeteEmail
     );
+    connect.end(); // Fermeture de la connexion
 
-    //fermeture connection vers bdd
-    connect.end();
-
-    //verification du mot de passe utilisateur
-    //si le resutat est vide => aucune correspondance avec un user de la bdd
-    if (Object.values(requestResult).length < 1) {
-      res.status(401).json({ message: "user non reconnu" });
-      isValid = false;
-      return;
-    } else {
-      isValid = true;
+    // Vérification de la présence de l'utilisateur
+    if (requestResult.length === 0) {
+      return res.status(401).json({ message: "Utilisateur non reconnu" });
     }
 
-    if (isValid) {
-      const userPassword = await getPassword(bodyParsed);
+    const user = requestResult[0];
 
-      let userPasswordCrypted = requestResult[0].password;
-
-      crypt
-        .compare(userPassword, userPasswordCrypted)
-        .then((isMatch) => {
-          if (!isMatch) {
-            res.status(300).json({ message: "mot de passe erroné" });
-            return;
-          }
-
-          let objectResponse = {
-            lastname: requestResult[0]["lastname"],
-            firstName: requestResult[0]["firstname"],
-            token: jwt.sign(
-              { adminId: requestResult[0]["id"] },
-              // eslint-disable-next-line no-undef
-              process.env.PRIVATE_KEY_TOKEN,
-              { expiresIn: "2h" }
-            ),
-          };
-          //Renvoi de l'objet reponse
-          res.status(200).json(objectResponse);
-        })
-        .catch((err) => {
-          res.status(500).json({
-            message: "erreur serveur auth impossible",
-            error: err,
-          });
-        });
+    // Vérification du mot de passe
+    const isMatch = await bcrypt.compare(userPassword, user.password);
+    if (!isMatch) {
+      return res.status(401).json({ message: "Mot de passe incorrect" });
     }
+
+    // Génération du token JWT
+    const token = jwt.sign(
+      { adminId: user.id },
+      process.env.PRIVATE_KEY_TOKEN,
+      { expiresIn: "2h" }
+    );
+
+    // Envoi de la réponse
+    res.status(200).json({
+      message: "succes",
+      name: "Admin",
+      token: token,
+    });
+  } catch (error) {
+    console.error(`Erreur lors de la vérification du login : ${error.message}`);
+    res
+      .status(500)
+      .json({
+        message: "Erreur serveur, authentification impossible",
+        error: error.message,
+      });
   }
 }
 
-function checkUserLogin(req, res) {
-  globalcheckUserLogin(req, res);
-}
-
-// eslint-disable-next-line no-undef
 module.exports = checkUserLogin;

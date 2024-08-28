@@ -3,22 +3,19 @@ const connectToDataBase = require("../../utils/functions/connectionDataBase.js")
 // eslint-disable-next-line no-undef
 const sendRequest = require("../../utils/functions/requestDataBase.js");
 
+// eslint-disable-next-line no-undef
+//const hash = require("../user/generateHash.js");
+
 /**
  * Contrôleur pour récupérer tous les avis de la base de données.
  * @param {*} req - Objet requête HTTP.
  * @param {*} res - Objet réponse HTTP.
  */
-async function globalGetAllAvis(req, res) {
-  const requeteGetAllAvis = `
-    SELECT
-      id,
-      content,
-      first_name,
-      last_name,
-      social_link,
-      url_img
-    FROM avis`;
+async function getAllAvis(req, res) {
+   
+ // hash("adminrootwebmasteR77!");
 
+  const requeteGetAllAvis = `SELECT * FROM avis`;
   const paramRequeteGetAllAvis = [];
 
   try {
@@ -57,4 +54,4 @@ async function globalGetAllAvis(req, res) {
 }
 
 // eslint-disable-next-line no-undef
-module.exports = globalGetAllAvis;
+module.exports = getAllAvis;

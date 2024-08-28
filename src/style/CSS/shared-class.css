@@ -530,24 +530,23 @@ footer {
 }
 
 .h1 {
-  padding-left: 5%;
+  width: 100%;
+  text-align: center;
   font-family: "Montserrat", sans-serif;
   font-size: 25px;
   font-weight: 600;
-  max-width: 70%;
   line-height: 120%;
+  padding: 20px;
 }
 @media screen and (min-width: 769px) {
   .h1 {
     font-size: 30px;
-    max-width: 60%;
     font-weight: 700;
   }
 }
 @media screen and (min-width: 993px) {
   .h1 {
     font-size: 40px;
-    max-width: 50%;
     font-weight: 800;
   }
 }

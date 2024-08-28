@@ -11,6 +11,7 @@ async function connectToDataBase() {
       throw new Error(
         "La configuration de la base de données est vide ou non définie"
       );
+      
     }
 
     const connection = await mysql.createConnection(config);

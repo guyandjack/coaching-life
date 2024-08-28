@@ -9,6 +9,74 @@
  
 }
 
+.container-page-move{
+  position: fixed;
+  right: 5%;
+  bottom: 5%;
+  z-index: 10;
+  
+
+}
+
+.page-top, .page-bottom{
+  padding: 10px;
+  background-color: map-get($colors-rule, first-color);
+  color: map-get($colors-rule, sixth-color);
+  //font-size: 20px;
+  //font-weight: 500;
+  margin-top: 20px;
+  text-align: center;
+  width: 100px;
+  @include upper-large-screen{
+    font-size: 20px;
+    font-weight: 600;
+    width: 200px;
+
+  }
+}
+
+.menu-dash{
+  width: 100%;
+  height:300px;
+  //border: 2px solid black;
+  
+  @include upper-large-screen{
+    height: 50px;
+    flex-flow: row;
+    justify-content: space-evenly;
+    width: 50%;
+    
+  }
+}
+
+.menu-link{
+  //padding: 20px;
+  color: map-get($colors-rule, first-color);
+  padding: 10px;
+  //border: 2px solid red;
+  
+
+}
+
+.menu-link:hover{
+  @include upper-large-screen{
+
+    border-top: 2px solid map-get($colors-rule, first-color);
+  }
+}
+
+ .log-out{
+   
+   &:hover{
+     border-top: 4px solid map-get($colors-rule, third-color);
+    
+  }
+} 
+
+
+
+
+
 .container-form {
   width: 100%;
 

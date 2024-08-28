@@ -8,7 +8,7 @@ import "../../style/CSS/form-dashboard.css";
 let objectUrl = localOrProd();
 let url = objectUrl.urlApi;
 
-function CardArticle({ title, imgUrl, resume, index, id }) {
+function CardAvis({ lastname, firstname, content, imgurl, index, id }) {
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const { register, handleSubmit } = useForm({ mode: "onChange" });
 
@@ -17,11 +17,11 @@ function CardArticle({ title, imgUrl, resume, index, id }) {
     setShowConfirmDialog(false);
 
     try {
-      const response = await fetch(`${url}/article`, {
+      const response = await fetch(`${url}/avis`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          "Authorization": `Bearer ${token}`,
         },
         body: JSON.stringify(data),
       });
@@ -64,28 +64,28 @@ function CardArticle({ title, imgUrl, resume, index, id }) {
       {/* <label className="label">Titre</label> */}
       <textarea
         className="input textarea"
-        name="title"
+        name="lastname"
         {...register("title", { required: true })}
         readOnly
-        value={title}
+        value={lastname + "-" + firstname}
       />
       {/* <label className="label">{"Résumé de l'article"}</label> */}
       <textarea
         className="input textarea"
-        name="resume"
+        name="content"
         {...register("content", { required: true })}
         readOnly
-        value={resume}
+        value={content}
         rows={5}
       />
-      <img className="card-img" src={imgUrl} alt="Décoration de la carte" />
+      <img className="card-img" src={imgurl} alt="Décoration de la carte" />
 
       <button className="btn-submit btn-submit-card" type="submit">
         {" Supprimer l'article"}
       </button>
 
       <div id="toaster-valid-delete-article" className="toaster valid">
-        Article supprimé !
+        {"Avis supprimé !"}
       </div>
       <div id="toaster-invalid-delete-article" className="toaster invalid">
         {"Oups ! Une erreur s'est produite"}
@@ -120,5 +120,4 @@ function CardArticle({ title, imgUrl, resume, index, id }) {
   );
 }
 
-export { CardArticle };
-
+export { CardAvis  };

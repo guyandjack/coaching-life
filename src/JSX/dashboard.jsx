@@ -15,6 +15,8 @@ import { FormAddAvis } from "../COMPONENTS/form/formAddAvis.jsx";
 //import { FormChangeAvis } from "../COMPONENTS/form/formChangeAvis.jsx";
 import { FormAddArticle } from "../COMPONENTS/form/formAddArticle.jsx";
 import { CardArticleContainer } from "../COMPONENTS/card/cardArticleContainer.jsx";
+//import { CardAvis } from "../COMPONENTS/card/cardAvis.jsx";
+import { CardAvisContainer } from "../COMPONENTS/card/cardAvisContainer.jsx";
 
 
 const rootElement = document.getElementById("RC-nav-bar");
@@ -61,15 +63,15 @@ rootFormAddAvis.render(
   </React.StrictMode>
 );
 
-//affiche le composant "ChangeAvis"
-
-/* const containerFormChangeAvis = document.getElementById("RC-form-change-avis");
-const rootFormChangeAvis = ReactDOM.createRoot(containerFormChangeAvis);
-rootFormChangeAvis.render(
+// Rendu du composant deleteAvis dans le DOM
+const containerFormDeleteAvis = document.getElementById("RC-form-delete-avis");
+const rootFormDeleteAvis = ReactDOM.createRoot(containerFormDeleteAvis);
+rootFormDeleteAvis.render(
   <React.StrictMode>
-    <FormChangeAvis />
+    <CardAvisContainer />
   </React.StrictMode>
-); */
+);
+
 
 // Rendu du composant formAddArticle dans le DOM
 const formAddArticleElement = document.getElementById("RC-form-add-article");

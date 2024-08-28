@@ -28,15 +28,18 @@ async function addOneAvis(req, res) {
 
   //declaration des fonctions
   function storeAvatar(req, avatarPath) {
+    
+      
+      req.files.image.mv(avatarPath, (err) => {
+        if (err) {
+          console.log("impossible d'enregistrer l'avatar: " + err);
+          res
+            .status(500)
+            .json({ message: "impossible d'enregistrer l'avatar" });
+        }
+      });
+    
     //enregistrement dans un fichier du serveur si le rete des information est enregister sur la bdd
-    req.files.image.mv(avatarPath, (err) => {
-      if (err) {
-        console.log("impossible d' enregistrer l' avatar: " + err);
-        res
-          .status(500)
-          .json({ message: "impossible d' enregistrer l' avatar" });
-      }
-    });
   }
 
   if (req.files !== null) {
@@ -45,7 +48,7 @@ async function addOneAvis(req, res) {
     let avatarName = req.files.image.name;
     let avatarExt = avatarName.split(".").pop(); // eslint-disable-next-line no-undef
 
-    avatarPathDataBase = path.join(
+    avatarPathDataBase = 
       // eslint-disable-next-line no-undef
       `${urlImageDEV}`+
       "upload/avis/avatar/" +
@@ -57,7 +60,7 @@ async function addOneAvis(req, res) {
         firstName +
         "." +
         avatarExt
-    );
+    ;
     avatarPath = path.join(
       // eslint-disable-next-line no-undef
       "upload/avis/avatar/" +
@@ -97,8 +100,9 @@ async function addOneAvis(req, res) {
     return res.status(500).json({ message: "avis non enregistré" });
   }
 
-  storeAvatar(req, avatarPath);
-
+  if (req.files) {
+    storeAvatar(req, avatarPath);
+  }
   return res.status(201).json({ message: "avis enregistré" });
 }
 

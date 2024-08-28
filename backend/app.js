@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-undef
 const express = require("express");
-// eslint-disable-next-line no-undef
+// eslint-disable-next-line no-undef, no-unused-vars
 const path = require("path");
 
 // eslint-disable-next-line no-undef
@@ -21,7 +21,7 @@ const bodyParser = require("body-parser");
 const app = express();
 
 // eslint-disable-next-line no-undef
-app.use(
+/* app.use(
   "/api/avatar",
   // eslint-disable-next-line no-undef
   express.static(
@@ -32,7 +32,7 @@ app.use(
       "images"
     )
   )
-);
+); */
 
 // eslint-disable-next-line no-undef
 /*app.get("/api/avis/avatar", (req, res) => {

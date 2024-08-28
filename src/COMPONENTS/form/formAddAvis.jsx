@@ -67,6 +67,7 @@ function FormAddAvis() {
   //** Realise un fetch vers le serveur  */
   // eslint-disable-next-line no-unused-vars
   async function fetchApi(data) {
+    const token = localStorage.getItem("token");
     //let content = JSON.stringify(data);
     const formData = new FormData();
     // Ajoute les fichiers et les autres champs du formulaire
@@ -82,10 +83,9 @@ function FormAddAvis() {
 
     let response = await fetch(`${url}/avis`, {
       method: "POST",
-      /*headers: {
-        "Content-Type": "multipart/form-data",
-        //Accept: "application/json",
-      },*/
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
       body: formData,
     });
     if (response.ok) {
