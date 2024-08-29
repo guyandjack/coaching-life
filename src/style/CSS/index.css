@@ -65,6 +65,10 @@
     margin: 30px 0px;
     width: 100%;
     padding: 20px;
+    /*  .main-title {
+       font-size: 50px;
+       font-weight: 600;
+     } */
   }
   .title-index::after {
     content: "";
@@ -76,11 +80,6 @@
     height: 100%;
     background-color: #fbfffe;
     opacity: 0.9;
-  }
-  .title-index .main-title {
-    font-size: 50px;
-    font-family: "Source Code Pro", monospace;
-    font-weight: 600;
   }
 }
 
@@ -243,14 +242,16 @@
   .design-transition {
     height: 200px;
     width: 100%;
+    border: none;
     -webkit-clip-path: polygon(100% 0%, 100% 0, 100% 100%, 100% 40%, 0 100%, 0 0);
             clip-path: polygon(100% 0%, 100% 0, 100% 100%, 100% 40%, 0 100%, 0 0);
-    opacity: 0.9;
+    opacity: 1;
   }
 }
 
 .container-transi {
   width: 100%;
+  background-color: red;
 }
 
 .transi-fourth-color {

@@ -15,14 +15,14 @@
   src: url("../../../../Fonts/static/Oswald-Regular.ttf");
 }
 @font-face {
-  font-family: "Mulish", sans-serif;
-  src: url("../../../../Fonts/static/Mulish-Regular.ttf");
-}
-@font-face {
-  font-family: "Oxygen", sans-serif;
-  src: url("../../../../Fonts/static/Oxygen-Regular.ttf");
-}
-@font-face {
   font-family: "Source Code Pro", monospace;
   src: url("../../../../Fonts/variable/SourceCodePro-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: "Montserrat", sans-serif;
+  src: url("../../../../Fonts/variable/Montserrat-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: "Open Sans", sans-serif;
+  src: url("../../../../Fonts/variable/OpenSans-VariableFont_wdth,wght.ttf");
 }

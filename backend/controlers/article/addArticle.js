@@ -15,6 +15,8 @@ const checkLanguageFileHtml = require("../../utils/functions/checkLanguageFileHt
 
 // eslint-disable-next-line no-undef
 let urlImageDEV = process.env.URL_BASE_IMAGE_ARTICLE_DEV;
+// eslint-disable-next-line no-undef
+let urlArticleDEV = process.env.URL_BASE_UPLOAD_HTML_DEV;
 
 function changePathForDB(urlBase, imagePathStore) {
   if (typeof imagePathStore === "string") {
@@ -24,6 +26,8 @@ function changePathForDB(urlBase, imagePathStore) {
   if (Array.isArray(imagePathStore)) {
     return imagePathStore.map((path) => `${urlBase}${path}`);
   }
+
+  console.log("type de imagepath: " + typeof imagePathStore);
 
   // Optionnel : gérer les cas où imagePathStore n'est ni une string ni un tableau
   throw new Error("imagePathStore must be a string or an array.");
@@ -166,7 +170,7 @@ async function addOneArticle(req, res) {
   let imagePathDB = null;//variable ou sera enregistrer le chemin du fichier image
   //let arrayImagePath = []; //tableau ou sera enregistrer l' ensemble des chemins des fichiers images
   let articlePath = null; //variable  ou sera enregisterer le chemin de l' article .html
-  //let articlePathDB = null;
+  let articlePathDB = null;
   let isOneImage = undefined;
   let isImageStored = false;
 
@@ -192,9 +196,16 @@ async function addOneArticle(req, res) {
   let newArticleName = titleArticle.split(masque).join("").toLowerCase();
   articlePath = articlePathForDataBase(req, newArticleName, articleExt);
 
-  //daptation de l' url pour la DB
+  //daptation de l' url image pour la DB
   imagePathDB = changePathForDB(urlImageDEV, imagePathStore);
   console.log("url image pour data base: " + imagePathDB);
+
+  // adaptation de l' url article pour la db
+  console.log("articlepath: " + articlePath);
+  let cleanUrl = articlePath.split("public")[1];
+  console.log("cleanUrl: " + cleanUrl);
+  articlePathDB = changePathForDB(urlArticleDEV, cleanUrl);
+  console.log("article path db : " + articlePathDB);
 
   
 
@@ -204,7 +215,7 @@ async function addOneArticle(req, res) {
     titleArticle,
     resumeArticle,
     imagePathDB,
-    articlePath,
+    articlePathDB,
   ];
 
   // connection à la base de donnee

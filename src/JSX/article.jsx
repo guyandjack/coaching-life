@@ -11,6 +11,8 @@ import { Footer } from "../COMPONENTS/footer/footer.jsx";
 
 import { Spinner } from "../COMPONENTS/spinner/spinner.jsx";
 
+import { CardClientContainer } from "../COMPONENTS/card/cardArticleClientContainer.jsx";
+
 //insertion des composants
 
 const rootElement = document.getElementById("RC-nav-bar");
@@ -25,6 +27,13 @@ const spinnerElement = document.getElementById("RC-spinner");
 ReactDOM.createRoot(spinnerElement).render(
   <React.StrictMode>
     <Spinner />
+  </React.StrictMode>
+);
+
+const articleClient = document.getElementById("RC-article-client");
+ReactDOM.createRoot(articleClient).render(
+  <React.StrictMode>
+    <CardClientContainer />
   </React.StrictMode>
 );
 

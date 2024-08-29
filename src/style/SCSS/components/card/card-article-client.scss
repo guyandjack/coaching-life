@@ -1,0 +1,72 @@
+//import des fichiers util
+@import "../../utils/colors-rule/colors-rule.scss";
+@import "../../utils/mixins/responsive/responsive.scss";
+
+.card-article-client{
+
+    //border: 2px solid red;
+    width: 350px;
+    height: 400px;
+    margin: 50px 0px;
+
+    box-shadow: 0px 0px 10px 0px map-get($colors-rule, fifth-color);
+
+    @include upper-medium-screen {
+            width: 350px;
+            //height: 250px;
+        }
+    
+        @include upper-large-screen {
+            width: 420px;
+            //height: 310px;
+        }
+    
+} 
+
+.container-image-client{
+    
+    //border: 2px solid green;
+    width: 100%;
+    height: 75%;
+
+    
+}
+
+.card-article-client-image{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-article-title{
+        position: absolute;
+        bottom: 0%;
+        left: 0%;
+        width:100%;
+        backdrop-filter:  blur(3px);
+        padding:15px;
+        //border-left: 10px solid map-get($colors-rule, sixth-color);
+        //border-right: 10px solid map-get($colors-rule, sixth-color);
+        color:map-get($colors-rule, sixth-color);
+        line-height: 150%;
+        //box-shadow: inset 0px 0px 5px 0px map-get($colors-rule, fifth-color);
+        
+        
+}
+
+.card-article-client-content{
+    padding: 5%;
+    width: 100%;
+    height: 25%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    overflow-wrap: anywhere;
+    & > p{
+        line-height: 150%;
+        color:map-get($colors-rule, fifth-color);
+        opacity: 0.6;
+}
+}

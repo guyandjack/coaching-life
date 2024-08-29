@@ -1,133 +1,153 @@
 /*************************************************************************************
 ********************* concerne les articles page index *********************************
 **** start  ********************************************************************************/
-.example .link-article {
+.container-page-index .article-container {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 50px 0px;
+}
+.container-page-index .link-article {
   z-index: 1;
   max-width: 400px;
   width: 100%;
   max-height: 1000px;
-  margin: 200px 0px;
+  border-radius: 10px;
+  padding: 10px;
 }
 @media screen and (min-width: 769px) {
-  .example .link-article {
+  .container-page-index .link-article {
     max-width: 500px;
     opacity: 0;
     -webkit-transform: translateX(-50%);
         -ms-transform: translateX(-50%);
             transform: translateX(-50%);
-    -webkit-transition: opacity 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
-    transition: opacity 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
-    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+    -webkit-transition: opacity 0.4s ease-in-out, -webkit-box-shadow 0.25s linear, -webkit-transform 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out, -webkit-box-shadow 0.25s linear, -webkit-transform 0.4s ease-in-out;
+    transition: box-shadow 0.25s linear, opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    transition: box-shadow 0.25s linear, opacity 0.4s ease-in-out, transform 0.4s ease-in-out, -webkit-box-shadow 0.25s linear, -webkit-transform 0.4s ease-in-out;
   }
 }
 @media screen and (min-width: 993px) {
-  .example .link-article {
+  .container-page-index .link-article {
     max-width: 600px;
   }
 }
-.example .transition-article {
+@media screen and (min-width: 993px) {
+  .container-page-index .link-article:hover .collapse {
+    opacity: 1;
+    -webkit-transform: translateY(80%);
+        -ms-transform: translateY(80%);
+            transform: translateY(80%);
+    -webkit-transition: opacity 0.3s ease-in-out, -webkit-transform 0.3s linear;
+    transition: opacity 0.3s ease-in-out, -webkit-transform 0.3s linear;
+    transition: opacity 0.3s ease-in-out, transform 0.3s linear;
+    transition: opacity 0.3s ease-in-out, transform 0.3s linear, -webkit-transform 0.3s linear;
+  }
+}
+@media screen and (min-width: 993px) {
+  .container-page-index .link-article:hover {
+    -webkit-transition: -webkit-box-shadow 0.25s linear;
+    transition: -webkit-box-shadow 0.25s linear;
+    transition: box-shadow 0.25s linear;
+    transition: box-shadow 0.25s linear, -webkit-box-shadow 0.25s linear;
+    -webkit-box-shadow: 2px 2px 6px 0px #fbfffe;
+            box-shadow: 2px 2px 6px 0px #fbfffe;
+  }
+}
+.container-page-index .transition-article {
   opacity: 1;
   -webkit-transform: translateX(0%);
       -ms-transform: translateX(0%);
           transform: translateX(0%);
 }
-.example .container-image {
+.container-page-index .container-image {
   position: relative;
   width: 100%;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  /* border-top-left-radius: 10px;
+  border-top-right-radius: 10px; */
 }
-.example .image-article {
+.container-page-index .image-article {
   width: 100%;
   height: 300px;
   background-color: #001747;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-  -webkit-mask-size: cover;
-          mask-size: cover;
-  -webkit-mask-position: center;
-          mask-position: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 @media screen and (min-width: 769px) {
-  .example .image-article {
+  .container-page-index .image-article {
     height: 350px;
   }
 }
 @media screen and (min-width: 993px) {
-  .example .image-article {
+  .container-page-index .image-article {
     height: 300px;
   }
 }
-.example #img-1 {
-  background-image: url("/src/assets/image/page-index/what-2.jpg");
-  /*mask-image:
-    linear-gradient(180deg, rgba(0, 0, 0, 1), transparent),
-    //url("/src/assets/masque/blob-index-bar-vert.svg"),
-  ;*/
-  border-left: 2px solid #8ab707;
+.container-page-index #img-1 {
+  background-image: url("/src/assets/image/page-index/what-3.jpg");
   background-position: bottom;
 }
-.example #img-2 {
+.container-page-index #img-2 {
   background-image: url("/src/assets/image/page-index/pense.jpg");
-  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgb(0, 0, 0)), to(transparent));
-  -webkit-mask-image: linear-gradient(180deg, rgb(0, 0, 0), transparent);
-          mask-image: -webkit-gradient(linear, left top, left bottom, from(rgb(0, 0, 0)), to(transparent));
-          mask-image: linear-gradient(180deg, rgb(0, 0, 0), transparent);
-  border-left: 2px solid #001747;
 }
-.example #img-3 {
-  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgb(0, 0, 0)), to(transparent));
-  -webkit-mask-image: linear-gradient(180deg, rgb(0, 0, 0), transparent);
-          mask-image: -webkit-gradient(linear, left top, left bottom, from(rgb(0, 0, 0)), to(transparent));
-          mask-image: linear-gradient(180deg, rgb(0, 0, 0), transparent);
+.container-page-index #img-3 {
   background-image: url("/src/assets/image/page-index/desert.jpg");
   background-position: bottom;
-  border-left: 2px solid #e66300;
 }
-.example .title-article {
-  position: absolute;
-  top: -15%;
-  left: 50%;
-  -webkit-transform: translate(-50%);
-      -ms-transform: translate(-50%);
-          transform: translate(-50%);
+.container-page-index #img-4 {
+  background-image: url("/src/assets/image/page-index/private.jpg");
+}
+.container-page-index #img-5 {
+  background-image: url("/src/assets/image/page-index/engrenage.jpg");
+}
+.container-page-index #img-6 {
+  background-image: url("/src/assets/image/page-index/abeille.jpg");
+}
+.container-page-index #img-7 {
+  background-image: url("/src/assets/image/page-index/reussite.jpg");
+  background-position: bottom;
+}
+.container-page-index .title-article {
+  position: relative;
+  z-index: 1;
   font-weight: 600;
   font-size: 25px;
   padding: 20px 10px 20px 10px;
   width: 100%;
-  -webkit-backdrop-filter: brightness(60%) blur(2px);
-          backdrop-filter: brightness(60%) blur(2px);
+  -webkit-backdrop-filter: brightness(90%) blur(2px);
+          backdrop-filter: brightness(90%) blur(2px);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  font-family: "Oxygen", sans-serif;
+  overflow: hidden;
 }
 @media screen and (min-width: 769px) {
-  .example .title-article {
+  .container-page-index .title-article {
     font-size: 30px;
   }
 }
 @media screen and (min-width: 993px) {
-  .example .title-article {
+  .container-page-index .title-article {
     font-size: 35px;
   }
 }
-.example #title-article-1 {
-  background-color: #8ab707;
-  border-left: 2px solid #8ab707;
+.container-page-index .title-article::after {
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: #9cd008;
+  opacity: 0.7;
+  -webkit-box-shadow: inset 0px 0px 20px #fbfffe;
+          box-shadow: inset 0px 0px 20px #fbfffe;
 }
-.example #title-article-2 {
-  background-color: #001747;
-  border-left: 2px solid #001747;
-}
-.example #title-article-3 {
-  background-color: #e66300;
-  border-left: 2px solid #e66300;
-}
-.example .collapse {
+.container-page-index .collapse {
   position: absolute;
   bottom: 0px;
   right: -15%;
@@ -144,52 +164,32 @@
           clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
   width: 200px;
   height: 200px;
-}
-.example .collapse p {
-  text-align: center;
-}
-@media screen and (min-width: 993px) {
-  .example:hover .collapse {
-    opacity: 1;
-    -webkit-transform: translateY(80%);
-        -ms-transform: translateY(80%);
-            transform: translateY(80%);
-    -webkit-transition: opacity 0.3s ease-in-out, -webkit-transform 0.3s linear;
-    transition: opacity 0.3s ease-in-out, -webkit-transform 0.3s linear;
-    transition: opacity 0.3s ease-in-out, transform 0.3s linear;
-    transition: opacity 0.3s ease-in-out, transform 0.3s linear, -webkit-transform 0.3s linear;
-  }
-}
-.example #collapse-img-1 {
   background-color: #9cd008;
 }
-.example #collapse-img-2 {
-  background-color: #001747;
+.container-page-index .collapse p {
+  text-align: center;
 }
-.example #collapse-img-3 {
-  background-color: #e66300;
-}
-.example .svg-object {
+.container-page-index .svg-object {
   width: 50px;
 }
-.example .text-1,
-.example .text-2,
-.example .text-3 {
+.container-page-index .text-1,
+.container-page-index .text-2,
+.container-page-index .text-3 {
   margin: 20px 0px;
   line-height: 150%;
   text-align: left;
   font-size: 18px;
 }
-.example .text-1 {
+.container-page-index .text-1 {
   font-weight: 600;
   text-align: left;
   -ms-flex-item-align: start;
       align-self: flex-start;
-  width: 70%;
+  width: 80%;
   color: #fbfffe;
 }
 @media screen and (min-width: 769px) {
-  .example .text-1 {
+  .container-page-index .text-1 {
     -webkit-transform: translateX(-20%);
         -ms-transform: translateX(-20%);
             transform: translateX(-20%);
@@ -197,13 +197,14 @@
   }
 }
 @media screen and (min-width: 993px) {
-  .example .text-1 {
+  .container-page-index .text-1 {
+    font-size: 25px;
     min-height: 150px;
   }
 }
 @media screen and (min-width: 769px) {
-  .example .container-text-2,
-  .example .container-text-3 {
+  .container-page-index .container-text-2,
+  .container-page-index .container-text-3 {
     opacity: 0;
     -webkit-transform: translateX(-50%);
         -ms-transform: translateX(-50%);
@@ -214,13 +215,15 @@
     transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
   }
 }
-.example .container-text-2 .svg-arrow-right,
-.example .container-text-3 .svg-arrow-right {
+.container-page-index .container-text-2 .svg-arrow-right,
+.container-page-index .container-text-3 .svg-arrow-right {
   display: none;
+  position: relative;
+  z-index: 1;
 }
 @media screen and (min-width: 769px) {
-  .example .container-text-2 .svg-arrow-right,
-  .example .container-text-3 .svg-arrow-right {
+  .container-page-index .container-text-2 .svg-arrow-right,
+  .container-page-index .container-text-3 .svg-arrow-right {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -234,34 +237,33 @@
             mask-size: contain;
   }
 }
-@media screen and (min-width: 769px) {
-  .example .card-1 {
-    background-color: #8ab707;
-  }
+.container-page-index .container-text-2 .svg-arrow-right::after,
+.container-page-index .container-text-3 .svg-arrow-right::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-color: #9cd008;
+  opacity: 0.7;
+  -webkit-box-shadow: inset 0px 0px 40px 1px #fbfffe;
+          box-shadow: inset 0px 0px 40px 1px #fbfffe;
 }
 @media screen and (min-width: 769px) {
-  .example .card-2 {
-    background-color: #001747;
-  }
-}
-@media screen and (min-width: 769px) {
-  .example .card-3 {
-    background-color: #e66300;
-  }
-}
-@media screen and (min-width: 769px) {
-  .example .container-text-2 {
+  .container-page-index .container-text-2 {
     margin-left: -20%;
   }
 }
-.example .transition-text {
+.container-page-index .transition-text {
   opacity: 1;
   -webkit-transform: translateX(0%);
       -ms-transform: translateX(0%);
           transform: translateX(0%);
 }
-.example .text-2,
-.example .text-3 {
+.container-page-index .text-2,
+.container-page-index .text-3 {
   width: 100%;
   color: #171717;
   padding: 10px;
@@ -269,20 +271,10 @@
   background-color: #fbfffe;
 }
 @media screen and (min-width: 769px) {
-  .example .text-2,
-  .example .text-3 {
+  .container-page-index .text-2,
+  .container-page-index .text-3 {
     margin-left: 20px;
   }
-}
-.example #img-text-3-1 {
-  background-image: url("/src/assets/image/page-index/what-2.jpg");
-  background-position: bottom;
-}
-.example #img-text-3-2 {
-  background-image: url("/src/assets/image/page-index/pense.jpg");
-}
-.example #img-text-3-3 {
-  background-image: url("/src/assets/image/page-index/desert.jpg");
 }
 
 .container-article {

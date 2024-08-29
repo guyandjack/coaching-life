@@ -83,10 +83,10 @@ const checkData = require("./middelware/checkUserData.js");
  * **********************************/
 
 //route temoignage socoaching - recupere les avis clients
-routeur.get("/avis", auth, getAllAvis);
+routeur.get("/avis",  getAllAvis);
 
 //route admin  socoaching - recupere tous les article de la base de donnée
-routeur.get("/article", auth, getAllArticle);
+routeur.get("/article",  getAllArticle);
 
 
 

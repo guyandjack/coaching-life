@@ -70,6 +70,7 @@
 
   color: map-get($colors-rule, first-color);
 
+
   @include upper-large-screen {
 
     margin: 30px 0px;
@@ -88,11 +89,10 @@
       opacity: 0.9;
     }
 
-    .main-title {
+   /*  .main-title {
       font-size: 50px;
-      font-family: "Source Code Pro", monospace;
       font-weight: 600;
-    }
+    } */
   }
 
 
@@ -266,18 +266,12 @@
   overflow: hidden;
 
   @include upper-large-screen {
-    //overflow: visible;
-    //position: absolute;
+   
     height: 200px;
     width: 100%;
-    //top: 85%;
-    //left: 0px;
-    //z-index: ;
-    //border: 2px solid red;
-    //transform: translateX(-40%);
-    //background-color: map-get($colors-rule, sixth-color);
-    clip-path: polygon(100% 0%, 100% 0, 100% 100%, 100% 40%, 0 100%, 0 0);
-    opacity: 0.9;
+     border: none;
+     clip-path: polygon(100% 0%, 100% 0, 100% 100%, 100% 40%, 0 100%, 0 0);
+    opacity: 1;
   }
 
 }
@@ -285,7 +279,7 @@
 .container-transi {
   width: 100%;
   //font-size: 0px;
-  //background-color: red;
+  background-color: red;
 }
 
 .transi-fourth-color {

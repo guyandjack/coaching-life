@@ -4,30 +4,62 @@
 @import "../colors-rule/colors-rule.scss";
 @import "../mixins/responsive/responsive.scss";
 
-.example {
+.container-page-index {
 
-  $image-1: url("/src/assets/image/page-index/what-2.jpg");
+  .article-container{
+    width: fit-content;
+    //border: 2px solid red;
+    margin: 50px 0px;
+  }
+
+  $image-1: url("/src/assets/image/page-index/what-3.jpg");
   $image-2: url("/src/assets/image/page-index/pense.jpg");
   $image-3: url("/src/assets/image/page-index/desert.jpg");
+  $image-4: url("/src/assets/image/page-index/private.jpg");
+  $image-5: url("/src/assets/image/page-index/engrenage.jpg");
+  $image-6: url("/src/assets/image/page-index/abeille.jpg");
+  $image-7: url("/src/assets/image/page-index/reussite.jpg");
 
   .link-article {
     z-index: 1;
     max-width: 400px;
     width: 100%;
     max-height: 1000px;
-    //border: 2px solid red;
-    margin: 200px 0px;
-
+   // border: 2px solid orange;
+    //margin: 50px 0px;
+    border-radius: 10px;
+    padding: 10px;
+    
+    
     @include upper-medium-screen {
       max-width: 500px;
       //valeur debut transition
       opacity: 0;
       transform: translateX(-50%);
-      transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+      transition: box-shadow 0.25s linear, opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
     }
 
     @include upper-large-screen {
       max-width: 600px;
+      
+    }
+
+         @include upper-large-screen {
+    
+          &:hover .collapse {
+            opacity: 1;
+            transform: translateY(80%);
+            transition: opacity 0.3s ease-in-out, transform 0.3s linear;
+          }
+        } 
+    
+  }
+  
+  .link-article:hover{
+    @include upper-large-screen {
+      
+      transition: box-shadow 0.25s linear;
+      box-shadow:  2px 2px 6px 0px map-get($colors-rule, sixth-color);
     }
 
   }
@@ -43,8 +75,9 @@
   .container-image {
     position: relative;
     width: 100%;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    /* border-top-left-radius: 10px;
+    border-top-right-radius: 10px; */
+    
     //border: 2px solid red;
   }
 
@@ -55,9 +88,8 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    mask-repeat: no-repeat;
-    mask-size: cover;
-    mask-position: center;
+    border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
 
     @include upper-medium-screen {
       height: 350px;
@@ -72,76 +104,71 @@
 
   #img-1 {
     background-image: $image-1;
-    /*mask-image:
-      linear-gradient(180deg, rgba(0, 0, 0, 1), transparent),
-      //url("/src/assets/masque/blob-index-bar-vert.svg"),
-    ;*/
-    border-left: 2px solid map-get($colors-rule-darked-5, fourth-color);
-
     background-position: bottom;
   }
 
   #img-2 {
     background-image: $image-2;
-    mask-image:
-      //url("/src/assets/masque/blob-index-bar-horizontal.svg"),
-      linear-gradient(180deg, rgba(0, 0, 0, 1), transparent), ;
-
-
-    //mask-image: ;
-    border-left: 2px solid map-get($colors-rule, first-color);
+    
   }
 
   #img-3 {
-    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 1), transparent);
     background-image: $image-3;
-    //mask-image: url("/src/assets/masque/blob-index-bar-horizontal.svg");
     background-position: bottom;
-    border-left: 2px solid map-get($colors-rule-darked-5, third-color);
+    
+  }
+  #img-4 {
+    background-image: $image-4;
+    
+  }
+  #img-5 {
+    background-image: $image-5;
+    
+  }
+  #img-6 {
+    background-image: $image-6;
+    
+  }
+  #img-7 {
+    background-image: $image-7;
+    background-position: bottom;
+    
   }
 
   .title-article {
-    position: absolute;
-    top: -15%;
-    left: 50%;
-    transform: translate(-50%);
+    position: relative;
+     z-index: 1;
     font-weight: 600;
     font-size: 25px;
     padding: 20px 10px 20px 10px;
     width: 100%;
-    backdrop-filter: brightness(60%) blur(2px);
-    //opacity: 0.5;
+    backdrop-filter: brightness(90%) blur(2px);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    //border-right: 2px solid darken(map-get($colors-rule, fourth-color), 5%);
-    font-family: "Oxygen", sans-serif;
-
+    overflow: hidden;
+    
     @include upper-medium-screen {
       font-size: 30px;
     }
-
+    
     @include upper-large-screen {
       font-size: 35px;
     }
   }
-
-  #title-article-1 {
-    background-color: map-get($colors-rule-darked-5, fourth-color);
-    border-left: 2px solid map-get($colors-rule-darked-5, fourth-color);
-
+  .title-article::after{
+    content: "";
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: map-get($colors-rule, fourth-color);
+    opacity: 0.7;
+    box-shadow: inset 0px 0px 20px map-get($colors-rule, sixth-color);
   }
 
-  #title-article-2 {
-    background-color: map-get($colors-rule, first-color);
-    border-left: 2px solid map-get($colors-rule, first-color);
-
-  }
-
-  #title-article-3 {
-    background-color: map-get($colors-rule-darked-5, third-color);
-    border-left: 2px solid map-get($colors-rule-darked-5, third-color);
-
-  }
+  
 
   .collapse {
     position: absolute;
@@ -156,34 +183,17 @@
     clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
     width: 200px;
     height: 200px;
+    background-color: map-get($colors-rule, fourth-color);
 
     & p {
       text-align: center;
     }
   }
 
-  @include upper-large-screen {
-
-    &:hover .collapse {
-      opacity: 1;
-      transform: translateY(80%);
-      transition: opacity 0.3s ease-in-out, transform 0.3s linear;
-    }
-  }
+  
 
 
-  #collapse-img-1 {
-    background-color: map-get($colors-rule, fourth-color);
-  }
-
-  #collapse-img-2 {
-    background-color: map-get($colors-rule, first-color);
-  }
-
-  #collapse-img-3 {
-    background-color: map-get($colors-rule-darked-5, third-color);
-  }
-
+   
   .svg-object {
     width: 50px;
 
@@ -204,15 +214,16 @@
     font-weight: 600;
     text-align: left;
     align-self: flex-start;
-    width: 70%;
+    width: 80%;
     color: map-get($colors-rule, sixth-color);
 
     @include upper-medium-screen {
       transform: translateX(-20%);
       font-size: 22px;
     }
-
+    
     @include upper-large-screen {
+      font-size: 25px;
       min-height: 150px;
     }
 
@@ -234,6 +245,8 @@
 
     .svg-arrow-right {
       display: none;
+      position:relative;
+      z-index: 1;
 
       @include upper-medium-screen {
         display: flex;
@@ -242,32 +255,27 @@
         mask-image: url('/src/assets/svg/page-index/fleche/card-arrow-right.svg');
         mask-repeat: no-repeat;
         mask-size: contain;
-
+        
+        //box-shadow: inset 0px 0px 100px 0px map-get($colors-rule, fourth-color) ;
+        
       }
     }
-
-  }
-
-  .card-1 {
-    @include upper-medium-screen {
-
-      background-color: map-get($colors-rule-darked-5, fourth-color);
+    .svg-arrow-right::after{
+      content:"";
+      position: absolute;
+      top:0px;
+      left: 0px;
+      z-index: -1;
+      width: 100%;
+      height:100%;
+      background-color: map-get($colors-rule, fourth-color);
+      opacity: 0.7;
+      box-shadow: inset 0px 0px 40px 1px map-get($colors-rule, sixth-color) ;
     }
+
   }
 
-  .card-2 {
-    @include upper-medium-screen {
-
-      background-color: map-get($colors-rule, first-color);
-    }
-  }
-
-  .card-3 {
-    @include upper-medium-screen {
-
-      background-color: map-get($colors-rule-darked-5, third-color);
-    }
-  }
+  
 
   .container-text-2 {
     @include upper-medium-screen {
@@ -301,18 +309,7 @@
   }
 
 
-  #img-text-3-1 {
-    background-image: $image-1;
-    background-position: bottom;
-  }
-
-  #img-text-3-2 {
-    background-image: $image-2;
-  }
-
-  #img-text-3-3 {
-    background-image: $image-3;
-  }
+  
 
 
 }

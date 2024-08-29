@@ -18,16 +18,16 @@
   src: url("../../../../Fonts/static/Oswald-Regular.ttf");
 }
 @font-face {
-  font-family: "Mulish", sans-serif;
-  src: url("../../../../Fonts/static/Mulish-Regular.ttf");
-}
-@font-face {
-  font-family: "Oxygen", sans-serif;
-  src: url("../../../../Fonts/static/Oxygen-Regular.ttf");
-}
-@font-face {
   font-family: "Source Code Pro", monospace;
   src: url("../../../../Fonts/variable/SourceCodePro-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: "Montserrat", sans-serif;
+  src: url("../../../../Fonts/variable/Montserrat-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: "Open Sans", sans-serif;
+  src: url("../../../../Fonts/variable/OpenSans-VariableFont_wdth,wght.ttf");
 }
 /****************************************************************************************
 /********  **************** Main style **************** ******************/
@@ -39,7 +39,7 @@
           box-sizing: border-box;
   text-decoration: none;
   list-style-type: none;
-  font-family: "Mulish", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 1em;
   font-weight: 500;
 }
@@ -65,8 +65,8 @@
   left: 0px;
   width: 100%;
   height: 100%;
-  background: -webkit-gradient(linear, left top, right top, from(#1ba4e3), to(#fbfffe));
-  background: linear-gradient(90deg, #1ba4e3, #fbfffe);
+  background: -webkit-gradient(linear, right top, left top, from(#fbfffe), to(#1ba4e3));
+  background: linear-gradient(-90deg, #fbfffe, #1ba4e3);
 }
 
 .container-page {
@@ -421,6 +421,91 @@ footer {
   display: flex;
 }
 
+/****************************************************************************************
+/********  **************** titre Hn  **************** ******************/
+/**** start ******************************************************************************/
+.h1,
+.h2,
+.h3 {
+  color: #fbfffe;
+}
+
+.h1 {
+  width: 100%;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 120%;
+  padding: 20px;
+}
+@media screen and (min-width: 769px) {
+  .h1 {
+    font-size: 30px;
+    font-weight: 700;
+  }
+}
+@media screen and (min-width: 993px) {
+  .h1 {
+    font-size: 40px;
+    font-weight: 800;
+  }
+}
+
+.h2 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4em;
+}
+@media screen and (min-width: 769px) {
+  .h2 {
+    font-size: 25px;
+  }
+}
+@media screen and (min-width: 993px) {
+  .h2 {
+    font-size: 30px;
+  }
+}
+
+.h3 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4em;
+}
+@media screen and (min-width: 769px) {
+  .h3 {
+    font-size: 25px;
+  }
+}
+@media screen and (min-width: 993px) {
+  .h3 {
+    font-size: 30px;
+  }
+}
+
+.h4 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 120%;
+}
+@media screen and (min-width: 769px) {
+  .h4 {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 993px) {
+  .h4 {
+    font-size: 25px;
+  }
+}
+
+/****************************************************************************************
+/********  **************** titre Hn  **************** ******************/
+/**** end ******************************************************************************/
 /**** start ********************** color ***********************************************/
 /****************************************************************************************
 /****************************************************************************************/
@@ -512,96 +597,4 @@ footer {
 
 /********  ****************  formulaire ************ ******************/
 /**** end ******************************************************************************/
-/****************************************************************************************
-
-
-
-
-
-
-
-/****************************************************************************************
-/********  **************** titre Hn  **************** ******************/
-/**** start ******************************************************************************/
-.h1,
-.h2,
-.h3 {
-  color: #fbfffe;
-}
-
-.h1 {
-  width: 100%;
-  text-align: center;
-  font-family: "Montserrat", sans-serif;
-  font-size: 25px;
-  font-weight: 600;
-  line-height: 120%;
-  padding: 20px;
-}
-@media screen and (min-width: 769px) {
-  .h1 {
-    font-size: 30px;
-    font-weight: 700;
-  }
-}
-@media screen and (min-width: 993px) {
-  .h1 {
-    font-size: 40px;
-    font-weight: 800;
-  }
-}
-
-.h2 {
-  font-family: "Oxygen", sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.4em;
-}
-@media screen and (min-width: 769px) {
-  .h2 {
-    font-size: 25px;
-  }
-}
-@media screen and (min-width: 993px) {
-  .h2 {
-    font-size: 30px;
-  }
-}
-
-.h3 {
-  font-family: "Oxygen", sans-serif;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1.4em;
-}
-@media screen and (min-width: 769px) {
-  .h3 {
-    font-size: 25px;
-  }
-}
-@media screen and (min-width: 993px) {
-  .h3 {
-    font-size: 30px;
-  }
-}
-
-.h4 {
-  font-family: "Oxygen", sans-serif;
-  font-size: 22px;
-  font-weight: 500;
-  line-height: 120%;
-}
-@media screen and (min-width: 769px) {
-  .h4 {
-    font-size: 20px;
-  }
-}
-@media screen and (min-width: 993px) {
-  .h4 {
-    font-size: 25px;
-  }
-}
-
-/****************************************************************************************
-/********  **************** titre Hn  **************** ******************/
-/**** end ******************************************************************************/
+/****************************************************************************************/
