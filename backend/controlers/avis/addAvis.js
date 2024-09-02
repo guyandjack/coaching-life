@@ -1,82 +1,45 @@
-//controler qui permet d' ajouter un avis
-
-//import des librairies
-// eslint-disable-next-line no-undef, no-unused-vars
-// eslint-disable-next-line no-undef, no-unused-vars
+/* eslint-disable no-undef */
 const path = require("path");
-
-//import des fonctions
-
-// eslint-disable-next-line no-undef
 const connectToDataBase = require("../../utils/functions/connectionDataBase.js");
-
-// eslint-disable-next-line no-undef
 const sendRequest = require("../../utils/functions/requestDataBase.js");
 
-
-//declaration des variables
-// eslint-disable-next-line no-undef
-let urlImageDEV = process.env.URL_BASE_IMAGE_ARTICLE_DEV;
-let avatarPathDataBase = null;
-let avatarPath = null;
+const urlImageDEV = process.env.URL_BASE_IMAGE_ARTICLE_DEV || "";
 
 async function addOneAvis(req, res) {
-  const lastName = req.body.lastname;
-  const firstName = req.body.firstname;
-  const content = req.body.content;
-  const socialUrl = req.body.socialurl ? req.body.socialurl : null;
+  const {
+    lastname: lastName,
+    firstname: firstName,
+    content,
+    socialurl: socialUrl = null,
+  } = req.body;
 
-  //declaration des fonctions
-  function storeAvatar(req, avatarPath) {
-    
-      
-      req.files.image.mv(avatarPath, (err) => {
-        if (err) {
-          console.log("impossible d'enregistrer l'avatar: " + err);
-          res
-            .status(500)
-            .json({ message: "impossible d'enregistrer l'avatar" });
-        }
-      });
-    
-    //enregistrement dans un fichier du serveur si le rete des information est enregister sur la bdd
+  // Validation des données d'entrée
+  if (!lastName || !firstName || !content) {
+    return res
+      .status(400)
+      .json({ message: "Données manquantes pour l'ajout de l'avis" });
   }
 
-  if (req.files !== null) {
-    //recuperation de l' extension du fichier image avatar
+  let avatarPathDataBase = null;
+  let avatarPath = null;
 
-    let avatarName = req.files.image.name;
-    let avatarExt = avatarName.split(".").pop(); // eslint-disable-next-line no-undef
+  // Si un fichier est présent, on prépare les chemins pour l'enregistrement
+  if (req.files && req.files.image) {
+    const avatarName = req.files.image.name;
+    const avatarExt = path.extname(avatarName); // Récupère l'extension avec le point inclus (ex: .jpg)
+    const timestamp = Date.now();
+    const avatarFileName = `avatar-${timestamp}-${lastName}-${firstName}${avatarExt}`;
 
-    avatarPathDataBase = 
-      // eslint-disable-next-line no-undef
-      `${urlImageDEV}`+
-      "upload/avis/avatar/" +
-        "avatar-" +
-        Date.now() +
-        "-" +
-        lastName +
-        "-" +
-        firstName +
-        "." +
-        avatarExt
-    ;
-    avatarPath = path.join(
-      // eslint-disable-next-line no-undef
-      "upload/avis/avatar/" +
-        "avatar-" +
-        Date.now() +
-        "-" +
-        lastName +
-        "-" +
-        firstName +
-        "." +
-        avatarExt
+    avatarPathDataBase = path.join(
+      urlImageDEV,
+      "upload/avis/avatar",
+      avatarFileName
     );
+    avatarPath = path.join("upload/avis/avatar", avatarFileName);
   }
 
-  //Requete preparée pour inserer un avis  dans la bdd avis
-  const requeteAddAvis = `INSERT INTO avis (created_at, content, first_name, last_name, social_link, url_img)  VALUES (NOW(),?,?,?,?,?) `;
+  // Requête préparée pour insérer un avis dans la BDD
+  const requeteAddAvis = `INSERT INTO avis (created_at, content, first_name, last_name, social_link, url_img) VALUES (NOW(), ?, ?, ?, ?, ?)`;
   const paramRequeteAddAvis = [
     content,
     firstName,
@@ -85,28 +48,47 @@ async function addOneAvis(req, res) {
     avatarPathDataBase,
   ];
 
-  // connection à la base de donnee
-  let connect = await connectToDataBase();
+  try {
+    const connect = await connectToDataBase();
+    const requestResult = await sendRequest(
+      connect,
+      requeteAddAvis,
+      paramRequeteAddAvis
+    );
+    connect.end();
 
-  let requestResult = await sendRequest(
-    connect,
-    requeteAddAvis,
-    paramRequeteAddAvis
-  );
+    if (!requestResult) {
+      return res
+        .status(500)
+        .json({ message: "Échec de l'enregistrement de l'avis" });
+    }
 
-  connect.end();
+    // Enregistre l'avatar si un fichier a été téléchargé
+    if (avatarPath) {
+      await storeAvatar(req, avatarPath, res);
+    }
 
-  if (!requestResult) {
-    return res.status(500).json({ message: "avis non enregistré" });
+    return res.status(201).json({ message_status: "succès" });
+  } catch (error) {
+    console.error("Erreur lors de l'ajout de l'avis :", error);
+    return res
+      .status(500)
+      .json({ message: "Erreur serveur lors de l'ajout de l'avis" });
   }
-
-  if (req.files) {
-    storeAvatar(req, avatarPath);
-  }
-  return res.status(201).json({ message: "avis enregistré" });
 }
 
+// Fonction pour enregistrer l'avatar
+async function storeAvatar(req, avatarPath, res) {
+  return new Promise((resolve, reject) => {
+    req.files.image.mv(avatarPath, (err) => {
+      if (err) {
+        console.error("Impossible d'enregistrer l'avatar :", err);
+        res.status(500).json({ message: "Impossible d'enregistrer l'avatar" });
+        return reject(err);
+      }
+      resolve();
+    });
+  });
+}
 
-
-// eslint-disable-next-line no-undef
 module.exports = addOneAvis;

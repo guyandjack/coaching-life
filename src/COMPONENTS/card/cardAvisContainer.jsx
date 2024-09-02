@@ -21,19 +21,21 @@ function CardAvisContainer() {
     const [arrayAvis, setArrayAvis] = useState([]);
     const [displayList, setDisplayList] = useState(true);
     
-    console.log("url de base dans avis container : " + url);
-  //const isArray = useRef(false);
+    
+   
 
   useEffect(() => {
     let cardContainer = document.querySelector(".card-avis-container");
 
     if (displayList) {
       cardContainer.classList.remove("hide-list");
-      console.log("je suis dans la condition qui affiche la liste");
+      //console.log("je suis dans la condition qui affiche la liste");
     } else {
       cardContainer.classList.add("hide-list");
-      console.log("je suis dans la condition qui ferme la liste");
+      //console.log("je suis dans la condition qui ferme la liste");
     }
+
+    
 
     return () => {};
   }, [displayList]);
@@ -62,7 +64,7 @@ function CardAvisContainer() {
           });
       } else {
         setArrayAvis([]);
-        setDisplayList(true);
+        setDisplayList(true);//affiche liste vide
       }
     });
   }
@@ -72,7 +74,7 @@ function CardAvisContainer() {
       <div className="form-title">Suprimer un avis</div>
       <div className="btn-container flex-row-space_evenly-center">
         <button
-          className="btn-update-article "
+          className="btn-update-article"
           type="button"
           onClick={() => {
             getAllAvis();
@@ -94,15 +96,14 @@ function CardAvisContainer() {
       </div>
       <ul className="flex-row-space_evenly-center-wrap card-avis-container">
         {arrayAvis.length > 0 ? (
-          arrayAvis.map((card, index) => {
+          arrayAvis.map((card) => {
             return (
-              <li key={index}>
+              <li key={card.id}>
                 <CardAvis
-                        lastname={card.content}
+                  lastname={card.content}
                   firstname={card.first_name}
-                        content= {card.content}
+                  content={card.content}
                   imgurl={card.url_img}
-                  index={index}
                   id={card.id}
                 />
               </li>

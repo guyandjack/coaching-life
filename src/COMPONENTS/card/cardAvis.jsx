@@ -8,28 +8,42 @@ import "../../style/CSS/form-dashboard.css";
 let objectUrl = localOrProd();
 let url = objectUrl.urlApi;
 
-function CardAvis({ lastname, firstname, content, imgurl, index, id }) {
+// eslint-disable-next-line no-unused-vars
+function CardAvis({ lastname, firstname, content, imgurl, id}) {
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+  const [isAvisDeleted, setIsAvisDeleted] = useState(false);
   const { register, handleSubmit } = useForm({ mode: "onChange" });
 
+  
   const onDeleteConfirm = async (data) => {
     const token = localStorage.getItem("token");
-    setShowConfirmDialog(false);
+    
 
     try {
       const response = await fetch(`${url}/avis`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(data),
       });
 
-      if (response.ok) {
-        showToaster("toaster-valid-delete-article");
+      if(response.ok) {
+        const result = await response.json(); 
+        if (result.message_status == "succes") {
+          
+          let response = await showToaster(`toaster-valid-delete-article-${id}`);
+          
+          if (response) {
+            
+            setShowConfirmDialog(false);
+            setIsAvisDeleted(true);
+          }
+
+        }
       } else {
-        showToaster("toaster-invalid-delete-article");
+        showToaster(`toaster-invalid-delete-article-${id}`);
       }
     } catch (error) {
       console.error("Erreur lors de la suppression :", error);
@@ -37,19 +51,27 @@ function CardAvis({ lastname, firstname, content, imgurl, index, id }) {
     }
   };
 
-  const showToaster = (id) => {
+  const showToaster = async (id) => {
     const toaster = document.getElementById(id);
+    
     if (toaster) {
       toaster.classList.add("visible");
-      setTimeout(() => {
-        toaster.classList.remove("visible");
-      }, 3000);
+      return new Promise((resolve) => {
+        
+        setTimeout(() => {
+         toaster.classList.remove("visible");
+          resolve(true);
+         
+       }, 3000); 
+
+      })
     }
+    return false
   };
 
   return (
     <form
-      id={`form-delete-article-${index}`}
+      id={`form-delete-article-${id}`}
       className="flex-column-space_evenly-center form-dashboard card-article"
       onSubmit={handleSubmit(() => setShowConfirmDialog(true))}
     >
@@ -58,8 +80,8 @@ function CardAvis({ lastname, firstname, content, imgurl, index, id }) {
         name="id"
         {...register("id", { required: true })}
         readOnly
-        hidden
-        value={id}
+        //hidden
+        value={parseInt(id)}
       />
       {/* <label className="label">Titre</label> */}
       <textarea
@@ -80,16 +102,28 @@ function CardAvis({ lastname, firstname, content, imgurl, index, id }) {
       />
       <img className="card-img" src={imgurl} alt="Décoration de la carte" />
 
-      <button className="btn-submit btn-submit-card" type="submit">
-        {" Supprimer l'article"}
+      {isAvisDeleted  ?
+        <button
+        id={`btn-submit-card-avis-${id}`}
+        className="btn-submit-card disabled"
+        type="button"
+        disabled
+      >
+        {"Avis supprimé"}
       </button>
+      :<button
+        id={`btn-submit-card-avis-${id}`}
+        className="btn-submit btn-submit-card"
+          type="submit"
+          onClick={() => {
+            setShowConfirmDialog(true);
+          }}
+        
+      >
+        {"Suprimer avis"}
+      </button>}
 
-      <div id="toaster-valid-delete-article" className="toaster valid">
-        {"Avis supprimé !"}
-      </div>
-      <div id="toaster-invalid-delete-article" className="toaster invalid">
-        {"Oups ! Une erreur s'est produite"}
-      </div>
+      
 
       {showConfirmDialog && (
         <div className="bg-card">
@@ -112,6 +146,18 @@ function CardAvis({ lastname, firstname, content, imgurl, index, id }) {
               >
                 Confirmer
               </button>
+              <div
+                id={`toaster-valid-delete-article-${id}`}
+                className="toaster valid"
+              >
+                {"Avis suprimer"}
+              </div>
+              <div
+                id={`toaster-invalid-delete-article-${id}`}
+                className="toaster invalid"
+              >
+                {"Oups! une erreur c'est produite"}
+              </div>
             </div>
           </div>
         </div>
@@ -120,4 +166,4 @@ function CardAvis({ lastname, firstname, content, imgurl, index, id }) {
   );
 }
 
-export { CardAvis  };
+export { CardAvis };

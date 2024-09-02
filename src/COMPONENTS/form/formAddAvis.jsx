@@ -42,6 +42,7 @@ function FormAddAvis() {
 
     inputImgFile.addEventListener("change", (e) => {
       handleImageChange(e);
+      inputImgFile.value = '';
     });
 
     // Nettoyage de l'événement pour éviter les fuites de mémoire
@@ -62,6 +63,8 @@ function FormAddAvis() {
       URL.createObjectURL(file)
     );
     setImagePreviewAvatar(previewUrlsAvatar);
+    
+    
   };
 
   //** Realise un fetch vers le serveur  */
@@ -93,11 +96,13 @@ function FormAddAvis() {
       // eslint-disable-next-line no-unused-vars
       const toasterValid = document.querySelector("#toaster-valid-avis");
 
-      if (data.message_status == "sended") {
+      if (data.message_status == "succes") {
         toasterValid.classList.add("visible");
         setTimeout(() => {
           toasterValid.classList.remove("visible");
+          setImagePreviewAvatar([]);
           reset();
+
         }, 3000);
       }
     } else {
@@ -116,15 +121,14 @@ function FormAddAvis() {
       className="flex-column-start-center form-dashboard"
       onSubmit={handleSubmit((data) => {
         fetchApi(data);
+        setImagePreviewAvatar([]);
       })}
       encType="multipart/form-data"
     >
       <p className="form-title">Ajouter un avis</p>
 
       <div className="flex-column-start-start cont-input-label">
-        {/* <label htmlFor="input-text-add-lastname" className="label">
-          {"Nom"}
-        </label> */}
+        
         <div className="flex-row-center-center cont-input">
           <input
             id="input-text-add-lastname"
@@ -211,7 +215,7 @@ function FormAddAvis() {
 
       <div className="flex-column-start-start cont-input-label">
         <label htmlFor="input-add-file-avatar" className="label">
-          {"Choisir une image jpeg/jpg/png"}
+          {"Choisir une image jpeg/jpg/png facultatif"}
         </label>
         <div className="flex-row-center-center cont-input">
           <input
@@ -220,8 +224,7 @@ function FormAddAvis() {
             type="file"
             name="image"
             {...register("image", {
-              //required: true,
-              validate: {
+            validate: {
                 isjpeg: (fileList) => {
                   for (let i = 0; i < fileList.length; i++) {
                     //const file = fileList[0];
@@ -236,9 +239,11 @@ function FormAddAvis() {
                 },
               },
             })}
+            defaultValue={''}
           />
         </div>
         <div className="flex-column-center-center container-span-error">
+          
           {errors.image?.type === "isjpeg" && (
             <span className="form-text-error">
               {"Mauvais type de fichier image uniquemnt jpeg / jpg / png ! "}
@@ -283,3 +288,4 @@ function FormAddAvis() {
 }
 
 export { FormAddAvis };
+

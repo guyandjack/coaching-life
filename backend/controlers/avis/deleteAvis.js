@@ -23,7 +23,7 @@ let urlImageDEV = process.env.URL_BASE_IMAGE_ARTICLE_DEV;
 
 
 async function deleteOneAvis(req, res) {
-  const avisId = req.body.id;
+  const avisId = parseInt(req.body.id);
   let connect = await connectToDataBase(connectionConfig);
 
   let tabErrorDeleteFile = [];
@@ -94,7 +94,7 @@ async function deleteOneAvis(req, res) {
           .json({ message: "Impossible de supprimer l'avis" });
       }
 
-      res.status(200).json({ message: "Avis supprimé" });
+      res.status(200).json({ message_status: "succes" });
     } catch (error) {
       console.error("Erreur lors de la suppression de l'avis:", error);
       res

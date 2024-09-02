@@ -81,6 +81,28 @@ function FormLogin() {
   const [isVisibleA, setIsVisibleA] = useState(false);
   const [isVisibleB, setIsVisibleB] = useState(false);
 
+  function displayPassword(e) {
+    let inputPassword = document.querySelector("#input-password");
+    let inputEmail = document.querySelector("#input-email");
+    
+
+    let inputIdSelected = e.target.closest(".eye").dataset.idinput; //onrecupere le parent du svg
+
+    switch (inputIdSelected) {
+      case "input-email":
+        setIsVisibleA(!isVisibleA);
+        inputEmail.focus();
+        break;
+      case "input-password":
+        setIsVisibleB(!isVisibleB);
+        inputPassword.focus();
+        break;
+      
+
+      default:
+        break;
+    }
+  }
   
 
   return (
@@ -89,14 +111,14 @@ function FormLogin() {
       className="flex-column-start-center form-dashboard"
       onSubmit={handleSubmit((data) => fetchApi(data))}
     >
-      <p className="form-title">Login</p>
+      <p className="form-title text-first">Login User</p>
       <div className="flex-column-start-start cont-input-label">
-        <label htmlFor="input-password" className="label">
+        <label htmlFor="input-email" className="label">
           {"Nom d'utilisateur"}
         </label>
         <div className="flex-row-center-center cont-input">
           <input
-            id="input-password"
+            id="input-email"
             className="input"
             type={isVisibleA ? "text" : "password"}
             name="email"
@@ -104,12 +126,13 @@ function FormLogin() {
               required: true,
               pattern: masqueMail,
             })}
+            
           />
           <span
             className="eye"
-            data-idinput="input-password"
-            onClick={() => {
-              setIsVisibleA(!isVisibleA);
+            data-idinput="input-email"
+            onClick={(e) => {
+              displayPassword(e);
               
             }}
           >
@@ -145,8 +168,8 @@ function FormLogin() {
           <span
             className="eye"
             data-idinput="input-password"
-            onClick={() => {
-              setIsVisibleB(!isVisibleB);
+            onClick={(e) => {
+              displayPassword(e);
               
             }}
           >
