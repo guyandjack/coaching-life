@@ -158,50 +158,35 @@
         opacity: 0.7
     }
 
-    // concerne les toaster
-
-    .toaster {
-        opacity: 0;
-        position: absolute;
-        left: 50%;
-        bottom: -20px;
-        //max-width: 0px;
-        height: 0px;
-        width: 0px;
-        transform: translateX(-50%);
-        padding: 10px;
-        border: 1px solid map-get($colors-rule, sixth-color);
-        border-radius: 10px;
-        overflow: hidden;
-        color: map-get($colors-rule, sixth-color);
-        text-align: center;
-        transition: opacity 0.5s linear, transform 0.5s linear; // tramnsition retour
-
-        /* @include upper-medium-screen {
-                width: 50%;
-                max-width: none;
-            } */
-    }
-
-    .valid {
-        background-color: map-get($colors-rule, fourth-color);
-    }
-
-    .invalid {
-        background-color: map-get($colors-rule, third-color);
-    }
-
-    .visible {
-        opacity: 1;
-        transform: translate(-50%, 40px);
-        max-width: 350px;
-        width: 100%;
-        transition: opacity 1s linear, transform 1s linear;
-        @include upper-medium-screen {
-                width: 50%;
-                max-width: none;
-            }
-    }
+        // concerne les toaster
+    
+        .toaster {
+            opacity: 0;
+            position: absolute;
+            left: 50%;
+            bottom: -20px;
+            width: 50%;
+            transform: translateX(-50%);
+            padding: 10px;
+            border: 1px solid map-get($colors-rule, sixth-color);
+            border-radius: 5px;
+            color: map-get($colors-rule, sixth-color);
+            text-align: center;
+        }
+    
+        .valid {
+            background-color: map-get($colors-rule, fourth-color);
+        }
+    
+        .invalid {
+            background-color: map-get($colors-rule, third-color);
+        }
+    
+        .visible {
+            transition: opacity 0.5s linear, transform 1s linear;
+            opacity: 1;
+            transform: translate(-50%, 20px);
+        }
 
 
 }

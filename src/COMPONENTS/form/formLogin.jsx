@@ -48,7 +48,7 @@ async function fetchApi(data) {
   if (response.ok) {
     let data = await response.json();
     // eslint-disable-next-line no-unused-vars
-    const toasterValid = document.querySelector("#toaster-valid");
+    const toasterValid = document.querySelector("#toaster-valid-login");
 
     if (data.message == "succes") {
       localStorage.setItem("admin", data.name);
@@ -56,13 +56,13 @@ async function fetchApi(data) {
       toasterValid.classList.add("visible");
       setTimeout(() => {
         toasterValid.classList.remove("visible");
-        window.location.href = "./dashboard.html"
         //reset();
+        window.location.href = "./dashboard.html"
       }, 3000);
     }
   } else {
     // eslint-disable-next-line no-unused-vars
-    const toasterInvalid = document.querySelector("#toaster-invalid");
+    const toasterInvalid = document.querySelector("#toaster-invalid-login");
     toasterInvalid.classList.add("visible");
     setTimeout(() => {
       toasterInvalid.classList.remove("visible");
@@ -78,64 +78,64 @@ function FormLogin() {
   } = useForm({ mode: "onChange" });
   //use state
 
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisibleA, setIsVisibleA] = useState(false);
+  const [isVisibleB, setIsVisibleB] = useState(false);
 
-  //fonction
-  function displayPassword(e) {
-    setIsVisible(!isVisible);
-
-    let parentElementSpan = e.target.closest("span");
-    let inputId = parentElementSpan.dataset.idinput;
-    const input = document.querySelector(`#${inputId}`);
-    let inputValue = input.value;
-    console.log("input value lenght: " + inputValue.length);
-    input.focus();
-    input.setSelectionRange(inputValue.length, inputValue.length);
-  }
+  
 
   return (
     <form
       id="form-login"
-      className="form flex-column-start-start form-dashboard"
+      className="flex-column-start-center form-dashboard"
       onSubmit={handleSubmit((data) => fetchApi(data))}
     >
-      <div className="cont-input-label">
-        <label htmlFor="input-text" className="label">
-          {"Nom d'utilisteur"}
-        </label>
-        <div className="cont-input-span flex-row-start-center">
-          <input
-            id="input-text"
-            className="input"
-            type="email"
-            name="email"
-            {...register("email", {
-              required: true,
-
-              pattern: masqueMail,
-            })}
-          />
-        </div>
-        {console.log(errors)}
-        {errors?.email?.type == "pattern" ? (
-          <span className="form-text-error">{"Format non valide"}</span>
-        ) : null}
-        {errors?.email?.type == "required" ? (
-          <span className="form-text-error">
-            {"L'identifiant est requis !"}
-          </span>
-        ) : null}
-      </div>
-
-      <div className="cont-input-label">
+      <p className="form-title">Login</p>
+      <div className="flex-column-start-start cont-input-label">
         <label htmlFor="input-password" className="label">
-          {"Mot de passe"}
+          {"Nom d'utilisateur"}
         </label>
-        <div className="cont-input-span flex-row-start-center">
+        <div className="flex-row-center-center cont-input">
           <input
             id="input-password"
             className="input"
-            type={isVisible ? "text" : "password"}
+            type={isVisibleA ? "text" : "password"}
+            name="email"
+            {...register("email", {
+              required: true,
+              pattern: masqueMail,
+            })}
+          />
+          <span
+            className="eye"
+            data-idinput="input-password"
+            onClick={() => {
+              setIsVisibleA(!isVisibleA);
+              
+            }}
+          >
+            {isVisibleA ? <BsFillEyeSlashFill /> : <BsFillEyeFill />}
+          </span>
+        </div>
+        <div className="flex-column-center-center container-span-error">
+          {errors?.email?.type == "pattern" ? (
+            <span className="form-text-error">{"Format non valide"}</span>
+          ) : null}
+          {errors?.email?.type == "required" ? (
+            <span className="form-text-error">
+              {"Le mot de passe est requis !"}
+            </span>
+          ) : null}
+        </div>
+      </div>
+      <div className="flex-column-start-start cont-input-label">
+        <label htmlFor="input-password" className="label">
+          {"Mot de passe"}
+        </label>
+        <div className="flex-row-center-center cont-input">
+          <input
+            id="input-password"
+            className="input"
+            type={isVisibleB ? "text" : "password"}
             name="password"
             {...register("password", {
               required: true,
@@ -143,21 +143,28 @@ function FormLogin() {
             })}
           />
           <span
+            className="eye"
             data-idinput="input-password"
-            onClick={(e) => {
-              displayPassword(e);
+            onClick={() => {
+              setIsVisibleB(!isVisibleB);
+              
             }}
           >
-            {isVisible ? <BsFillEyeSlashFill /> : <BsFillEyeFill />}
+            {isVisibleB ? <BsFillEyeSlashFill /> : <BsFillEyeFill />}
           </span>
         </div>
-        {errors?.password?.type == "pattern" ? (
-          <span className="form-text-error">Format non valide</span>
-        ) : null}
-        {errors?.password?.type == "required" ? (
-          <span className="form-text-error">Le mot de passe est requis !</span>
-        ) : null}
+        <div className="flex-column-center-center container-span-error">
+          {errors?.password?.type == "pattern" ? (
+            <span className="form-text-error">{"Format non valide"}</span>
+          ) : null}
+          {errors?.password?.type == "required" ? (
+            <span className="form-text-error">
+              {"Le mot de passe est requis !"}
+            </span>
+          ) : null}
+        </div>
       </div>
+      
 
       <button
         id="login-submit"
@@ -168,10 +175,10 @@ function FormLogin() {
       >
         {"Login"}
       </button>
-      <div id="toaster-valid" className="toaster valid">
+      <div id="toaster-valid-login" className="toaster valid">
         {"Utilisteur connecté"}
       </div>
-      <div id="toaster-invalid" className="toaster invalid">
+      <div id="toaster-invalid-login" className="toaster invalid">
         {"Oups! une erreur c'est produite"}
       </div>
     </form>

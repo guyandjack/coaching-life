@@ -294,7 +294,7 @@ function FormAddArticle() {
         {"Ajouter un article"}
       </button>
       <div id="toaster-valid-article" className="toaster valid">
-        {"Un article ajouté !"}
+        {"Article ajouté !"}
       </div>
       <div id="toaster-invalid-article" className="toaster invalid">
         {"Oups! une erreur c'est produite"}

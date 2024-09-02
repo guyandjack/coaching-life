@@ -91,7 +91,7 @@ function FormAddAvis() {
     if (response.ok) {
       let data = await response.json();
       // eslint-disable-next-line no-unused-vars
-      const toasterValid = document.querySelector("#toaster-valid");
+      const toasterValid = document.querySelector("#toaster-valid-avis");
 
       if (data.message_status == "sended") {
         toasterValid.classList.add("visible");
@@ -102,7 +102,7 @@ function FormAddAvis() {
       }
     } else {
       // eslint-disable-next-line no-unused-vars
-      const toasterInvalid = document.querySelector("#toaster-invalid");
+      const toasterInvalid = document.querySelector("#toaster-invalid-avis");
       toasterInvalid.classList.add("visible");
       setTimeout(() => {
         toasterInvalid.classList.remove("visible");
@@ -272,10 +272,10 @@ function FormAddAvis() {
       >
         {"Ajouter un avis"}
       </button>
-      <div id="toaster-valid" className="toaster valid">
-        {"Message reçu"}
+      <div id="toaster-valid-avis" className="toaster valid">
+        {"Avis ajouté"}
       </div>
-      <div id="toaster-invalid" className="toaster invalid">
+      <div id="toaster-invalid-avis" className="toaster invalid">
         {"Oups! une erreur c'est produite"}
       </div>
     </form>

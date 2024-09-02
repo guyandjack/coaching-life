@@ -99,7 +99,7 @@ function FormChangePassword() {
       // eslint-disable-next-line no-unused-vars
       //const data = await response.json();
 
-      const toasterValid = document.querySelector("#toaster-valid-article");
+      const toasterValid = document.querySelector("#toaster-valid-change-password");
       if (toasterValid) {
         toasterValid.classList.add("visible");
 
@@ -110,7 +110,7 @@ function FormChangePassword() {
         }, 3000);
       }
     } else {
-      const toasterInvalid = document.querySelector("#toaster-invalid-article");
+      const toasterInvalid = document.querySelector("#toaster-invalid-change-password");
       if (toasterInvalid) {
         toasterInvalid.classList.add("visible");
         setTimeout(() => {
@@ -263,10 +263,10 @@ function FormChangePassword() {
       >
         {"Changer le mot de passe"}
       </button>
-      <div id="toaster-valid-article" className="toaster valid">
-        {"Un article ajouté !"}
+      <div id="toaster-valid-change-password" className="toaster valid">
+        {"Mot de passe modifié !"}
       </div>
-      <div id="toaster-invalid-article" className="toaster invalid">
+      <div id="toaster-invalid-change-password" className="toaster invalid">
         {"Oups! une erreur c'est produite"}
       </div>
     </form>
