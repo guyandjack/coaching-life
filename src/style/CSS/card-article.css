@@ -80,3 +80,7 @@
 .card-article .confirm .confirmed {
   background-color: #ff6e00;
 }
+
+.disabled {
+  opacity: 0.3;
+}

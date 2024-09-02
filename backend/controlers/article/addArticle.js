@@ -18,19 +18,26 @@ let urlImageDEV = process.env.URL_BASE_IMAGE_ARTICLE_DEV;
 // eslint-disable-next-line no-undef
 let urlArticleDEV = process.env.URL_BASE_UPLOAD_HTML_DEV;
 
-function changePathForDB(urlBase, imagePathStore) {
+function changePathImageForDB(urlBase, imagePathStore) {
+  let objectToStore = [];
+
   if (typeof imagePathStore === "string") {
-    return `${urlBase}${imagePathStore}`;
+    // Cas où imagePathStore est une chaîne unique
+    objectToStore.push(`${urlBase}${imagePathStore}`) ;
+  } else if (Array.isArray(imagePathStore)) {
+    // Cas où imagePathStore est un tableau
+    imagePathStore.forEach((path, index) => {
+      
+      objectToStore.push(`${urlBase}${path}`);
+    });
+  } else {
+    throw new Error("Invalid input type: expected string or array");
   }
 
-  if (Array.isArray(imagePathStore)) {
-    return imagePathStore.map((path) => `${urlBase}${path}`);
-  }
+  // Convertit l'objet en JSON
+  return JSON.stringify(objectToStore);
 
-  console.log("type de imagepath: " + typeof imagePathStore);
-
-  // Optionnel : gérer les cas où imagePathStore n'est ni une string ni un tableau
-  throw new Error("imagePathStore must be a string or an array.");
+ 
 }
 
 
@@ -197,14 +204,14 @@ async function addOneArticle(req, res) {
   articlePath = articlePathForDataBase(req, newArticleName, articleExt);
 
   //daptation de l' url image pour la DB
-  imagePathDB = changePathForDB(urlImageDEV, imagePathStore);
+  imagePathDB = changePathImageForDB(urlImageDEV, imagePathStore);
   console.log("url image pour data base: " + imagePathDB);
 
   // adaptation de l' url article pour la db
   console.log("articlepath: " + articlePath);
   let cleanUrl = articlePath.split("public")[1];
   console.log("cleanUrl: " + cleanUrl);
-  articlePathDB = changePathForDB(urlArticleDEV, cleanUrl);
+  articlePathDB = changePathImageForDB(urlArticleDEV, cleanUrl);
   console.log("article path db : " + articlePathDB);
 
   

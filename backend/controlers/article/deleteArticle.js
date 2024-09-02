@@ -2,7 +2,7 @@
 
 //import des librairies
 // eslint-disable-next-line no-undef, no-unused-vars
-const fs = require("fs");
+const fs = require("fs").promises;
 // eslint-disable-next-line no-undef, no-unused-vars
 const path = require("path");
 
@@ -14,130 +14,94 @@ const connectToDataBase = require("../../utils/functions/connectionDataBase.js")
 // eslint-disable-next-line no-undef
 const sendRequest = require("../../utils/functions/requestDataBase.js");
 
-// eslint-disable-next-line no-undef
+// eslint-disable-next-line no-undef, no-unused-vars
 let urlImageDEV = process.env.URL_BASE_IMAGE_ARTICLE_DEV;
 //declaration des fonctions
 
 
 
 // eslint-disable-next-line no-unused-vars
+ // Utilisation des promesses pour simplifier la gestion des fichiers
+
 async function deleteOneArticle(req, res) {
   const articleId = req.body.id;
-  let connect = await connectToDataBase();
 
-  let tabErrorDeleteFile = [];
-  
+  try {
+    const connect = await connectToDataBase();
+    const tabErrorDeleteFile = [];
 
-  //requette préparé de type select
-  const requeteSelect = `SELECT url_img, url_article FROM article WHERE id = ?`;
-  const paramRequeteSelect = [articleId];
+    // Récupération des URLs des fichiers à supprimer
+    const requeteSelect = `SELECT url_img, url_article FROM article WHERE id = ?`;
+    const [result] = await sendRequest(connect, requeteSelect, [articleId]);
 
-  const response =  sendRequest(
-    connect,
-    requeteSelect,
-    paramRequeteSelect
-  );
+    if (!result) {
+      return res.status(404).json({ message: "Article non trouvé" });
+    }
 
-  if (response == null) {
-    res.status(500).json({"message_status": "une erreur est survenue lors de la requete"})
-    
+    // Suppression des fichiers image
+    if (Array.isArray(result.url_img) && result.url_img.length > 0) {
+      await Promise.all(
+        result.url_img.map(async (url) => {
+          try {
+            const cleanUrl = url.split(/backend[/\\]/)[1].trim();
+            await fs.rm(cleanUrl);
+            console.log(`Fichier image ${cleanUrl} supprimé avec succès.`);
+          } catch (err) {
+            tabErrorDeleteFile.push(`Impossible de supprimer l'image ${url}`);
+            console.error(
+              `Erreur lors de la suppression de l'image ${url}:`,
+              err
+            );
+          }
+        })
+      );
+    }
+
+    // Suppression des fichiers articles
+    if (Array.isArray(result.url_article) && result.url_article.length > 0) {
+      await Promise.all(
+        result.url_article.map(async (url) => {
+          try {
+            const cleanUrl = `../public/${url.split(/public[/\\]/)[1].trim()}`;
+            await fs.rm(cleanUrl);
+            console.log(`Fichier article ${cleanUrl} supprimé avec succès.`);
+          } catch (err) {
+            tabErrorDeleteFile.push(`Impossible de supprimer l'article ${url}`);
+            console.error(
+              `Erreur lors de la suppression de l'article ${url}:`,
+              err
+            );
+          }
+        })
+      );
+    }
+
+    // Suppression de l'article dans la base de données
+    const requeteDelete = `DELETE FROM article WHERE id = ?`;
+    const deleteResponse = await sendRequest(connect, requeteDelete, [
+      articleId,
+    ]);
+
+    if (!deleteResponse) {
+      return res
+        .status(500)
+        .json({ message: "Erreur lors de la suppression en BDD" });
+    }
+
+    res.status(200).json({
+      message: "succes",
+      errors: tabErrorDeleteFile.length > 0 ? tabErrorDeleteFile : null,
+    });
+  } catch (error) {
+    console.error("Erreur lors de la suppression de l'article:", error);
+    res
+      .status(500)
+      .json({ message: "Une erreur est survenue lors de la suppression" });
   }
-    
-  response
-    .then((result) => {
-      /*******************************************************
-       * ************** supression des fichiers image*********
-       * ***************************************************/
-
-      let objectResult = JSON.parse(JSON.stringify(result));
-      //console.log("string de url de image: " + objectResult[0].url_img);
-      
-        let stringUrl = objectResult[0].url_img;
-        // eslint-disable-next-line no-useless-escape
-        if (stringUrl.startsWith("[")) {
-          // eslint-disable-next-line no-useless-escape
-          let stringClean = stringUrl.replace(/[\[\],"]/g, "");
-          console.log("string clean de url de image: " + stringClean);
-          let tabUrlRelative = stringClean.split(urlImageDEV);
-          console.log("tableau url relative de url image: " + tabUrlRelative);
-
-          tabUrlRelative.forEach((url) => {
-            fs.rm(url, (err) => {
-              if (err) {
-                tabErrorDeleteFile.push(`fichier- ${url} -imposssible à effacer`);
-                console.error("Erreur lors de la suppression du fichier :", err);
-              } else {
-                console.log("Fichier image supprimé avec succès.");
-              }
-            });
-          });
-        } else {
-          let urlRelative = stringUrl.replace(urlImageDEV, "");
-          console.log(" url relative 2 de image: " + urlRelative);
-           fs.rm(urlRelative, (err) => {
-            if (err) {
-              console.error("Erreur lors de la suppression du fichier :", err);
-            } else {
-              console.log("Fichier image supprimé avec succès.");
-            }
-          }); 
-        }
-      
-      /*******************************************************
-       * ************** supression du fichiers article*********
-       * ***************************************************/
-      let stringUrlArticle = objectResult[0].url_article;
-      console.log("url de article: " + stringUrlArticle)
-      fs.rm(stringUrlArticle, (err) => {
-        if (err) {
-          console.error("Erreur lors de la suppression du fichier :", err);
-          tabErrorDeleteFile.push(
-            `fichier- ${stringUrlArticle} -imposssible à effacer`
-          );
-        } else {
-          console.log("Fichier article supprimé avec succès.");
-        }
-      }); 
-
-      if (tabErrorDeleteFile.leng > 0) {
-        res.status(500).json({
-          message_status: "erreur lors de la supression des fichiers",
-        });
-      }
-
-      /********************************************************************
-       * ************** requete pour suprimer l' article de la bdd*********
-       * *****************************************************************/
-
-      //requette préparé de type select
-      const requeteDelete = `DELETE from article WHERE id = ?`;
-      const paramRequeteDelete = [articleId];
-
-      const response = sendRequest(connect, requeteDelete, paramRequeteDelete);
-
-      if (response == null) {
-        res
-          .status(500)
-          .json({
-            message_status: "une erreur est survenue lors la supression en bdd",
-          });
-      }
-
-      res.status(200).json({ message_status: "succes" });
-    })
-  .catch((e) => {
-    console.log("errorsss: " + e);
-    res.status(500).json({"message_status": "une erreur est survenue lors de la requete"})
-
-    })
-
-
-  
-
-  
 }
 
 
 
+
 // eslint-disable-next-line no-undef
-module.exports = deleteOneArticle;
+module.exports = deleteOneArticle

@@ -41,7 +41,7 @@ async function getAllArticle(req, res) {
     //modification du contenu de la requete on envoi une seule image pour le front end la premiere du tableau d'image
 
     // eslint-disable-next-line no-unused-vars
-    requestResult.forEach((article, index) => {
+    /* requestResult.forEach((article, index) => {
        
       let tabUrlClean;
             // eslint-disable-next-line no-useless-escape
@@ -54,8 +54,8 @@ async function getAllArticle(req, res) {
             
             console.log("article urlimg :  " + article.url_img)
          }
-      })
-     
+    }) */
+    
     return res.status(200).json(requestResult);
   } catch (error) {
     console.error("Erreur lors de la récupération des articles: ", error.message);

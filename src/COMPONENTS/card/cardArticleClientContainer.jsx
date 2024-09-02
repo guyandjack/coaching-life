@@ -37,12 +37,13 @@ function CardClientContainer() {
       // Vérifie si la réponse est correcte
       if (response.ok) {
         const result = await response.json();
+        
           setArrayArticle(result);
-          //console.log("tableau des clef result :" + Object.entries(result))
+          
           
       } else {
         // Réinitialise si la réponse n'est pas correcte
-        //setArrayArticle([]);
+        setArrayArticle([]);
         console.error("Failed to fetch articles: ", response.statusText);
       }
     } catch (error) {
@@ -66,8 +67,10 @@ function CardClientContainer() {
             <CardArticleClient
               titre={card.title}
               resume={card.resume}
-              imgUrl={card.url_img}
-              path={card.url_article}
+              imgUrl={card.url_img[0]}
+              articlePath={card.url_article[0]}
+              arrayImgUrl = {card.url_img}
+              id={card.id}
             />
           </li>
         ))

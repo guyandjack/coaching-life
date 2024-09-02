@@ -5,9 +5,25 @@ import "../../style/CSS/card-article-client.css";
 //import "../../style/CSS/form-dashboard.css";
 
 // eslint-disable-next-line react/prop-types
-function CardArticleClient({ path, titre, imgUrl, resume }) {
+function CardArticleClient({ articlePath, titre, imgUrl, resume, id, arrayImgUrl }) {
+
+  function storeId() {
+    let articleInfo = {
+      id: id,
+      image: arrayImgUrl
+    }
+    localStorage.setItem("articleInfo", JSON.stringify(articleInfo));
+    //window.location.href = articlePath;
+    console.log("articlepath: " + articlePath)
+  }
   return (
-    <a href={path} className="flex-column-start-center card-article-client">
+    <div
+      
+      className="flex-column-start-center card-article-client"
+      onClick={() => {
+        storeId();
+      }}    
+    >
       <div className="container-image-client relative">
         <img className="card-article-client-image" src={imgUrl}></img>
          <span className="card-article-title">{titre}</span> 
@@ -18,7 +34,7 @@ function CardArticleClient({ path, titre, imgUrl, resume }) {
           
         </p>
       </div>
-    </a>
+    </div>
   );
 }
 
