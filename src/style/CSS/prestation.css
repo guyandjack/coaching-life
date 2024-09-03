@@ -10,15 +10,13 @@
 }
 
 .page-title {
-  padding: 30px 0px 0px 30px;
-  font-family: Montserrat;
-  font-weight: 800;
-  font-size: 32px;
-}
-@media screen and (min-width: 993px) {
-  .page-title {
-    padding: 30px 0px 0px 50px;
-  }
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  color: #001747;
+  text-align: left;
 }
 
 .container-carousel {
@@ -48,6 +46,7 @@
   padding: 10px;
   width: 100%;
   text-align: center;
+  font-size: 18px !important;
 }
 .carousel .title-slider::after {
   content: "";
@@ -62,26 +61,38 @@
 }
 .carousel #slider-1 {
   background-image: url("@/assets/image/page-prestation/coaching-de-vie.jpg");
-  -webkit-box-shadow: inset 0px 0px 20px 0px #1ba4e3;
-          box-shadow: inset 0px 0px 20px 0px #1ba4e3;
 }
-.carousel #slider-1 > .h2 {
+@media screen and (min-width: 993px) {
+  .carousel #slider-1 {
+    -webkit-box-shadow: inset 0px 0px 20px 0px #1ba4e3;
+            box-shadow: inset 0px 0px 20px 0px #1ba4e3;
+  }
+}
+.carousel #slider-1 > .title-slider {
   color: #1ba4e3;
 }
 .carousel #slider-2 {
   background-image: url("@/assets/image/page-prestation/coaching-de-cariere.jpg");
-  -webkit-box-shadow: inset 0px 0px 20px 0px #ff6e00;
-          box-shadow: inset 0px 0px 20px 0px #ff6e00;
 }
-.carousel #slider-2 > .h2 {
+@media screen and (min-width: 993px) {
+  .carousel #slider-2 {
+    -webkit-box-shadow: inset 0px 0px 20px 0px #ff6e00;
+            box-shadow: inset 0px 0px 20px 0px #ff6e00;
+  }
+}
+.carousel #slider-2 > .title-slider {
   color: #ff6e00;
 }
 .carousel #slider-3 {
   background-image: url("@/assets/image/page-prestation/coaching-en-entreprise.jpg");
-  -webkit-box-shadow: inset 0px 0px 20px 0px #9cd008;
-          box-shadow: inset 0px 0px 20px 0px #9cd008;
 }
-.carousel #slider-3 > .h2 {
+@media screen and (min-width: 993px) {
+  .carousel #slider-3 {
+    -webkit-box-shadow: inset 0px 0px 20px 0px #9cd008;
+            box-shadow: inset 0px 0px 20px 0px #9cd008;
+  }
+}
+.carousel #slider-3 > .title-slider {
   color: #9cd008;
 }
 
@@ -130,16 +141,14 @@
 }
 
 .prestation .title-prestation {
-  font-family: Montserrat;
-  font-weight: 800;
-  font-size: 32px;
+  font-weight: 600;
   position: relative;
   z-index: 1;
   -ms-flex-item-align: start;
       align-self: flex-start;
   width: 100%;
   height: 150px;
-  padding: 30px;
+  padding: 20px;
   color: #fbfffe;
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0% 100%);
           clip-path: polygon(0 0, 100% 0, 100% 0, 0% 100%);

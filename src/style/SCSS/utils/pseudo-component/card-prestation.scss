@@ -13,6 +13,10 @@
   //height: 500px;
   //background-color: lightgreen;
   margin: 50px 0px;
+
+  @include upper-medium-screen{
+    max-width: 600px;
+  }
   
 }
 
@@ -32,7 +36,7 @@
   background-color: map-get($colors-rule, second-color);
 
 }
-.coaching-job::after{
+.coaching-cariere::after{
   background-color: map-get($colors-rule, third-color);
 
 }
@@ -90,7 +94,12 @@
   mask-size: cover;
   mask-position: center;
 
-  
+@include upper-large-screen {
+    width: 450px;
+    height: 350px;
+    left: -30%;
+    box-shadow: 0px 0px 10px 0px map-get($colors-rule, first-color );
+  }
 
 }
 
@@ -100,7 +109,7 @@
   background-image: url("@/assets/image/page-prestation/equilibre.jpg");
 
   @include upper-large-screen{
-    mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+    //mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
 
   }
   
@@ -111,7 +120,7 @@
   background-image: url("@/assets/image/page-prestation/confiance-en-soi.jpg");
   
     @include upper-large-screen {
-      mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+      mask-image: url("@/assets/masque/blob-index-bar-horizontal.svg");
   
     }
 
@@ -159,34 +168,98 @@ background-image: url("@/assets/image/page-prestation/conflit.jpg");
 //image card pour coachind de carriere
 
 .card-2-1 {
-  background-image: url(http://localhost:5173/src/assets/jared-rice-NTyBbu66_SI-unsplash-small.jpg);
-
+  background-image: url("@/assets/image/page-prestation/competence.jpg");
+  
+    @include upper-large-screen {
+      mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+  
+    }
 }
 
 .card-2-2 {
-  background-image: url(http://localhost:5173/src/assets/jared-rice-NTyBbu66_SI-unsplash-small.jpg);
-
+  background-image: url("@/assets/image/page-prestation/entretient-job.jpg");
+  
+    @include upper-large-screen {
+      mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+  
+    }
 }
 
 .card-2-3 {
-  background-image: url(http://localhost:5173/src/assets/jared-rice-NTyBbu66_SI-unsplash-small.jpg);
-
+  background-image: url("@/assets/image/page-prestation/expatriation.jpg");
+  
+    @include upper-large-screen {
+      mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+  
+    }
+}
+.card-2-4 {
+  background-image: url("@/assets/image/page-prestation/retour-activite.jpg");
+  
+    @include upper-large-screen {
+      mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+  
+    }
+}
+.card-2-5 {
+  background-image: url("@/assets/image/page-prestation/depart-retraite.jpg");
+  
+    @include upper-large-screen {
+      mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+  
+    }
 }
 
 //image card pour coaching entreprise
 .card-3-1 {
-  background-image: url(http://localhost:5173/src/assets/jared-rice-NTyBbu66_SI-unsplash-small.jpg);
-
+  background-image: url("@/assets/image/page-prestation/entretient-job-2.jpg");
+  
+    @include upper-large-screen {
+      mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+  
+    }
 }
 
 .card-3-2 {
-  background-image: url(http://localhost:5173/src/assets/jared-rice-NTyBbu66_SI-unsplash-small.jpg);
-
+  background-image: url("@/assets/image/page-prestation/competences-2.jpg");
+  
+    @include upper-large-screen {
+      mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+  
+    }
 }
 
 .card-3-3 {
-  background-image: url(http://localhost:5173/src/assets/jared-rice-NTyBbu66_SI-unsplash-small.jpg);
-
+  background-image: url("@/assets/image/page-prestation/cohesion-equipe.jpg");
+  
+    @include upper-large-screen {
+      mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+  
+    }
+}
+.card-3-4 {
+  background-image: url("@/assets/image/page-prestation/nouveau-cadre.jpg");
+  
+    @include upper-large-screen {
+      mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+  
+    }
+}
+.card-3-5 {
+  background-image: url("@/assets/image/page-prestation/changement-organisationel-2.jpg");
+  
+    @include upper-large-screen {
+      mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+  
+    }
+}
+.card-3-6 {
+  background-image: url("@/assets/image/page-prestation/sante-au-travail.jpg");
+  
+    @include upper-large-screen {
+      mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+  
+    }
 }
 
 
@@ -194,14 +267,47 @@ background-image: url("@/assets/image/page-prestation/conflit.jpg");
 
 .text-2 {
   position:relative;
-  top: 60%;
+  z-index: 1;
+  top: 100%;
+  left: 0px;
+  transform:translateY(-99%);
   width: 100%;
   padding: 10px;
-  font-weight: 600;
+  //font-weight: 600;
   color: map-get($colors-rule, sixth-color);
-  backdrop-filter: blur(3px);
+  //backdrop-filter: brightNess(30%);
+  font-size: 18px;
+
+  @include upper-large-screen{
+    position: absolute;
+    top: 50%;
+    left: 80%;
+    text-align: right;
+    padding: 20px;
+    
+  }
+  
 
  }
+ .text-2::after{
+  content:"";
+  position: absolute;
+  top:0px;
+  left:0px;
+  width:100%;
+  height:100%;
+  z-index: -1;
+  background-color: map-get($colors-rule, fifth-color);
+  opacity: 0.8;
+  border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    @include upper-large-screen{
+      border-radius: 10px;
+      //border: 5px solid map-get($colors-rule, sixth-color);
+    border-left: 20px solid white;
+    
+    }
+    }
 
 .text-3 {
   width: 100%;
