@@ -6,46 +6,154 @@
 //concerne les cartes prestations
 
 .card-prestation {
+  position:relative;
+  z-index: 1;
+  padding: 10px;
   width: 100%;
-  height: 1000px;
-  background-color: lightgreen;
+  //height: 500px;
+  //background-color: lightgreen;
   margin: 50px 0px;
+  
+}
+
+.card-prestation::after{
+  content:"";
+  position:absolute;
+  top:0px;
+  left: 0px;
+  width: 100%;
+  height:100%;
+  z-index: -1;
+  opacity:0.7;
+
+}
+
+.coaching-life::after{
+  background-color: map-get($colors-rule, second-color);
+
+}
+.coaching-job::after{
+  background-color: map-get($colors-rule, third-color);
+
+}
+.coaching-entreprise::after{
+  background-color: map-get($colors-rule, fourth-color);
+
+}
+
+.card-prestation-title {
+  position: relative;
+  z-index: 1;
+  top: -40px;
+  left: 0%;
+  width: 80%;
+  min-height: 80px;
+  padding: 10px;
+  //margin-bottom: 0px;
+  color: map-get($colors-rule, sixth-color);
+
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: map-get($colors-rule, second-color);
+    opacity: 0.9;
+
+  }
+}
+
+.text-1 {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  color: map-get($colors-rule, first-color);
+  font-weight: 500;
+  font-size: 18px;
+  //backdrop-filter: brightNess(60%);
+}
+
+.card-prestation-image{
+  position: relative;
+  //z-index:1;
+  width: 350px;
+  height: 450px;
+  border-radius: 10px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  mask-repeat: no-repeat;
+  mask-size: cover;
+  mask-position: center;
+
+  
 
 }
 
 //image carte pour coaching de vie
 
 .card-1-1 {
-  background-image: url(http://localhost:5173/src/assets/jared-rice-NTyBbu66_SI-unsplash-small.jpg);
+  background-image: url("@/assets/image/page-prestation/equilibre.jpg");
+
+  @include upper-large-screen{
+    mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+
+  }
+  
 
 }
 
 .card-1-2 {
-  background-image: url(http://localhost:5173/src/assets/jared-rice-NTyBbu66_SI-unsplash-small.jpg);
+  background-image: url("@/assets/image/page-prestation/confiance-en-soi.jpg");
+  
+    @include upper-large-screen {
+      mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+  
+    }
 
 }
 
 .card-1-3 {
-  background-image: url(http://localhost:5173/src/assets/jared-rice-NTyBbu66_SI-unsplash-small.jpg);
+  background-image: url("@/assets/image/page-prestation/gestion-emotion.jpg");
+  
+    @include upper-large-screen {
+      mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+  
+    }
 
 }
 
 .card-1-4 {
-  background-image: url(http://localhost:5173/src/assets/jared-rice-NTyBbu66_SI-unsplash-small.jpg);
+background-image: url("@/assets/image/page-prestation/situations-difficiles.jpg");
+
+  @include upper-large-screen {
+    mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+
+  }
 
 }
 
 .card-1-5 {
-  background-image: url(http://localhost:5173/src/assets/jared-rice-NTyBbu66_SI-unsplash-small.jpg);
+background-image: url("@/assets/image/page-prestation/conflit.jpg");
+
+  @include upper-large-screen {
+    mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+
+  }
 
 }
 
 .card-1-6 {
-  background-image: url(http://localhost:5173/src/assets/jared-rice-NTyBbu66_SI-unsplash-small.jpg);
-
+  background-image: url("@/assets/image/page-prestation/gestion-temps.jpg");
+  
+    @include upper-large-screen {
+      mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+  
+    }
 }
 
 //image card pour coachind de carriere
@@ -83,121 +191,24 @@
 
 
 
-.container-text {
-  position: relative;
-  height: 100%;
-  width: 100%;
-}
-
-.card-prestation-title {
-  position: absolute;
-  z-index: 1;
-  top: -5%;
-  left: 5%;
-  width: 50%;
-  min-height: 80px;
-  padding: 10px;
-  color: map-get($colors-rule, sixth-color);
-
-
-  &::after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    background-color: map-get($colors-rule, second-color);
-    opacity: 0.9;
-
-  }
-}
-
-.card-prestation-text {
-  position: absolute;
-  z-index: 1;
-  min-height: 80px;
-  padding: 10px;
-  line-height: 150%;
-
-
-
-  &::after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-
-
-  }
-}
-
-.text-1 {
-  top: 15%;
-  right: 30px;
-  max-width: 300px;
-  min-width: 270px;
-  //max-height: 250px;
-  padding: 30px;
-  //clip-path: inset(5% 20% 15% 10% round 5% 20% 0 10%);
-  border-top: 8px solid map-get($colors-rule, second-color);
-  border-left: 18px solid map-get($colors-rule, second-color);
-  border-bottom: 14px solid map-get($colors-rule, second-color);
-  border-right: 10px solid map-get($colors-rule, second-color);
-  border-top-left-radius: 20%;
-  border-top-right-radius: 5%;
-  border-bottom-right-radius: 45%;
-  border-bottom-left-radius: 5%;
-  color: map-get($colors-rule, first-color);
-  //background-color: map-get($colors-rule, sixth-color);
-  //margin-right: 10px;
-
-  &::after {
-    //clip-path: inset(5% 20% 15% 10% round 5% 20% 0 10%);
-    //border: 2px solid map-get($colors-rule, first-color);
-    border-top-left-radius: 20%;
-    border-bottom-right-radius: 45%;
-    background-color: map-get($colors-rule, sixth-color);
-    opacity: 0.9;
-    width: 90%;
-    height: 90%;
-    transform: translate(5%, 5%);
-
-  }
-}
 
 .text-2 {
-  top: 55%;
+  position:relative;
+  top: 60%;
   width: 100%;
-  max-width: 700px;
-  padding: 20px;
-
+  padding: 10px;
+  font-weight: 600;
   color: map-get($colors-rule, sixth-color);
+  backdrop-filter: blur(3px);
 
-  &::after {
-    background-color: map-get($colors-rule, first-color);
-    opacity: 0.8;
-
-  }
-}
+ }
 
 .text-3 {
-  top: 80%;
-  width: 80%;
-  // margin: 0% 10%;
-  max-width: 700px;
-  border-radius: 10px;
+  width: 100%;
+  padding: 10px;
+  margin: 20px 0px;
+  
   color: map-get($colors-rule, first-color);
 
-  &::after {
-    //clip-path: inset(5% 20% 15% 10% round 5% 20% 0 10%);
-    border-radius: 10px;
-    //border: 2px solid map-get($colors-rule, sixth-color);
-    background-color: map-get($colors-rule, sixth-color);
-    //opacity: 0.9;
-  }
+  
 }

@@ -65,21 +65,23 @@
   -webkit-box-shadow: inset 0px 0px 20px 0px #1ba4e3;
           box-shadow: inset 0px 0px 20px 0px #1ba4e3;
 }
-.carousel #slider-1 > h2 {
+.carousel #slider-1 > .h2 {
   color: #1ba4e3;
 }
 .carousel #slider-2 {
   background-image: url("@/assets/image/page-prestation/coaching-de-cariere.jpg");
-  border: 1px solid #ff6e00;
+  -webkit-box-shadow: inset 0px 0px 20px 0px #ff6e00;
+          box-shadow: inset 0px 0px 20px 0px #ff6e00;
 }
-.carousel #slider-2 > h2 {
+.carousel #slider-2 > .h2 {
   color: #ff6e00;
 }
 .carousel #slider-3 {
   background-image: url("@/assets/image/page-prestation/coaching-en-entreprise.jpg");
-  border: 1px solid #9cd008;
+  -webkit-box-shadow: inset 0px 0px 20px 0px #9cd008;
+          box-shadow: inset 0px 0px 20px 0px #9cd008;
 }
-.carousel #slider-3 > h2 {
+.carousel #slider-3 > .h2 {
   color: #9cd008;
 }
 

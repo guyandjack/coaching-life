@@ -1,35 +1,139 @@
 .card-prestation {
+  position: relative;
+  z-index: 1;
+  padding: 10px;
   width: 100%;
-  height: 1000px;
-  background-color: lightgreen;
   margin: 50px 0px;
+}
+
+.card-prestation::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.7;
+}
+
+.coaching-life::after {
+  background-color: #1ba4e3;
+}
+
+.coaching-job::after {
+  background-color: #ff6e00;
+}
+
+.coaching-entreprise::after {
+  background-color: #9cd008;
+}
+
+.card-prestation-title {
+  position: relative;
+  z-index: 1;
+  top: -40px;
+  left: 0%;
+  width: 80%;
+  min-height: 80px;
+  padding: 10px;
+  color: #fbfffe;
+}
+.card-prestation-title::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #1ba4e3;
+  opacity: 0.9;
+}
+
+.text-1 {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  color: #001747;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.card-prestation-image {
+  position: relative;
+  width: 350px;
+  height: 450px;
+  border-radius: 10px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+          mask-size: cover;
+  -webkit-mask-position: center;
+          mask-position: center;
 }
 
 .card-1-1 {
-  background-image: url(http://localhost:5173/src/assets/jared-rice-NTyBbu66_SI-unsplash-small.jpg);
+  background-image: url("@/assets/image/page-prestation/equilibre.jpg");
+}
+@media screen and (min-width: 993px) {
+  .card-1-1 {
+    -webkit-mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+            mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+  }
 }
 
 .card-1-2 {
-  background-image: url(http://localhost:5173/src/assets/jared-rice-NTyBbu66_SI-unsplash-small.jpg);
+  background-image: url("@/assets/image/page-prestation/confiance-en-soi.jpg");
+}
+@media screen and (min-width: 993px) {
+  .card-1-2 {
+    -webkit-mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+            mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+  }
 }
 
 .card-1-3 {
-  background-image: url(http://localhost:5173/src/assets/jared-rice-NTyBbu66_SI-unsplash-small.jpg);
+  background-image: url("@/assets/image/page-prestation/gestion-emotion.jpg");
+}
+@media screen and (min-width: 993px) {
+  .card-1-3 {
+    -webkit-mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+            mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+  }
 }
 
 .card-1-4 {
-  background-image: url(http://localhost:5173/src/assets/jared-rice-NTyBbu66_SI-unsplash-small.jpg);
+  background-image: url("@/assets/image/page-prestation/situations-difficiles.jpg");
+}
+@media screen and (min-width: 993px) {
+  .card-1-4 {
+    -webkit-mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+            mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+  }
 }
 
 .card-1-5 {
-  background-image: url(http://localhost:5173/src/assets/jared-rice-NTyBbu66_SI-unsplash-small.jpg);
+  background-image: url("@/assets/image/page-prestation/conflit.jpg");
+}
+@media screen and (min-width: 993px) {
+  .card-1-5 {
+    -webkit-mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+            mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+  }
 }
 
 .card-1-6 {
-  background-image: url(http://localhost:5173/src/assets/jared-rice-NTyBbu66_SI-unsplash-small.jpg);
+  background-image: url("@/assets/image/page-prestation/gestion-temps.jpg");
+}
+@media screen and (min-width: 993px) {
+  .card-1-6 {
+    -webkit-mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+            mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
+  }
 }
 
 .card-2-1 {
@@ -56,99 +160,20 @@
   background-image: url(http://localhost:5173/src/assets/jared-rice-NTyBbu66_SI-unsplash-small.jpg);
 }
 
-.container-text {
-  position: relative;
-  height: 100%;
-  width: 100%;
-}
-
-.card-prestation-title {
-  position: absolute;
-  z-index: 1;
-  top: -5%;
-  left: 5%;
-  width: 50%;
-  min-height: 80px;
-  padding: 10px;
-  color: #fbfffe;
-}
-.card-prestation-title::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  background-color: #1ba4e3;
-  opacity: 0.9;
-}
-
-.card-prestation-text {
-  position: absolute;
-  z-index: 1;
-  min-height: 80px;
-  padding: 10px;
-  line-height: 150%;
-}
-.card-prestation-text::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-}
-
-.text-1 {
-  top: 15%;
-  right: 30px;
-  max-width: 300px;
-  min-width: 270px;
-  padding: 30px;
-  border-top: 8px solid #1ba4e3;
-  border-left: 18px solid #1ba4e3;
-  border-bottom: 14px solid #1ba4e3;
-  border-right: 10px solid #1ba4e3;
-  border-top-left-radius: 20%;
-  border-top-right-radius: 5%;
-  border-bottom-right-radius: 45%;
-  border-bottom-left-radius: 5%;
-  color: #001747;
-}
-.text-1::after {
-  border-top-left-radius: 20%;
-  border-bottom-right-radius: 45%;
-  background-color: #fbfffe;
-  opacity: 0.9;
-  width: 90%;
-  height: 90%;
-  -webkit-transform: translate(5%, 5%);
-      -ms-transform: translate(5%, 5%);
-          transform: translate(5%, 5%);
-}
-
 .text-2 {
-  top: 55%;
+  position: relative;
+  top: 60%;
   width: 100%;
-  max-width: 700px;
-  padding: 20px;
+  padding: 10px;
+  font-weight: 600;
   color: #fbfffe;
-}
-.text-2::after {
-  background-color: #001747;
-  opacity: 0.8;
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
 }
 
 .text-3 {
-  top: 80%;
-  width: 80%;
-  max-width: 700px;
-  border-radius: 10px;
+  width: 100%;
+  padding: 10px;
+  margin: 20px 0px;
   color: #001747;
-}
-.text-3::after {
-  border-radius: 10px;
-  background-color: #fbfffe;
 }

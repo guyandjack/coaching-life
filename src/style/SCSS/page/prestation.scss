@@ -77,7 +77,7 @@
     //border: 1px solid map-get($colors-rule, second-color);
     box-shadow: inset 0px 0px 20px 0px map-get($colors-rule, second-color ) ;
 
-    &>h2 {
+    &>.h2 {
 
       color: map-get($colors-rule, second-color);
 
@@ -87,9 +87,9 @@
 
   #slider-2 {
     background-image: url("@/assets/image/page-prestation/coaching-de-cariere.jpg");
-    border: 1px solid map-get($colors-rule, third-color);
+  box-shadow: inset 0px 0px 20px 0px map-get($colors-rule, third-color);
 
-    &>h2 {
+    &>.h2 {
 
       color: map-get($colors-rule, third-color);
 
@@ -98,9 +98,9 @@
 
   #slider-3 {
     background-image: url("@/assets/image/page-prestation/coaching-en-entreprise.jpg");
-    border: 1px solid map-get($colors-rule, fourth-color);
+    box-shadow: inset 0px 0px 20px 0px map-get($colors-rule, fourth-color);
 
-    &>h2 {
+    &>.h2 {
 
       color: map-get($colors-rule, fourth-color);
 
