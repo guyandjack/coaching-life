@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 //import des fichiers RegEx
 // eslint-disable-next-line no-unused-vars
 import {
+  // eslint-disable-next-line no-unused-vars
   masqueExtensionImg,
   masqueMessage,
   masqueText,
@@ -42,7 +43,7 @@ function FormAddAvis() {
 
     inputImgFile.addEventListener("change", (e) => {
       handleImageChange(e);
-      inputImgFile.value = '';
+      //inputImgFile.value = "";
     });
 
     // Nettoyage de l'événement pour éviter les fuites de mémoire
@@ -63,8 +64,6 @@ function FormAddAvis() {
       URL.createObjectURL(file)
     );
     setImagePreviewAvatar(previewUrlsAvatar);
-    
-    
   };
 
   //** Realise un fetch vers le serveur  */
@@ -102,7 +101,6 @@ function FormAddAvis() {
           toasterValid.classList.remove("visible");
           setImagePreviewAvatar([]);
           reset();
-
         }, 3000);
       }
     } else {
@@ -128,7 +126,6 @@ function FormAddAvis() {
       <p className="form-title">Ajouter un avis</p>
 
       <div className="flex-column-start-start cont-input-label">
-        
         <div className="flex-row-center-center cont-input">
           <input
             id="input-text-add-lastname"
@@ -224,7 +221,7 @@ function FormAddAvis() {
             type="file"
             name="image"
             {...register("image", {
-            validate: {
+              validate: {
                 isjpeg: (fileList) => {
                   for (let i = 0; i < fileList.length; i++) {
                     //const file = fileList[0];
@@ -239,11 +236,9 @@ function FormAddAvis() {
                 },
               },
             })}
-            defaultValue={''}
           />
         </div>
         <div className="flex-column-center-center container-span-error">
-          
           {errors.image?.type === "isjpeg" && (
             <span className="form-text-error">
               {"Mauvais type de fichier image uniquemnt jpeg / jpg / png ! "}
@@ -288,4 +283,3 @@ function FormAddAvis() {
 }
 
 export { FormAddAvis };
-

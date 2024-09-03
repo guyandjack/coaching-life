@@ -19,6 +19,9 @@
   padding: 0px 10px 10px 10px;
   border-left: 10px solid #9cd008;
   border-right: 10px solid #9cd008;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .container-article {

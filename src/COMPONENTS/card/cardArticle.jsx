@@ -9,7 +9,7 @@ let objectUrl = localOrProd();
 let url = objectUrl.urlApi;
 
 // eslint-disable-next-line no-unused-vars
-function CardArticle({ title, imgUrl, resume, index, id }) {
+function CardArticle({ title, imgUrl, resume, id }) {
 
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [isValidDelete, setisValidDelete] = useState(false);

@@ -116,16 +116,15 @@ function CardArticleContainer() {
       </div>
       <ul className="flex-row-space_evenly-center-wrap card-article-container">
   {arrayArticle.length > 0 ? (
-    arrayArticle.map((card, index) => {
+    arrayArticle.map((card) => {
       
 
       return (
-        <li key={index}>
+        <li key={card.id}>
           <CardArticle
             title={card.title}
             resume={card.resume}
             imgUrl={card.url_img[0]}
-            index={index}
             id={card.id}
           />
         </li>
