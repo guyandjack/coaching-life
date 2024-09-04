@@ -1,0 +1,162 @@
+
+@import "../../../SCSS/utils/colors-rule/colors-rule.scss";
+@import "../../../SCSS/utils/mixins/responsive/responsive.scss";
+
+
+
+.banner-container {
+    //border: 2px solid orange;
+    position: absolute;
+    z-index: 10;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    width: 100%;
+    height: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+
+
+    @include upper-large-screen {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+//concerne le titre de la banner
+
+
+.banner-title {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+
+    color: map-get($colors-rule, first-color);
+    //background-color: map-get($colors-rule, fourth-color);
+
+
+    @include upper-large-screen {
+
+        margin: 30px 0px;
+        width: 100%;
+        padding: 20px;
+
+        
+        
+    }
+    
+    &::after {
+        content: "";
+        z-index: -1;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        //background-color: map-get($colors-rule, sixth-color);
+        box-shadow: inset 0px 0px 20px 0px map-get($colors-rule, sixth-color);
+        opacity: 0.3;
+    }
+
+
+}
+
+//concerne les liens sur l' image d accueil
+
+.link-container {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    //border: 2px solid green;
+    //flex: 1 1 100%;
+
+    @include upper-large-screen {
+        //align-items: flex-start;
+        flex-flow: row;
+        justify-content: space-evenly;
+        align-items: center;
+        //padding-left: 60px;
+        //flex: 0 1 20%;
+
+    }
+
+    .link-cta {
+        margin: 20px 0px;
+
+        //height: 30%;
+        //border: 2px solid red;
+
+
+
+        @include upper-large-screen {
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 30px;
+            border-radius: 50px;
+            transition: box-shadow 0.2s linear;
+        }
+    }
+
+    .link-cta:active .text-inside {
+        background-color: darken(map-get($colors-rule, fourth-color), 20%);
+    }
+
+    
+
+    .link-cta:hover .text-aside {
+        @include upper-large-screen {
+
+
+            transform: translateY(-100%);
+            transition: all 0.3s linear;
+        }
+    }
+
+    .link-cta:hover .text-inside {
+        @include upper-large-screen {
+
+
+            transform: translateY(100%);
+            transition: all 0.3s linear;
+        }
+    }
+
+    .link-cta:hover {
+        @include upper-large-screen {
+            box-shadow: inset 0px 0px 40px 2px map-get($colors-rule, fourth-color);
+            transition: box-shadow 0.4s linear;
+        }
+    }
+
+    .text-aside,
+    .text-inside {
+        font-size: 1em;
+        color: map-get($colors-rule, first-color);
+        transition: transform 0.2s linear;
+
+        @include upper-medium-screen {
+            font-size: 1.1em;
+        }
+
+        @include upper-large-screen {
+            font-size: 1.2em;
+        }
+    }
+
+    .text-inside {
+        height: 20%;
+        padding: 10px;
+        border-radius: 20px;
+        background-color: map-get($colors-rule, fourth-color);
+    }
+
+    .text-aside {
+        padding: 10px;
+        border-radius: 20px;
+        background-color: map-get($colors-rule, first-color);
+        color: map-get($colors-rule, sixth-color);
+        //margin: 0px 0px 0px 30px;
+    }
+}

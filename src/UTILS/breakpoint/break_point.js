@@ -1,4 +1,6 @@
 let breakPoint = {
+
+  
   small_Min: 575,
   small_Max: 576,
 
