@@ -8,9 +8,9 @@
 @import "../utils/mixins/responsive/responsive.scss";
 
 
-.container-page-cgu,
-.container-page-mentions-legales,
-.container-page-politique-de-confidentialite {
+.page-cgu,
+.page-mentions-legales,
+.page-politique-de-confidentialite {
 
   background: linear-gradient(90deg, map-get($colors-rule, sixth-color), map-get($colors-rule, second-color));
 }

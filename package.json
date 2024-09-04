@@ -14,29 +14,31 @@
     "start": "./index.html"
   },
   "dependencies": {
+    "@babel/runtime-corejs3": "^7.25.6",
     "gh-pages": "^6.1.1",
-    "materialize-css": "^1.0.0-rc.2",
+    "materialize-css": "^1.0.0",
     "mysql": "^2.18.1",
     "node-emoji": "^2.1.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-google-recaptcha": "^3.1.0",
-    "react-hook-form": "^7.50.1",
-    "react-icons": "^5.0.1",
+    "react-hook-form": "^7.53.0",
+    "react-icons": "^5.3.0",
     "react-loader-spinner": "^6.1.6",
     "react-scroll-parallax": "^3.4.5",
+    "react-space-404": "^1.1.3",
     "react-svg": "^16.1.34"
   },
   "devDependencies": {
     "@hookform/devtools": "^4.3.1",
-    "@types/react": "^18.2.56",
-    "@types/react-dom": "^18.2.19",
-    "@vitejs/plugin-react": "^4.2.1",
-    "eslint": "^8.56.0",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.5",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.35.2",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.11",
     "saas": "^1.0.0",
-    "vite": "^5.1.4"
+    "vite": "^5.4.3"
   }
 }

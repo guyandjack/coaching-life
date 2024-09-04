@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
+		<loc>https://www.socoaching.ch/error404.html</loc>
+		<priority>0.75</priority>
+		<lastmod>2024-09-04</lastmod>
+	</url>
+	<url>
 		<loc>https://www.socoaching.ch/de/dienstleistungen-des-individuellen-und-unternehmens-coachings.html</loc>
 		<priority>0.33</priority>
 		<lastmod>2024-04-22</lastmod>
@@ -63,32 +68,32 @@
 	<url>
 		<loc>https://www.socoaching.ch/fr/conditions-generales-utilisation.html</loc>
 		<priority>0.33</priority>
-		<lastmod>2024-09-03</lastmod>
+		<lastmod>2024-09-04</lastmod>
 	</url>
 	<url>
 		<loc>https://www.socoaching.ch/fr/contactez-votre-coach-individuel-et-en-entreprise.html</loc>
 		<priority>0.33</priority>
-		<lastmod>2024-08-17</lastmod>
+		<lastmod>2024-09-04</lastmod>
 	</url>
 	<url>
 		<loc>https://www.socoaching.ch/fr/dashboard.html</loc>
 		<priority>0.33</priority>
-		<lastmod>2024-09-02</lastmod>
+		<lastmod>2024-09-04</lastmod>
 	</url>
 	<url>
 		<loc>https://www.socoaching.ch/fr/login.html</loc>
 		<priority>0.33</priority>
-		<lastmod>2024-09-02</lastmod>
+		<lastmod>2024-09-04</lastmod>
 	</url>
 	<url>
 		<loc>https://www.socoaching.ch/fr/mentions-legales.html</loc>
 		<priority>0.33</priority>
-		<lastmod>2024-09-03</lastmod>
+		<lastmod>2024-09-04</lastmod>
 	</url>
 	<url>
 		<loc>https://www.socoaching.ch/fr/prestations-de-coaching-individuel-et-en-entreprise.html</loc>
 		<priority>0.33</priority>
-		<lastmod>2024-09-03</lastmod>
+		<lastmod>2024-09-04</lastmod>
 	</url>
 	<url>
 		<loc>https://www.socoaching.ch/fr/qui-suis-je.html</loc>
@@ -98,7 +103,7 @@
 	<url>
 		<loc>https://www.socoaching.ch/fr/temoignages-clients.html</loc>
 		<priority>0.33</priority>
-		<lastmod>2024-08-17</lastmod>
+		<lastmod>2024-09-04</lastmod>
 	</url>
 	<url>
 		<loc>https://www.socoaching.ch/index.html</loc>
@@ -108,7 +113,7 @@
 	<url>
 		<loc>https://www.socoaching.ch/fr/politique-de-confidencialite.html</loc>
 		<priority>0.33</priority>
-		<lastmod>2024-09-03</lastmod>
+		<lastmod>2024-09-04</lastmod>
 	</url>
 	<url>
 		<loc>https://www.socoaching.ch/fr/article/blog-article.html</loc>
@@ -118,6 +123,6 @@
 	<url>
 		<loc>https://www.socoaching.ch/fr/article-coaching-developpement-personel-entreprise.html</loc>
 		<priority>0.33</priority>
-		<lastmod>2024-08-29</lastmod>
+		<lastmod>2024-09-04</lastmod>
 	</url>
 </urlset>
