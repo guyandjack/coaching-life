@@ -115,6 +115,7 @@
 }
 .qui-suis-je .container-content {
   width: 100%;
+  color: #171717;
 }
 @media screen and (min-width: 993px) {
   .qui-suis-je .container-content {
@@ -163,6 +164,10 @@
     padding: 15px 15px;
   }
 }
+.qui-suis-je .container-content ul.content-text {
+  list-style-type: disc;
+  list-style-position: outside;
+}
 @media screen and (min-width: 993px) {
   .qui-suis-je .container-content-head {
     -webkit-box-orient: horizontal;
@@ -195,6 +200,32 @@
         -ms-flex: 1 1 40%;
             flex: 1 1 40%;
     height: 500px;
+  }
+}
+.qui-suis-je .image {
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+  -webkit-mask-position: center;
+          mask-position: center;
+}
+@media screen and (min-width: 769px) {
+  .qui-suis-je #image-1 {
+    -webkit-mask-image: url("@/assets/masque/masque-buble.svg");
+            mask-image: url("@/assets/masque/masque-buble.svg");
+  }
+}
+@media screen and (min-width: 769px) {
+  .qui-suis-je #image-2 {
+    -webkit-mask-image: url("@/assets/masque/masque-round-bar-vert.svg");
+            mask-image: url("@/assets/masque/masque-round-bar-vert.svg");
+  }
+}
+@media screen and (min-width: 769px) {
+  .qui-suis-je #image-3 {
+    -webkit-mask-image: url("@/assets/masque/masque-cube.svg");
+            mask-image: url("@/assets/masque/masque-cube.svg");
   }
 }
 .qui-suis-je .lieu-des-prestations {

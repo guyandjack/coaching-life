@@ -97,6 +97,7 @@
   .container-content {
     width: 100%;
     //border: 2px solid blue;
+    color: map-get($colors-rule, fifth-color);
 
     @include upper-large-screen {
       //flex-flow: row;
@@ -146,6 +147,12 @@
       }
 
     }
+
+    ul.content-text{
+      list-style-type:disc;
+      list-style-position: outside;
+      
+    }
   }
 
   .container-content-head {
@@ -171,12 +178,42 @@
     //border: 2px solid green;
     overflow: hidden;
     margin: 30px 0px;
+    
 
     @include upper-large-screen {
       flex: 1 1 40%;
       height: 500px;
+      //mask-image: url("@/assets/masque/blob-index-bar-vert.svg");
     }
   }
+
+  .image{
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-position: center;
+  }
+
+  #image-1{
+    @include upper-medium-screen {
+     
+      mask-image: url("@/assets/masque/masque-buble.svg");
+    }
+  }
+  
+  #image-2{
+    @include upper-medium-screen {
+      
+      mask-image: url("@/assets/masque/masque-round-bar-vert.svg");
+    }
+  }
+  
+  #image-3{
+@include upper-medium-screen {
+     
+      mask-image: url("@/assets/masque/masque-cube.svg");
+    }
+  
+  } 
 
   .lieu-des-prestations {
     position: relative;

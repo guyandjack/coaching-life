@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 600 400" style="enable-background:new 0 0 600 400;" xml:space="preserve">
+<style type="text/css">
+	.Ombre_x0020_portée{fill:none;}
+	.Lueur_x0020_externe_x0020_5 pt{fill:none;}
+	.Néon_x0020_bleu{fill:none;stroke:#8AACDA;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;}
+	.Ton_x0020_clair_x0020_chrome{fill:url(#SVGID_1_);stroke:#FFFFFF;stroke-width:0.3629;stroke-miterlimit:1;}
+	.Swing_GS{fill:#FFDD00;}
+	.Alysse_GS{fill:#A6D0E4;}
+	.st0{fill:#333333;}
+</style>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="6.123234e-17" y2="-1">
+	<stop  offset="0" style="stop-color:#656565"/>
+	<stop  offset="0.618" style="stop-color:#1B1B1B"/>
+	<stop  offset="0.6292" style="stop-color:#545454"/>
+	<stop  offset="0.9831" style="stop-color:#3E3E3E"/>
+</linearGradient>
+<image style="display:none;overflow:visible;" width="612" height="408" xlink:href="../image/page-qui-suis-je/600x600-rh.jpg"  transform="matrix(0.24 0 0 0.24 226.56 144)">
+</image>
+<rect x="144" y="49" class="st0" width="304" height="304"/>
+<rect x="12" y="219" class="st0" width="171" height="171"/>
+<rect x="391" y="10" class="st0" width="199" height="199"/>
+</svg>
