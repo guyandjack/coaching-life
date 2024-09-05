@@ -15,7 +15,7 @@ const normalizePort = (val) => {
   return false;
 };
 // eslint-disable-next-line no-undef
-const port = normalizePort(process.env.PORT || "5500");
+const port = normalizePort(process.env.PORT || "3000");
 app.set("port", port);
 
 const errorHandler = (error) => {

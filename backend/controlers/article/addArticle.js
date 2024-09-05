@@ -13,10 +13,30 @@ const sendRequest = require("../../utils/functions/requestDataBase.js");
 // eslint-disable-next-line no-undef
 const checkLanguageFileHtml = require("../../utils/functions/checkLanguageFileHtml.js");
 
+
+//declaration des variables env
+let urlImage = null;
+let urlArticle = null;
 // eslint-disable-next-line no-undef
-let urlImageDEV = process.env.URL_BASE_IMAGE_ARTICLE_DEV;
-// eslint-disable-next-line no-undef
-let urlArticleDEV = process.env.URL_BASE_UPLOAD_HTML_DEV;
+let environement = process.env.NODE_ENV;
+
+//determine lesurl en fonction des env prod ou dev
+switch (environement) {
+  case "prod":
+     // eslint-disable-next-line no-undef
+     urlImage = process.env.URL_BASE_UPLOAD_IMAGE_DEV;
+    // eslint-disable-next-line no-undef
+     urlArticle = process.env.URL_BASE_UPLOAD_HTML_DEV;
+    break;
+
+  default:
+    // eslint-disable-next-line no-undef
+    urlImage = process.env.URL_BASE_UPLOAD_IMAGE_PROD;
+    // eslint-disable-next-line no-undef
+    urlArticle = process.env.URL_BASE_UPLOAD_HTML_PROD;
+    break;
+}
+
 
 function changePathImageForDB(urlBase, imagePathStore) {
   let objectToStore = [];
@@ -204,14 +224,14 @@ async function addOneArticle(req, res) {
   articlePath = articlePathForDataBase(req, newArticleName, articleExt);
 
   //daptation de l' url image pour la DB
-  imagePathDB = changePathImageForDB(urlImageDEV, imagePathStore);
+  imagePathDB = changePathImageForDB(urlImage, imagePathStore);
   console.log("url image pour data base: " + imagePathDB);
 
   // adaptation de l' url article pour la db
   console.log("articlepath: " + articlePath);
   let cleanUrl = articlePath.split("public")[1];
   console.log("cleanUrl: " + cleanUrl);
-  articlePathDB = changePathImageForDB(urlArticleDEV, cleanUrl);
+  articlePathDB = changePathImageForDB(urlArticle, cleanUrl);
   console.log("article path db : " + articlePathDB);
 
   

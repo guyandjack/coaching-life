@@ -116,7 +116,7 @@ function NavBar() {
                   </li>
                 );
               })}
-              <li className="container-lang flex-column-center-center">
+              {/* <li className="container-lang flex-column-center-center">
                 <div className="container-icon-lang">
                   <ReactSVG
                     src="/src/assets/icons/icon-language.svg"
@@ -152,7 +152,7 @@ function NavBar() {
                     </a>
                   </li>
                 </ul>
-              </li>
+              </li> */}
             </ul>
           </div>
         ) : null}

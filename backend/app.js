@@ -20,24 +20,6 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
-// eslint-disable-next-line no-undef
-/* app.use(
-  "/api/avatar",
-  // eslint-disable-next-line no-undef
-  express.static(
-    path.join(
-      // eslint-disable-next-line no-undef
-      __dirname,
-      // eslint-disable-next-line no-undef
-      "images"
-    )
-  )
-); */
-
-// eslint-disable-next-line no-undef
-/*app.get("/api/avis/avatar", (req, res) => {
-  res.status(250).json({ message: "route static validée" });
-});*/
 
 //permet d' exploiter le contenu json du corps des requettes
 app.use(express.json());
