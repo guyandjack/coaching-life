@@ -4,6 +4,8 @@ const baseProdUrl = import.meta.env.VITE_BASE_PROD_URL;
 
 const apiDevUrl = import.meta.env.VITE_API_DEV_URL;
 const apiProdUrl = import.meta.env.VITE_API_PROD_URL;
+
+
 const mode = import.meta.env.MODE;
 
 let result = {};
