@@ -4,7 +4,7 @@
 import { useEffect, useState } from "react";
 
 //import ds composants enfants
-import { CardAvis } from "./cardAvis.jsx";
+import { CardAvis } from "./formCardAvis.jsx";
 
 //import des functions
 import { localOrProd } from "../../UTILS/fonctions/testEnvironement.js";

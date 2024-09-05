@@ -14,9 +14,9 @@ import { FormChangePassword } from "../COMPONENTS/form/formChangePassword.jsx";
 import { FormAddAvis } from "../COMPONENTS/form/formAddAvis.jsx";
 //import { FormChangeAvis } from "../COMPONENTS/form/formChangeAvis.jsx";
 import { FormAddArticle } from "../COMPONENTS/form/formAddArticle.jsx";
-import { CardArticleContainer } from "../COMPONENTS/card/cardArticleContainer.jsx";
+import { CardArticleContainer } from "../COMPONENTS/form/cardFormArticleContainer.jsx";
 //import { CardAvis } from "../COMPONENTS/card/cardAvis.jsx";
-import { CardAvisContainer } from "../COMPONENTS/card/cardAvisContainer.jsx";
+import { CardAvisContainer } from "../COMPONENTS/form/cardFormAvisContainer.jsx";
 
 
 const rootElement = document.getElementById("RC-nav-bar");
