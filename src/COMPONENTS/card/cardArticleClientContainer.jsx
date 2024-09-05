@@ -2,7 +2,7 @@
 import { CardArticleClient } from "./cardArticleClient";
 
 //import du contenu
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 
@@ -20,48 +20,51 @@ let url = objectUrl.urlApi;
 
  
 
+// Fonction pour récupérer les articles
+const getAllArticle = async (seteurArrayArticle) => {
+  try {
+    const response = await fetch(`${url}/article`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        //Authorization: `Bearer ${token}`, // Décommentez et utilisez le token si nécessaire
+      },
+    });
+
+    // Vérifie si la réponse est correcte
+    if (response.ok) {
+      const result = await response.json();
+      
+        seteurArrayArticle(result);
+        
+        
+    } else {
+      // Réinitialise si la réponse n'est pas correcte
+      seteurArrayArticle([]);
+      console.error("Failed to fetch articles: ", response.statusText);
+    }
+  } catch (error) {
+    console.error("Error fetching articles: ", error);
+    seteurArrayArticle([]);
+  }
+};
 function CardClientContainer() {
   const [arrayArticle, setArrayArticle] = useState([]);
 
-  // Fonction pour récupérer les articles
-  const getAllArticle = async () => {
-    try {
-      const response = await fetch(`${url}/article`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          //Authorization: `Bearer ${token}`, // Décommentez et utilisez le token si nécessaire
-        },
-      });
-
-      // Vérifie si la réponse est correcte
-      if (response.ok) {
-        const result = await response.json();
-        
-          setArrayArticle(result);
-          
-          
-      } else {
-        // Réinitialise si la réponse n'est pas correcte
-        setArrayArticle([]);
-        console.error("Failed to fetch articles: ", response.statusText);
-      }
-    } catch (error) {
-      console.error("Error fetching articles: ", error);
-      setArrayArticle([]);
-    }
-  };
 
   // Utilisation de useEffect pour exécuter getAllArticle une fois que le composant est monté
   useEffect(() => {
-    getAllArticle();
+    const fetchArticle = async () => {
+      await getAllArticle(setArrayArticle);
+    }
+    fetchArticle();
   }, []); // Le tableau vide [] assure que l'effet se déclenche seulement au montage
 
   return (
     <ul className="flex-row-space_evenly-center-wrap card-article-container">
       {arrayArticle.length > 0 ? (
-        arrayArticle.map((card, index) => (
-          <li key={card.id || index}>
+        arrayArticle.map((card) => (
+          <li key={card.id}>
             {" "}
             {/* Utilisez card.id si disponible */}
             <CardArticleClient
@@ -85,4 +88,5 @@ export default CardClientContainer;
 
 
 // eslint-disable-next-line no-undef
-export {CardClientContainer} 
+export { CardClientContainer };
+

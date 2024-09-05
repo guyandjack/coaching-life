@@ -99,8 +99,8 @@ function FormAddAvis() {
         toasterValid.classList.add("visible");
         setTimeout(() => {
           toasterValid.classList.remove("visible");
-          setImagePreviewAvatar([]);
           reset();
+          setImagePreviewAvatar([]);
         }, 3000);
       }
     } else {

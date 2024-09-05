@@ -1,7 +1,7 @@
 //composant "containerCardArticle"
 
 //import du contenu
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 //import ds composants enfants
 import { CardAvis } from "./cardAvis.jsx";
@@ -38,36 +38,39 @@ function CardAvisContainer() {
     
 
     return () => {};
-  }, [displayList]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  function getAllAvis() {
-    const token = localStorage.getItem("token");
+  async function getAllAvis() {
+    //const token = localStorage.getItem("token");
 
-    let promesse = fetch(`${url}/avis`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    
+    try {
+      // Requête pour récupérer les avis
+      const response = await fetch(`${url}/avis`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          //Authorization: `Bearer ${token}`,
+        },
+      });
 
-    promesse.then((response) => {
-      if (response.ok) {
-        response
-          .json()
-          .then((result) => {
-            setArrayAvis(result);
-            setDisplayList(true);
-          })
-          .catch((e) => {
-            console.log(e);
-          });
-      } else {
-        setArrayAvis([]);
-        setDisplayList(true);//affiche liste vide
+      // Vérification si la réponse est OK
+      if (!response.ok) {
+        throw new Error("Erreur lors de la récupération des avis");
       }
-    });
+
+      // Extraction des données JSON
+      const result = await response.json();
+      setArrayAvis(result);
+    } catch (error) {
+      console.error("Erreur:", error);
+      setArrayAvis([]); // En cas d'erreur, afficher une liste vide
+    } finally {
+      setDisplayList(true); // Afficher la liste (vide ou remplie)
+    }
   }
+
 
   return (
     <div className="flex-column-start-center form-dashboard">
@@ -117,4 +120,5 @@ function CardAvisContainer() {
   );
 }
 
-export { CardAvisContainer};
+export { CardAvisContainer };
+

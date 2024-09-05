@@ -91,7 +91,7 @@ async function deleteOneAvis(req, res) {
       if (!requestResult || requestResult.affectedRows !== 1) {
         return res
           .status(500)
-          .json({ message: "Impossible de supprimer l'avis" });
+          .json({ message: "Impossible de supprimer l'avisssss" });
       }
 
       res.status(200).json({ message_status: "succes" });

@@ -1,7 +1,7 @@
 //composant "containerCardArticle"
 
 //import du contenu
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 //import ds composants enfants
 import { CardArticle } from "./cardArticle.jsx";
@@ -42,16 +42,19 @@ function CardArticleContainer() {
       
     };
   
-  }, [displayList]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   
   
 
   
 
-  function getAllArticle() {
+  async function getAllArticle() {
     //const token = localStorage.getItem("token");
-          
-      let promesse = fetch(`${url}/article`, {
+
+    try {
+      // Requête pour récupérer les avis
+      const response = await fetch(`${url}/article`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -59,33 +62,20 @@ function CardArticleContainer() {
         },
       });
 
-      
-    promesse
-      .then((response) => {
-        if (response.ok) {
-          response.json()
-            .then((result) => {
-              /* result.forEach((object) => {
-                if (typeof object.url_img === "string") {
-                  object.url_img = JSON.parse(object.url_img);
-                }
-
-                // Vérifiez maintenant que c'est bien un tableau
-                console.log("result urlimg est tableau: " + Array.isArray(result.url_img)); // Doit être true
-              }) */
-              //console.log("type de url_img: " + typeof result[2].url_img)
-              setArrayArticle(result);
-              setDisplayList(true);
-            })
-          .catch((e)=>{console.log(e)})
-        } else {
-          setArrayArticle([]);
-          setDisplayList(true);
+      // Vérification si la réponse est OK
+      if (!response.ok) {
+        throw new Error("Erreur lors de la récupération des articles");
       }
-    })
-      
-    
-    
+
+      // Extraction des données JSON
+      const result = await response.json();
+      setArrayArticle(result);
+    } catch (error) {
+      console.error("Erreur:", error);
+      setArrayArticle([]); // En cas d'erreur, afficher une liste vide
+    } finally {
+      setDisplayList(true); // Afficher la liste (vide ou remplie)
+    }
   }
 
   
@@ -140,3 +130,4 @@ function CardArticleContainer() {
 }
 
 export { CardArticleContainer };
+

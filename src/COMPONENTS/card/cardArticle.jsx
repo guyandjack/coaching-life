@@ -12,7 +12,7 @@ let url = objectUrl.urlApi;
 function CardArticle({ title, imgUrl, resume, id }) {
 
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
-  const [isValidDelete, setisValidDelete] = useState(false);
+  const [isArticleDeleted, setIsArticleDeleted] = useState(false);
 
   const { register, handleSubmit} = useForm({ mode: "onChange" });
   
@@ -20,7 +20,6 @@ function CardArticle({ title, imgUrl, resume, id }) {
 
   const onDeleteConfirm = async (data) => {
     const token = localStorage.getItem("token");
-    
 
     try {
       const response = await fetch(`${url}/article`, {
@@ -33,70 +32,40 @@ function CardArticle({ title, imgUrl, resume, id }) {
       });
 
       if (response.ok) {
-        showToaster("toaster-valid-delete-article");
-        setisValidDelete(true)
+        const result = await response.json();
+        if (result.message_status == "succes") {
+          let response = await showToaster(
+            `toaster-valid-delete-article-${id}`
+          );
+
+          if (response) {
+            setShowConfirmDialog(false);
+            setIsArticleDeleted(true);
+          }
+        }
       } else {
-        showToaster("toaster-invalid-delete-article");
-        setisValidDelete(false)
+        showToaster(`toaster-invalid-delete-article-${id}`);
       }
     } catch (error) {
       console.error("Erreur lors de la suppression :", error);
       showToaster("toaster-invalid-delete-article");
-      setisValidDelete(false)
     }
   };
 
-  const showToaster = (id) => {
+  const showToaster = async (id) => {
     const toaster = document.getElementById(id);
+
     if (toaster) {
       toaster.classList.add("visible");
-      setTimeout(() => {
-        toaster.classList.remove("visible");
-      }, 3000);
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          toaster.classList.remove("visible");
+          resolve(true);
+        }, 3000);
+      });
     }
+    return false;
   };
-
-  
-  
-   async function deleteOneArticle(e) {
-    //procedure de supression sur serveur
-     handleSubmit(onDeleteConfirm)();
-    
-    console.log("isvalidelete:   " + isValidDelete);
-     if (isValidDelete) {
-      
-       
-       //recupere l' element carte du DOM
-       let formParent = e.target.closest(".card-article");
-       console.log("cqrte pqrent:  " + e.target.closest(".card-article"));
-   
-       //recupere l' id de la carte
-       let cardId = formParent.getAttribute("id");
-       console.log("card id:  " + cardId);
-   
-       //recupere le btn submit de la carte
-       let btnSubmit = formParent.querySelector(".btn-submit-card");
-       console.log("btn submit:  " + btnSubmit);
-   
-       //recuperel'id du bouton suprimer de la carte
-       let btnDeleteId = btnSubmit.getAttribute("id");
-       console.log("btn delete Id:  " + btnDeleteId);
-   
-       let elementBtn = document.querySelector(`#${btnDeleteId}`);
-       //desactive le btn suprimer
-       elementBtn.setAttribute("disabled", "true");
-       
-       //modifie le style de la carte
-       let elementCard = document.querySelector(`#${cardId}`);
-       elementCard.classList.add("disabled");
-   
-       //supression de la boite de dialog confirm
-       setShowConfirmDialog(false);
-     
-    }   
-
-   
-  }
 
   
 
@@ -105,7 +74,6 @@ function CardArticle({ title, imgUrl, resume, id }) {
       id={`form-delete-article-${id}`}
       className="flex-column-space_evenly-center form-dashboard card-article"
       //onSubmit={handleSubmit(() => setShowConfirmDialog(true))}
-      
     >
       <input
         className="input"
@@ -134,20 +102,32 @@ function CardArticle({ title, imgUrl, resume, id }) {
       />
       <img className="card-img" src={imgUrl} alt="Décoration de la carte" />
 
-      <button
-        id={`btn-submit-card-${id}`}
-        className="btn-submit btn-submit-card"
-        type="button"
-        onClick={()=>{setShowConfirmDialog(true)}}
-      
-      >
-        {" Supprimer l'article"}
-      </button>
+      {isArticleDeleted ? (
+        <button
+          id={`btn-submit-card-article-${id}`}
+          className="btn-submit-card disabled"
+          type="button"
+          disabled
+        >
+          {"Article supprimé"}
+        </button>
+      ) : (
+        <button
+          id={`btn-submit-card-article-${id}`}
+          className="btn-submit btn-submit-card"
+          type="button"
+          onClick={() => {
+            setShowConfirmDialog(true);
+          }}
+        >
+          {"Suprimer article"}
+        </button>
+      )}
 
-      <div id="toaster-valid-delete-article" className="toaster valid">
-        Article supprimé !
+      <div id={`toaster-valid-delete-article-${id}`} className="toaster valid">
+        {"Article supprimé !"}
       </div>
-      <div id="toaster-invalid-delete-article" className="toaster invalid">
+      <div id={`toaster-invalid-delete-article-${id}`} className="toaster invalid">
         {"Oups ! Une erreur s'est produite"}
       </div>
 
@@ -168,7 +148,7 @@ function CardArticle({ title, imgUrl, resume, id }) {
               <button
                 className="btn-confirm confirmed"
                 type="button"
-                onClick={(e)=>{deleteOneArticle(e)}}
+                onClick={handleSubmit(onDeleteConfirm)}
               >
                 Confirmer
               </button>

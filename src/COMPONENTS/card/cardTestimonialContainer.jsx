@@ -1,5 +1,5 @@
 //composant "CardTestimonialContainer"
-import { useState, useEffect, useRef } from "react";
+//import { useState, useEffect } from "react";
 
 //import ds composants enfants
 import { CardTestimonial } from "../../COMPONENTS/card/cardTestimonial.jsx";
@@ -11,72 +11,71 @@ import { localOrProd } from "../../UTILS/fonctions/testEnvironement.js";
 import "../../style/CSS/card-testimonial-container.css";
 
 let objectUrl = localOrProd();
-let apiUrl = objectUrl.urlApi;
-console.log("apiUrl: " + apiUrl);
+let url = objectUrl.urlApi;
+
 //declaration des fonctions
 
-/**
- *
- *
- * @return {array} tableau qui contien tous les commentaires
- */
-async function getAllAvis() {
+import { useState, useEffect } from "react";
+
+// Fonction pour récupérer les avis
+const getAllAvis = async () => {
   try {
-    const resultFetch = await fetch(`${apiUrl}/avis`, {
+    const response = await fetch(`${url}/avis`, {
       method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
 
-    let jsonResult = await resultFetch.json();
-    console.log("new array: " + Array.from(jsonResult));
-
-    return Array.from(jsonResult);
+    // Vérifie si la réponse est correcte
+    if (response.ok) {
+      const result = await response.json();
+      return result;
+    } else {
+      console.error("Failed to fetch avis: ", response.statusText);
+      return [];
+    }
   } catch (error) {
-    console.log("imposiible de faire la requette fetch: " + error);
+    console.error("Error fetching avis: ", error);
+    return [];
   }
-}
+};
 
 function modulo(index) {
-  let trueIndex = index + 1;
-  if (trueIndex % 2 == 0) {
-    return true;
-  }
-  return false;
+  return (index + 1) % 2 === 0;
 }
 
 function CardTestimonialContainer() {
-  // eslint-disable-next-line no-unused-vars
-  const [isLoaded, setIsloaded] = useState(false);
-  const arrayAvis = useRef([]);
+  const [arrayAvis, setArrayAvis] = useState([]);
 
+  // Utilisation de useEffect pour appeler getAllAvis lors du montage du composant
   useEffect(() => {
-    if (arrayAvis["current"].length < 1) {
-      let allAvis = getAllAvis();
-      allAvis.then((result) => {
-        arrayAvis.current = result;
-        setIsloaded(true);
-      });
-    }
-  });
+    const fetchAvis = async () => {
+      const avis = await getAllAvis();
+      setArrayAvis(avis); // Met à jour l'état avec les avis récupérés
+    };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    fetchAvis();
+  }, []); // Le tableau de dépendances vide [] assure que l'effet se déclenche seulement au montage
 
-  return isLoaded ? (
+  return arrayAvis.length > 0 ? (
     <ul className="flex-column-start-center card-testimonial-container animation-slider">
-      {arrayAvis["current"].map((card, index) => {
-        return (
-          <li key={index}>
-            <CardTestimonial
-              avatarUrl={card["url_img"]}
-              testimonialText={card["content"]}
-              testimonialLastName={card["last_name"]}
-              testimonialFirstName={card["first_name"]}
-              themeColor={modulo(index)}
-            />
-          </li>
-        );
-      })}
+      {arrayAvis.map((card, index) => (
+        <li key={card.id}>
+          <CardTestimonial
+            avatarUrl={card.url_img}
+            testimonialText={card.content}
+            testimonialLastName={card.last_name}
+            testimonialFirstName={card.first_name}
+            themeColor={modulo(index)}
+          />
+        </li>
+      ))}
     </ul>
-  ) : null;
+  ) : (
+    <div>{"Aucun avis à afficher"}</div>
+  );
 }
 
 export { CardTestimonialContainer };
+

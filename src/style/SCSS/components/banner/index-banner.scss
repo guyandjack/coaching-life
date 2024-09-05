@@ -7,20 +7,15 @@
 .banner-container {
     //border: 2px solid orange;
     position: absolute;
-    z-index: 10;
-    /* top: 50%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); */
+    transform: translate(-50%, -50%); 
     width: 100%;
     height: 100%;
     justify-content: space-evenly;
     align-items: center;
 
 
-    @include upper-large-screen {
-        height: 100%;
-        width: 100%;
-    }
 }
 
 //concerne le titre de la banner
@@ -125,8 +120,9 @@
 
     .link-cta:hover {
         @include upper-large-screen {
-            box-shadow: inset 0px 0px 40px 2px map-get($colors-rule, fourth-color);
+            box-shadow: inset 0px 0px 10px 0px map-get($colors-rule, fourth-color);
             transition: box-shadow 0.4s linear;
+            
         }
     }
 

@@ -89,7 +89,7 @@ async function deleteOneArticle(req, res) {
     }
 
     res.status(200).json({
-      message: "succes",
+      message_status: "succes",
       errors: tabErrorDeleteFile.length > 0 ? tabErrorDeleteFile : null,
     });
   } catch (error) {

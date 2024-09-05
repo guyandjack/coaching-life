@@ -30,11 +30,7 @@ async function addOneAvis(req, res) {
     const timestamp = Date.now();
     const avatarFileName = `avatar-${timestamp}-${lastName}-${firstName}${avatarExt}`;
 
-    avatarPathDataBase = path.join(
-      urlImageDEV,
-      "upload/avis/avatar",
-      avatarFileName
-    );
+    avatarPathDataBase =  urlImageDEV + "upload/avis/avatar/" + avatarFileName;
     avatarPath = path.join("upload/avis/avatar", avatarFileName);
   }
 
@@ -68,7 +64,7 @@ async function addOneAvis(req, res) {
       await storeAvatar(req, avatarPath, res);
     }
 
-    return res.status(201).json({ message_status: "succès" });
+    return res.status(201).json({ message_status: "succes" });
   } catch (error) {
     console.error("Erreur lors de l'ajout de l'avis :", error);
     return res
