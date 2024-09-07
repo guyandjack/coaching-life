@@ -59,8 +59,8 @@ function Footer() {
       </div>
       <div className="webmaster flex-row-center-center">
         <span>{"Powered with "}</span>
-        <span>{emoji.emojify("  :heart:  ")}</span>
-        <span>{" by Norbert's development"}</span>
+        <span>{emoji.emojify(":heart:")}</span>
+        <span>{" by Norbert's developments"}</span>
       </div>
     </div>
   );

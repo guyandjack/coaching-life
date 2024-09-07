@@ -13,6 +13,11 @@ import { breakPoint } from "../../UTILS/breakpoint/break_point.js";
 //import des composants enfants
 import { BannerIndex } from "../banner/index-banner";
 
+////import parallax500w from "../../assets/image/page-index/500w-parallax.jpg";
+//import parallax1000w from "../../assets/image/page-index/1000w-parallax.jpg";
+//import parallax1500w from "../../assets/image/page-index/1500w-parallax.jpg";
+import parallax2000w from "../../assets/image/page-index/2000w-parallax.jpg";
+
 import "../../style/CSS/parallax.css";
 
 //declaration des function
@@ -53,11 +58,23 @@ function Parallax() {
       <ParallaxBanner style={{ aspectRatio: `${ratio}` }}>
         <ParallaxBannerLayer speed={-20}>
           <img
-            src="/src/assets/image/page-index/ville-fond-bleu-rose-2.jpg"
-            alt="Sahara Desert landscape"
+            /*srcSet={`
+                  ${parallax500w} 500w,
+                  ${parallax1000w} 1000w,
+                  ${parallax1500w} 1500w,
+                  ${parallax2000w} 2000w,
+          `}
+            sizes="
+                  (max-width: 575px), 
+                  (max-width: 993px) , 
+                  (max-width: 1500px) , 
+                  (min-width: 1900px) , 
+                   "*/
+            src={parallax2000w}
+            alt="des mains sur un clavier d'ordinateur"
           />
         </ParallaxBannerLayer>
-        <BannerIndex />
+         <BannerIndex /> 
       </ParallaxBanner>
     </ParallaxProvider>
   );

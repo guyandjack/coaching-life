@@ -24,16 +24,25 @@
 }
 .contact-container-title .contact-title {
   position: absolute;
-  bottom: 10%;
-  left: 10px;
+  bottom: 20%;
   width: 100%;
-  padding: 0px;
+  padding: 10px;
+  font-size: 20px;
+  text-align: left;
+  line-height: 150%;
+}
+@media screen and (min-width: 769px) {
+  .contact-container-title .contact-title {
+    top: 50%;
+    max-width: 70%;
+    font-size: 25px;
+  }
 }
 @media screen and (min-width: 993px) {
   .contact-container-title .contact-title {
     top: 50%;
-    left: 20px;
     max-width: 70%;
+    font-size: 35px;
   }
 }
 .contact-container-title .contact-img-title {

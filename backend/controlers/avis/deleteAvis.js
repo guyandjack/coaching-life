@@ -17,8 +17,11 @@ const sendRequest = require("../../utils/functions/requestDataBase.js");
 
 
 // eslint-disable-next-line no-undef
-let urlImageDEV = process.env.URL_BASE_IMAGE_ARTICLE_DEV;
-//declaration des fonctions
+const checkEnv = require("../../utils/functions/checkEnvironement.js");
+
+
+let urlbase = checkEnv.defineUrl();
+
 
 
 
@@ -52,7 +55,7 @@ async function deleteOneAvis(req, res) {
 
     if (stringUrl) {
       // Modification du chemin de l'image à supprimer
-      const urlRelative = stringUrl.replace(urlImageDEV, "");
+      const urlRelative = stringUrl.replace(urlbase.urlimg, "");
       console.log("URL relative de l'image : " + urlRelative);
 
       fs.rm(urlRelative, (err) => {

@@ -192,11 +192,18 @@ function displayContent() {
 }
 
 //scrip principal
-await changeCarousselClass();
+/*await changeCarousselClass();
 initCarouselOption();
 getActiveSliderId();
-displaySelectedService(activeSliderId);
+displaySelectedService(activeSliderId);*/
 //console.log(instance.center);
+(async function () {
+  await changeCarousselClass();
+  initCarouselOption();
+  getActiveSliderId();
+  displaySelectedService(activeSliderId);
+})();
+
 
 window.addEventListener("resize", async () => {
   await changeCarousselClass();

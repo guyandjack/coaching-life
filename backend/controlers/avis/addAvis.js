@@ -3,7 +3,12 @@ const path = require("path");
 const connectToDataBase = require("../../utils/functions/connectionDataBase.js");
 const sendRequest = require("../../utils/functions/requestDataBase.js");
 
-const urlImageDEV = process.env.URL_BASE_IMAGE_ARTICLE_DEV || "";
+const checkEnv = require("../../utils/functions/checkEnvironement.js");
+
+
+let urlbase = checkEnv.defineUrl();
+
+
 
 async function addOneAvis(req, res) {
   const {
@@ -30,7 +35,7 @@ async function addOneAvis(req, res) {
     const timestamp = Date.now();
     const avatarFileName = `avatar-${timestamp}-${lastName}-${firstName}${avatarExt}`;
 
-    avatarPathDataBase =  urlImageDEV + "upload/avis/avatar/" + avatarFileName;
+    avatarPathDataBase =  urlbase.urlimg + "upload/avis/avatar/" + avatarFileName;
     avatarPath = path.join("upload/avis/avatar", avatarFileName);
   }
 

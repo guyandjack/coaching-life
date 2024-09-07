@@ -128,5 +128,12 @@ routeur.delete("/avis", checkData, auth, deleteAvis);
 //route Admin - Ajouter un article
 routeur.delete("/article", checkData, auth, deleteOneArticle);
 
+
+/*********** route de test   **************
+ * *****************************************/
+routeur.get("/test", (req, res) => {
+    res.status(200).json({"message": "route validée"})
+});
+
 // eslint-disable-next-line no-undef
 module.exports = routeur;

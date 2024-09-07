@@ -14,34 +14,16 @@ const sendRequest = require("../../utils/functions/requestDataBase.js");
 const checkLanguageFileHtml = require("../../utils/functions/checkLanguageFileHtml.js");
 
 // eslint-disable-next-line no-undef
-const isDevOrProd = require("../../utils/functions/checkEnvironement.js");
+const checkEnv = require("../../utils/functions/checkEnvironement.js");
 
 
 //declaration des variables env
-let urlImage = null;
-let urlArticle = null;
 // eslint-disable-next-line no-undef
-let env = isDevOrProd.devOrProd();
+let result  = checkEnv.defineUrl();
 //determine lesurl en fonction des env prod ou dev
- switch (env) {
-  case "dev":
-     // eslint-disable-next-line no-undef
-     urlImage = process.env.URL_BASE_UPLOAD_IMAGE_DEV;
-    // eslint-disable-next-line no-undef
-     urlArticle = process.env.URL_BASE_UPLOAD_HTML_DEV;
-     console.log("urlImageBase: " + urlImage);
-     console.log("urlArticleBase: " + urlArticle);
-    break;
-
-  default:
-    // eslint-disable-next-line no-undef
-    urlImage = process.env.URL_BASE_UPLOAD_IMAGE_PROD;
-    // eslint-disable-next-line no-undef
-     urlArticle = process.env.URL_BASE_UPLOAD_HTML_PROD;
-     console.log("urlImageBase: " + urlImage);
-     console.log("urlArticleBase: " + urlArticle);
-    break;
-}
+let urlImage = result.urlimg;
+let urlArticle = result.urlarticle;
+ 
 
 
 function changePathImageForDB(urlBase, imagePathStore) {

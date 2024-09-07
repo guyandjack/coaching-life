@@ -23,6 +23,8 @@ import "../../style/CSS/form-dashboard.css";
 let objectUrl = localOrProd();
 let url = objectUrl.urlApi;
 
+console.log("url api de form login: " + url)
+
 async function fetchApi(data) {
   //let content = JSON.stringify(data);
   const formData = new FormData();

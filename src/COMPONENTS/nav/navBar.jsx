@@ -14,6 +14,13 @@ import {
   setHrefLinkLanguage,
 } from "../../UTILS/fonctions/styleLinkNavBar.js";
 
+//import des image et logo
+import logoSocoaching from "../../assets/logo/logo-monogramme-v4.svg";
+import iconMenuBurger from "../../src/assets/icons/menu-burger-40x40.svg";
+//import iconLanguage from "../../src/assets/icons/icon-language.svg";
+import iconclose from "../../src/assets/icons/close.svg";
+
+
 let objectUrl = localOrProd();
 let url = objectUrl.url;
 
@@ -87,15 +94,16 @@ function NavBar() {
         <div className="container-logo">
           <a href={`${url}/index.html`}>
             <ReactSVG
-              src="/src/assets/logo/logo-monogramme-v4.svg"
+              src={logoSocoaching}
               className="logo-coaching-svg"
+              title="logo de l'entreprise socoaching"
             />
           </a>
         </div>
         {isSmallScreen && !isClicked ? (
           <div className=" container-burger" onClick={() => clickBurger()}>
             <ReactSVG
-              src="/src/assets/icons/menu-burger-40x40.svg"
+              src={iconMenuBurger}
               className="logo-burger-svg"
             />
           </div>
@@ -119,7 +127,7 @@ function NavBar() {
               {/* <li className="container-lang flex-column-center-center">
                 <div className="container-icon-lang">
                   <ReactSVG
-                    src="/src/assets/icons/icon-language.svg"
+                    src={iconLanguage}
                     beforeInjection={(svg) => {
                       svg.classList.add("icon-language");
                     }}
@@ -171,7 +179,7 @@ function NavBar() {
             }}
           >
             <ReactSVG
-              src="/src/assets/icons/close.svg"
+              src={iconclose}
               className="icon-close-svg"
             />
           </li>
