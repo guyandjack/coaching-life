@@ -50,7 +50,7 @@ async function checkUserLogin(req, res) {
     const token = jwt.sign(
       { adminId: user.id },
       process.env.PRIVATE_KEY_TOKEN,
-      { expiresIn: "12h" }
+      { expiresIn: "2h" }
     );
 
     // Envoi de la réponse

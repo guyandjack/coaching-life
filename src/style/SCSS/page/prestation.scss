@@ -16,18 +16,20 @@
     left:0px;
     width:100%;
     height:100%;
-    background-color: map-get($colors-rule, second-color);
-    opacity: 0.2;
+    background-color: map-get($colors-rule, fifth-color);
+    //background-color: black;
+    //opacity: 0.9;
   }
 }
 
 .page-title{
 position:relative;
-left:50%;
-transform: translateX(-50%);//correction aberation centrage du au carroussel
-color: map-get($colors-rule, first-color);
+//eft:50%;
+//transform: translateX(-50%);//correction aberation centrage du au carroussel
+//color: map-get($colors-rule, first-color);
 //background-color: map-get($colors-rule, fifth-color);
 text-align: left;
+//border: 2px solid red;
 }
 
 .container-carousel {
@@ -81,7 +83,7 @@ text-align: left;
     @include upper-large-screen{
 
       
-      box-shadow: inset 0px 0px 20px 0px map-get($colors-rule, second-color ) ;
+      //box-shadow: inset 0px 0px 20px 0px map-get($colors-rule, second-color ) ;
     }
 
     &>.title-slider {
@@ -96,7 +98,7 @@ text-align: left;
     background-image: url("@/assets/image/page-prestation/1000w-coaching-de-cariere.jpg");
     @include upper-large-screen{
 
-      box-shadow: inset 0px 0px 20px 0px map-get($colors-rule, third-color);
+      //box-shadow: inset 0px 0px 20px 0px map-get($colors-rule, third-color);
     }
 
     &>.title-slider {
@@ -110,7 +112,7 @@ text-align: left;
     background-image: url("@/assets/image/page-prestation/1000w-coaching-en-entreprise.jpg");
     @include upper-large-screen{
 
-      box-shadow: inset 0px 0px 20px 0px map-get($colors-rule, fourth-color);
+      //box-shadow: inset 0px 0px 20px 0px map-get($colors-rule, fourth-color);
     }
 
     &>.title-slider {

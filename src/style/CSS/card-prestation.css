@@ -68,11 +68,31 @@
   font-size: 18px;
 }
 
+.container-img-text {
+  width: 100%;
+}
+@media screen and (min-width: 993px) {
+  .container-img-text {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 900px;
+  }
+}
+
 .card-prestation-image {
   position: relative;
-  width: 350px;
-  height: 450px;
-  border-radius: 10px;
+  width: 100%;
+  height: 300px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -85,185 +105,17 @@
 }
 @media screen and (min-width: 993px) {
   .card-prestation-image {
-    width: 450px;
-    height: 350px;
-    left: -30%;
+    width: 500px;
+    height: 400px;
+    border-radius: 10px;
     -webkit-box-shadow: 0px 0px 10px 0px #001747;
             box-shadow: 0px 0px 10px 0px #001747;
-  }
-}
-
-.card-1-1 {
-  background-image: url("@/assets/image/page-prestation/equilibre.jpg");
-}
-.card-1-2 {
-  background-image: url("@/assets/image/page-prestation/confiance-en-soi.jpg");
-}
-@media screen and (min-width: 993px) {
-  .card-1-2 {
-    -webkit-mask-image: url("@/assets/masque/blob-index-bar-horizontal.svg");
-            mask-image: url("@/assets/masque/blob-index-bar-horizontal.svg");
-  }
-}
-
-.card-1-3 {
-  background-image: url("@/assets/image/page-prestation/gestion-emotion.jpg");
-}
-@media screen and (min-width: 993px) {
-  .card-1-3 {
-    -webkit-mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-            mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-  }
-}
-
-.card-1-4 {
-  background-image: url("@/assets/image/page-prestation/situations-difficiles.jpg");
-}
-@media screen and (min-width: 993px) {
-  .card-1-4 {
-    -webkit-mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-            mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-  }
-}
-
-.card-1-5 {
-  background-image: url("@/assets/image/page-prestation/conflit.jpg");
-}
-@media screen and (min-width: 993px) {
-  .card-1-5 {
-    -webkit-mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-            mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-  }
-}
-
-.card-1-6 {
-  background-image: url("@/assets/image/page-prestation/gestion-temps.jpg");
-}
-@media screen and (min-width: 993px) {
-  .card-1-6 {
-    -webkit-mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-            mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-  }
-}
-
-.card-2-1 {
-  background-image: url("@/assets/image/page-prestation/competence.jpg");
-}
-@media screen and (min-width: 993px) {
-  .card-2-1 {
-    -webkit-mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-            mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-  }
-}
-
-.card-2-2 {
-  background-image: url("@/assets/image/page-prestation/entretient-job.jpg");
-}
-@media screen and (min-width: 993px) {
-  .card-2-2 {
-    -webkit-mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-            mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-  }
-}
-
-.card-2-3 {
-  background-image: url("@/assets/image/page-prestation/expatriation.jpg");
-}
-@media screen and (min-width: 993px) {
-  .card-2-3 {
-    -webkit-mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-            mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-  }
-}
-
-.card-2-4 {
-  background-image: url("@/assets/image/page-prestation/retour-activite.jpg");
-}
-@media screen and (min-width: 993px) {
-  .card-2-4 {
-    -webkit-mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-            mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-  }
-}
-
-.card-2-5 {
-  background-image: url("@/assets/image/page-prestation/depart-retraite.jpg");
-}
-@media screen and (min-width: 993px) {
-  .card-2-5 {
-    -webkit-mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-            mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-  }
-}
-
-.card-3-1 {
-  background-image: url("@/assets/image/page-prestation/entretient-job-2.jpg");
-}
-@media screen and (min-width: 993px) {
-  .card-3-1 {
-    -webkit-mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-            mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-  }
-}
-
-.card-3-2 {
-  background-image: url("@/assets/image/page-prestation/competences-2.jpg");
-}
-@media screen and (min-width: 993px) {
-  .card-3-2 {
-    -webkit-mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-            mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-  }
-}
-
-.card-3-3 {
-  background-image: url("@/assets/image/page-prestation/cohesion-equipe.jpg");
-}
-@media screen and (min-width: 993px) {
-  .card-3-3 {
-    -webkit-mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-            mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-  }
-}
-
-.card-3-4 {
-  background-image: url("@/assets/image/page-prestation/nouveau-cadre.jpg");
-}
-@media screen and (min-width: 993px) {
-  .card-3-4 {
-    -webkit-mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-            mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-  }
-}
-
-.card-3-5 {
-  background-image: url("@/assets/image/page-prestation/changement-organisationel-2.jpg");
-}
-@media screen and (min-width: 993px) {
-  .card-3-5 {
-    -webkit-mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-            mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-  }
-}
-
-.card-3-6 {
-  background-image: url("@/assets/image/page-prestation/sante-au-travail.jpg");
-}
-@media screen and (min-width: 993px) {
-  .card-3-6 {
-    -webkit-mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
-            mask-image: url("@/assets/masque/blob-index-bar-oblique.svg");
   }
 }
 
 .text-2 {
   position: relative;
   z-index: 1;
-  top: 100%;
-  left: 0px;
-  -webkit-transform: translateY(-99%);
-      -ms-transform: translateY(-99%);
-          transform: translateY(-99%);
   width: 100%;
   padding: 10px;
   color: #fbfffe;
@@ -271,11 +123,7 @@
 }
 @media screen and (min-width: 993px) {
   .text-2 {
-    position: absolute;
-    top: 50%;
-    left: 80%;
-    text-align: right;
-    padding: 20px;
+    width: 350px;
   }
 }
 
@@ -295,10 +143,60 @@
 @media screen and (min-width: 993px) {
   .text-2::after {
     border-radius: 10px;
-    border-left: 20px solid white;
   }
 }
 
+.card-1-1 {
+  background-image: url("@/assets/image/page-prestation/equilibre.jpg");
+}
+.card-1-2 {
+  background-image: url("@/assets/image/page-prestation/confiance-en-soi.jpg");
+}
+.card-1-3 {
+  background-image: url("@/assets/image/page-prestation/gestion-emotion.jpg");
+}
+.card-1-4 {
+  background-image: url("@/assets/image/page-prestation/situations-difficiles.jpg");
+}
+.card-1-5 {
+  background-image: url("@/assets/image/page-prestation/conflit.jpg");
+}
+.card-1-6 {
+  background-image: url("@/assets/image/page-prestation/gestion-temps.jpg");
+}
+.card-2-1 {
+  background-image: url("@/assets/image/page-prestation/competence.jpg");
+}
+.card-2-2 {
+  background-image: url("@/assets/image/page-prestation/entretient-job.jpg");
+}
+.card-2-3 {
+  background-image: url("@/assets/image/page-prestation/expatriation.jpg");
+}
+.card-2-4 {
+  background-image: url("@/assets/image/page-prestation/retour-activite.jpg");
+}
+.card-2-5 {
+  background-image: url("@/assets/image/page-prestation/depart-retraite.jpg");
+}
+.card-3-1 {
+  background-image: url("@/assets/image/page-prestation/entretient-job-2.jpg");
+}
+.card-3-2 {
+  background-image: url("@/assets/image/page-prestation/competences-2.jpg");
+}
+.card-3-3 {
+  background-image: url("@/assets/image/page-prestation/cohesion-equipe.jpg");
+}
+.card-3-4 {
+  background-image: url("@/assets/image/page-prestation/nouveau-cadre.jpg");
+}
+.card-3-5 {
+  background-image: url("@/assets/image/page-prestation/changement-organisationel-2.jpg");
+}
+.card-3-6 {
+  background-image: url("@/assets/image/page-prestation/sante-au-travail.jpg");
+}
 .text-3 {
   width: 100%;
   padding: 10px;

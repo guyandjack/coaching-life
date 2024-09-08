@@ -96,6 +96,7 @@ function initCarouselOption() {
     const observer = new MutationObserver(() => {
       getActiveSliderId();
       displaySelectedService(activeSliderId);
+      colorArrowSlider(activeSliderId);
     });
 
     // Observer le changement d'attribut ou de classe de l'élément actif
@@ -116,7 +117,7 @@ function initCarouselOption() {
     const observer = new MutationObserver(() => {
       getActiveSliderId();
       displaySelectedService(activeSliderId);
-      colorArrowSlider();
+      colorArrowSlider(activeSliderId);
     });
 
     // Observer le changement d'attribut ou de classe de l'élément actif
@@ -162,7 +163,7 @@ function getActiveSliderId() {
 
 function displaySelectedService(activeSliderId) {
   //adapte la couleur des fleche du slider
-  colorArrowSlider(activeSliderId);
+  
 
   switch (activeSliderId) {
     case "slider-1":
@@ -191,6 +192,13 @@ function displaySelectedService(activeSliderId) {
 }
 
 function colorArrowSlider(activeElementId) {
+  if (window.innerWidth > breakPoint.large_Max) {
+   arrows.forEach((arrow) => {
+     arrow.classList.remove("color-arrow-second","color-arrow-third", "color-arrow-fourth");
+   });
+    return
+  }
+
   switch (activeElementId) {
     case "slider-1":
       arrows.forEach((arrow) => {
@@ -227,14 +235,14 @@ function colorArrowSlider(activeElementId) {
       break;
 
     default:
-      /* arrows.forEach((arrow) => {
+      arrows.forEach((arrow) => {
         arrow.classList.remove(
           "color-arrow-second",
           "color-arrow-third",
           "color-arrow-fourth"
         );
         arrow.classList.add("color-arrow-second");
-      }); */
+      });
       break;
   }
 }
@@ -282,6 +290,7 @@ function displayContent() {
   initCarouselOption();
   getActiveSliderId();
   displaySelectedService(activeSliderId);
+  //colorArrowSlider(activeSliderId);
 })();
 
 window.addEventListener("resize", () => {
@@ -289,6 +298,7 @@ window.addEventListener("resize", () => {
   initCarouselOption();
   getActiveSliderId();
   displaySelectedService(activeSliderId);
+  //colorArrowSlider(activeSliderId);
 });
 
 /*************************************************

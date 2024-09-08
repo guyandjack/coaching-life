@@ -14,17 +14,11 @@
   left: 0px;
   width: 100%;
   height: 100%;
-  background-color: #1ba4e3;
-  opacity: 0.2;
+  background-color: #171717;
 }
 
 .page-title {
   position: relative;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-          transform: translateX(-50%);
-  color: #001747;
   text-align: left;
 }
 
@@ -71,35 +65,17 @@
 .carousel #slider-1 {
   background-image: url("@/assets/image/page-prestation/1000w-coaching-de-vie.jpg");
 }
-@media screen and (min-width: 993px) {
-  .carousel #slider-1 {
-    -webkit-box-shadow: inset 0px 0px 20px 0px #1ba4e3;
-            box-shadow: inset 0px 0px 20px 0px #1ba4e3;
-  }
-}
 .carousel #slider-1 > .title-slider {
   color: #1ba4e3;
 }
 .carousel #slider-2 {
   background-image: url("@/assets/image/page-prestation/1000w-coaching-de-cariere.jpg");
 }
-@media screen and (min-width: 993px) {
-  .carousel #slider-2 {
-    -webkit-box-shadow: inset 0px 0px 20px 0px #ff6e00;
-            box-shadow: inset 0px 0px 20px 0px #ff6e00;
-  }
-}
 .carousel #slider-2 > .title-slider {
   color: #ff6e00;
 }
 .carousel #slider-3 {
   background-image: url("@/assets/image/page-prestation/1000w-coaching-en-entreprise.jpg");
-}
-@media screen and (min-width: 993px) {
-  .carousel #slider-3 {
-    -webkit-box-shadow: inset 0px 0px 20px 0px #9cd008;
-            box-shadow: inset 0px 0px 20px 0px #9cd008;
-  }
 }
 .carousel #slider-3 > .title-slider {
   color: #9cd008;
