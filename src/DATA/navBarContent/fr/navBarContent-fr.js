@@ -20,14 +20,14 @@ let navBarContentFR = [
     href_alt_de: `${url}/public/de/über-mich.html`,
     href_alt_en: `${url}/public/en/about-me.html`,
   },
-  /* {
+   {
     id: "prestation",
     text: "Prestations",
     href: `${url}/public/fr/prestations-de-coaching-individuel-et-en-entreprise.html`,
     href_alt_fr: `${url}/public/fr/prestations-de-coaching-individuel-et-en-entreprise.html`,
     href_alt_de: `${url}/public/de/dienstleistungen-des-individuellen-und-unternehmens-coachings.html`,
     href_alt_en: `${url}/public/en/services-of-individual-and-business-coaching.html`,
-  }, */
+  }, 
   {
     id: "temoignage",
     text: "Témoignages",

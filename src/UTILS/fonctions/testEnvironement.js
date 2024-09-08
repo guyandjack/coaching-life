@@ -30,21 +30,19 @@ function localOrProd() {
     validateEnvVariables();
 
     if (mode !== "development") {
-      console.log("Mode développement");
-      result.url = baseDevUrl;
-      result.urlApi = apiDevUrl;
-      console.log("urldev :" + result.url);
-      console.log("urldevApi :" + result.urlApi);
-    } else if (mode === "production") {
       console.log("Mode production");
       result.url = baseProdUrl;
       result.urlApi = apiProdUrl;
       console.log("urlprod :" + result.url);
       console.log("urlprodApi :" + result.urlApi);
     } else {
-      console.log("Mode inconnu :", mode);
-      return "undefined";
-    }
+      console.log("Mode développement");
+      result.url = baseDevUrl;
+      result.urlApi = apiDevUrl;
+      console.log("urldev :" + result.url);
+      console.log("urldevApi :" + result.urlApi);
+    } 
+    
 
     return result;
   } catch (error) {

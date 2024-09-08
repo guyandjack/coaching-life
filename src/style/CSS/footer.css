@@ -98,6 +98,9 @@
   height: 50px;
   background-color: #fbfffe;
 }
+.container-footer .webmaster span {
+  font-size: 0.8em;
+}
 
 .container-footer::after {
   content: "";

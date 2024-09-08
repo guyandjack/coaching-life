@@ -16,9 +16,9 @@ import {
 
 //import des image et logo
 import logoSocoaching from "../../assets/logo/logo-monogramme-v4.svg";
-import iconMenuBurger from "../../src/assets/icons/menu-burger-40x40.svg";
+import iconMenuBurger from "../../assets/icons/menu-burger-40x40.svg";
 //import iconLanguage from "../../src/assets/icons/icon-language.svg";
-import iconclose from "../../src/assets/icons/close.svg";
+import iconClose from "../../assets/icons/close.svg";
 
 
 let objectUrl = localOrProd();
@@ -179,7 +179,7 @@ function NavBar() {
             }}
           >
             <ReactSVG
-              src={iconclose}
+              src={iconClose}
               className="icon-close-svg"
             />
           </li>
