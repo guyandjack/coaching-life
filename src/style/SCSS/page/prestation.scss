@@ -77,7 +77,7 @@ text-align: left;
   }
 
   #slider-1 {
-    background-image: url("@/assets/image/page-prestation/coaching-de-vie.jpg");
+    background-image: url("@/assets/image/page-prestation/1000w-coaching-de-vie.jpg");
     @include upper-large-screen{
 
       
@@ -93,7 +93,7 @@ text-align: left;
   }
 
   #slider-2 {
-    background-image: url("@/assets/image/page-prestation/coaching-de-cariere.jpg");
+    background-image: url("@/assets/image/page-prestation/1000w-coaching-de-cariere.jpg");
     @include upper-large-screen{
 
       box-shadow: inset 0px 0px 20px 0px map-get($colors-rule, third-color);
@@ -107,7 +107,7 @@ text-align: left;
   }
 
   #slider-3 {
-    background-image: url("@/assets/image/page-prestation/coaching-en-entreprise.jpg");
+    background-image: url("@/assets/image/page-prestation/1000w-coaching-en-entreprise.jpg");
     @include upper-large-screen{
 
       box-shadow: inset 0px 0px 20px 0px map-get($colors-rule, fourth-color);
