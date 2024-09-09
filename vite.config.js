@@ -5,7 +5,7 @@ import path from "path"; // Assure-toi que path est importé correctement
 
 export default defineConfig({
   plugins: [react()],
-  assetsInclude: ['**/*.jpg', '**/*.png', '**/*.svg'] ,
+  assetsInclude: ["**/*.jpg", "**/*.png", "**/*.svg", "**/*.ttf"],
 
   base: "", // Modifie cette valeur si nécessaire
   resolve: {
