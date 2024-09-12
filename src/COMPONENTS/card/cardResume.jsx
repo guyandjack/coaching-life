@@ -2,14 +2,15 @@
 
 //import des composants enfants
 
-import { ReactSVG } from "react-svg";
+//import { ReactSVG } from "react-svg";
+import { IconContext } from "react-icons";
+import { BiLogoLinkedinSquare } from "react-icons/bi";
 
 //import des fonctions
 import { getCardContentResume } from "../../UTILS/fonctions/styleLinkCardResume.js";
 
 //import des images
-import  avatarSophie  from "../../assets/sophie/sophie-chevrolet.jpg";
-
+import avatarSophie from "../../assets/sophie/sophie-chevrolet.jpg";
 //import des feuilles de style
 import "../../style/CSS/card-resume.css";
 
@@ -33,17 +34,30 @@ function CardResume() {
           <span className="resume-info">Sophie Chevrolet</span>
           <span className="resume-info"> Sion VS</span>
           <span className="resume-info"> +41 78 965 15 31</span>
-          <a className="resume-info" href="mailto:info@socoaching.ch">
+          <a className="resume-info email" href="mailto:info@socoaching.ch">
             info@socoaching.ch
           </a>
 
-          <a className="resume-info" href="#">
-            <ReactSVG
+          {/* <a
+            className="resume-info"
+            href="https://ch.linkedin.com/in/sophie-chevrolet-0947b250"
+            target="_blank"
+          >
+            {/* <ReactSVG
               src="/src/assets/logo/linkedin-icon-2.svg"
               beforeInjection={(svg) => {
                 svg.classList.add("logo-linkedin");
               }}
-            />
+            /> }
+          </a>}*/}
+          <a
+            className="resume-info linkedin-icon"
+            href="https://ch.linkedin.com/in/sophie-chevrolet-0947b250"
+            target="_blank"
+          >
+            <IconContext.Provider value={{ className: "logo-linkedin" }}>
+              <BiLogoLinkedinSquare />
+            </IconContext.Provider>
           </a>
         </div>
       </div>

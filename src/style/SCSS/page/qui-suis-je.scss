@@ -2,7 +2,6 @@
 
 //import des fichiers module
 @import "../utils/colors-rule/colors-rule.scss";
-@import "../utils/fonts/font.scss";
 @import "../utils/mixins/responsive/responsive.scss";
 
 .qui-suis-je {
@@ -151,7 +150,11 @@
     ul.content-text{
       list-style-type:disc;
       list-style-position: outside;
-      
+      &>li{
+        padding: 10px;
+        border-radius: 10px;
+        margin: 10px 0px;
+      }
     }
   }
 

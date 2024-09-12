@@ -214,7 +214,7 @@
     font-weight: 600;
     text-align: left;
     align-self: flex-start;
-    width: 80%;
+    width: 100%;
     color: map-get($colors-rule, sixth-color);
 
     @include upper-medium-screen {

@@ -10,26 +10,43 @@ import { ColorRing } from "react-loader-spinner";
 //import des styles
 import "../../style/CSS/spinner.css";
 
-// Composant de Spinner
+
+/**
+ * -le loader doit s' afficher:
+ * 1- jusqu au chargement final de toute les ressources.
+ * 2- lorsque q'une requete fetch est effectuee vers le backend (login, get avis, getarticle)
+ * 
+ *
+ * @return {*} 
+ */
 function Spinner() {
   const [isVisible, setIsVisible] = useState(true);
 
+  const hideLoader = () => {
+    setIsVisible(false);
+  };
   useEffect(() => {
-    // Cacher le spinner lorsque la page est complètement chargée
+    // Fonction pour cacher le spinner
 
-    function hideLoader() {
-      setIsVisible(false);
-    }
-
-    window.addEventListener("load", () => {
+    // Fonction pour exécuter le hideLoader après un délai de 500ms une fois que la page est complètement chargée
+    const handleLoad = () => {
       setTimeout(hideLoader, 500);
-    });
+    };
+
+    // Ajoute l'écouteur de l'événement "load"
+    window.addEventListener("load", handleLoad);
+
+    //si le loader reste visible suite a un bug
+    setTimeout(hideLoader, 1500);
+
 
     // Nettoyage de l'événement pour éviter les fuites de mémoire
     return () => {
-      window.removeEventListener("load", () => setTimeout(hideLoader, 1000));
+      window.removeEventListener("load", handleLoad);
     };
   }, []);
+
+ 
 
   return (
     <div>
@@ -42,7 +59,6 @@ function Spinner() {
             ariaLabel="color-ring-loading"
             wrapperStyle={{}}
             wrapperClass="color-ring-wrapper"
-            //colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
             colors={[
               `${colorsRule.firstColor}`,
               `${colorsRule.secondColor}`,
@@ -59,3 +75,4 @@ function Spinner() {
 }
 
 export { Spinner };
+

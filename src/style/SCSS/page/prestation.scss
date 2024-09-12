@@ -173,7 +173,47 @@ stroke: map-get($colors-rule, fourth-color);
   margin-top: 50px;
 }
 
+.menu-fixed-container{
+  @include upper-medium-screen{
+    position: fixed;
+    top: 80%;
+    right: 5%;
+    //z-index: 5;
+    padding: 10px;
+    backdrop-filter: brightNess(10%);
+    width: 250px;
+  }
+}
+.menu-fixed-container-li{
+  padding: 10px;
+  cursor: pointer;
+  transition: border-left 0.2s linear;
+  border-left: 1px solid map-get($colors-rule, fifth-color);
+  margin-top: 10px;
+}
 
+#c-v{
+  border-left: 2px solid map-get($colors-rule, second-color);
+}
+#c-c{
+  border-left: 2px solid map-get($colors-rule, third-color);
+}
+#c-e{
+  border-left: 2px solid map-get($colors-rule, fourth-color);
+}
+
+#c-v:hover{
+  border-left: 10px solid map-get($colors-rule, second-color);
+  transition: border-left 0.3s linear;
+}
+#c-c:hover{
+  border-left: 10px solid map-get($colors-rule, third-color);
+  transition: border-left 0.3s linear;
+}
+#c-e:hover{
+  border-left: 10px solid map-get($colors-rule, fourth-color);
+  transition: border-left 0.3s linear;
+}
 
 
 .prestation {

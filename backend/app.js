@@ -32,6 +32,10 @@ app.use(fileUpload());
 
 app.use("/api", setHeaderSecurityCORS);
 
+// Serve les images depuis le dossier 'uploads'
+// eslint-disable-next-line no-undef
+app.use('/upload', express.static(path.join(__dirname, 'upload')));
+
 app.use("/api", routeApi);
 
 // eslint-disable-next-line no-undef

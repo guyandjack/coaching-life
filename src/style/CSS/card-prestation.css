@@ -60,12 +60,17 @@
 }
 
 .text-1 {
+  line-height: 150%;
+}
+
+.text-1 {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
   color: #001747;
   font-weight: 500;
   font-size: 18px;
+  font-style: italic;
 }
 
 .container-img-text {
@@ -116,6 +121,7 @@
 .text-2 {
   position: relative;
   z-index: 1;
+  line-height: 200%;
   width: 100%;
   padding: 10px;
   color: #fbfffe;

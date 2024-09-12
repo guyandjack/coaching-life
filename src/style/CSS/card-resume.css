@@ -26,6 +26,10 @@
   margin-top: 10px;
   color: #fbfffe;
 }
+.card-resume .email:hover, .card-resume .linkedin-icon:hover {
+  -webkit-box-shadow: 0px 0px 10px 0px #fbfffe;
+          box-shadow: 0px 0px 10px 0px #fbfffe;
+}
 .card-resume .logo-linkedin {
   width: 35px;
   height: 35px;

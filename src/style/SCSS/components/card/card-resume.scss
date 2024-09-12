@@ -30,6 +30,17 @@
   .resume-info {
     margin-top: 10px;
     color: map-get($colors-rule, sixth-color);
+    //box-shadow: 0px 0px 10px 0px transparent;
+    
+    
+  }
+
+  .email, .linkedin-icon{
+
+    &:hover {
+        box-shadow: 0px 0px 10px 0px map-get($colors-rule, sixth-color);
+      }
+
   }
 
   .logo-linkedin {

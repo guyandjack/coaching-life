@@ -54,7 +54,7 @@ function BannerIndex() {
                     href="#"
                   >
                     <p className="h2 text-inside">Coaching de vie</p>
-                    <p className="h3 text-aside">Trouver votre équilibre</p>
+                    <p className="h3 text-aside">Trouvez votre équilibre</p>
                   </a>
                 </li>
                 <li>
@@ -64,7 +64,7 @@ function BannerIndex() {
                     href="#"
                   >
                     <p className="h2 text-inside">Coaching de carriére</p>
-                    <p className="h3 text-aside">Libérer votre potentiel</p>
+                    <p className="h3 text-aside">Libérez votre potentiel</p>
                   </a>
                 </li>
 

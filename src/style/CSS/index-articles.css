@@ -185,7 +185,7 @@
   text-align: left;
   -ms-flex-item-align: start;
       align-self: flex-start;
-  width: 80%;
+  width: 100%;
   color: #fbfffe;
 }
 @media screen and (min-width: 769px) {

@@ -1,31 +1,3 @@
-/**************************************************************
-*************  police pour le site *****************************
-******************************************************************/
-/*@font-face {
-  font-family: "cantarel";
-  src: url("../../../../Font/cantarel/Cantarell-Regular.ttf");
-}
-
-@font-face {
-  font-family: "fjalla";
-  src: url("../../../../Font/fjalla/Inter-Regular.ttf");
-}*/
-@font-face {
-  font-family: "Oswald", sans-serif;
-  src: url("../../../../Fonts/static/Oswald-Regular.ttf");
-}
-@font-face {
-  font-family: "Source Code Pro", monospace;
-  src: url("../../../../Fonts/variable/SourceCodePro-VariableFont_wght.ttf");
-}
-@font-face {
-  font-family: "Montserrat", sans-serif;
-  src: url("../../../../Fonts/variable/Montserrat-VariableFont_wght.ttf");
-}
-@font-face {
-  font-family: "Open Sans", sans-serif;
-  src: url("../../../../Fonts/variable/OpenSans-VariableFont_wdth,wght.ttf");
-}
 .qui-suis-je {
   background: -webkit-gradient(linear, left bottom, left top, from(#fbfffe), to(#1ba4e3));
   background: linear-gradient(to top, #fbfffe, #1ba4e3);
@@ -167,6 +139,11 @@
 .qui-suis-je .container-content ul.content-text {
   list-style-type: disc;
   list-style-position: outside;
+}
+.qui-suis-je .container-content ul.content-text > li {
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px 0px;
 }
 @media screen and (min-width: 993px) {
   .qui-suis-je .container-content-head {
