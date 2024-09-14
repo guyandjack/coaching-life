@@ -135,52 +135,151 @@
 @media screen and (min-width: 769px) {
   .menu-fixed-container {
     position: fixed;
-    top: 80%;
-    right: 5%;
-    padding: 10px;
-    -webkit-backdrop-filter: brightNess(10%);
-            backdrop-filter: brightNess(10%);
+    z-index: 1;
+    bottom: 0px;
+    right: 0%;
+    z-index: 5;
+    width: 100%;
+    height: 50px;
+  }
+}
+@media screen and (min-width: 1501px) {
+  .menu-fixed-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column;
+            flex-flow: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
     width: 250px;
+    bottom: 50px;
+    right: 20px;
+    padding: 20px 0px 20px 20px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .menu-fixed-container::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #001747;
+    opacity: 0.9;
   }
 }
 
 .menu-fixed-container-li {
   padding: 10px;
   cursor: pointer;
-  -webkit-transition: border-left 0.2s linear;
-  transition: border-left 0.2s linear;
-  border-left: 1px solid #171717;
   margin-top: 10px;
+  color: #fbfffe;
 }
 
 #c-v {
-  border-left: 2px solid #1ba4e3;
+  border-top: 2px solid #1ba4e3;
+  -webkit-transition: border-top 0.2s linear;
+  transition: border-top 0.2s linear;
+}
+@media screen and (min-width: 1501px) {
+  #c-v {
+    border-top: none;
+    -webkit-transition: none;
+    transition: none;
+    border-left: 2px solid #1ba4e3;
+    -webkit-transition: border-left 0.2s linear;
+    transition: border-left 0.2s linear;
+  }
 }
 
 #c-c {
-  border-left: 2px solid #ff6e00;
+  border-top: 2px solid #ff6e00;
+  -webkit-transition: border-top 0.2s linear;
+  transition: border-top 0.2s linear;
+}
+@media screen and (min-width: 1501px) {
+  #c-c {
+    border-top: none;
+    -webkit-transition: none;
+    transition: none;
+    border-left: 2px solid #ff6e00;
+    -webkit-transition: border-left 0.2s linear;
+    transition: border-left 0.2s linear;
+  }
 }
 
 #c-e {
-  border-left: 2px solid #9cd008;
+  border-top: 2px solid #9cd008;
+  -webkit-transition: border-top 0.2s linear;
+  transition: border-top 0.2s linear;
+}
+@media screen and (min-width: 1501px) {
+  #c-e {
+    border-top: none;
+    -webkit-transition: none;
+    transition: none;
+    border-left: 2px solid #9cd008;
+    -webkit-transition: border-left 0.2s linear;
+    transition: border-left 0.2s linear;
+  }
 }
 
 #c-v:hover {
-  border-left: 10px solid #1ba4e3;
-  -webkit-transition: border-left 0.3s linear;
-  transition: border-left 0.3s linear;
+  border-top: 10px solid #1ba4e3;
+  -webkit-transition: border-top 0.3s linear;
+  transition: border-top 0.3s linear;
+}
+@media screen and (min-width: 1501px) {
+  #c-v:hover {
+    border-top: none;
+    -webkit-transition: none;
+    transition: none;
+    border-left: 10px solid #1ba4e3;
+    -webkit-transition: border-left 0.2s linear;
+    transition: border-left 0.2s linear;
+  }
 }
 
 #c-c:hover {
-  border-left: 10px solid #ff6e00;
-  -webkit-transition: border-left 0.3s linear;
-  transition: border-left 0.3s linear;
+  border-top: 10px solid #ff6e00;
+  -webkit-transition: border-top 0.3s linear;
+  transition: border-top 0.3s linear;
+}
+@media screen and (min-width: 1501px) {
+  #c-c:hover {
+    border-top: none;
+    -webkit-transition: none;
+    transition: none;
+    border-left: 10px solid #ff6e00;
+    -webkit-transition: border-left 0.3s linear;
+    transition: border-left 0.3s linear;
+  }
 }
 
 #c-e:hover {
-  border-left: 10px solid #9cd008;
-  -webkit-transition: border-left 0.3s linear;
-  transition: border-left 0.3s linear;
+  border-top: 10px solid #9cd008;
+  -webkit-transition: border-top 0.3s linear;
+  transition: border-top 0.3s linear;
+}
+@media screen and (min-width: 1501px) {
+  #c-e:hover {
+    border-top: none;
+    -webkit-transition: none;
+    transition: none;
+    border-left: 10px solid #9cd008;
+    -webkit-transition: border-left 0.3s linear;
+    transition: border-left 0.3s linear;
+  }
 }
 
 .prestation .title-prestation {

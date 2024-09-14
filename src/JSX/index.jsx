@@ -10,7 +10,7 @@ import { NavBar } from "../COMPONENTS/nav/navBar.jsx";
 //import { CardSmallContainer } from "../COMPONENTS/card/cardSmallContainer.jsx";
 import { Footer } from "../COMPONENTS/footer/footer.jsx";
 
-import { Spinner } from "../COMPONENTS/spinner/spinner.jsx";
+//import { Spinner } from "../COMPONENTS/spinner/spinner.jsx";
 
 import { Parallax } from "../COMPONENTS/parallax/parallax.jsx";
 
@@ -25,12 +25,12 @@ ReactDOM.createRoot(rootElement).render(
 );
 
 // Rendu du composant Spinner dans le DOM
-const spinnerElement = document.getElementById("RC-spinner");
+/*const spinnerElement = document.getElementById("RC-spinner");
 ReactDOM.createRoot(spinnerElement).render(
   <React.StrictMode>
     <Spinner />
   </React.StrictMode>
-);
+);*/
 
 //rendu du composant parallax
 const parallaxComponent = document.getElementById("RC-parallax");

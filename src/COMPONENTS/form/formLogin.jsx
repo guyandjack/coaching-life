@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 
 //import des composants enfants
+import { Spinner } from "../../COMPONENTS/spinner/spinner.jsx";
 
 //import des icons
 import { BsFillEyeSlashFill } from "react-icons/bs";
@@ -25,7 +26,8 @@ let url = objectUrl.urlApi;
 
 console.log("url api de form login: " + url)
 
-async function fetchApi(data) {
+async function fetchApi(data, seter) {
+  seter(true);
   //let content = JSON.stringify(data);
   const formData = new FormData();
   // Ajoute les fichiers et les autres champs du formulaire
@@ -60,6 +62,7 @@ async function fetchApi(data) {
         toasterValid.classList.remove("visible");
         //reset();
         window.location.href = "./dashboard.html"
+        seter(false);
       }, 3000);
     }
   } else {
@@ -82,6 +85,7 @@ function FormLogin() {
 
   const [isVisibleA, setIsVisibleA] = useState(false);
   const [isVisibleB, setIsVisibleB] = useState(false);
+  const [isSpinnerVisible, setIsSpinnerVisible] = useState(false);
 
   function displayPassword(e) {
     let inputPassword = document.querySelector("#input-password");
@@ -108,105 +112,105 @@ function FormLogin() {
   
 
   return (
-    <form
-      id="form-login"
-      className="flex-column-start-center form-dashboard"
-      onSubmit={handleSubmit((data) => fetchApi(data))}
-    >
-      <p className="form-title text-first">Login User</p>
-      <div className="flex-column-start-start cont-input-label">
-        <label htmlFor="input-email" className="label">
-          {"Nom d'utilisateur"}
-        </label>
-        <div className="flex-row-center-center cont-input">
-          <input
-            id="input-email"
-            className="input"
-            type={isVisibleA ? "text" : "password"}
-            name="email"
-            {...register("email", {
-              required: true,
-              pattern: masqueMail,
-            })}
-            
-          />
-          <span
-            className="eye"
-            data-idinput="input-email"
-            onClick={(e) => {
-              displayPassword(e);
-              
-            }}
-          >
-            {isVisibleA ? <BsFillEyeSlashFill /> : <BsFillEyeFill />}
-          </span>
-        </div>
-        <div className="flex-column-center-center container-span-error">
-          {errors?.email?.type == "pattern" ? (
-            <span className="form-text-error">{"Format non valide"}</span>
-          ) : null}
-          {errors?.email?.type == "required" ? (
-            <span className="form-text-error">
-              {"Le mot de passe est requis !"}
-            </span>
-          ) : null}
-        </div>
-      </div>
-      <div className="flex-column-start-start cont-input-label">
-        <label htmlFor="input-password" className="label">
-          {"Mot de passe"}
-        </label>
-        <div className="flex-row-center-center cont-input">
-          <input
-            id="input-password"
-            className="input"
-            type={isVisibleB ? "text" : "password"}
-            name="password"
-            {...register("password", {
-              required: true,
-              pattern: masquePassWord,
-            })}
-          />
-          <span
-            className="eye"
-            data-idinput="input-password"
-            onClick={(e) => {
-              displayPassword(e);
-              
-            }}
-          >
-            {isVisibleB ? <BsFillEyeSlashFill /> : <BsFillEyeFill />}
-          </span>
-        </div>
-        <div className="flex-column-center-center container-span-error">
-          {errors?.password?.type == "pattern" ? (
-            <span className="form-text-error">{"Format non valide"}</span>
-          ) : null}
-          {errors?.password?.type == "required" ? (
-            <span className="form-text-error">
-              {"Le mot de passe est requis !"}
-            </span>
-          ) : null}
-        </div>
-      </div>
-      
+    <div>
+      {isSpinnerVisible ? <Spinner /> : null}
 
-      <button
-        id="login-submit"
-        className="btn-submit"
-        type="submit"
-        form="form-login"
-        disabled={!isValid || isSubmitting}
+      <form
+        id="form-login"
+        className="flex-column-start-center form-dashboard"
+        onSubmit={handleSubmit((data) => fetchApi(data, setIsSpinnerVisible))}
       >
-        {"Login"}
-      </button>
-      <div id="toaster-valid-login" className="toaster valid">
-        {"Utilisteur connecté"}
-      </div>
-      <div id="toaster-invalid-login" className="toaster invalid">
-        {"Oups! une erreur c'est produite"}
-      </div>
-    </form>
+        <p className="form-title text-first">Login User</p>
+        <div className="flex-column-start-start cont-input-label">
+          <label htmlFor="input-email" className="label">
+            {"Nom d'utilisateur"}
+          </label>
+          <div className="flex-row-center-center cont-input">
+            <input
+              id="input-email"
+              className="input"
+              type={isVisibleA ? "text" : "password"}
+              name="email"
+              {...register("email", {
+                required: true,
+                pattern: masqueMail,
+              })}
+            />
+            <span
+              className="eye"
+              data-idinput="input-email"
+              onClick={(e) => {
+                displayPassword(e);
+              }}
+            >
+              {isVisibleA ? <BsFillEyeSlashFill /> : <BsFillEyeFill />}
+            </span>
+          </div>
+          <div className="flex-column-center-center container-span-error">
+            {errors?.email?.type == "pattern" ? (
+              <span className="form-text-error">{"Format non valide"}</span>
+            ) : null}
+            {errors?.email?.type == "required" ? (
+              <span className="form-text-error">
+                {"Le mot de passe est requis !"}
+              </span>
+            ) : null}
+          </div>
+        </div>
+        <div className="flex-column-start-start cont-input-label">
+          <label htmlFor="input-password" className="label">
+            {"Mot de passe"}
+          </label>
+          <div className="flex-row-center-center cont-input">
+            <input
+              id="input-password"
+              className="input"
+              type={isVisibleB ? "text" : "password"}
+              name="password"
+              {...register("password", {
+                required: true,
+                pattern: masquePassWord,
+              })}
+            />
+            <span
+              className="eye"
+              data-idinput="input-password"
+              onClick={(e) => {
+                displayPassword(e);
+              }}
+            >
+              {isVisibleB ? <BsFillEyeSlashFill /> : <BsFillEyeFill />}
+            </span>
+          </div>
+          <div className="flex-column-center-center container-span-error">
+            {errors?.password?.type == "pattern" ? (
+              <span className="form-text-error">{"Format non valide"}</span>
+            ) : null}
+            {errors?.password?.type == "required" ? (
+              <span className="form-text-error">
+                {"Le mot de passe est requis !"}
+              </span>
+            ) : null}
+          </div>
+        </div>
+
+        <button
+          id="login-submit"
+          className="btn-submit"
+          type="submit"
+          form="form-login"
+          disabled={!isValid || isSubmitting}
+        >
+          {"Login"}
+        </button>
+        <div id="toaster-valid-login" className="toaster valid">
+          {"Utilisteur connecté"}
+        </div>
+        <div id="toaster-invalid-login" className="toaster invalid">
+          {"Oups! une erreur c'est produite"}
+        </div>
+      </form>
+    </div>
   );
 }
 

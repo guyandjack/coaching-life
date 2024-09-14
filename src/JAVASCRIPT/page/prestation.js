@@ -1,42 +1,24 @@
-
-
 /*************************************************
- * ********concerne la gestion du carousel*******
+ * ********concerne la page prestation  *******
  * **********************************************/
 
 // Import uniquement le JS du composant Carousel
 import { Carousel } from "materialize-css";
 
-
+//import des fonctions
 /* eslint-disable no-unused-vars */
 import { localOrProd } from "../../UTILS/fonctions/testEnvironement.js";
 
 //import des breakPoints
 import { breakPoint } from "../../UTILS/breakpoint/break_point";
+//import forEach from "@babel/runtime-corejs3/core-js-stable/core-js-stable/instance/for-each.js";
 
+//declaration des varibles globales
 
-//declaration des varibles
+/**************** concerne le carousel********* start***** */
 
-//container arrow
-let arrowNext = document.querySelector("#arrow-next");
-let arrowPrev = document.querySelector("#arrow-prev");
-
-//menu fixed container
-const menuFixedContainer = document.querySelector("#coaching-life");
-
-//menu fixed
-const coachingVie = document.querySelector("#c-v");
-const coachingCarriere = document.querySelector("#c-c");
-const coachingEntreprise = document.querySelector("#c-e");
-
-//svg arrow
-let arrows = document.querySelectorAll(".icon-arrow-slider");
-
+//element carousel
 let carouselElement = document.querySelector(".carousel");
-
-let articleLife = document.getElementById("coaching-de-vie");
-let articleJob = document.getElementById("coaching-de-cariere");
-let articleEntreprise = document.getElementById("coaching-en-entreprise");
 
 //Objet option d'initialisation du carousel
 let option = {};
@@ -48,29 +30,80 @@ let activeSliderId = null;
 
 let activedSlider = null;
 
-// options pour initialiser le caroussel
+// options pour initialiser le caroussel mode desktop
 let optionsDesktop = {
-    duration: 0,
-    dist: -150,
-    shift: 150,
-    numVisible: 3,
-    fullWidth: false,
-    //onCycleTo: handleCycleTo,
-    
-    };
+  duration: 0,
+  dist: -150,
+  shift: 150,
+  numVisible: 3,
+  fullWidth: false,
+  //onCycleTo: handleCycleTo,
+};
 
+// options pour initialiser le caroussel mode mobile
 let optionsMobile = {
-    duration: 0,
-    numVisible:1,
-    fullWidth: true,
-    //onCycleTo: handleCycleTo
-    };
+  duration: 0,
+  numVisible: 1,
+  fullWidth: true,
+  //onCycleTo: handleCycleTo
+};
+
+//container arrow slide
+let arrowNext = document.querySelector("#arrow-next");
+let arrowPrev = document.querySelector("#arrow-prev");
+
+//svg arrow
+let arrows = document.querySelectorAll(".icon-arrow-slider");
+
+/**************** concerne le carousel********* end ***** */
+
+/**************** concerne le menu fixed ********* start ***** */
+
+//menu fixed container
+const menuFixedContainer = document.querySelector(".menu-fixed-container");
+const target1 = document.querySelector("#target-1");
+const target2 = document.querySelector(".lieu-des-prestations");
+
+//menu fixed li
+const coachingVie = document.querySelector("#c-v");
+const coachingCarriere = document.querySelector("#c-c");
+const coachingEntreprise = document.querySelector("#c-e");
+
+//option de configuration de l'intersection observer
+let ratio = 0.1;
+const optionsObserver = {
+  root: null,
+  rootMargin: "0px",
+  threshold: ratio,
+};
+
+const targetObserver1 = target1;
+const targetObserver2 = target2;
+console.log("target observer 1: " + targetObserver1)
+console.log("target observer 2: " + targetObserver2)
 
 
 
-//declaration des functions
+
+
+/**************** concerne le menu fixed ********* end ***** */
+
+/**************** concerne les artixles principaux ********* start ***** */
+
+// trois articles principaux
+let articleLife = document.getElementById("coaching-de-vie");
+let articleJob = document.getElementById("coaching-de-cariere");
+let articleEntreprise = document.getElementById("coaching-en-entreprise");
+
+/**************** concerne les artixles principaux ********* end ***** */
+
+//declaration des fonctions
+
+/***** gestion de la logique du carousel **************** start ****** */
 
 // Ajoute le gestionnaire d'événements `onCycleTo` après l'initialisation complète
+// car la callback est appelée a chaque initialisation
+// ellene doit etre appele uniquement au click sur les fleche du slider
 function addCycleToHandler() {
   // Ajouter dynamiquement `onCycleTo` seulement après l'initialisation complète
   if (instance) {
@@ -79,6 +112,7 @@ function addCycleToHandler() {
   }
 }
 
+//caalback appelle a chaque click sur les fleche du slider
 function handleCycleTo() {
   getActiveSliderId();
   displaySelectedService(activeSliderId);
@@ -86,9 +120,9 @@ function handleCycleTo() {
   activedSlider = activeSliderId;
 }
 
-function setGoodSlide() {
-  
+//positionne le carousel sur le slider precedament consulte apres une initialisation
 
+function setGoodSlide() {
   if (activedSlider !== null) {
     console.log("Active slide stored: " + activedSlider);
 
@@ -109,8 +143,9 @@ function setGoodSlide() {
   }
 }
 
-// Fonction pour initialiser le carousel avec les options appropriées
-function initCarouselOption() {
+// Fonction pour initialiser le carousel avec
+//les options appropriées en fonction de la taille d'ecran
+function initCarousel() {
   const sizeScreen = window.innerWidth;
   let option;
 
@@ -136,34 +171,31 @@ function initCarouselOption() {
   console.log("Options après ajustement: ", instance.options);
 }
 
+//adapte les class du carousel avant initialisation suivant documenetation materialiseCSS
 function changeCarousselClass() {
   let sizeScreen = window.innerWidth;
-  
+
   if (sizeScreen >= breakPoint.large_Max) {
     //console.log("drand ecran detcté: " + sizeScreen);
     carouselElement.classList.remove("carousel-slider");
     return;
-  }
-  else {
+  } else {
     carouselElement.classList.add("carousel-slider");
     return;
-    
   }
 }
 
+//recupere l'id du slider visible a l' ecran
 function getActiveSliderId() {
   let activeElement = document.querySelector(".carousel-item.active");
 
   activeSliderId = activeElement.id;
-  
+
   return activeSliderId;
 }
 
-
-
+//affiche l' article principal en fonction du slide actif/affiche dans le caroussel
 function displaySelectedService(activeSliderId) {
-  //adapte la couleur des fleche du slider
-
   switch (activeSliderId) {
     case "slider-1":
       articleLife.classList.remove("hide");
@@ -190,6 +222,7 @@ function displaySelectedService(activeSliderId) {
   }
 }
 
+//
 function displayServiceByMenuFixed(activeSliderId, menufixedli) {
   switch (activeSliderId) {
     case "slider-1":
@@ -236,8 +269,47 @@ function displayServiceByMenuFixed(activeSliderId, menufixedli) {
   }
 }
 
+function displayMenuFixed() {
 
+  if (window.innerWidth < breakPoint.large_Max) {
+    menuFixedContainer.classList.add("hide");
+    return
+  }
+  //callback de l'intersection observer
+  const observerCallback = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.target === target1) {
+        // Quand on intersecte target1, afficher le menu
+        if (entry.isIntersecting) {
+          //observer.unobserve(targetObserver2);
+          menuFixedContainer.classList.remove("hide")
+        } else {
+          // Si on quitte target1 (scroll vers le haut), cacher le menu
+          //menuFixedContainer.classList.add("hide")
+        }
+      }
+
+      if (entry.target === target2) {
+        // Si on intersecte target2 (scroll vers le bas), cacher le menu
+        if (entry.isIntersecting) {
+          //observer.unobserve(targetObserver1);
+          menuFixedContainer.classList.add("hide")
+        }  else {
+          // Si on quitte target2 (scroll vers le haut), afficher le menu
+          menuFixedContainer.classList.remove("hide");
+          //observer.unobserve(targetObserver2);
+        } 
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(observerCallback, optionsObserver);
+
+    observer.observe(targetObserver1);
+    observer.observe(targetObserver2);
   
+  
+}
 
 function colorArrowSlider(activeElementId) {
   if (window.innerWidth > breakPoint.large_Max) {
@@ -291,53 +363,8 @@ function colorArrowSlider(activeElementId) {
   }
 }
 
-arrowNext.addEventListener("click", () => {
-  instance.next(1);
-
-  activedSlider = getActiveSliderId();
-});
-
-arrowPrev.addEventListener("click", () => {
-  instance.prev(1);
-  activedSlider = getActiveSliderId();
-});
-
-coachingVie.addEventListener("click", (e) => {
-  displayServiceByMenuFixed(activeSliderId, e.target.id);
-  activedSlider = getActiveSliderId();
-});
-coachingCarriere.addEventListener("click", (e) => {
-  displayServiceByMenuFixed(activeSliderId, e.target.id);
-  activedSlider = getActiveSliderId();
-});
-coachingEntreprise.addEventListener("click", (e) => {
-  displayServiceByMenuFixed(activeSliderId, e.target.id);
-  activedSlider = getActiveSliderId();
-});
-
-
-
-(function () {
-  changeCarousselClass();
-  initCarouselOption();
-  getActiveSliderId();
-  displaySelectedService(activeSliderId);
-  
-  
-  
-})();
-
-window.addEventListener("resize", () => {
-  changeCarousselClass();
-  initCarouselOption();
- 
-  
-  
-});
-
 /**
- *detrmine l'url courante et affiche le contenu correspondant vie/carriere/entreprise
- * issus des liens de la page index
+ *affiche l'article principal en fonction de l'url de la page courante
  */
 function displayContent() {
   const activeUrl = new URL(window.location.href);
@@ -350,11 +377,11 @@ function displayContent() {
         break;
       case "#carriere":
         instance.next(1);
-
+        activedSlider = getActiveSliderId();
         break;
       case "#entreprise":
         instance.next(2);
-
+        activedSlider = getActiveSliderId();
         break;
 
       default:
@@ -365,6 +392,32 @@ function displayContent() {
   }
 }
 
+/*************************************************
+ * ********              *******
+ * **********************************************/
+
+arrowNext.addEventListener("click", () => {
+  instance.next(1);
+
+  activedSlider = getActiveSliderId();
+});
+
+arrowPrev.addEventListener("click", () => {
+  instance.prev(1);
+  activedSlider = getActiveSliderId();
+});
+
+(function () {
+  changeCarousselClass();
+  initCarousel();
+  getActiveSliderId();
+  displaySelectedService(activeSliderId);
+})();
+
+window.addEventListener("resize", () => {
+  changeCarousselClass();
+  initCarousel();
+});
 
 /*************************************************
  * ********concerne le div href lang*******
@@ -390,4 +443,24 @@ divData.setAttribute(
 
 displayContent();
 
+/*************************************************
+ * ********concerne le menu fixed*******
+ * **********************************************/
+displayMenuFixed();
 
+window.addEventListener("resize", () => {
+  displayMenuFixed();
+});
+
+coachingVie.addEventListener("click", (e) => {
+  displayServiceByMenuFixed(activeSliderId, e.target.id);
+  activedSlider = getActiveSliderId();
+});
+coachingCarriere.addEventListener("click", (e) => {
+  displayServiceByMenuFixed(activeSliderId, e.target.id);
+  activedSlider = getActiveSliderId();
+});
+coachingEntreprise.addEventListener("click", (e) => {
+  displayServiceByMenuFixed(activeSliderId, e.target.id);
+  activedSlider = getActiveSliderId();
+});

@@ -3,6 +3,7 @@
 //import { useState } from "react";
 import { useForm } from "react-hook-form";
 import ReCAPTCHA from "react-google-recaptcha";
+import { Spinner } from "../spinner/spinner.jsx";
 //import { useEffect } from "react";
 
 // eslint-disable-next-line no-unused-vars
@@ -37,6 +38,7 @@ const siteKey = import.meta.env.VITE_SITE_KEY_RECAPTCHA;
 // composant formulaire de contact
 function FormContact() {
   const [isCaptchaValid, setIsCaptchaValid] = useState(false);
+  const [isSpinnerVisible, setIsSpinnerVisible] = useState(false);
   const {
     register,
     handleSubmit,
@@ -46,6 +48,7 @@ function FormContact() {
 
   //declaration des functions
   async function handleSubmitCaptcha(recaptchaToken) {
+    
     if (!recaptchaToken) {
       alert("Please complete the reCAPTCHA");
       return;
@@ -73,6 +76,7 @@ function FormContact() {
   }
 
   async function fetchApi(data) {
+    setIsSpinnerVisible(true);
     let content = JSON.stringify(data);
     let response = await fetch(`${url}/contact`, {
       method: "POST",
@@ -84,6 +88,7 @@ function FormContact() {
     });
     if (response.ok) {
       let data = await response.json();
+      setIsSpinnerVisible(false);
       // eslint-disable-next-line no-unused-vars
       const toasterValid = document.querySelector("#toaster-valid");
 
@@ -101,8 +106,8 @@ function FormContact() {
       toasterInvalid.classList.add("visible");
       setTimeout(() => {
         toasterInvalid.classList.remove("visible");
+        setIsSpinnerVisible(false);
       }, 3000);
-      setIsCaptchaValid(false);
     }
   }
 
@@ -112,6 +117,7 @@ function FormContact() {
       className="flex-column-start-center form "
       onSubmit={handleSubmit((data) => fetchApi(data))}
     >
+      {isSpinnerVisible? <Spinner /> : null}
       <div className="flex-column-start-start cont-input-label">
         <label htmlFor="input-text-lastname" className="label">
           {"Nom"}
