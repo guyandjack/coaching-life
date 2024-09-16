@@ -90,6 +90,9 @@ console.log("target observer 2: " + targetObserver2)
 
 /**************** concerne les artixles principaux ********* start ***** */
 
+//main conteneur des articles
+let mainContainerArticle = document.querySelector("#main-container-prestation");
+
 // trois articles principaux
 let articleLife = document.getElementById("coaching-de-vie");
 let articleJob = document.getElementById("coaching-de-cariere");
@@ -412,11 +415,13 @@ arrowPrev.addEventListener("click", () => {
   initCarousel();
   getActiveSliderId();
   displaySelectedService(activeSliderId);
+  colorArrowSlider(activeSliderId);
 })();
 
 window.addEventListener("resize", () => {
   changeCarousselClass();
   initCarousel();
+  colorArrowSlider(activeSliderId);
 });
 
 /*************************************************
@@ -455,12 +460,18 @@ window.addEventListener("resize", () => {
 coachingVie.addEventListener("click", (e) => {
   displayServiceByMenuFixed(activeSliderId, e.target.id);
   activedSlider = getActiveSliderId();
+  mainContainerArticle.scrollIntoView({behavior:"smooth"});
+  
 });
 coachingCarriere.addEventListener("click", (e) => {
   displayServiceByMenuFixed(activeSliderId, e.target.id);
   activedSlider = getActiveSliderId();
+  mainContainerArticle.scrollIntoView({behavior:"smooth"});
+  
 });
 coachingEntreprise.addEventListener("click", (e) => {
   displayServiceByMenuFixed(activeSliderId, e.target.id);
   activedSlider = getActiveSliderId();
+  mainContainerArticle.scrollIntoView({behavior:"smooth"});
+  
 });

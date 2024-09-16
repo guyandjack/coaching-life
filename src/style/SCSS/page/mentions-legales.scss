@@ -43,9 +43,11 @@
 }
 
 .article-title {
+  width: 100%;
   line-height: 150%;
   font-size: 18px;
   color: map-get($colors-rule, first-color);
+  //border: 2px solid red;
 
   @include upper-large-screen {
     font-size: 20px;

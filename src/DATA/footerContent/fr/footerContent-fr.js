@@ -10,7 +10,7 @@ let footerContentFR = [
   },
 
   {
-    text: "politique de confidentialité",
+    text: "Politique de confidentialité",
     href: `${url}/public/fr/politique-de-confidencialite.html`,
   },
   {
@@ -19,7 +19,7 @@ let footerContentFR = [
   },
 
   {
-    text: "login",
+    text: "Login",
     href: `${url}/public/fr/login.html`,
   },
 ];

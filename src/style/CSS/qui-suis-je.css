@@ -112,6 +112,7 @@
 .qui-suis-je .container-content .content-title {
   margin: 20px 0px;
   font-size: 25px;
+  text-align: center;
 }
 @media screen and (min-width: 769px) {
   .qui-suis-je .container-content .content-title {
