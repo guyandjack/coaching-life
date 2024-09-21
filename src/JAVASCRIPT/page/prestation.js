@@ -425,18 +425,19 @@ window.addEventListener("resize", () => {
 });
 
 /*************************************************
- * ********concerne le div href lang*******
+ * ********concerne le div href lang et les balise du head hreflang*******
  * **********************************************/
 
 const divData = document.querySelector("#info-href");
 
+const refLangDE = document.querySelector("link[hreflang='de']");
+const refLangEN = document.querySelector("link[hreflang='en']");
+const refLangFR = document.querySelector("link[hreflang='fr']");
+const refLangDefault = document.querySelector("link[hreflang='x-default']");
+
 let objectUrl = localOrProd();
 let url = objectUrl.url;
 
-divData.setAttribute(
-  "data-fr",
-  `${url}/fr/prestations-de-coaching-individuel-et-en-entreprise.html`
-);
 divData.setAttribute(
   "data-de",
   `${url}/de/dienstleistungen-des-individuellen-und-unternehmens-coachings.html`
@@ -444,6 +445,27 @@ divData.setAttribute(
 divData.setAttribute(
   "data-en",
   `${url}/en/services-of-individual-and-business-coaching.html`
+);
+divData.setAttribute(
+  "data-fr",
+  `${url}/fr/prestations-de-coaching-individuel-et-en-entreprise.html`
+);
+
+refLangDE.setAttribute(
+  "href",
+  `${url}/de/dienstleistungen-des-individuellen-und-unternehmens-coachings.html`
+);
+refLangEN.setAttribute(
+  "href",
+  `${url}/en/services-of-individual-and-business-coaching.html`
+);
+refLangFR.setAttribute(
+  "href",
+  `${url}/fr/prestations-de-coaching-individuel-et-en-entreprise.html`
+);
+refLangDefault.setAttribute(
+  "href",
+  `${url}/fr/prestations-de-coaching-individuel-et-en-entreprise.html`
 );
 
 displayContent();

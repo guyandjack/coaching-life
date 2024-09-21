@@ -6,7 +6,7 @@ const refLangDE = document.querySelector("link[hreflang='de']");
 const refLangEN = document.querySelector("link[hreflang='en']");
 const refLangFR = document.querySelector("link[hreflang='fr']");
 const refLangDefault = document.querySelector("link[hreflang='x-default']");
-console.log("element link deutch: " + refLangDE);
+
 
 let objectUrl = localOrProd();
 let url = objectUrl.url;

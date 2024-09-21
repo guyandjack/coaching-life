@@ -176,18 +176,22 @@
   }
 
   .container-img {
-    width: 100%;
+    width: 95%;
     max-height: 400px;
     object-fit: cover;
     //border: 2px solid green;
     overflow: hidden;
     margin: 30px 0px;
-    
+    @include upper-medium-screen{
+      width: 70%;
+    }
 
     @include upper-large-screen {
-      flex: 1 1 40%;
-      height: 500px;
-      //mask-image: url("@/assets/masque/blob-index-bar-vert.svg");
+      //flex: 1 0 35%;
+      //max-width: 30%;
+      //height: 500px;
+      width: 60%;
+      max-width: 500px;
     }
   }
 
@@ -195,6 +199,11 @@
   mask-repeat: no-repeat;
   mask-size: contain;
   mask-position: center;
+  width:100%;
+
+  
+
+    
   }
 
   #image-1{

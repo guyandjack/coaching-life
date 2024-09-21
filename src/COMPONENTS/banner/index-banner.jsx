@@ -40,47 +40,44 @@ function BannerIndex() {
     }, []);
 
     return (
-        <div className="flex-column-start-center banner-container ">
-              <h1 className="h1 banner-title"> {"SO COACHING"} </h1>
-              <h2 className="h2">
-                {"Révéler les ressources de l'être humain"}
-              </h2>
+      <div className="flex-column-start-center banner-container ">
+        <h1 className="h1 banner-title">
+          
+          {"Révéler les ressources de l'être humain"}
+        </h1>
+        
 
-              <ul className="flex-column-space_evenly-center link-container">
-                <li>
-                  <a
-                    id="vie"
-                    className="flex-column-center-center link-cta"
-                    href="#"
-                  >
-                    <p className="h2 text-inside">Coaching de vie</p>
-                    <p className="h3 text-aside">Trouvez votre équilibre</p>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    id="carriere"
-                    className="flex-column-center-center link-cta"
-                    href="#"
-                  >
-                    <p className="h2 text-inside">Coaching de carriére</p>
-                    <p className="h3 text-aside">Libérez votre potentiel</p>
-                  </a>
-                </li>
+        <ul className="flex-column-space_evenly-center link-container">
+          <li>
+            <a id="vie" className="flex-column-center-center link-cta" href="#">
+              <p className="h2 text-inside">Coaching de vie</p>
+              <p className="h3 text-aside">Trouvez votre équilibre</p>
+            </a>
+          </li>
+          <li>
+            <a
+              id="carriere"
+              className="flex-column-center-center link-cta"
+              href="#"
+            >
+              <p className="h2 text-inside">Coaching de carriére</p>
+              <p className="h3 text-aside">Libérez votre potentiel</p>
+            </a>
+          </li>
 
-                <li>
-                  <a
-                    id="entreprise"
-                    className="flex-column-center-center link-cta"
-                    href="#"
-                  >
-                    <p className="h2 text-inside">Consulting en entreprise</p>
-                    <p className="h3 text-aside">Management et RH</p>
-                  </a>
-                </li>
-              </ul>
-            </div>
-    )
+          <li>
+            <a
+              id="entreprise"
+              className="flex-column-center-center link-cta"
+              href="#"
+            >
+              <p className="h2 text-inside">Consulting en entreprise</p>
+              <p className="h3 text-aside">Management et RH</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    );
 }
 
 export { BannerIndex }

@@ -165,19 +165,22 @@
   }
 }
 .qui-suis-je .container-img {
-  width: 100%;
+  width: 95%;
   max-height: 400px;
   -o-object-fit: cover;
      object-fit: cover;
   overflow: hidden;
   margin: 30px 0px;
 }
+@media screen and (min-width: 769px) {
+  .qui-suis-je .container-img {
+    width: 70%;
+  }
+}
 @media screen and (min-width: 993px) {
   .qui-suis-je .container-img {
-    -webkit-box-flex: 1;
-        -ms-flex: 1 1 40%;
-            flex: 1 1 40%;
-    height: 500px;
+    width: 60%;
+    max-width: 500px;
   }
 }
 .qui-suis-je .image {
@@ -187,6 +190,7 @@
           mask-size: contain;
   -webkit-mask-position: center;
           mask-position: center;
+  width: 100%;
 }
 @media screen and (min-width: 769px) {
   .qui-suis-je #image-1 {

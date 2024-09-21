@@ -34,7 +34,7 @@ function CardResume() {
         <div className="container-resume-info flex-column-start-start">
           <span className="resume-info">Sophie Chevrolet</span>
           <span className="resume-info">Sion VS</span>
-          <span className="resume-info">+41 78 965 15 31</span>
+          {/* <span className="resume-info">+41 78 965 15 31</span> */}
           <a className="resume-info email" href="mailto:info@socoaching.ch">
             info@socoaching.ch
           </a>
