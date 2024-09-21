@@ -13,8 +13,8 @@ import { breakPoint } from "../../UTILS/breakpoint/break_point.js";
 //import des composants enfants
 import { BannerIndex } from "../banner/index-banner";
 
-import parallax500w from "../../assets/image/page-index/500w-image-index.webp";
-import parallax1000w from "../../assets/image/page-index/1000w-image-index.webp";
+//import parallax500w from "../../assets/image/page-index/500w-image-index.webp";
+//import parallax1000w from "../../assets/image/page-index/1000w-image-index.webp";
 //import parallax1500w from "../../assets/image/page-index/1500w-parallax.jpg";
 //import parallax2000w from "../../assets/image/page-index/2000w-parallax.jpg";
 import parallax2000w from "../../assets/image/page-index/image-index.webp";
