@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- scripts JS -->
-  <script type="module" src="../../src/JAVASCRIPT/page/dashboard.js" ></script>
+  <script type="module" src="../../src/JAVASCRIPT/page/dashboard.js"></script>
 
 
   <!-- scripts JSX -->
@@ -25,66 +25,69 @@
 
 <body class="body">
   <div class="container-page page-dashboard">
-  <div class="flex-column-center-center container-page-dashboard">
-    <header class="">
-      <div id="RC-nav-bar"></div>
-      <div id="info-href" data-fr="http://localhost:5173/index.html"
-        data-en="http://localhost:5173/src/HTML/en/home.html"
-        data-de="http://localhost:5173/src/HTML/de/startseite.html"></div>
-    </header>
-    <main>
-      <section id="top" class="relative">
-        <div class="flex-column-start-start container-page-move">
-          <a href="#top" class="page-top">Haut de page</a>
-          <a href="#bottom" class="page-bottom">Bas de page</a>
-        </div>
-        <!-- <div id="RC-spinner"></div> -->
-        <h1 class="h1">Tableau de board</h1>
-        <ul class="flex-column-space_evenly-center menu-dash">
-          <li><a class="menu-link" href="#mdp">Mot de passe</a></li>
-          <li><a class="menu-link" href="#avis">Avis</a></li>
-          <li><a class="menu-link" href="#article">Article</a></li>
-          <li><a class="menu-link" href="#data">Statistique</a></li>
-          <li><a class="menu-link log-out" href="#">logout</a></li>
-        </ul>
+    <div class="flex-column-center-center container-page-dashboard">
+      <header class="">
+        <div id="RC-nav-bar"></div>
+        <div id="info-href" data-fr="http://localhost:5173/index.html"
+          data-en="http://localhost:5173/src/HTML/en/home.html"
+          data-de="http://localhost:5173/src/HTML/de/startseite.html"></div>
+      </header>
+      <main>
+        <section id="top" class="relative">
+          <div class="flex-column-start-start container-page-move">
+            <a href="#top" class="page-top">Haut de page</a>
+            <a href="#bottom" class="page-bottom">Bas de page</a>
+          </div>
+          <!-- <div id="RC-spinner"></div> -->
+          <div class="flex-column-start-center container-title">
+            <div id="RC-collapse"></div>
+            <h1 class="h1">Tableau de bord</h1>
+          </div>
+          <ul class="flex-column-space_evenly-center menu-dash">
+            <li><a class="menu-link" href="#mdp">Mot de passe</a></li>
+            <li><a class="menu-link" href="#avis">Avis</a></li>
+            <li><a class="menu-link" href="#article">Article</a></li>
+            <li><a class="menu-link" href="#data">Statistique</a></li>
+            
+          </ul>
 
-        <div class="flex-column-start-center main-container-form">
-          <div class="dashboard-title">Gestion des mots de passe</div>
-          <article id="mdp" class="flex-column-start-center ">
-            <div id="RC-form-change-password" class="container-form"></div>
-          </article>
-        </div>
-        <div class="flex-column-start-center main-container-form">
-          <div id="avis" class="dashboard-title">Gestion des avis</div>
-          <article class="flex-column-start-center ">
-            <div id="RC-form-add-avis" class="container-form"></div>
-          </article>
-          <article class="flex-column-start-center ">
-            <div id="RC-form-delete-avis" class="container-form"></div>
-          </article>
-        </div>
-        <div id="article" class="flex-column-start-center main-container-form">
-          <div class="dashboard-title">Gestion des articles</div>
-          <article class="flex-column-start-center ">
-            <div id="RC-form-add-article" class="container-form"></div>
-          </article>
-          <article class="flex-column-start-center ">
-            <div id="RC-container-delete-article" class="container-form"></div>
-          </article>
-          <div id="data" class="flex-column-start-center main-container-form">
-            <div class="dashboard-title">Statistiques</div>
-            <article class="flex-column-start-center ">
-              <div id="RC-container-data" class="container-form"></div>
+          <div class="flex-column-start-center main-container-form">
+            <div class="dashboard-title">Gestion des mots de passe</div>
+            <article id="mdp" class="flex-column-start-center ">
+              <div id="RC-form-change-password" class="container-form"></div>
             </article>
           </div>
-        </div>
-      </section>
-    </main>
-    
-    <footer id="bottom">
-      <div id="RC-footer"></div>
-    </footer>
-  </div>
+          <div class="flex-column-start-center main-container-form">
+            <div id="avis" class="dashboard-title">Gestion des avis</div>
+            <article class="flex-column-start-center ">
+              <div id="RC-form-add-avis" class="container-form"></div>
+            </article>
+            <article class="flex-column-start-center ">
+              <div id="RC-form-delete-avis" class="container-form"></div>
+            </article>
+          </div>
+          <div id="article" class="flex-column-start-center main-container-form">
+            <div class="dashboard-title">Gestion des articles</div>
+            <article class="flex-column-start-center ">
+              <div id="RC-form-add-article" class="container-form"></div>
+            </article>
+            <article class="flex-column-start-center ">
+              <div id="RC-container-delete-article" class="container-form"></div>
+            </article>
+            <div id="data" class="flex-column-start-center main-container-form">
+              <div class="dashboard-title">Statistiques</div>
+              <article class="flex-column-start-center ">
+                <div id="RC-container-data" class="container-form"></div>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer id="bottom">
+        <div id="RC-footer"></div>
+      </footer>
+    </div>
   </div>
 </body>
 

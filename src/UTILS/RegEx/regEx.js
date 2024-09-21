@@ -24,7 +24,7 @@ const masqueMail =
 
 //Motif qui autorise tous les carracteres à l' exeption des balises ouvrantes, accolades, crochets, signe multiplié et signe logique (ou)
 // eslint-disable-next-line no-useless-escape
-const masqueMessage = /^[^<>{}\[\]*|]{20,200}$/;
+const masqueMessage = /^[^<>{}\[\]*|]{20,2000}$/;
 
 //Motif qui permet de controler si une expression est un nombre entier positif
 const masqueNumberInt = /^[^\-\D]?[0-9]{1,}$/;

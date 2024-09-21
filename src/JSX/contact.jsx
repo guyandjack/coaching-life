@@ -17,13 +17,7 @@ ReactDOM.createRoot(rootElement).render(
   </React.StrictMode>
 );
 
-// Rendu du composant Spinner dans le DOM
-/* const spinnerElement = document.getElementById("RC-spinner");
-ReactDOM.createRoot(spinnerElement).render(
-  <React.StrictMode>
-    <Spinner />
-  </React.StrictMode>
-); */
+
 
 //insertion du formulaire de contact
 const containerFormContact = document.getElementById("RC-form-contact");

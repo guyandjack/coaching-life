@@ -92,7 +92,10 @@ function NavBar() {
         }
       >
         <div className="container-logo">
-          <a href={`${url}/index.html`}>
+          <a
+            href={`${url}/index.html`}
+            aria-label="Accueil"
+          >
             <ReactSVG
               src={logoSocoaching}
               className="logo-coaching-svg"

@@ -17,6 +17,9 @@ import { FormAddArticle } from "../COMPONENTS/form/formAddArticle.jsx";
 import { CardArticleContainer } from "../COMPONENTS/form/cardFormArticleContainer.jsx";
 //import { CardAvis } from "../COMPONENTS/card/cardAvis.jsx";
 import { CardAvisContainer } from "../COMPONENTS/form/cardFormAvisContainer.jsx";
+import { CustomCollapse } from "../COMPONENTS/collapse/collapse.jsx";
+
+
 
 
 const rootElement = document.getElementById("RC-nav-bar");
@@ -26,13 +29,13 @@ ReactDOM.createRoot(rootElement).render(
   </React.StrictMode>
 );
 
-// Rendu du composant Spinner dans le DOM
-/* const spinnerElement = document.getElementById("RC-spinner");
-ReactDOM.createRoot(spinnerElement).render(
+// Rendu du composant CustomCollapse dans le DOM
+const collaspseElement = document.getElementById("RC-collapse");
+ReactDOM.createRoot(collaspseElement).render(
   <React.StrictMode>
-    <Spinner />
+    <CustomCollapse />
   </React.StrictMode>
-); */
+); 
 
 const footerContainer = document.getElementById("RC-footer");
 ReactDOM.createRoot(footerContainer).render(

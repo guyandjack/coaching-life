@@ -1,0 +1,85 @@
+@import "../../utils/colors-rule/colors-rule.scss";
+@import "../../utils/mixins/responsive/responsive.scss";
+
+.container-collapse{
+
+    width: 200px;
+}
+
+.container-chevron{
+    //position: absolute;
+    align-self: flex-start;
+//border: 2px solid blue;
+//margin-top: 20px;
+cursor: pointer;
+padding: 10px;
+transition: border-left linear 200ms;
+&:hover{
+    border-left: 10px solid map-get($colors-rule, third-color );
+    transition: border-left linear 300ms;
+}
+}
+
+.chevron{
+    
+    //border: 2px solid red;
+    width:30px;
+    height: 30px;
+    
+    
+}
+
+.trigger{
+    //border: 2px solid orange;
+    margin-right: 20px;
+
+}
+
+.chevron-transition{
+    transform: rotateZ(180deg);
+    transition: transform linear 250ms;
+}
+
+.normal{
+    
+    transition: transform linear 200ms;
+}
+
+.collapsed{
+    height:0px;
+    overflow: hidden;
+    padding-left: 10px;
+    
+    cursor: pointer;
+    border-left: 0px solid map-get($colors-rule, third-color);
+    transition: border-left linear 0.2s;
+    
+    
+    &:hover {
+        
+        border-left: 10px solid map-get($colors-rule, third-color);
+        transition: border-left linear 0.3s;
+    }
+}
+
+.visible{
+    position:absolute;
+    top:100%;
+    left: 20px;
+    width: fit-content;
+    //border-bottom: 2px solid red;
+    height: 30px;
+    transition: height linear 200ms;
+}
+
+.log-out{
+    position: absolute;
+    left: 20px;
+    padding: 10px;
+    border: 2px solid map-get($colors-rule, sixth-color);
+    background-color: map-get($colors-rule, fourth-color);
+    color: map-get($colors-rule, sixth-color);
+    width: fit-content;
+    transform: translateY(30px);
+    transition: transform linear 0.3s;
+}

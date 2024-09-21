@@ -56,7 +56,7 @@ async function checkUserLogin(req, res) {
     // Envoi de la réponse
     res.status(200).json({
       message: "succes",
-      name: "Admin",
+      name: `${user.admin_name}`,
       token: token,
     });
   } catch (error) {

@@ -1,0 +1,89 @@
+.container-collapse {
+  width: 200px;
+}
+
+.container-chevron {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  cursor: pointer;
+  padding: 10px;
+  -webkit-transition: border-left linear 200ms;
+  transition: border-left linear 200ms;
+}
+.container-chevron:hover {
+  border-left: 10px solid #ff6e00;
+  -webkit-transition: border-left linear 300ms;
+  transition: border-left linear 300ms;
+}
+
+.chevron {
+  width: 30px;
+  height: 30px;
+}
+
+.trigger {
+  margin-right: 20px;
+}
+
+.chevron-transition {
+  -webkit-transform: rotateZ(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotateZ(180deg);
+  -webkit-transition: -webkit-transform linear 250ms;
+  transition: -webkit-transform linear 250ms;
+  transition: transform linear 250ms;
+  transition: transform linear 250ms, -webkit-transform linear 250ms;
+}
+
+.normal {
+  -webkit-transition: -webkit-transform linear 200ms;
+  transition: -webkit-transform linear 200ms;
+  transition: transform linear 200ms;
+  transition: transform linear 200ms, -webkit-transform linear 200ms;
+}
+
+.collapsed {
+  height: 0px;
+  overflow: hidden;
+  padding-left: 10px;
+  cursor: pointer;
+  border-left: 0px solid #ff6e00;
+  -webkit-transition: border-left linear 0.2s;
+  transition: border-left linear 0.2s;
+}
+.collapsed:hover {
+  border-left: 10px solid #ff6e00;
+  -webkit-transition: border-left linear 0.3s;
+  transition: border-left linear 0.3s;
+}
+
+.visible {
+  position: absolute;
+  top: 100%;
+  left: 20px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 30px;
+  -webkit-transition: height linear 200ms;
+  transition: height linear 200ms;
+}
+
+.log-out {
+  position: absolute;
+  left: 20px;
+  padding: 10px;
+  border: 2px solid #fbfffe;
+  background-color: #9cd008;
+  color: #fbfffe;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-transform: translateY(30px);
+      -ms-transform: translateY(30px);
+          transform: translateY(30px);
+  -webkit-transition: -webkit-transform linear 0.3s;
+  transition: -webkit-transform linear 0.3s;
+  transition: transform linear 0.3s;
+  transition: transform linear 0.3s, -webkit-transform linear 0.3s;
+}
