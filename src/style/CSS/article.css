@@ -4,11 +4,22 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("@/assets/image/page-article/coffe-book.jpg");
+  background-image: url("@/assets/image/page-article/500w-coffe-book.webp");
 }
 @media screen and (min-width: 993px) {
   .page-article .banner {
+    background-image: url("@/assets/image/page-article/1500w-coffe-book.webp");
     height: 400px;
+  }
+}
+@media screen and (min-width: 769px) {
+  .page-article .banner {
+    background-image: url("@/assets/image/page-article/1000w-coffe-book.webp");
+  }
+}
+@media screen and (min-width: 1501px) {
+  .page-article .banner {
+    background-image: url("@/assets/image/page-article/2000w-coffe-book.webp");
   }
 }
 .page-article .title-page {

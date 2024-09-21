@@ -88,27 +88,27 @@
   }
 }
 .page-index #img-1 {
-  background-image: url("/src/assets/image/page-index/what-3.jpg");
+  background-image: url("/src/assets/image/page-index/what-3.webp");
   background-position: bottom;
 }
 .page-index #img-2 {
-  background-image: url("/src/assets/image/page-index/pense.jpg");
+  background-image: url("/src/assets/image/page-index/pense.webp");
 }
 .page-index #img-3 {
-  background-image: url("/src/assets/image/page-index/desert.jpg");
+  background-image: url("/src/assets/image/page-index/desert.webp");
   background-position: bottom;
 }
 .page-index #img-4 {
-  background-image: url("/src/assets/image/page-index/private.jpg");
+  background-image: url("/src/assets/image/page-index/private.webp");
 }
 .page-index #img-5 {
-  background-image: url("/src/assets/image/page-index/engrenage.jpg");
+  background-image: url("/src/assets/image/page-index/engrenage.webp");
 }
 .page-index #img-6 {
-  background-image: url("/src/assets/image/page-index/abeille.jpg");
+  background-image: url("/src/assets/image/page-index/abeille.webp");
 }
 .page-index #img-7 {
-  background-image: url("/src/assets/image/page-index/reussite.jpg");
+  background-image: url("/src/assets/image/page-index/reussite.webp");
   background-position: bottom;
 }
 .page-index .title-article {

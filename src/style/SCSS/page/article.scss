@@ -8,10 +8,17 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        background-image: url("@/assets/image/page-article/coffe-book.jpg");
+        background-image: url("@/assets/image/page-article/500w-coffe-book.webp");
 
         @include upper-large-screen{
+            background-image: url("@/assets/image/page-article/1500w-coffe-book.webp");
             height: 400px;
+        }
+        @include upper-medium-screen{
+            background-image: url("@/assets/image/page-article/1000w-coffe-book.webp");
+        }
+        @include upper-x-large-screen{
+        background-image: url("@/assets/image/page-article/2000w-coffe-book.webp");
         }
     }
 

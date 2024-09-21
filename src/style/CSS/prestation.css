@@ -63,19 +63,19 @@
   opacity: 0.7;
 }
 .carousel #slider-1 {
-  background-image: url("@/assets/image/page-prestation/1000w-coaching-de-vie.jpg");
+  background-image: url("@/assets/image/page-prestation/1000w-coaching-de-vie.webp");
 }
 .carousel #slider-1 > .title-slider {
   color: #1ba4e3;
 }
 .carousel #slider-2 {
-  background-image: url("@/assets/image/page-prestation/1000w-coaching-de-cariere.jpg");
+  background-image: url("@/assets/image/page-prestation/1000w-coaching-de-cariere.webp");
 }
 .carousel #slider-2 > .title-slider {
   color: #ff6e00;
 }
 .carousel #slider-3 {
-  background-image: url("@/assets/image/page-prestation/1000w-coaching-en-entreprise.jpg");
+  background-image: url("@/assets/image/page-prestation/1000w-coaching-en-entreprise.webp");
 }
 .carousel #slider-3 > .title-slider {
   color: #9cd008;
