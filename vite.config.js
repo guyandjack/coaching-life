@@ -2,10 +2,19 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path"; // Assure-toi que path est importé correctement
+import { visualizer } from "rollup-plugin-visualizer";
 
 export default defineConfig({
-  plugins: [react()],
-  assetsInclude: ["**/*.jpg", "**/*.png", "**/*.svg", "**/*.ttf"],
+  plugins: [
+    react(),
+    visualizer({
+      filename: "./dist/stats.html", // Le chemin où le rapport sera généré
+      open: true, // Ouvre automatiquement le rapport après le build
+      gzipSize: true, // Affiche les tailles gzip des modules
+      brotliSize: true, // Affiche les tailles brotli des modules
+    }),
+  ],
+  assetsInclude: ["**/*.jpg", "**/*.png", "**/*.svg", "**/*.ttf", "**/*.webp"],
 
   base: "", // Modifie cette valeur si nécessaire
   resolve: {

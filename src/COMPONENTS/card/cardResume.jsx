@@ -25,7 +25,7 @@ function CardResume() {
       <div className="container-avatar flex-row-space_evenly-center">
         <img
           className="resume-img"
-          src="/src/assets/sophie/100w-sophie-chevrolet.webp"
+          src="/src/assets/image/card-resume/100w-sophie-chevrolet.webp"
           alt="avatar de sophie"
           loading="lazy"
           />
