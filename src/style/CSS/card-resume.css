@@ -16,12 +16,6 @@
   border: 4px solid #fbfffe;
   margin-right: 50px;
 }
-@media screen and (min-width: 993px) {
-  .card-resume .resume-img {
-    width: 150px;
-    height: 150px;
-  }
-}
 .card-resume .resume-info {
   margin-top: 10px;
   color: #fbfffe;

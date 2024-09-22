@@ -9,8 +9,7 @@ import { BiLogoLinkedinSquare } from "react-icons/bi";
 //import des fonctions
 import { getCardContentResume } from "../../UTILS/fonctions/styleLinkCardResume.js";
 
-//import des images
-import avatarSophie from "../../assets/sophie/sophie-chevrolet.jpg";
+
 //import des feuilles de style
 import "../../style/CSS/card-resume.css";
 
@@ -26,10 +25,10 @@ function CardResume() {
       <div className="container-avatar flex-row-space_evenly-center">
         <img
           className="resume-img"
-          src={avatarSophie}
-          alt="avatar de sophie chevrolet"
+          src="/src/assets/sophie/100w-sophie-chevrolet.webp"
+          alt="avatar de sophie"
           loading="lazy"
-        />
+          />
 
         <div className="container-resume-info flex-column-start-start">
           <span className="resume-info">Sophie Chevrolet</span>
@@ -39,18 +38,7 @@ function CardResume() {
             info@socoaching.ch
           </a>
 
-          {/* <a
-            className="resume-info"
-            href="https://ch.linkedin.com/in/sophie-chevrolet-0947b250"
-            target="_blank"
-          >
-            {/* <ReactSVG
-              src="/src/assets/logo/linkedin-icon-2.svg"
-              beforeInjection={(svg) => {
-                svg.classList.add("logo-linkedin");
-              }}
-            /> }
-          </a>}*/}
+          
           <a
             className="resume-info linkedin-icon"
             href="https://ch.linkedin.com/in/sophie-chevrolet-0947b250"
