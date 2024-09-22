@@ -151,7 +151,7 @@ function CardAvis({ lastname, firstname, content, imgurl, id }) {
                 id={`toaster-valid-delete-avis-${id}`}
                 className="toaster valid"
               >
-                {"Avis suprimer"}
+                {"Avis suprimé"}
               </div>
               <div
                 id={`toaster-invalid-delete-avis-${id}`}

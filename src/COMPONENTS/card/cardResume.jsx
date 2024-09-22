@@ -10,6 +10,10 @@ import { BiLogoLinkedinSquare } from "react-icons/bi";
 import { getCardContentResume } from "../../UTILS/fonctions/styleLinkCardResume.js";
 
 
+//import des images
+import  avatarSophie  from "/src/assets/image/card-resume/100w-sophie-chevrolet.webp";
+
+
 //import des feuilles de style
 import "../../style/CSS/card-resume.css";
 
@@ -25,7 +29,7 @@ function CardResume() {
       <div className="container-avatar flex-row-space_evenly-center">
         <img
           className="resume-img"
-          src="/src/assets/image/card-resume/100w-sophie-chevrolet.webp"
+          src={avatarSophie}
           alt="avatar de sophie"
           loading="lazy"
           />
@@ -61,3 +65,4 @@ function CardResume() {
 }
 
 export { CardResume };
+

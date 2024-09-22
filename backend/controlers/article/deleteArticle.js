@@ -43,7 +43,7 @@ async function deleteOneArticle(req, res) {
       await Promise.all(
         result.url_img.map(async (url) => {
           try {
-            const cleanUrl = url.split(/backend[/\\]/)[1].trim();
+            const cleanUrl = url.split(/3000[/\\]/)[1].trim();
             await fs.rm(cleanUrl);
             console.log(`Fichier image ${cleanUrl} supprimé avec succès.`);
           } catch (err) {
