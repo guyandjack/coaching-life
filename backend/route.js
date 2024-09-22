@@ -86,7 +86,10 @@ const checkData = require("./middelware/checkUserData.js");
 routeur.get("/avis",  getAllAvis);
 
 //route admin  socoaching - recupere tous les article de la base de donnée
-routeur.get("/article",  getAllArticle);
+routeur.get("/article", getAllArticle);
+
+
+
 
 
 

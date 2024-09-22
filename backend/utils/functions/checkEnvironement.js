@@ -36,7 +36,7 @@ function setUrl(env) {
     urlArticle = process.env.URL_BASE_UPLOAD_HTML_PROD;
   } else {
     urlImage = process.env.URL_BASE_UPLOAD_IMAGE_DEV;
-    urlArticle = process.env.URL_BASE_UPLOAD_IMAGE_DEV;
+    urlArticle = process.env.URL_BASE_UPLOAD_HTML_DEV;
   }
 
   return ({

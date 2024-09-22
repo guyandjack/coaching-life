@@ -103,7 +103,7 @@ function CardAvisContainer() {
             return (
               <li key={card.id}>
                 <CardAvis
-                  lastname={card.content}
+                  lastname={card.last_name}
                   firstname={card.first_name}
                   content={card.content}
                   imgurl={card.url_img}
