@@ -28,7 +28,7 @@ async function deleteOneArticle(req, res) {
 
   try {
     const connect = await connectToDataBase();
-    const tabErrorDeleteFile = [];
+    let tabErrorDeleteFile = [];
 
     // Récupération des URLs des fichiers à supprimer
     const requeteSelect = `SELECT url_img, url_article FROM article WHERE id = ?`;
@@ -57,12 +57,20 @@ async function deleteOneArticle(req, res) {
       );
     }
 
+    if (tabErrorDeleteFile.length > 0) {
+      return res
+        .status(500)
+        .json({
+          message:
+            "Erreur lors de la suppression de/des images dans son repertoir",
+        });
+    }
     // Suppression des fichiers articles
     if (Array.isArray(result.url_article) && result.url_article.length > 0) {
       await Promise.all(
         result.url_article.map(async (url) => {
           try {
-            const cleanUrl = `../public/${url.split(/public[/\\]/)[1].trim()}`;
+            const cleanUrl = url.split(/3000[/\\]/)[1].trim();
             await fs.rm(cleanUrl);
             console.log(`Fichier article ${cleanUrl} supprimé avec succès.`);
           } catch (err) {
@@ -76,6 +84,11 @@ async function deleteOneArticle(req, res) {
       );
     }
 
+    if (tabErrorDeleteFile.length > 0) {
+      return res
+        .status(500)
+        .json({ message: "Erreur lors de la suppression de l' article dans son repertoir" });
+    }
     // Suppression de l'article dans la base de données
     const requeteDelete = `DELETE FROM article WHERE id = ?`;
     const deleteResponse = await sendRequest(connect, requeteDelete, [

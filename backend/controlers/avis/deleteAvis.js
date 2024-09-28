@@ -1,8 +1,8 @@
 //controler qui permet d' effacer un avis
 
 //import des librairies
-// eslint-disable-next-line no-undef
-const fs = require("fs");
+// eslint-disable-next-line no-undef, no-unused-vars
+const fs = require("fs").promises;
 // eslint-disable-next-line no-undef, no-unused-vars
 const path = require("path");
 
@@ -20,13 +20,14 @@ const sendRequest = require("../../utils/functions/requestDataBase.js");
 const checkEnv = require("../../utils/functions/checkEnvironement.js");
 
 
+// eslint-disable-next-line no-unused-vars
 let urlbase = checkEnv.defineUrl();
 
 
 
 
 async function deleteOneAvis(req, res) {
-  const avisId = parseInt(req.body.id);
+  const avisId = req.body.id;
   let connect = await connectToDataBase(connectionConfig);
 
   let tabErrorDeleteFile = [];
@@ -37,38 +38,34 @@ async function deleteOneAvis(req, res) {
     const requeteSelectUrl = `SELECT url_img FROM avis WHERE id = ?`;
     const paramRequeteSelectUrl = [avisId];
 
-    const response = await sendRequest(
+    const result = await sendRequest(
       connect,
       requeteSelectUrl,
       paramRequeteSelectUrl
     );
 
-    if (!response) {
+    if (!result) {
       return res
         .status(500)
         .json({ message_status: "Une erreur est survenue lors de la requête" });
     }
 
-    const result = JSON.parse(JSON.stringify(response));
-
-    const stringUrl = result[0]?.url_img || null;
-
-    if (stringUrl) {
-      // Modification du chemin de l'image à supprimer
-      const urlRelative = stringUrl.replace(urlbase.urlimg, "");
-      console.log("URL relative de l'image : " + urlRelative);
-
-      fs.rm(urlRelative, (err) => {
-        if (err) {
-          console.error("Erreur lors de la suppression du fichier :", err);
-          tabErrorDeleteFile.push(
-            "Erreur de fichier : impossible de supprimer l'avatar"
-          );
-        } else {
-          console.log("Fichier image supprimé avec succès.");
-        }
-      });
+    //supression du fichier image
+    let url = result[0].url_img[0];
+    console.log("url de la reponse :" + url);
+    console.log("type de la reponse :" + typeof url);
+    try {
+      const cleanUrl = url.split(/3000[/\\]/)[1].trim();
+      console.log("cleanUrl: " + cleanUrl)
+      await fs.rm(cleanUrl);
+      console.log(`Fichier image ${cleanUrl} supprimé avec succès.`);
+    } catch (err) {
+      tabErrorDeleteFile.push(`Impossible de supprimer l'image ${url}`);
+      console.error(`Erreur lors de la suppression de l'image ${url}:`, err);
     }
+
+
+    
   } catch (error) {
     console.error("Erreur lors de l'exécution de la requête :", error);
     res
@@ -76,8 +73,15 @@ async function deleteOneAvis(req, res) {
       .json({ message_status: "Erreur interne lors de la requête" });
   }
 
+  if (tabErrorDeleteFile.length > 0) {
+    return res
+      .status(500)
+      .json({
+        message:
+          "Erreur lors de la suppression de l'avatar dans son repertoir",
+      });
+  }
   
-  if (tabErrorDeleteFile.length === 0) {
     try {
       // Requête préparée de type DELETE
       const requeteDeleteAvis = `DELETE FROM avis WHERE id = ?`;
@@ -104,7 +108,7 @@ async function deleteOneAvis(req, res) {
         .status(500)
         .json({ message: "Erreur interne lors de la suppression de l'avis" });
     }
-  }
+  
 
 }
 

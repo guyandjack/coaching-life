@@ -56,7 +56,7 @@ const getAllArticle = require("./controlers/article/getAllArticle.js");
 
 //ajouter un article
 // eslint-disable-next-line no-unused-vars, no-undef
-const addOneArticle = require("./controlers/article/addArticle.js");
+const addOneArticle = require("./controlers/article/addArticle2.js");
 
 //suprime un article
 // eslint-disable-next-line no-undef

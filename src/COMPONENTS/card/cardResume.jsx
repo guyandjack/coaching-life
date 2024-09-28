@@ -11,7 +11,7 @@ import { getCardContentResume } from "../../UTILS/fonctions/styleLinkCardResume.
 
 
 //import des images
-import  avatarSophie  from "/src/assets/image/card-resume/100w-sophie-chevrolet.webp";
+import  avatarSophie  from "@/assets/image/card-resume/100w-sophie-chevrolet.webp";
 
 
 //import des feuilles de style

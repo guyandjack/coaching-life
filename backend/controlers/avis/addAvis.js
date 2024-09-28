@@ -7,7 +7,53 @@ const checkEnv = require("../../utils/functions/checkEnvironement.js");
 
 
 let urlbase = checkEnv.defineUrl();
+let avatarPathDir = "upload/avis/avatar/";
 
+//declaration des fonctions
+
+// cree un path/repertoir pour une image
+function createOneAvatarPathDir(newAvatarFileName) {
+  let imagePath = path.join(avatarPathDir, newAvatarFileName);
+  
+  return imagePath;
+}
+
+// cree un path/database pour une image
+function createOneAvatarPathDB(newAvatarFileName) {
+  let imagePathDataBase = urlbase.urlimg + avatarPathDir + newAvatarFileName;
+
+  return imagePathDataBase;
+}
+
+function createNewNameAvatar(req) {
+  let lastname = req.body.lastname;
+  let firstname = req.body.firstname;
+   const avatarName = req.files.image.name;
+   const avatarExt = path.extname(avatarName); // Récupère l'extension avec le point inclus (ex: .jpg)
+   const timestamp = Date.now();
+   const newAvatarFileName = `avatar-${timestamp}-${lastname}-${firstname}${avatarExt}`;
+  return newAvatarFileName;
+}
+
+//creation des chemin pour stoker les images
+function createUrlForAvatar(req) {
+  
+    let tabForDB = [];
+    let tabForDir = [];
+   
+    let newName = createNewNameAvatar(req);
+    let resultDir = createOneAvatarPathDir(newName);
+    let resultDB = createOneAvatarPathDB(newName);
+    tabForDB.push(resultDB);
+    tabForDir.push(resultDir);
+
+    let objectUrlavatar = {
+      urlDir: tabForDir,
+      urlDB: tabForDB,
+    };
+    return objectUrlavatar;
+  
+}
 
 
 async function addOneAvis(req, res) {
@@ -25,19 +71,24 @@ async function addOneAvis(req, res) {
       .json({ message: "Données manquantes pour l'ajout de l'avis" });
   }
 
-  let avatarPathDataBase = null;
+  /* let avatarPathDataBase = null;
   let avatarPath = null;
 
   // Si un fichier est présent, on prépare les chemins pour l'enregistrement
   if (req.files && req.files.image) {
+
     const avatarName = req.files.image.name;
     const avatarExt = path.extname(avatarName); // Récupère l'extension avec le point inclus (ex: .jpg)
     const timestamp = Date.now();
     const avatarFileName = `avatar-${timestamp}-${lastName}-${firstName}${avatarExt}`;
 
-    avatarPathDataBase =  urlbase.urlimg + "upload/avis/avatar/" + avatarFileName;
-    avatarPath = path.join("upload/avis/avatar", avatarFileName);
-  }
+    avatarPathDataBase =  urlbase.urlimg + avatarPathDB + avatarFileName;
+    avatarPath = path.join(avatarPathDir, avatarFileName);
+  } */
+  
+  let avatarUrl = createUrlForAvatar(req);
+  let avatarUrlDB = JSON.stringify(avatarUrl.urlDB);
+  let avatarUrlDir = avatarUrl.urlDir;
 
   // Requête préparée pour insérer un avis dans la BDD
   const requeteAddAvis = `INSERT INTO avis (created_at, content, first_name, last_name, social_link, url_img) VALUES (NOW(), ?, ?, ?, ?, ?)`;
@@ -46,7 +97,7 @@ async function addOneAvis(req, res) {
     firstName,
     lastName,
     socialUrl,
-    avatarPathDataBase,
+    avatarUrlDB,
   ];
 
   try {
@@ -65,8 +116,9 @@ async function addOneAvis(req, res) {
     }
 
     // Enregistre l'avatar si un fichier a été téléchargé
-    if (avatarPath) {
-      await storeAvatar(req, avatarPath, res);
+    if (avatarUrlDir) {
+      console.log("chemin du repertoir de avatar:  " + avatarUrlDir);
+      await storeAvatar(req, avatarUrlDir[0], res);
     }
 
     return res.status(201).json({ message_status: "succes" });
@@ -74,7 +126,7 @@ async function addOneAvis(req, res) {
     console.error("Erreur lors de l'ajout de l'avis :", error);
     return res
       .status(500)
-      .json({ message: "Erreur serveur lors de l'ajout de l'avis" });
+      .json({ message: "Erreur serveur lors de l'ajout de l'avis: " + error });
   }
 }
 

@@ -206,9 +206,9 @@ async function addOneArticle(req, res) {
   }
 
   //creation d'un chemin pour enregistrer le fichier article
-  let articleName = req.files.article.name;
-  let articleExt = articleName.split(".").pop();
-  let newArticleName = titleArticle.split(masque).join("").toLowerCase();
+  let articleName = req.files.article.name; //recupere le nom du fichier html
+  let articleExt = articleName.split(".").pop(); // recupere l' extension html
+  let newArticleName = titleArticle.split(masque).join("").toLowerCase(); //creation d'un nouveau sur la base du titre de l' article
   articlePath = articlePathForDataBase(req, newArticleName, articleExt);
 
   //daptation de l' url image pour la DB
