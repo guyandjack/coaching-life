@@ -149,13 +149,13 @@ function CardAvis({ lastname, firstname, content, imgurl, id }) {
               </button>
               <div
                 id={`toaster-valid-delete-avis-${id}`}
-                className="toaster valid"
+                className="flex-column-center-center toaster valid"
               >
                 {"Avis suprimé"}
               </div>
               <div
                 id={`toaster-invalid-delete-avis-${id}`}
-                className="toaster invalid"
+                className="flex-column-center-center toaster invalid"
               >
                 {"Oups! une erreur c'est produite"}
               </div>

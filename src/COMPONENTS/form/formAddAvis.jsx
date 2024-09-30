@@ -119,7 +119,7 @@ function FormAddAvis() {
       className="flex-column-start-center form-dashboard"
       onSubmit={handleSubmit((data) => {
         fetchApi(data);
-        setImagePreviewAvatar([]);
+        //setImagePreviewAvatar([]);
       })}
       encType="multipart/form-data"
     >
@@ -262,7 +262,7 @@ function FormAddAvis() {
             })
           : null}
       </div>
-
+            <div className="relative flex-column-start-center container-btn-submit">
       <button
         id="add-avis-submit"
         className="btn-submit"
@@ -272,11 +272,12 @@ function FormAddAvis() {
       >
         {"Ajouter un avis"}
       </button>
-      <div id="toaster-valid-avis" className="toaster valid">
+      <div id="toaster-valid-avis" className="flex-column-center-center toaster valid">
         {"Avis ajouté"}
       </div>
-      <div id="toaster-invalid-avis" className="toaster invalid">
+      <div id="toaster-invalid-avis" className="flex-column-center-center toaster invalid">
         {"Oups! une erreur c'est produite"}
+        </div>
       </div>
     </form>
   );

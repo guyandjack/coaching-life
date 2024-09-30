@@ -49,20 +49,29 @@ async function deleteOneAvis(req, res) {
         .status(500)
         .json({ message_status: "Une erreur est survenue lors de la requête" });
     }
+   
     //deserialise le tableau contenent l' url de lavatar
-    result[0].url_img = JSON.parse(result[0].url_img);
-    //supression du fichier image
-    let url = result[0].url_img[0];
-    console.log("url de la reponse :" + url);
-    console.log("type de la reponse :" + typeof url);
-    try {
-      const cleanUrl = url.split(/3000[/\\]/)[1].trim();
-      console.log("cleanUrl: " + cleanUrl);
-      await fs.rm(cleanUrl);
-      console.log(`Fichier image ${cleanUrl} supprimé avec succès.`);
-    } catch (err) {
-      tabErrorDeleteFile.push(`Impossible de supprimer l'image ${url}`);
-      console.error(`Erreur lors de la suppression de l'image ${url}:`, err);
+
+    result.forEach((avis) => {
+      if (avis.url_img != null) {
+        avis.url_img = JSON.parse(avis.url_img);
+      }
+    });
+
+    if (result.url_img != null) {
+      //supression du fichier image
+      let url = result.url_img[0];
+      console.log("url de la reponse :" + url);
+      console.log("type de la reponse :" + typeof url);
+      try {
+        const cleanUrl = url.split(/3000[/\\]/)[1].trim();
+        console.log("cleanUrl: " + cleanUrl);
+        await fs.rm(cleanUrl);
+        console.log(`Fichier image ${cleanUrl} supprimé avec succès.`);
+      } catch (err) {
+        tabErrorDeleteFile.push(`Impossible de supprimer l'image ${url}`);
+        console.error(`Erreur lors de la suppression de l'image ${url}:`, err);
+      }
     }
   } catch (error) {
     console.error("Erreur lors de l'exécution de la requête :", error);

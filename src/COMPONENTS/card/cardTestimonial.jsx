@@ -3,7 +3,9 @@ import { ReactSVG } from "react-svg";
 
 import Avatar, { ConfigProvider } from "react-avatar";
 
-import {colorsRule} from "../../JAVASCRIPT/colorsrule/colorsRule.js"
+import { colorsRule } from "../../JAVASCRIPT/colorsrule/colorsRule.js"
+
+import quoteSvg from "/src/assets/design/quote.svg";
 
 //import des fonctions
 //import { getCardContentResume } from "../../UTILS/fonctions/styleLinkCardResume.js";
@@ -40,7 +42,7 @@ function CardTestimonial({
             />
           ) : (
             <Avatar
-              name={`${testimonialLastName}` + " " + `${testimonialFirstName}`}
+              name={`${testimonialFirstName}` + " " + `${testimonialLastName}`}
               round={true}
               size="100px"
               color={
@@ -82,7 +84,7 @@ function CardTestimonial({
               ? "testimonial-quote quote-color-second"
               : "testimonial-quote quote-color-fourth"
           }
-          src="/src/assets/design/quote.svg"
+          src={quoteSvg}
         />
       </div>
     </ConfigProvider>

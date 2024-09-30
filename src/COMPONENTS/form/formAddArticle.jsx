@@ -283,7 +283,7 @@ function FormAddArticle() {
           ) : null}
         </div>
       </div>
-
+<div className="relative flex-column-start-center container-btn-submit">
       <button
         id="add-article-submit"
         className="btn-submit"
@@ -293,12 +293,12 @@ function FormAddArticle() {
       >
         {"Ajouter un article"}
       </button>
-      <div id="toaster-valid-article" className="toaster valid">
+      <div id="toaster-valid-article" className="flex-column-center-center toaster valid">
         {"Article ajouté !"}
       </div>
-      <div id="toaster-invalid-article" className="toaster invalid">
+      <div id="toaster-invalid-article" className="flex-column-center-center toaster invalid">
         {"Oups! une erreur c'est produite"}
-      </div>
+      </div></div>
     </form>
   );
 }

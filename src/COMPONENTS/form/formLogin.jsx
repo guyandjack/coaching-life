@@ -193,7 +193,7 @@ function FormLogin() {
             ) : null}
           </div>
         </div>
-
+<div className="relative flex-column-start-center container-btn-submit">
         <button
           id="login-submit"
           className="btn-submit"
@@ -203,12 +203,12 @@ function FormLogin() {
         >
           {"Login"}
         </button>
-        <div id="toaster-valid-login" className="toaster valid">
+        <div id="toaster-valid-login" className="flex-column-center-center toaster valid">
           {"Utilisteur connecté"}
         </div>
-        <div id="toaster-invalid-login" className="toaster invalid">
+        <div id="toaster-invalid-login" className="flex-column-center-center toaster invalid">
           {"Oups! une erreur c'est produite"}
-        </div>
+        </div></div>
       </form>
     </div>
   );

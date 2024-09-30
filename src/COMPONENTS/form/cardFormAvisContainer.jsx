@@ -64,7 +64,14 @@ function CardAvisContainer() {
       const result = await response.json();
 
       //deserialise le tableau contenent l' url de lavatar
-      result[0].url_img = JSON.parse(result[0].url_img);
+
+      result.forEach((avis) => {
+        
+        if (avis.url_img != null) {
+          
+          avis.url_img = JSON.parse(avis.url_img);
+        }
+      })
 
       
       setArrayAvis(result);
@@ -111,7 +118,7 @@ function CardAvisContainer() {
                   lastname={card.last_name}
                   firstname={card.first_name}
                   content={card.content}
-                  imgurl={card.url_img}
+                  imgurl={card.url_img? card.url_img[0] : ""}
                   id={card.id}
                 />
               </li>

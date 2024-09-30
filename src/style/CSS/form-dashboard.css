@@ -77,6 +77,9 @@
 .form-dashboard .viewer {
   min-height: 100px;
 }
+.form-dashboard .container-btn-submit {
+  width: 100%;
+}
 .form-dashboard .btn-submit {
   position: relative;
   z-index: 1;
@@ -124,8 +127,9 @@
   position: absolute;
   z-index: 10;
   left: 50%;
-  bottom: -20px;
-  width: 50%;
+  top: 0px;
+  max-width: 350px;
+  width: 100%;
   -webkit-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -147,9 +151,9 @@
   transition: opacity 0.5s linear, transform 1s linear;
   transition: opacity 0.5s linear, transform 1s linear, -webkit-transform 1s linear;
   opacity: 1;
-  -webkit-transform: translate(-50%, 20px);
-      -ms-transform: translate(-50%, 20px);
-          transform: translate(-50%, 20px);
+  -webkit-transform: translate(-50%, -20px);
+      -ms-transform: translate(-50%, -20px);
+          transform: translate(-50%, -20px);
 }
 
 .form-dashboard::after {

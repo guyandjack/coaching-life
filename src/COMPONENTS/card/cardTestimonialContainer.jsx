@@ -33,7 +33,12 @@ const getAllAvis = async () => {
     if (response.ok) {
       const result = await response.json();
       //deserialise le tableau contenent l' url de lavatar
-      result[0].url_img = JSON.parse(result[0].url_img);
+
+      result.forEach((avis) => {
+        if (avis.url_img != null) {
+          avis.url_img = JSON.parse(avis.url_img);
+        }
+      });
       return result;
     } else {
       console.error("Failed to fetch avis: ", response.statusText);

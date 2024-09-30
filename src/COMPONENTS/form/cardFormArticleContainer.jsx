@@ -71,8 +71,13 @@ function CardArticleContainer() {
       const result = await response.json();
 
       //deserialise le tableau contenent l' url de lavatar
-      result[0].url_img = JSON.parse(result[0].url_img);
-      
+
+      result.forEach((article) => {
+        if (article.url_img != null) {
+          article.url_img = JSON.parse(article.url_img);
+        }
+      });
+
       setArrayArticle(result);
     } catch (error) {
       console.error("Erreur:", error);
@@ -118,7 +123,7 @@ function CardArticleContainer() {
           <CardArticle
             title={card.title}
             resume={card.resume}
-            imgUrl={card.url_img[0]}
+            imgUrl={card.url_img? card.url_img[0] : ""}
             id={card.id}
           />
         </li>

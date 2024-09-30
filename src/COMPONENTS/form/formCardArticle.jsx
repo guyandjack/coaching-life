@@ -124,13 +124,6 @@ function CardArticle({ title, imgUrl, resume, id }) {
         </button>
       )}
 
-      <div id={`toaster-valid-delete-article-${id}`} className="toaster valid">
-        {"Article supprimé !"}
-      </div>
-      <div id={`toaster-invalid-delete-article-${id}`} className="toaster invalid">
-        {"Oups ! Une erreur s'est produite"}
-      </div>
-
       {showConfirmDialog && (
         <div className="bg-card">
           <div className="flex-column-start-center confirm">
@@ -152,6 +145,18 @@ function CardArticle({ title, imgUrl, resume, id }) {
               >
                 Confirmer
               </button>
+              <div
+                id={`toaster-valid-delete-article-${id}`}
+                className="flex-column-center-center toaster valid"
+              >
+                {"Article supprimé !"}
+              </div>
+              <div
+                id={`toaster-invalid-delete-article-${id}`}
+                className="flex-column-center-center toaster invalid"
+              >
+                {"Oups ! Une erreur s'est produite"}
+              </div>
             </div>
           </div>
         </div>

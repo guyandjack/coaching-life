@@ -38,7 +38,7 @@ async function deleteOneArticle(req, res) {
       return res.status(404).json({ message: "Article non trouvé" });
     }
 
-    console.log("type of result.url_img[0]: " + result.url_img);
+    //deserialise le tableau contenent l' url de l' image
     result.url_img = JSON.parse(result.url_img);
 
     // Suppression des fichiers image
@@ -68,7 +68,7 @@ async function deleteOneArticle(req, res) {
     }
 
     //deserialise le tableau contenent l' url du fichier article
-   result.url_article = JSON.parse(result.url_article);
+    result.url_article = JSON.parse(result.url_article);
     // Suppression des fichiers articles
     if (Array.isArray(result.url_article) && result.url_article.length > 0) {
       await Promise.all(
@@ -95,7 +95,7 @@ async function deleteOneArticle(req, res) {
       });
     }
     // Suppression de l'article dans la base de données
-     const requeteDelete = `DELETE FROM article WHERE id = ?`;
+    const requeteDelete = `DELETE FROM article WHERE id = ?`;
     const deleteResponse = await sendRequest(connect, requeteDelete, [
       articleId,
     ]);
@@ -109,9 +109,7 @@ async function deleteOneArticle(req, res) {
     res.status(200).json({
       message_status: "succes",
       errors: tabErrorDeleteFile.length > 0 ? tabErrorDeleteFile : null,
-    }); 
-
-    
+    });
   } catch (error) {
     console.error("Erreur lors de la suppression de l'article:", error);
     res.status(500).json({

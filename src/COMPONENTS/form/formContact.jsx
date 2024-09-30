@@ -232,6 +232,7 @@ function FormContact() {
         }}
       />
       ;
+      <div className="relative flex-column-start-center container-btn-submit">
       <button
         id="login-submit"
         className="btn-submit"
@@ -241,12 +242,12 @@ function FormContact() {
       >
         Envoyer votre message
       </button>
-      <div id="toaster-valid" className="toaster valid">
+      <div id="toaster-valid" className="flex-column-center-center toaster valid">
         {"Message reçu"}
       </div>
-      <div id="toaster-invalid" className="toaster invalid">
+      <div id="toaster-invalid" className="flex-column-center-center toaster invalid">
         {"Oups! une erreur c'est produite"}
-      </div>
+      </div></div>
     </form>
   );
 }

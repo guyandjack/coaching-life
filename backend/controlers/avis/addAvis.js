@@ -71,25 +71,14 @@ async function addOneAvis(req, res) {
       .json({ message: "Données manquantes pour l'ajout de l'avis" });
   }
 
-  /* let avatarPathDataBase = null;
-  let avatarPath = null;
-
-  // Si un fichier est présent, on prépare les chemins pour l'enregistrement
-  if (req.files && req.files.image) {
-
-    const avatarName = req.files.image.name;
-    const avatarExt = path.extname(avatarName); // Récupère l'extension avec le point inclus (ex: .jpg)
-    const timestamp = Date.now();
-    const avatarFileName = `avatar-${timestamp}-${lastName}-${firstName}${avatarExt}`;
-
-    avatarPathDataBase =  urlbase.urlimg + avatarPathDB + avatarFileName;
-    avatarPath = path.join(avatarPathDir, avatarFileName);
-  } */
   
-  let avatarUrl = createUrlForAvatar(req);
-  let avatarUrlDB = JSON.stringify(avatarUrl.urlDB);
-  let avatarUrlDir = avatarUrl.urlDir;
-
+  let avatarUrlDB = null;
+  let avatarUrlDir = null;
+  if (req.files && req.files.image) {
+    let avatarUrl = createUrlForAvatar(req);
+    avatarUrlDB = JSON.stringify(avatarUrl.urlDB);
+     avatarUrlDir = avatarUrl.urlDir;
+  }
   // Requête préparée pour insérer un avis dans la BDD
   const requeteAddAvis = `INSERT INTO avis (created_at, content, first_name, last_name, social_link, url_img) VALUES (NOW(), ?, ?, ?, ?, ?)`;
   const paramRequeteAddAvis = [
@@ -116,7 +105,7 @@ async function addOneAvis(req, res) {
     }
 
     // Enregistre l'avatar si un fichier a été téléchargé
-    if (avatarUrlDir) {
+    if (avatarUrlDir != null) {
       console.log("chemin du repertoir de avatar:  " + avatarUrlDir);
       await storeAvatar(req, avatarUrlDir[0], res);
     }

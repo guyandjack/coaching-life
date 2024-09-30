@@ -253,7 +253,7 @@ function FormChangePassword() {
           ) : null}
         </div>
       </div>
-
+<div className="relative flex-column-start-center container-btn-submit">
       <button
         id="change-password-submit"
         className="btn-submit"
@@ -263,12 +263,12 @@ function FormChangePassword() {
       >
         {"Changer le mot de passe"}
       </button>
-      <div id="toaster-valid-change-password" className="toaster valid">
+      <div id="toaster-valid-change-password" className="flex-column-center-center toaster valid">
         {"Mot de passe modifié !"}
       </div>
-      <div id="toaster-invalid-change-password" className="toaster invalid">
+      <div id="toaster-invalid-change-password" className="flex-column-center-center toaster invalid">
         {"Oups! une erreur c'est produite"}
-      </div>
+      </div></div>
     </form>
   );
 }
