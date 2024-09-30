@@ -32,6 +32,8 @@ const getAllAvis = async () => {
     // Vérifie si la réponse est correcte
     if (response.ok) {
       const result = await response.json();
+      //deserialise le tableau contenent l' url de lavatar
+      result[0].url_img = JSON.parse(result[0].url_img);
       return result;
     } else {
       console.error("Failed to fetch avis: ", response.statusText);
@@ -59,6 +61,7 @@ function CardTestimonialContainer() {
       try {
         const avis = await getAllAvis(); // Attendre la récupération des avis
         setArrayAvis(avis); // Met à jour l'état avec les avis récupérés
+
       } catch (error) {
         console.error("Erreur lors de la récupération des avis:", error);
       } finally {

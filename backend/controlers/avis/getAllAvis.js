@@ -42,6 +42,7 @@ async function getAllAvis(req, res) {
 
     // Retourne les avis avec un statut HTTP 200
     connect.end();
+    //console.log("type de request resulut getallavis: " + typeof requestResult[0].url_img)
     return res.status(200).json(requestResult);
   } catch (error) {
     console.error("Erreur lors de la récupération des avis: ", error.message);

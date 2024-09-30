@@ -26,9 +26,9 @@ let urlImageDEV = process.env.URL_BASE_IMAGE_ARTICLE_DEV;
 async function deleteOneArticle(req, res) {
   const articleId = req.body.id;
 
+  let tabErrorDeleteFile = [];
   try {
     const connect = await connectToDataBase();
-    let tabErrorDeleteFile = [];
 
     // Récupération des URLs des fichiers à supprimer
     const requeteSelect = `SELECT url_img, url_article FROM article WHERE id = ?`;
@@ -37,6 +37,9 @@ async function deleteOneArticle(req, res) {
     if (!result) {
       return res.status(404).json({ message: "Article non trouvé" });
     }
+
+    console.log("type of result.url_img[0]: " + result.url_img);
+    result.url_img = JSON.parse(result.url_img);
 
     // Suppression des fichiers image
     if (Array.isArray(result.url_img) && result.url_img.length > 0) {
@@ -58,13 +61,14 @@ async function deleteOneArticle(req, res) {
     }
 
     if (tabErrorDeleteFile.length > 0) {
-      return res
-        .status(500)
-        .json({
-          message:
-            "Erreur lors de la suppression de/des images dans son repertoir",
-        });
+      return res.status(500).json({
+        message:
+          "Erreur lors de la suppression de/des images dans son repertoir",
+      });
     }
+
+    //deserialise le tableau contenent l' url du fichier article
+   result.url_article = JSON.parse(result.url_article);
     // Suppression des fichiers articles
     if (Array.isArray(result.url_article) && result.url_article.length > 0) {
       await Promise.all(
@@ -85,12 +89,13 @@ async function deleteOneArticle(req, res) {
     }
 
     if (tabErrorDeleteFile.length > 0) {
-      return res
-        .status(500)
-        .json({ message: "Erreur lors de la suppression de l' article dans son repertoir" });
+      return res.status(500).json({
+        message:
+          "Erreur lors de la suppression de l' article dans son repertoir",
+      });
     }
     // Suppression de l'article dans la base de données
-    const requeteDelete = `DELETE FROM article WHERE id = ?`;
+     const requeteDelete = `DELETE FROM article WHERE id = ?`;
     const deleteResponse = await sendRequest(connect, requeteDelete, [
       articleId,
     ]);
@@ -104,12 +109,16 @@ async function deleteOneArticle(req, res) {
     res.status(200).json({
       message_status: "succes",
       errors: tabErrorDeleteFile.length > 0 ? tabErrorDeleteFile : null,
-    });
+    }); 
+
+    
   } catch (error) {
     console.error("Erreur lors de la suppression de l'article:", error);
-    res
-      .status(500)
-      .json({ message: "Une erreur est survenue lors de la suppression" });
+    res.status(500).json({
+      message: "Une erreur est survenue lors de la suppression",
+      error: error,
+      errorTab: tabErrorDeleteFile
+    });
   }
 }
 

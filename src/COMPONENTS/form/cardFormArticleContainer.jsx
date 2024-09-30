@@ -69,6 +69,10 @@ function CardArticleContainer() {
 
       // Extraction des données JSON
       const result = await response.json();
+
+      //deserialise le tableau contenent l' url de lavatar
+      result[0].url_img = JSON.parse(result[0].url_img);
+      
       setArrayArticle(result);
     } catch (error) {
       console.error("Erreur:", error);
