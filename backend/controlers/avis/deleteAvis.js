@@ -50,17 +50,17 @@ async function deleteOneAvis(req, res) {
         .json({ message_status: "Une erreur est survenue lors de la requête" });
     }
    
-    //deserialise le tableau contenent l' url de lavatar
+    
+    console.log("avis result[0] : " + result[0]);
+    //console.log("avis result : " + result);
+    console.log("avis result url_img: " + result[0].url_img);
 
-    result.forEach((avis) => {
-      if (avis.url_img != null) {
-        avis.url_img = JSON.parse(avis.url_img);
-      }
-    });
+    if (result[0].url_img != null) {
+      //deserialise le tableau contenent l' url de l' image
+      result[0].url_img = JSON.parse(result[0].url_img);
 
-    if (result.url_img != null) {
       //supression du fichier image
-      let url = result.url_img[0];
+      let url = result[0].url_img[0];
       console.log("url de la reponse :" + url);
       console.log("type de la reponse :" + typeof url);
       try {
