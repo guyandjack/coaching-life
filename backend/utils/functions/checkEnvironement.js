@@ -53,4 +53,4 @@ function defineUrl() {
 }
 
 // eslint-disable-next-line no-undef
-module.exports = { defineUrl };
+module.exports = { defineUrl, devOrProd };

@@ -5,13 +5,16 @@ const baseProdUrl = import.meta.env.VITE_BASE_PROD_URL;
 const apiDevUrl = import.meta.env.VITE_API_DEV_URL;
 const apiProdUrl = import.meta.env.VITE_API_PROD_URL;
 
+const urlCSSDEV = import.meta.env.VITE_URL_CSS_DEV;
+const urlCSSPROD = import.meta.env.VITE_URL_CSS_PROD;
+
 const mode = import.meta.env.MODE;
 
 const result = {};
 
 // Fonction pour vérifier que les variables d'environnement sont bien chargées
 function validateEnvVariables() {
-  if (!baseDevUrl || !baseProdUrl || !apiDevUrl || !apiProdUrl || !mode) {
+  if (!baseDevUrl || !baseProdUrl || !apiDevUrl || !apiProdUrl || !mode ||!urlCSSDEV || !urlCSSPROD) {
     console.log("variable en defaut 'baseDevurl': " + baseDevUrl);
     console.log("variable en defaut 'baseProdvurl': " + baseProdUrl);
     console.log("variable en defaut 'apiDevurl': " + apiDevUrl);
@@ -54,4 +57,28 @@ function localOrProd() {
   }
 }
 
-export { localOrProd };
+
+function defineUrlCSSForArticle() {
+  let urlCSS = null;
+  try {
+    // Valider les variables d'environnement avant de continuer
+    validateEnvVariables();
+
+    if (mode !== "development") {
+     urlCSS = urlCSSPROD
+    } else {
+      urlCSS = urlCSSDEV
+    } 
+    
+
+    return urlCSS;
+  } catch (error) {
+    console.error(
+      "Erreur lors du chargement des variables d'environnement :",
+      error
+    );
+    return "undefined";
+  }
+}
+
+export { localOrProd, defineUrlCSSForArticle };

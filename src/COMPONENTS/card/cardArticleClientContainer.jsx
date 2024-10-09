@@ -1,10 +1,9 @@
 
 import { CardArticleClient } from "./cardArticleClient";
+import { Spinner } from "../../COMPONENTS/spinner/spinner.jsx";
 
-//import du contenu
+//import des hooks
 import { useEffect, useState } from "react";
-
-
 
 //import des functions
 import { localOrProd } from "../../UTILS/fonctions/testEnvironement.js";
@@ -18,10 +17,32 @@ let objectUrl = localOrProd();
 let url = objectUrl.urlApi;
 
 
+function whatLanguage() {
+  let articleLabelValue = "";
+  let htmlLang = document.querySelector("html[lang]");
+  let lang = htmlLang.getAttribute("lang");
+  switch (lang) {
+    case "fr":
+      articleLabelValue = "Voir plus...";
+      break;
+    case "en":
+      articleLabelValue = "Read more...";
+      break;
+    case "de":
+      articleLabelValue = "mehr lesen...";
+      break;
+
+    default:
+      break;
+  }
+  return articleLabelValue;
+}
+
+
  
 
 // Fonction pour récupérer les articles
-const getAllArticle = async (seteurArrayArticle) => {
+const getAllArticle = async () => {
   try {
     const response = await fetch(`${url}/article`, {
       method: "GET",
@@ -35,52 +56,80 @@ const getAllArticle = async (seteurArrayArticle) => {
     if (response.ok) {
       const result = await response.json();
       
-        seteurArrayArticle(result);
+      //deserielise les tableau de la reponse
+        result.forEach((article) => {
+          if (article.url_img != null) {
+            article.url_img = JSON.parse(article.url_img);
+          }
+          if (article.url_article != null) {
+            article.url_article = JSON.parse(article.url_article);
+          }
+        });
+        return result;
         
         
     } else {
-      // Réinitialise si la réponse n'est pas correcte
-      seteurArrayArticle([]);
-      console.error("Failed to fetch articles: ", response.statusText);
+       console.error("Failed to fetch avis: ", response.statusText);
+       return [];
     }
   } catch (error) {
     console.error("Error fetching articles: ", error);
-    seteurArrayArticle([]);
+    return [];
   }
 };
 function CardClientContainer() {
   const [arrayArticle, setArrayArticle] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
+  const [langValue, setLangValue] = useState();
 
-
-  // Utilisation de useEffect pour exécuter getAllArticle une fois que le composant est monté
   useEffect(() => {
     const fetchArticle = async () => {
-      await getAllArticle(setArrayArticle);
-    }
-    fetchArticle();
-  }, []); // Le tableau vide [] assure que l'effet se déclenche seulement au montage
+      setIsVisible(true); // Affiche le spinner
+      try {
+        const article = await getAllArticle(); // Attendre la récupération des article
+        setArrayArticle(article); // Met à jour l'état avec les article récupérés
+      } catch (error) {
+        console.error("Erreur lors de la récupération des avis:", error);
+      } finally {
+        setTimeout(() => {
+          setIsVisible(false);
+        }, 500);
+      }
+    };
 
+    fetchArticle(); // Appel de la fonction pour récupérer les article
+  }, []); // [] assure que l'effet se déclenche seulement au montage
+
+
+  useEffect(() => {
+    let langValue = whatLanguage();
+    setLangValue(langValue);
+  }, []);
   return (
-    <ul className="flex-row-space_evenly-center-wrap card-article-container">
-      {arrayArticle.length > 0 ? (
-        arrayArticle.map((card) => (
-          <li key={card.id}>
-            {" "}
-            {/* Utilisez card.id si disponible */}
-            <CardArticleClient
-              titre={card.title}
-              resume={card.resume}
-              imgUrl={card.url_img[0]}
-              articlePath={card.url_article[0]}
-              arrayImgUrl = {card.url_img}
-              id={card.id}
-            />
-          </li>
-        ))
-      ) : (
-        <div>{"Aucun article à afficher"}</div>
-      )}
-    </ul>
+    <div className="card-article-container">
+      {isVisible ? <Spinner visible={isVisible} /> : null}
+      <ul className="flex-row-space_evenly-center-wrap ">
+        {arrayArticle.length > 0 ? (
+          arrayArticle.map((card) => (
+            <li key={card.id}>
+              {" "}
+              {/* Utilisez card.id si disponible */}
+              <CardArticleClient
+                titre={card.title}
+                resume={card.resume}
+                imgUrl={card.url_img[0]}
+                articlePath={card.url_article[0]}
+                arrayImgUrl={card.url_img}
+                id={card.id}
+                lang={langValue}
+              />
+            </li>
+          ))
+        ) : (
+          <div>{"Aucun article à afficher"}</div>
+        )}
+      </ul>
+    </div>
   );
 }
 

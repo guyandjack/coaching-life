@@ -56,7 +56,7 @@ function modulo(index) {
 
 function CardTestimonialContainer() {
   const [arrayAvis, setArrayAvis] = useState([]);
-  const [isVisible, setIsVisible] = useState(false); // Spinner visible au départ
+  const [isVisible, setIsVisible] = useState(false); 
 
   
 
