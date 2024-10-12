@@ -2,19 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 //import des composants enfants
-
 import { NavBar } from "../COMPONENTS/nav/navBar.jsx";
-
 import { Footer } from "../COMPONENTS/footer/footer.jsx";
-
-import { Spinner } from "../COMPONENTS/spinner/spinner.jsx";
-
-// eslint-disable-next-line no-unused-vars
 import { Error404 } from "../COMPONENTS/error404/error404.jsx";
 
+//import du contenu des cartes
 
-//insertion des composants
-
+//insertion du menu de navigation
 const rootElement = document.getElementById("RC-nav-bar");
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
@@ -22,22 +16,17 @@ ReactDOM.createRoot(rootElement).render(
   </React.StrictMode>
 );
 
-// Rendu du composant Spinner dans le DOM
-const spinnerElement = document.getElementById("RC-spinner");
-ReactDOM.createRoot(spinnerElement).render(
-  <React.StrictMode>
-    <Spinner />
-  </React.StrictMode>
-);
-
-// Rendu du composant error-404 dans le DOM
- const error404Element = document.getElementById("RC-error-404");
-ReactDOM.createRoot(error404Element).render(
+//insertion de la page error-404
+const containerError = document.getElementById("RC-error-404");
+ReactDOM.createRoot(containerError).render(
   <React.StrictMode>
     <Error404 />
   </React.StrictMode>
-); 
+);
 
+
+
+//insertion du footer
 const footerContainer = document.getElementById("RC-footer");
 ReactDOM.createRoot(footerContainer).render(
   <React.StrictMode>

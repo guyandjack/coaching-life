@@ -37,6 +37,8 @@ app.use("/api", setHeaderSecurityCORS);
 app.use('/upload', express.static(path.join(__dirname, 'upload')));
 
 
+
+
 app.use("/api", routeApi);
 
 // eslint-disable-next-line no-undef

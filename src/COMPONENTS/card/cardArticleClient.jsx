@@ -15,11 +15,15 @@ function CardArticleClient({
   id,
   arrayImgUrl,
   lang,
+  date,
+  country,
 }) {
   function goToArticle() {
     let articleInfo = {
       id: id,
       image: arrayImgUrl,
+      created: date,
+      country: country,
     };
 
     // Sérialisation des données en JSON

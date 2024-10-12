@@ -1,8 +1,137 @@
+.articleN {
+  position: relative;
+  padding: 10px;
+}
+@media screen and (min-width: 993px) {
+  .articleN {
+    width: 50%;
+  }
+}
+
+.container-menu-side {
+  position: fixed;
+  left: 20px;
+  top: 10%;
+}
+@media screen and (min-width: 1501px) {
+  .container-menu-side {
+    left: 3%;
+  }
+}
+.container-menu-side .title-menu-side {
+  color: #1ba4e3;
+  font-size: 20px;
+}
+
+.menu-side {
+  width: 200px;
+}
+@media screen and (min-width: 1501px) {
+  .menu-side {
+    width: 250px;
+  }
+}
+.menu-side .menu-side-li {
+  list-style-type: disc;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 10px 0px;
+  border-left: 0px solid #1ba4e3;
+  -webkit-transition: border-left linear 0.2s;
+  transition: border-left linear 0.2s;
+  cursor: pointer;
+}
+.menu-side .menu-side-li:hover {
+  border-left: 5px solid #1ba4e3;
+  -webkit-transition: border-left linear 0.3s;
+  transition: border-left linear 0.3s;
+}
+.menu-side .menu-side-li-a {
+  display: block;
+  font-style: oblique;
+  color: #001747;
+  padding-left: 10px;
+}
+.menu-side .menu-side-li-retour {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #1ba4e3;
+  cursor: pointer;
+  -webkit-transition: background-color linear 0.2s;
+  transition: background-color linear 0.2s;
+}
+.menu-side .menu-side-li-retour:hover {
+  background-color: #1683b5;
+  -webkit-transition: background-color linear 0.3s;
+  transition: background-color linear 0.3s;
+}
+.menu-side .menu-side-li-retour-a {
+  display: block;
+  color: #fbfffe;
+  text-align: center;
+}
+
+.info-article {
+  margin: 10px 0px;
+}
+
+#article-date {
+  margin-right: 20px;
+}
+
+#article-read-time {
+  margin-left: 20px;
+}
+
+.split {
+  border-bottom: 1px solid #001747;
+}
+@media screen and (min-width: 993px) {
+  .split {
+    width: 70%;
+  }
+}
+
 .articleN-image {
-  width: 400px;
+  border-radius: 10px;
+  margin: 20px 0px;
+  width: 90%;
+}
+@media screen and (min-width: 993px) {
+  .articleN-image {
+    width: 70%;
+  }
+}
+
+.articleN-introduction {
+  line-height: 180%;
+  font-size: 20px;
+  font-style: italic;
+  margin: 20px 0px;
+}
+
+.h2 {
+  margin: 40px 0px;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  border-left: 5px solid #9cd008;
+  border-right: 5px solid #9cd008;
+  padding: 0px 20px;
 }
 
 .articleN-text {
   line-height: 150%;
   margin: 10px 0px;
+  opacity: 0.8;
+  font-size: 18px;
+}
+
+.definition {
+  margin: 40px 0px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 5px solid #9cd008;
+  -webkit-backdrop-filter: brightness(60%);
+          backdrop-filter: brightness(60%);
 }

@@ -2,15 +2,145 @@
 @import "../utils/mixins/responsive/responsive.scss";
 
 
+   .articleN{
+    position: relative;
+    //border: 2px solid blue;
+    padding: 10px;
+    
+     @include upper-large-screen{
+        width: 50%;
+     }
+     
+   }
+
+   .container-menu-side{
+       position: fixed;
+       left: 20px;
+       top: 10%;
+
+    @include upper-x-large-screen{
+        
+        left: 3%;
+
+    }
+        .title-menu-side {
+            color: map-get($colors-rule, second-color);
+            font-size: 20px;
+        }
+   }
+
+   .menu-side{
+    
+    width: 200px;
+    //border: 2px solid red;
+
+    @include upper-x-large-screen{
+        width: 250px;
+    }
+
+    
+    .menu-side-li{
+        list-style-type: disc;
+        height: fit-content;
+       margin: 10px 0px;
+       border-left: 0px solid map-get($colors-rule, second-color);
+       transition: border-left linear 0.2s;
+       cursor: pointer;
+       &:hover{
+           border-left: 5px solid map-get($colors-rule, second-color);
+           transition: border-left linear 0.3s;
+       }
+        
+    }
+    .menu-side-li-a{
+        display: block;
+        font-style: oblique;
+        color: map-get($colors-rule, first-color);
+        padding-left: 10px;
+        //border: 2px solid red;
+    }
+
+    .menu-side-li-retour{
+        margin-top: 20px;
+        padding: 10px;
+        background-color: map-get($colors-rule, second-color);
+        cursor: pointer;
+        transition: background-color linear 0.2s;
+        &:hover{
+            background-color: map-get($colors-rule-darked-10, second-color);
+            transition: background-color linear 0.3s;
+        }
+        
+    }
+    .menu-side-li-retour-a{
+        display: block;
+        color: map-get($colors-rule, sixth-color);
+        text-align: center;
+
+    }
+
+   }
+
+   .info-article{
+    margin: 10px 0px; 
+
+   }
+
+   #article-date{
+    margin-right: 20px;
+   }
+
+   #article-read-time{
+    margin-left: 20px;
+   }
+
+   .split{
+       border-bottom: 1px solid map-get($colors-rule, first-color);
+       @include upper-large-screen{
    
+           width: 70%;
+       }
+   }
 
     .articleN-image{
-        width: 400px;
+        border-radius: 10px;
+        margin: 20px 0px;
+        width: 90%;
+        @include upper-large-screen{
+
+            width: 70%;
+        }
+    }
+
+    .articleN-introduction{
+        line-height: 180%;
+        font-size: 20px;
+        font-style: italic;
+        margin: 20px 0px;
+    }
+
+    .h2{
+        margin: 40px 0px;
+        align-self: flex-start;
+        border-left: 5px solid map-get($colors-rule, fourth-color);
+        border-right: 5px solid map-get($colors-rule, fourth-color);
+        padding: 0px 20px;
+        
     }
 
     .articleN-text{
         line-height: 150%;
         margin: 10px 0px;
+        opacity: 0.8;
+        font-size: 18px;
+    }
+
+    .definition{
+        margin: 40px 0px;
+        padding: 10px;
+        border-radius: 10px;
+        border: 5px solid map-get($colors-rule, fourth-color);
+        backdrop-filter: brightness(60%);
     }
 
     .articleN-list{

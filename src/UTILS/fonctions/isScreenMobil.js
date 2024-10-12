@@ -13,4 +13,11 @@ function isScreenMobil() {
   return true;
 }
 
-export { isScreenMobil };
+function isXLargeScreen() {
+  if (window.innerWidth >= breakPoint.large_Max) {
+    return true;
+  }
+  return false;
+}
+
+export { isScreenMobil, isXLargeScreen };

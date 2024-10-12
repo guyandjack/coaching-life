@@ -1,4 +1,4 @@
-//function composant "NavBAr"
+/*function composant "NavBAr"*/
 //import des hooks
 import { useState, useEffect, useRef } from "react";
 

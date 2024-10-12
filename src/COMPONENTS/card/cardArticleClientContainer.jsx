@@ -18,24 +18,31 @@ let url = objectUrl.urlApi;
 
 
 function whatLanguage() {
-  let articleLabelValue = "";
+  let result = {
+    articleLabelValue: "",
+    languageCode: ""
+  }
+ 
   let htmlLang = document.querySelector("html[lang]");
   let lang = htmlLang.getAttribute("lang");
   switch (lang) {
     case "fr":
-      articleLabelValue = "Voir plus...";
+      result.articleLabelValue = "Voir plus...";
+      result.languageCode = "fr-FR"
       break;
     case "en":
-      articleLabelValue = "Read more...";
+      result.articleLabelValue = "Read more...";
+      result.languageCode = "en-EN"
       break;
     case "de":
-      articleLabelValue = "mehr lesen...";
+      result.articleLabelValue = "mehr lesen...";
+      result.languageCode = "de-DE"
       break;
 
     default:
       break;
   }
-  return articleLabelValue;
+  return result;
 }
 
 
@@ -81,6 +88,7 @@ function CardClientContainer() {
   const [arrayArticle, setArrayArticle] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
   const [langValue, setLangValue] = useState();
+  const [languageCode, setLanguageCode] = useState();
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -102,8 +110,9 @@ function CardClientContainer() {
 
 
   useEffect(() => {
-    let langValue = whatLanguage();
-    setLangValue(langValue);
+    let result = whatLanguage();
+    setLangValue(result.articleLabelValue);
+    setLanguageCode(result.languageCode);
   }, []);
   return (
     <div className="card-article-container">
@@ -122,6 +131,8 @@ function CardClientContainer() {
                 arrayImgUrl={card.url_img}
                 id={card.id}
                 lang={langValue}
+                date={card.created_at}
+                country={languageCode}
               />
             </li>
           ))

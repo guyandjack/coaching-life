@@ -1,21 +1,19 @@
 //composant error 404
 
 import Space404 from "react-space-404";
-
-import { useEffect, useState } from "react";
-
-
+//import { useEffect, useState } from "react";
 
 function Error404() {
+  //const [redirect, setRedirect] = useState(""); // Initialiser avec une chaîne vide
 
-  const [redirect, setRedirect] = useState();
+  /* useEffect(() => {
+    // Vérifier si la page précédente est disponible
+    const referrer = document.referrer || "/";
+    console.log("URL de la page précédente :", referrer);
+    setRedirect(referrer); // Utiliser "/" si aucune page précédente n'est disponible
+  }, []); */
 
-    useEffect(() => {
-      console.log("URL de la page précédente :", document.referrer);
-      setRedirect(document.referrer);
-    }, []);
-  return (
-    <Space404  href={redirect} stay />)
+  return <Space404  stay />;
 }
 
-export {Error404}
+export { Error404 };
