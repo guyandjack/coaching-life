@@ -52,7 +52,7 @@ export default defineConfig({
           __dirname,
           "public/fr/politique-de-confidencialite.html"
         ),
-        error404: path.resolve(__dirname, "public/error404.html"),
+        error404: path.resolve(__dirname, "error404.html"),
         // Ajoute d'autres entrées pour chaque page HTML si nécessaire
       },
     },

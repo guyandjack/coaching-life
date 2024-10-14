@@ -1,78 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>qui suis je</title>
-    <meta name="description" content="A propos de moi" />
-    <!-- versions multilingue -->
-    <link rel="alternate" hreflang="fr" href="../fr/qui-suis-je.html" />
-    <link rel="alternate" hreflang="de" href="../de/uber-mich.html" />
-    <!--     <link rel="alternate" hreflang="en" href="../en/about-me.html" />
- -->
-    <link rel="alternate" hreflang="x-default" href="../fr/qui-suis-je.html" />
 
-    <!-- feuilles de style -->
-    <link rel="stylesheet" href="../../style/CSS/normalize.css" />
-    <link rel="stylesheet" href="../../style/CSS/materialize.css" />
-    <link rel="stylesheet" href="../../style/CSS/shared-class.css" />
-    <link rel="stylesheet" href="../../style/CSS/qui-suis-je.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me - SO COACHING: Sophie's Journey and Values</title>
 
-    <!-- scripts JS -->
+  <meta name="description"
+    content="Discover the journey and values of Sophie, Human Resources Director and professional coach. With 15 years of experience in HR and management, she accompanies you in Sion, Valais, and throughout Switzerland, in French, German, and English, for your personal and professional development." />
 
-    <!-- <script type="module" src="../../JAVASCRIPT/page/temoignage.js"></script> -->
+  <!-- multilingual versions -->
+  <link rel="alternate" hreflang="de" href="../de/uber-mich.html" />
+  <link rel="alternate" hreflang="en" href="../en/about-me.html" />
+  <link rel="alternate" hreflang="fr" href="./qui-suis-je.html" />
+  <link rel="alternate" hreflang="x-default" href="./qui-suis-je.html" />
 
-    <!-- scripts JSX -->
-    <script type="module" src="../../JSX/qui-suis-je.jsx"></script>
-  </head>
-  <body class="body">
+  <!-- scripts JSX -->
+  <script type="module" src="../../src/JSX/qui-suis-je.jsx"></script>
+
+  <!-- scripts JS -->
+  <script type="module" src="../../src/JAVASCRIPT/page/quisuisje.js"></script>
+
+  <!-- stylesheets -->
+  <link rel="stylesheet" href="../../src/style/CSS/normalize.css" />
+  <link rel="stylesheet" href="../../src/style/CSS/shared-class.css" />
+  <link rel="stylesheet" href="../../src/style/CSS/qui-suis-je.css" />
+</head>
+
+<body class="body">
+  <div class="container-page qui-suis-je">
     <header>
       <div id="RC-nav-bar"></div>
-      <div
-        id="info-href"
-        data-fr="http://localhost:5173/src/HTML/fr/qui-suis-je.html"
-        data-en="http://localhost:5173/src/HTML/en/about-me.html"
-        data-de="http://localhost:5173/src/HTML/de/uber-mich.html"
-      ></div>
+      <div id="info-href" data-fr="" data-en="" data-de=""></div>
     </header>
 
     <main>
-      <section id="a-propos">
-        <h1>Qui suis-je?</h1>
-        <article>
-          <h2>Les valeurs auquelles je suis fidüles</h2>
-          <p>
-            "Je suis vraiment impressionnée par le professionnalisme de l'équipe
-            de Nom de Votre Entreprise. Leur réactivité et leur expertise ont
-            grandement contribué à la réussite de mon projet."
-          </p>
+      <section class="flex-column-start-center relative">
+        <div class="flex-column-center-center introduction">
+          <img class="bg-img" srcset="
+            /src/assets/image/page-qui-suis-je/500w-qui-suis-je.webp 500w,
+            /src/assets/image/page-qui-suis-je/1000w-qui-suis-je.webp 1000w,
+            /src/assets/image/page-qui-suis-je/1500w-qui-suis-je.webp 1500w,
+            /src/assets/image/page-qui-suis-je/2000w-qui-suis-je.webp 2000w " sizes="
+            (max-width: 575px) 600w,
+            (max-width: 992px) 1000w,
+            (max-width: 1500px) 1500w,
+            2000w" src="/src/assets/image/page-qui-suis-je/500w-qui-suis-je.webp" alt="woman with a half-covered face">
+          <div class="flex-column-start-center article">
+            <div class="flex-column-start-center container-card-resume">
+              <div id="RC-card-resume"></div>
+            </div>
+            <div class="flex-column-start-center container-content container-content-head">
+              <h1 class="h1 content-title content-title-head">Who am I?</h1>
+              <p class="content-text intro-text">
+                As a passionate Human Resources Director, my professional journey has allowed me to evolve in various
+                contexts, both in Switzerland and internationally. Today, I offer my knowledge and experience to support
+                you in your professional and personal development.
+              </p>
+            </div>
+          </div>
+        </div>
+        <article class="flex-column-start-center article">
+          <div class="flex-column-start-center container-img">
+            <img id="image-1" class="image" src="/src/assets/image/page-qui-suis-je/value.webp"
+              alt="values and ethics of the 'SO COACHING' company">
+          </div>
+          <div class="flex-column-start-center container-content">
+            <h2 class="h2 content-title">Values I identify with</h2>
+            <ul class="flex-row-start-center value-list">
+              <li>"Kindness"</li>
+              <li>"Listening"</li>
+              <li>"Empathy"</li>
+              <li>"Enthusiasm"</li>
+              <li>"Respect"</li>
+              <li>"Reliability"</li>
+            </ul>
+            <p class="content-text">
+              <strong>Empathy</strong>, <strong>authenticity</strong>, and <strong>collaboration</strong> are the
+              pillars
+              of my approach. I firmly believe that each individual is unique and deserves a <strong>personalized
+                approach</strong> to achieve their goals. My commitment to <strong>mental and professional
+                well-being</strong>
+              guides all my actions. My goal is to create an <strong>environment conducive to your personal and
+                professional growth</strong>.<br> I am also a member of the <a
+                href="https://genuinecommunity.co/">Genuine Women community</a>, an active and dynamic network of women
+              entrepreneurs, both in Switzerland and worldwide. Sharing common values, we regularly exchange and support
+              each other in developing our projects.
+            </p>
+          </div>
         </article>
-        <article>
-          <h2>Mon expörience professionnelle</h2>
-          <p>
-            "Grâce aux services de Nom de Votre Entreprise, j'ai pu améliorer ma
-            présence en ligne et attirer de nouveaux clients. Leur approche
-            personnalisée a fait toute la différence."
-          </p>
+
+        <article class="flex-column-start-center article">
+          <div class="flex-column-start-center container-img">
+            <img id="image-2" class="image" src="/src/assets/image/page-qui-suis-je/600x600-rh.webp"
+              alt="Networking of candidates">
+          </div>
+          <div class="flex-column-start-center container-content">
+            <h2 class="h2 content-title">My experience and expertise</h2>
+            <p class="content-text">
+              <strong>With nearly 15 years of experience</strong> in Human Resources and management, I offer a
+              <strong>tailored support</strong> to meet your specific needs. Having lived in several European countries,
+              I have gained a <strong>deep understanding of intercultural challenges</strong>. My expertise has been
+              enriched through various professional experiences, allowing me to better understand the challenges and
+              expectations of my clients. Coaching sessions are available in <strong>French</strong>,
+              <strong>German</strong>, or <strong>English</strong>.
+            </p>
+          </div>
         </article>
-        <article>
-          <h2>Mes formations</h2>
-          <p>
-            "Grâce aux services de Nom de Votre Entreprise, j'ai pu améliorer ma
-            présence en ligne et attirer de nouveaux clients. Leur approche
-            personnalisée a fait toute la différence."
-          </p>
+
+        <article class="flex-column-start-center article">
+          <div class="flex-column-start-center container-img">
+            <img id="image-3" class="image" src="/src/assets/image/page-qui-suis-je/600x600-diplome-1.webp"
+              alt="graduates’ cap">
+          </div>
+          <div class="flex-column-start-center container-content">
+            <h2 class="h2 content-title">My qualifications</h2>
+            <ul class="content-text">
+              <li class="bg-sixth">Master's degree in HR - EM Strasbourg Business School</li>
+              <li class="">Certified professional coach (ICF) - Elty Coaching Geneva</li>
+              <li class="bg-sixth">Competency assessment training - University of Geneva</li>
+              <li class="">Certified in Master Person Analysis (Master Management Zumikon) and Bochum Personality
+                Inventory (BIP) (Hogrefe Bern)</li>
+              <li class="bg-sixth">Mental Health First Aider - ENSA Zurich</li>
+              <li class="">Burnout: detection, prevention, and healing - Noburnout C. Vasey Lausanne</li>
+            </ul>
+          </div>
         </article>
+
       </section>
+      <div class="flex-column-center-center lieu-des-prestations">
+        <p>
+          <strong>My coaching services</strong> are available in Sion, Valais, and throughout Switzerland via
+          <strong>videoconference</strong>.<br> Depending on your needs, the <strong>coaching sessions</strong> can also
+          take place at your home or directly at your company.<br> The <strong>coaching sessions</strong> are available
+          in <strong>French</strong>, <strong>German</strong>, or <strong>English</strong>.
+        </p>
+      </div>
     </main>
 
     <footer>
-      <p>
-        Contactez-nous pour en savoir plus sur nos services et découvrir comment
-        nous pouvons vous aider à atteindre vos objectifs.
-      </p>
       <div id="RC-footer"></div>
-      <!-- Liens vers les réseaux sociaux, informations de contact, etc. -->
     </footer>
-  </body>
+  </div>
+</body>
+
 </html>

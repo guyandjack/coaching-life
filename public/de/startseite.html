@@ -4,103 +4,461 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title></title>
-  <meta description="" />
+  <title>SO COACHING - Karrierecoaching und HR-Beratung für Unternehmen in Sitten, Wallis.</title>
+
+  <meta name="description"
+    content="Entdecken Sie 'SO COACHING' in Sitten im Wallis, Ihren Partner zur Entfaltung des menschlichen Potenzials. Wir bieten Lebenscoaching, Karrierecoaching und Unternehmensberatung an und unterstützen Einzelpersonen und Gruppen dabei, ihre persönlichen und beruflichen Ziele mit individueller Begleitung und bewährten Techniken zu erreichen." />
+
+
+  <meta name="google-site-verification" content="1mKJhZmHOc2rJoUCcEvkWLB82L28S9l1t2KGZ6ZjDus" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/src/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/src/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/src/assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
 
   <!-- versions multilingue -->
-  <link rel="alternate" hreflang="fr" href="../../../index.html" />
-  <!-- <link rel="alternate" hreflang="de" href="./startseite.html" /> -->
-  <link rel="alternate" hreflang="en" href="../en/home.html" />
-  <link rel="alternate" hreflang="x-default" href="../../../index.html" />
+
+  <link rel="alternate" hreflang="de" href="./src/HTML/de/startseite.html" />
+  <link rel="alternate" hreflang="en" href="./src/HTML/en/home.html" />
+  <link rel="alternate" hreflang="fr" href="./index.html" />
+  <link rel="alternate" hreflang="x-default" href="./index.html" />
+
 
   <!-- feuilles de style -->
-  <link rel="stylesheet" href="../../style/CSS/normalize.css" />
-  <!-- <link rel="stylesheet" href="../../style/CSS/materialize.css" /> -->
-  <link rel="stylesheet" href="../../style/CSS/shared-class.css" />
-  <link rel="stylesheet" href="../../style/CSS/index.css" />
 
-  <!-- scripts JS -->
-  <script src="../../JAVASCRIPT/js/bin/materialize.js" defer></script>
-  <script src="../../JAVASCRIPT/page/index/index.js" defer></script>
-  <script type="module" src="../../JAVASCRIPT/page/index/index-2.js"></script>
+  <link rel="preload" href="./src/style/CSS/normalize.css" as="style"
+    onload="this.onload=null; this.rel='stylesheet' " />
+  <noscript>
+    <link rel="stylesheet" href="./src/style/CSS/normalize.css">
+  </noscript>
+  <link rel="preload" href="./src/style/CSS/shared-class.css" as="style"
+    onload="this.onload=null; this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet" href="./src/style/CSS/shared-class.css">
+  </noscript>
+  <link rel="preload" href="./src/style/CSS/index.css" as="style" onload="this.onload=null; this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet" href="./src/style/CSS/index.css">
+  </noscript>
+  <link rel="preload" href="./src/style/CSS/index-articles.css" as="style"
+    onload="this.onload=null; this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet" href="./src/style/CSS/index-articles.css">
+  </noscript>
+
 
   <!-- scripts JSX -->
-  <script type="module" src="../../JSX/index.jsx"></script>
+  <script type="module" src="./src/JSX/index.jsx"></script>
+
+  <!-- scripts JS -->
+  <script type="module" src="./src/JAVASCRIPT/page/index/index.js"></script>
+
+
 </head>
 
 <body class="body">
-  <header>
-    <div id="RC-nav-bar"></div>
-    <div id="info-href" data-fr="http://localhost:5173/index.html" data-en="http://localhost:5173/src/HTML/en/home.html"
-      data-de="http://localhost:5173/src/HTML/de/startseite.html"></div>
-  </header>
-  <main>
-    <section>
-      <div class="parallax-container">
-        <!--<div id="RC-card-container"></div>-->
-        <h1 class="h1 title-index">
-          Explorez tout votre potentiel grâce à notre coaching personnalisé
-        </h1>
-        <div class="link-container flex-column-space_evenly-start">
-          <a class="link-cta flex-column-start-start" href="/src/HTML/fr/prestation.html">
-            <h2 class="h2 text-inside">coaching de vie</h2>
-            <h3 class="h3 text-aside">Trouver votre équilibre</h3>
-          </a>
-          <a class="link-cta flex-column-start-start" href="/src/HTML/fr/prestation.html">
-            <h2 class="h2 text-inside">Coaching de carriére</h2>
-            <h3 class="h3 text-aside">Libérer votre potentiel</h3>
-          </a>
 
-          <a class="link-cta flex-column-start-start" href="/src/HTML/fr/prestation.html">
-            <h2 class="h2 text-inside">Consulting en entreprise</h2>
-            <h3 class="h3 text-aside">Management et RH</h3>
-          </a>
-        </div>
-        <div class="parallax">
-          <img src="./src/assets/hector-j-rivas-1FxMET2U5dU-unsplash.jpg" alt="structure moderne" />
-        </div>
-      </div>
-      <article class="section">
-        <!-- <div class="wave"></div> -->
-        <div class="custom-container flex-column-center-start">
-          <h4 class="h4 text-intro-title">Un coaching individuel ?</h4>
-          <p class="text-intro">
-            Découvrez l'efficacité du
-            <strong>coaching individuel et professionnel</strong>, un
-            accompagnement sur mesure conçu pour vous aider à atteindre des
-            résultats significatifs dans tous les aspects de votre vie. Que ce
-            soit pour progresser dans votre carrière, concrétiser des projets
-            personnels ou
-            <strong>optimiser la gestion de votre entreprise</strong>, je suis
-            là pour vous guider.
-          </p>
+  <div class="container-page page-index">
+    <header>
+      <div id="RC-nav-bar"></div>
+      <div id="info-href" data-fr="http://localhost:5173/index.html"
+        data-en="http://localhost:5173/src/HTML/en/home.html"
+        data-de="http://localhost:5173/src/HTML/de/startseite.html"></div>
+    </header>
+    <main>
+      <section class="relative">
+
+        <!-- <div id="RC-spinner"></div> -->
+
+
+        <div id="RC-parallax"></div>
+
+        <div class="flex-column-center-center container-citation">
+
+          <div class=" flex-column-center-start">
+            <q class="citation">
+              Erfolg bedeutet, Hindernisse in Chancen zu verwandeln.
+            </q>
+            <p class="author">- Victor Hugo -</p>
+          </div>
         </div>
 
-        <!-- <div id="wave-bottom" class="wave"></div> -->
-      </article>
-      <div class="parallax-container">
-        <div class="parallax">
-          <img src="./src/assets/phare1.jpg" alt="un phare en bordure de rivage" />
+        <div class="container-article flex-column-start-center">
+
+          <article class="flex-column-start-center article-container">
+            <a class="flex-column-start-center relative link-article"
+              href="/public/fr/prestations-de-coaching-individuel-et-en-entreprise.html">
+
+              <div class="flex-column-start-center container-image">
+                <h2 id="title-article-1" class="flex-row-center-center h2 title-article">
+                  Was ist Coaching?
+                </h2>
+                <div id="img-1" class="image-article"></div>
+                <div id="collapse-img-1" class="flex-column-space_evenly-center collapse">
+                  <img src="/src/assets/icons/jumelle.svg" class="svg-object"
+                    alt="forme epurée qui représente des jumelles pour voir loin">
+
+
+                  <p>Leistungen anzeigen</p>
+                </div>
+              </div>
+
+
+              <p class="text-1">
+                Coaching ist eine persönliche Begleitung, die Einzelpersonen und Gruppen dabei hilft, ihre persönlichen und beruflichen
+                Ziele zu erreichen.</p>
+
+              <div class="container-text-card">
+
+                <div class="flex-row-start-center container-text-2">
+                  <div class="svg-arrow-right card-1"></div>
+                  <p class="text-2">Sie beruht auf einer vertrauensvollen Beziehung zwischen Coach und Klient und nutzt verschiedene
+                  Techniken, um das Denken anzuregen
+                  und das Potenzial zu maximieren.
+
+                  </p>
+                </div>
+
+
+                <div class="flex-row-start-center container-text-3 ">
+                  <div class="svg-arrow-right card-1"></div>
+                  <p class="text-3">Der Coach erkundet, hört aktiv zu, stellt Fragen und versteht die tieferen Bedürfnisse.
+                  um
+                  diese in SMART-Ziele umzuwandeln
+                  (Spezifisch, Messbar, Angemessen, Realistisch, Zeitgebunden), ermutigt und gibt Feedback.
+
+                  </p>
+                </div>
+              </div>
+
+
+            </a>
+          </article>
+
+          <article class="flex-column-start-center article-container">
+            <a class="flex-column-start-center relative  link-article"
+              href="/public/fr/prestations-de-coaching-individuel-et-en-entreprise.html">
+
+              <div class="flex-column-start-center container-image">
+                <h2 id="title-article-2" class="flex-row-center-center h3 title-article">
+                  Für wen ist Coaching geeignet?
+                </h2>
+                <div id="img-2" class="image-article"></div>
+                <div id="collapse-img-2" class="flex-column-space_evenly-center collapse">
+                  <img src="/src/assets/icons/jumelle.svg" class="svg-object"
+                    alt="forme epurée qui représente des jumelles pour voir loin">
+
+
+                  <p>Leistungen anzeigen</p>
+                </div>
+              </div>
+
+              <p class="text-1">
+
+                Coaching richtet sich an alle Personen, die ihr persönliches Leben verbessern möchten und/oder
+                beruflich zu unterstützen.</p>
+
+
+              <div class="container-text-card">
+
+                <div class="flex-row-start-center container-text-2">
+                  <div class="svg-arrow-right card-2"></div>
+                  <p class="text-2">Ob Sie ein/e Berufstätige/r auf der Suche nach einer Karriereentwicklung sind, ein/e
+                  Unternehmer/in auf der Suche nach einem
+                  Ihre Fähigkeiten verbessern möchten oder eine Person auf der Suche nach persönlichem Wachstum sind,
+                  Coaching kann Ihnen helfen, Ihre Ziele zu erreichen und Ihr Potenzial zu entfalten.
+                  </p>
+                </div>
+
+
+                <!-- <div class="flex-row-start-center container-text-3 ">
+                   <div class="svg-arrow-right card-2"></div> 
+                  <p class="text-3">
+
+                  </p>
+                </div> -->
+              </div>
+
+            </a>
+          </article>
+          <div class="design-transition  transi-sixth-color   transi-rotate-x"></div>
+          <!-- <div class="design-transition  transi-sixth-color   transi-rotate"></div> -->
+          <article class="flex-column-start-center article-container">
+            <a class="flex-column-start-center relative  link-article"
+              href="/public/fr/prestations-de-coaching-individuel-et-en-entreprise.html">
+
+              <div class="flex-column-start-center container-image">
+                <h2 id="title-article-3" class="flex-row-center-center h3 title-article">
+                  Wann sollte man einen Coach hinzuziehen?
+                </h2>
+                <div id="img-3" class="image-article"></div>
+                <div id="collapse-img-3" class="flex-column-space_evenly-center collapse">
+                  <img src="/src/assets/icons/jumelle.svg" class="svg-object"
+                    alt="forme epurée qui représente des jumelles pour voir loin">
+
+
+                  <p>Leistungen anzeigen</p>
+                </div>
+              </div>
+
+              <p class="text-1">Einen Coach zu engagieren ist empfehlenswert, wenn Sie das Bedürfnis haben, bestimmte
+              wenn Sie bestimmte Ziele haben, aber
+              Sie haben Schwierigkeiten, diese Ziele allein zu erreichen.</p>
+
+
+              <div class="container-text-card">
+
+                <div class="flex-row-start-center container-text-2">
+                  <div class="svg-arrow-right card-3"></div>
+                  <p class="text-2">
+                    Sei es, um berufliche Hindernisse zu überwinden, Stress zu bewältigen,
+                    Ihre Führungsqualitäten zu verbessern oder
+                    einfach (wieder) ein Gleichgewicht zwischen Berufs- und Privatleben finden,
+                    ein/e Coach kann Ihnen die Unterstützung und die Werkzeuge bieten, die Sie brauchen, um voranzukommen
+                    mit Selbstvertrauen und Effizienz.
+                  </p>
+                </div>
+
+
+                <!-- <div class="flex-row-start-center container-text-3 ">
+                  <div class="svg-arrow-right card-3"></div>
+                  <p class="text-3">
+
+                  </p>
+                </div> -->
+              </div>
+
+            </a>
+          </article>
+          <article class="flex-column-start-center article-container">
+            <a class="flex-column-start-center relative link-article"
+              href="/public/fr/prestations-de-coaching-individuel-et-en-entreprise.html">
+
+              <div class="flex-column-start-center container-image">
+                <h2 id="title-article-4" class="flex-row-center-center h2 title-article">
+                  Berufsethik und Ethik
+                </h2>
+                <div id="img-4" class="image-article"></div>
+                <div id="collapse-img-4" class="flex-column-space_evenly-center collapse">
+                  <img src="/src/assets/icons/jumelle.svg" class="svg-object"
+                    alt="forme epurée qui représente des jumelles pour voir loin">
+
+
+                  <p>Leistungen anzeigen</p>
+                </div>
+              </div>
+
+
+              <p class="text-1"> Die <strong>Ethik</strong> und <strong>Ethik</strong> des Coachings nach
+                  der <strong>ICF
+                  (International Coaching
+                  Federation)</strong> beruhen auf grundlegenden Prinzipien.</p>
+                 
+
+              <div class="container-text-card">
+
+                <div class="flex-row-start-center container-text-2">
+                  <div class="svg-arrow-right card-1"></div>
+                  <p class="text-2">
+                    Dies umfasst die Achtung der <strong>Vertraulichkeit</strong>, der <strong>Integrität</strong>, der
+                    <strong>Authentizität</strong> und das Recht des Klienten, seine eigenen <strong>Ziele</strong> zu bestimmen. Der/die
+                    Coach ist mitverantwortlich dafür, einen Raum des <strong>Vertrauens</strong> und der <strong>Sicherheit</strong> für
+                    den/die Gecoachte/n zu schaffen.
+
+                  </p>
+                </div>
+
+
+                <div class="flex-row-start-center container-text-3 ">
+                  <div class="svg-arrow-right card-1"></div>
+                  <p class="text-3">
+                    <strong>ICF-Coaches</strong> verpflichten sich, hohe Standards an <strong>Professionalität</strong> und Kompetenz
+                    aufrechtzuerhalten, während sie kulturelle und individuelle Vielfalt respektieren.
+                    <!-- <a href="https://coachingfederation.org/">
+                        Vous trouverez davantage d'informations sur le site de
+                        l'ICF.
+                      </a> -->
+
+                  </p>
+                </div>
+              </div>
+
+
+            </a>
+          </article>
+
+          <!-- <div class="design-transition  transi-sixth-color   transi-rotate-x"></div> -->
+          <div class="design-transition  transi-sixth-color   transi-rotate-z"></div>
+          <article class="flex-column-start-center article-container">
+            <a class="flex-column-start-center relative  link-article"
+              href="/public/fr/prestations-de-coaching-individuel-et-en-entreprise.html">
+
+              <div class="flex-column-start-center container-image">
+                <h2 id="title-article-5" class="flex-row-center-center h3 title-article">
+                  Wie läuft eine Coachingsitzung ab?
+                </h2>
+                <div id="img-5" class="image-article"></div>
+                <div id="collapse-img-5" class="flex-column-space_evenly-center collapse">
+                  <img src="/src/assets/icons/jumelle.svg" class="svg-object"
+                    alt="forme epurée qui représente des jumelles pour voir loin">
+
+
+                  <p>Leistungen anzeigen</p>
+                </div>
+              </div>
+
+              <p class="text-1">Nach der Kontaktaufnahme sprechen wir von einer <strong>Coachingsitzung</strong>. Diese beginnt mit der Festlegung von
+              <strong>klaren und spezifischen Zielen</strong> für die Sitzung.</p>
+
+
+              <div class="container-text-card">
+
+                <div class="flex-row-start-center container-text-2">
+                  <div class="svg-arrow-right card-2"></div>
+                  <p class="text-2">Der/Die <strong>Coach hört aktiv zu</strong>, stellt Fragen und nutzt verschiedene Coaching-Werkzeuge, um die Reflexion
+                  des/der Klienten/in anzuregen. Coaching-Techniken werden eingesetzt, um <strong>Herausforderungen</strong> zu erkunden,
+                  <strong>Ressourcen</strong> zu identifizieren und einen <strong>konkreten Aktionsplan</strong> zu entwickeln.
+
+                  </p>
+                </div>
+
+
+                <div class="flex-row-start-center container-text-3 ">
+                  <div class="svg-arrow-right card-2"></div>
+                  <p class="text-3">Jede Coachingsitzung endet mit <strong>konkreten Verpflichtungen</strong> und Aufgaben, die bis zum nächsten Treffen zu
+                  erledigen sind. Diese werden immer in <strong>Co-Konstruktion</strong> zwischen dem/der Coach und dem/der Klienten/in
+                  festgelegt.
+
+                  </p>
+                </div>
+              </div>
+
+            </a>
+          </article>
+          <article class="flex-column-start-center article-container">
+            <a class="flex-column-start-center relative  link-article"
+              href="/public/fr/prestations-de-coaching-individuel-et-en-entreprise.html">
+
+              <div class="flex-column-start-center container-image">
+                <h2 id="title-article-6" class="flex-row-center-center h3 title-article">
+                  Wie ist die Interaktion zwischen dem Coach und dem Klienten?
+                </h2>
+                <div id="img-6" class="image-article"></div>
+                <div id="collapse-img-6" class="flex-column-space_evenly-center collapse">
+                  <img src="/src/assets/icons/jumelle.svg" class="svg-object"
+                    alt="forme epurée qui représente des jumelles pour voir loin">
+
+
+                  <p>Leistungen anzeigen</p>
+                </div>
+              </div>
+
+              <p class="text-1">Die <strong>Zusammenarbeit</strong> zwischen dem/der <strong>Coach</strong> und dem/der Klienten/in: Es handelt sich um
+              eine Zusammenarbeit, die auf <strong>Vertrauen</strong>, <strong>Respekt</strong> und <strong>Vertraulichkeit</strong>
+              basiert.
+              </p>
+
+
+              <div class="container-text-card">
+
+                <div class="flex-row-start-center container-text-2">
+                  <div class="svg-arrow-right card-3"></div>
+                  <p class="text-2">Der/Die Coach agiert als <strong>neutraler und wohlwollender Partner</strong> und bietet <strong>urteilsfreie
+                    Unterstützung</strong>, um dem/der Gecoachten zu helfen, seine/ihre <strong>Ziele</strong> zu erreichen.
+
+                  </p>
+                </div>
+
+
+                <div class="flex-row-start-center container-text-3 ">
+                  <div class="svg-arrow-right card-3"></div>
+                  <p class="text-3">Diese Zusammenarbeit ist auf den/die Gecoachte/n ausgerichtet und fördert die <strong>Selbstermächtigung</strong> und
+                  <strong>Verantwortungsübernahme</strong> in seinem/ihrem Weg zu <strong>Veränderung und Wachstum</strong>.
+
+                  </p>
+                </div>
+              </div>
+
+            </a>
+          </article>
+          <div class="design-transition  transi-sixth-color   transi-rotate-x"></div>
+          <!-- <div class="design-transition  transi-sixth-color   transi-rotate"></div> -->
+          <article class="flex-column-start-center article-container">
+            <a class="flex-column-start-center relative  link-article"
+              href="/public/fr/prestations-de-coaching-individuel-et-en-entreprise.html">
+
+              <div class="flex-column-start-center container-image">
+                <h2 id="title-article-7" class="flex-row-center-center h3 title-article">
+                Was ist ein wirksames Coaching?
+                </h2>
+                <div id="img-7" class="image-article"></div>
+                <div id="collapse-img-7" class="flex-column-space_evenly-center collapse">
+                  <img src="/src/assets/icons/jumelle.svg" class="svg-object"
+                    alt="forme epurée qui représente des jumelles pour voir loin">
+
+
+                  <p>Leistungen anzeigen</p>
+                </div>
+              </div>
+
+              <p class="text-1">
+                Die <strong>Effektivität</strong> eines <strong>personaliserten Coachings</strong> kann auf verschiedene Weise gemessen
+                werden.
+
+              </p>
+
+
+              <div class="container-text-card">
+
+                <div class="flex-row-start-center container-text-2">
+                  <div class="svg-arrow-right card-3"></div>
+                  <p class="text-2">
+                    Dies kann die <strong>Bewertung der Fortschritte</strong> des/der Gecoachten bei der Erreichung seiner/ihrer
+                    <strong>Ziele</strong> umfassen, die <strong>Zufriedenheit</strong> des/der Gecoachten mit dem Prozess und den
+                    Ergebnissen sowie <strong>beobachtbare Veränderungen</strong> in den Verhaltensweisen, Fähigkeiten oder Perspektiven
+                    des/der Gecoachten.
+
+                  </p>
+                </div>
+
+
+                <div class="flex-row-start-center container-text-3 ">
+                  <div class="svg-arrow-right card-3"></div>
+                  <p class="text-3">Regelmäßige <strong>Feedbacks</strong> und <strong>Statusberichte</strong> zu verschiedenen Phasen des
+                  Coaching-Prozesses ermöglichen es ebenfalls, die Effektivität zu messen und bei Bedarf die Ansätze anzupassen.
+
+                  </p>
+                </div>
+              </div>
+
+            </a>
+          </article>
+
+
+
+
+
         </div>
-      </div>
-      <article class="section">
-        <div class="custom-container flex-column-center-start">
-          <h4 class="h4 text-intro-title">Engagement</h4>
-          <p class="text-intro">
-            En tant que <strong>coach professionnel</strong> certifié par
-            l’ICF, je m’engage à vous accompagner dans la
-            <strong>réalisation de vos objectifs</strong>. Nous explorerons
-            vos ressources et vos potentiels inexploités, vous permettant
-            ainsi de prendre conscience de votre plein pouvoir pour évoluer et
-            concrétiser vos aspirations les plus profondes.
+        <div class="flex-column-center-center lieu-des-prestations">
+
+          <p>
+          <strong>Meine Coaching-Dienstleistungen</strong> finden in Sitten, im Wallis und in der ganzen Schweiz per
+          <strong>Videokonferenz</strong> statt.<br>
+          Je nach Ihren Bedürfnissen können die <strong>Coachingsitzungen</strong> auch bei Ihnen zu Hause oder direkt in Ihrem
+          Unternehmen durchgeführt werden.<br>
+          <strong>Coachingsitzungen</strong> sind auf <strong>Französisch</strong>, <strong>Deutsch</strong> oder
+          <strong>Englisch</strong> verfügbar.
           </p>
+
+
         </div>
-      </article>
-    </section>
-  </main>
-  <footer>
-    <div id="RC-footer"></div>
-  </footer>
+      </section>
+    </main>
+    <footer>
+      <div id="RC-footer"></div>
+    </footer>
+  </div>
 </body>
 
 </html>

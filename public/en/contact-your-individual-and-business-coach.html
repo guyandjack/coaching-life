@@ -1,85 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>contact</title>
-    <meta name="description" content="page contact" />
-    <!-- versions multilingue -->
-    <link
-      rel="alternate"
-      hreflang="fr"
-      href="../fr/contactez-votre-coach-individuel-et-en-entreprise.html"
-    />
-    <link
-      rel="alternate"
-      hreflang="de"
-      href="../de/kontaktieren-sie-ihren-individuellen-und-unternehmenscoach.html"
-    />
-    <!-- <link
-      rel="alternate"
-      hreflang="en"
-      href="../en/contact-your-individual-and-business-coach.html"
-    /> -->
-    <link
-      rel="alternate"
-      hreflang="x-default"
-      href="../fr/contactez-votre-coach-individuel-et-en-entreprise.html"
-    />
 
-    <!-- feuilles de style -->
-    <link rel="stylesheet" href="../../style/CSS/normalize.css" />
-    <link rel="stylesheet" href="../../style/CSS/materialize.css" />
-    <link rel="stylesheet" href="../../style/CSS/shared-class.css" />
-    <link rel="stylesheet" href="../../style/CSS/contact.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- scripts JS -->
+  <title>Contact - SO COACHING: Individual and Business Coaching</title>
 
-    <!-- <script type="module" src="../../JAVASCRIPT/page/temoignage.js"></script> -->
+  <meta name="description"
+    content="Contact SO COACHING in Sion, Valais, for personalized support. Fill out the form or send an email to info@socoaching.ch to discuss your projects." />
 
-    <!-- scripts JSX -->
-    <script type="module" src="../../JSX/contact.jsx"></script>
-  </head>
-  <body class="body">
+  <!-- versions multilingue -->
+  <!-- <link rel="alternate" hreflang="fr" href="./prestation.html" /> -->
+  <link rel="alternate" hreflang="de" href="../de/kontaktieren-sie-ihren-individuellen-und-unternehmenscoach.html" />
+  <link rel="alternate" hreflang="en" href="../en/contact-your-individual-and-business-coach.html" />
+  <link rel="alternate" hreflang="fr" href="./contactez-votre-coach-individuel-et-en-entreprise.html" />
+  <link rel="alternate" hreflang="x-default" href="./contactez-votre-coach-individuel-et-en-entreprise.html" />
+
+  <!-- scripts JSX -->
+  <script type="module" src="../../src/JSX/contact.jsx"></script>
+
+  <!-- scripts JS -->
+  <script type="module" src="../../src/JAVASCRIPT/page/contact.js"></script>
+
+
+  <!-- feuilles de style -->
+  <link rel="stylesheet" href="../../src/style/CSS/normalize.css" />
+  <link rel="stylesheet" href="../../src/style/CSS/shared-class.css" />
+  <link rel="stylesheet" href="../../src/style/CSS/contact.css" />
+
+</head>
+
+<body class="body">
+  <div class="container-page page-contact">
     <header>
       <div id="RC-nav-bar"></div>
-      <div
-        id="info-href"
-        data-fr="http://localhost:5173/src/HTML/fr/contactez-votre-coach-individuel-et-en-entreprise.html"
-        data-en="http://localhost:5173/src/HTML/en/contact-your-individual-and-business-coach.html"
-        data-de="http://localhost:5173/src/HTML/de/kontaktieren-sie-ihren-individuellen-und-unternehmenscoach.html"
-      ></div>
+      <div id="info-href" data-fr="" data-en="" data-de="">
+      </div>
     </header>
 
     <main>
-      <section id="contact">
-        <h1>
-          Contactez moi et ensenmble creons un dialogue basé sur la confiance
-        </h1>
-        <article>
-          <h2>
-            Je vous remercie de l’intérêt que vous portez à une future
-            collaboration. J’aimerais en savoir plus sur la façon dont je peux
-            vous aider, vous ou votre entreprise.
-          </h2>
+      <section id="flex-column-start-center relative">
+        <!-- <div id="RC-spinner"></div> -->
+        <div class="contact-container-title">
+          <h1 class="h1 contact-title">
+            Contact your individual and business coach in Sion, Valais.<br> Together, let's create a dialogue based on trust.</h1>
+          <img srcset="
+                  /src/assets/image/page-contact/500w-contact.webp 500w,
+                  /src/assets/image/page-contact/1000w-contact.webp 1000w,
+                  /src/assets/image/page-contact/1500w-contact.webp 1500w,
+                  /src/assets/image/page-contact/2000w-contact.webp 2000w,
+                  " sizes="
+                  (max-width: 575px) 500px, 
+                  (max-width: 993px) 900px, 
+                  (max-width: 1500px) 1500px, 
+                  (max-width: 2000px) 2000px, 
+                   " src="/src/assets/image/page-contact/500w-contact.webp" class="contact-img-title"
+            alt="des mains sur un clavier d'ordinateur">
 
-          <p>
-            Pour cela, vous pouvez remplir le formulaire ci-dessous ou en
-            m’envoyer un courriel directement à "sophie.chevrolet@gmail.com"
-          </p>
 
-          <p>
-            Vous pouvez également m’appeler au +41 789 56 56 pour discuter de
-            vos projets avec moi.
-          </p>
-        </article>
-        <form></form>
+        </div>
+        <div class="flex-column-start-center container-form-article">
+
+          <article class="flex-column-start-start article">
+            <h2 class="article-intro">
+              Thank you for your interest in a future collaboration. I would like to learn more about how I can assist you or your
+              business.
+            </h2>
+            
+            <p class="article-intro">
+              To do so, you can fill out the form below or send me an email directly at <a class="article-intro-a"
+                href="mailto:info@socoaching.ch">"info@socoaching.ch"</a>
+            </p>
+
+
+            <!-- <p class="article-intro">
+              Vous pouvez également m'appeler au +41 78 965 15 31 pour discuter de
+              vos projets avec moi.
+            </p> -->
+          </article>
+          <div id="RC-form-contact" class="flex-column-start-center container-form"></div>
+        </div>
+
       </section>
+      <div class="flex-column-center-center lieu-des-prestations">
+
+        <p>
+          <strong>My coaching services</strong> take place in Sion, Valais, and across Switzerland via
+          <strong>videoconferencing</strong>.<br>
+          Depending on your needs, <strong>coaching sessions</strong> can also be held at your home or directly at your
+          workplace.<br>
+          <strong>Coaching sessions</strong> are available in <strong>French</strong>, <strong>German</strong>, or
+          <strong>English</strong>.
+        </p>
+
+
+      </div>
     </main>
 
     <footer>
       <div id="RC-footer"></div>
       <!-- Liens vers les réseaux sociaux, informations de contact, etc. -->
     </footer>
-  </body>
+  </div>
+</body>
+
 </html>

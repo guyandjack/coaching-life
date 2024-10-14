@@ -1,85 +1,109 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>contact</title>
-    <meta name="description" content="page contact" />
-    <!-- versions multilingue -->
-    <link
-      rel="alternate"
-      hreflang="fr"
-      href="../fr/contactez-votre-coach-individuel-et-en-entreprise.html"
-    />
-    <!-- <link
-      rel="alternate"
-      hreflang="de"
-      href="../de/kontaktieren-sie-ihren-individuellen-und-unternehmenscoach.html"
-    /> -->
-    <link
-      rel="alternate"
-      hreflang="en"
-      href="../en/contact-your-individual-and-business-coach.html"
-    />
-    <link
-      rel="alternate"
-      hreflang="x-default"
-      href="../fr/contactez-votre-coach-individuel-et-en-entreprise.html"
-    />
 
-    <!-- feuilles de style -->
-    <link rel="stylesheet" href="../../style/CSS/normalize.css" />
-    <link rel="stylesheet" href="../../style/CSS/materialize.css" />
-    <link rel="stylesheet" href="../../style/CSS/shared-class.css" />
-    <link rel="stylesheet" href="../../style/CSS/contact.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- scripts JS -->
+  <title>Kontakt - SO COACHING: Individuelles Coaching und Business-Coaching</title>
 
-    <!-- <script type="module" src="../../JAVASCRIPT/page/temoignage.js"></script> -->
+  <meta name="description"
+    content="Kontaktieren Sie SO COACHING in Sitten, Wallis, für eine persönliche Begleitung. Füllen Sie das Formular aus oder senden Sie eine E-Mail an info@socoaching.ch, um Ihre Projekte zu besprechen." />
 
-    <!-- scripts JSX -->
-    <script type="module" src="../../JSX/contact.jsx"></script>
-  </head>
-  <body class="body">
+  <!-- versions multilingue -->
+  <!-- <link rel="alternate" hreflang="fr" href="./prestation.html" /> -->
+  <link rel="alternate" hreflang="de" href="../de/kontaktieren-sie-ihren-individuellen-und-unternehmenscoach.html" />
+  <link rel="alternate" hreflang="en" href="../en/contact-your-individual-and-business-coach.html" />
+  <link rel="alternate" hreflang="fr" href="./contactez-votre-coach-individuel-et-en-entreprise.html" />
+  <link rel="alternate" hreflang="x-default" href="./contactez-votre-coach-individuel-et-en-entreprise.html" />
+
+  <!-- scripts JSX -->
+  <script type="module" src="../../src/JSX/contact.jsx"></script>
+
+  <!-- scripts JS -->
+  <script type="module" src="../../src/JAVASCRIPT/page/contact.js"></script>
+
+
+  <!-- feuilles de style -->
+  <link rel="stylesheet" href="../../src/style/CSS/normalize.css" />
+  <link rel="stylesheet" href="../../src/style/CSS/shared-class.css" />
+  <link rel="stylesheet" href="../../src/style/CSS/contact.css" />
+
+</head>
+
+<body class="body">
+  <div class="container-page page-contact">
     <header>
       <div id="RC-nav-bar"></div>
-      <div
-        id="info-href"
-        data-fr="http://localhost:5173/src/HTML/fr/contactez-votre-coach-individuel-et-en-entreprise.html"
-        data-en="http://localhost:5173/src/HTML/en/contact-your-individual-and-business-coach.html"
-        data-de="http://localhost:5173/src/HTML/de/kontaktieren-sie-ihren-individuellen-und-unternehmenscoach.html"
-      ></div>
+      <div id="info-href" data-fr="" data-en="" data-de="">
+      </div>
     </header>
 
     <main>
-      <section id="contact">
-        <h1>
-          Contactez moi et ensenmble creons un dialogue basé sur la confiance
-        </h1>
-        <article>
-          <h2>
-            Je vous remercie de l’intérêt que vous portez à une future
-            collaboration. J’aimerais en savoir plus sur la façon dont je peux
-            vous aider, vous ou votre entreprise.
-          </h2>
+      <section id="flex-column-start-center relative">
+        <!-- <div id="RC-spinner"></div> -->
+        <div class="contact-container-title">
+          <h1 class="h1 contact-title">
+          Kontaktieren Sie Ihren individuellen Coach und Business-Coach in Sitten, Wallis.<br> Lassen Sie uns gemeinsam einen
+          Dialog aufbauen, der auf Vertrauen basiert.</h1>
+          <img srcset="
+                  /src/assets/image/page-contact/500w-contact.webp 500w,
+                  /src/assets/image/page-contact/1000w-contact.webp 1000w,
+                  /src/assets/image/page-contact/1500w-contact.webp 1500w,
+                  /src/assets/image/page-contact/2000w-contact.webp 2000w,
+                  " sizes="
+                  (max-width: 575px) 500px, 
+                  (max-width: 993px) 900px, 
+                  (max-width: 1500px) 1500px, 
+                  (max-width: 2000px) 2000px, 
+                   " src="/src/assets/image/page-contact/500w-contact.webp" class="contact-img-title"
+            alt="des mains sur un clavier d'ordinateur">
 
-          <p>
-            Pour cela, vous pouvez remplir le formulaire ci-dessous ou en
-            m’envoyer un courriel directement à "sophie.chevrolet@gmail.com"
-          </p>
 
-          <p>
-            Vous pouvez également m’appeler au +41 789 56 56 pour discuter de
-            vos projets avec moi.
-          </p>
-        </article>
-        <form></form>
+        </div>
+        <div class="flex-column-start-center container-form-article">
+
+          <article class="flex-column-start-start article">
+            <h2 class="article-intro">
+              Vielen Dank für Ihr Interesse an einer zukünftigen Zusammenarbeit. Ich würde gerne mehr darüber erfahren, wie ich
+              Ihnen oder Ihrem Unternehmen helfen kann.
+            </h2>
+            
+            <p class="article-intro">
+              Dazu können Sie das untenstehende Formular ausfüllen oder mir direkt eine E-Mail an <a class="article-intro-a"
+                href="mailto:info@socoaching.ch">"info@socoaching.ch"</a> senden.
+            </p>
+
+
+            <!-- <p class="article-intro">
+              Vous pouvez également m'appeler au +41 78 965 15 31 pour discuter de
+              vos projets avec moi.
+            </p> -->
+          </article>
+          <div id="RC-form-contact" class="flex-column-start-center container-form"></div>
+        </div>
+
       </section>
+      <div class="flex-column-center-center lieu-des-prestations">
+
+        <p>
+          <strong>Meine Coaching-Dienstleistungen</strong> finden in Sitten, im Wallis und in der ganzen Schweiz per
+          <strong>Videokonferenz</strong> statt.<br>
+          Je nach Ihren Bedürfnissen können die <strong>Coachingsitzungen</strong> auch bei Ihnen zu Hause oder direkt in Ihrem
+          Unternehmen durchgeführt werden.<br>
+          <strong>Coachingsitzungen</strong> sind auf <strong>Französisch</strong>, <strong>Deutsch</strong> oder
+          <strong>Englisch</strong> verfügbar.
+        </p>
+
+
+      </div>
     </main>
 
     <footer>
       <div id="RC-footer"></div>
       <!-- Liens vers les réseaux sociaux, informations de contact, etc. -->
     </footer>
-  </body>
+  </div>
+</body>
+
 </html>
