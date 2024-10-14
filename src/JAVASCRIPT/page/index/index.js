@@ -13,13 +13,13 @@ const refLangDefault = document.querySelector("link[hreflang='x-default']");
 let objectUrl = localOrProd();
 let url = objectUrl.url;
 
-divData.setAttribute("data-de", `${url}/de/startseite.html`);
-divData.setAttribute("data-en", `${url}/en/home.html`);
+divData.setAttribute("data-de", `${url}/public/de/startseite.html`);
+divData.setAttribute("data-en", `${url}/public/en/home.html`);
 divData.setAttribute("data-fr", `${url}/index.html`);
 
-refLangDE.setAttribute("href", `${url}/de/startseite.html`);
-refLangEN.setAttribute("href", `${url}/en/home.html`);
-refLangFR.setAttribute("href", `${url}index.html`);
+refLangDE.setAttribute("href", `${url}/public/de/startseite.html`);
+refLangEN.setAttribute("href", `${url}/public/en/home.html`);
+refLangFR.setAttribute("href", `${url}/index.html`);
 refLangDefault.setAttribute("href", `${url}/index.html`);
 
 

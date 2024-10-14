@@ -440,32 +440,32 @@ let url = objectUrl.url;
 
 divData.setAttribute(
   "data-de",
-  `${url}/de/dienstleistungen-des-individuellen-und-unternehmens-coachings.html`
+  `${url}/public/de/dienstleistungen-des-individuellen-und-unternehmens-coachings.html`
 );
 divData.setAttribute(
   "data-en",
-  `${url}/en/services-of-individual-and-business-coaching.html`
+  `${url}/public/en/services-of-individual-and-business-coaching.html`
 );
 divData.setAttribute(
   "data-fr",
-  `${url}/fr/prestations-de-coaching-individuel-et-en-entreprise.html`
+  `${url}/public/fr/prestations-de-coaching-individuel-et-en-entreprise.html`
 );
 
 refLangDE.setAttribute(
   "href",
-  `${url}/de/dienstleistungen-des-individuellen-und-unternehmens-coachings.html`
+  `${url}/public/de/dienstleistungen-des-individuellen-und-unternehmens-coachings.html`
 );
 refLangEN.setAttribute(
   "href",
-  `${url}/en/services-of-individual-and-business-coaching.html`
+  `${url}/public/en/services-of-individual-and-business-coaching.html`
 );
 refLangFR.setAttribute(
   "href",
-  `${url}/fr/prestations-de-coaching-individuel-et-en-entreprise.html`
+  `${url}/public/fr/prestations-de-coaching-individuel-et-en-entreprise.html`
 );
 refLangDefault.setAttribute(
   "href",
-  `${url}/fr/prestations-de-coaching-individuel-et-en-entreprise.html`
+  `${url}/public/fr/prestations-de-coaching-individuel-et-en-entreprise.html`
 );
 
 displayContent();

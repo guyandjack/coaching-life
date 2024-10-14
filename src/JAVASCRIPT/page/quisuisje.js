@@ -10,12 +10,12 @@ const refLangDefault = document.querySelector("link[hreflang='x-default']");
 let objectUrl = localOrProd();
 let url = objectUrl.url;
 
-divData.setAttribute("data-de", `${url}/de/uber-mich.html`);
-divData.setAttribute("data-en", `${url}/en/about-me.html`);
-divData.setAttribute("data-fr", `${url}/fr/qui-suis-je.html`);
+divData.setAttribute("data-de", `${url}/public/de/uber-mich.html`);
+divData.setAttribute("data-en", `${url}/public/en/about-me.html`);
+divData.setAttribute("data-fr", `${url}/public/fr/qui-suis-je.html`);
 
-refLangDE.setAttribute("href", `${url}/de/uber-mich.html`);
-refLangEN.setAttribute("href", `${url}/en/about-me.htmll`);
-refLangFR.setAttribute("href", `${url}/fr/qui-suis-je.html`);
-refLangDefault.setAttribute("href", `${url}/fr/qui-suis-je.html`);
+refLangDE.setAttribute("href", `${url}/public/de/uber-mich.html`);
+refLangEN.setAttribute("href", `${url}/public/en/about-me.htmll`);
+refLangFR.setAttribute("href", `${url}/public/fr/qui-suis-je.html`);
+refLangDefault.setAttribute("href", `${url}/public/fr/qui-suis-je.html`);
 
