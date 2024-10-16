@@ -178,9 +178,9 @@
   opacity: 0;
   max-height: 0px;
   overflow: hidden;
-  -webkit-transform: translateX(100%);
-      -ms-transform: translateX(100%);
-          transform: translateX(100%);
+  -webkit-transform: translateX(150%);
+      -ms-transform: translateX(150%);
+          transform: translateX(150%);
   -webkit-transition: opacity 150ms ease-in-out 0.1s, max-height 0.2s ease-in-out 0.2s, padding 0.2s ease-in-out 0.2s, -webkit-transform 0.2s ease-in-out 0s;
   transition: opacity 150ms ease-in-out 0.1s, max-height 0.2s ease-in-out 0.2s, padding 0.2s ease-in-out 0.2s, -webkit-transform 0.2s ease-in-out 0s;
   transition: opacity 150ms ease-in-out 0.1s, transform 0.2s ease-in-out 0s, max-height 0.2s ease-in-out 0.2s, padding 0.2s ease-in-out 0.2s;

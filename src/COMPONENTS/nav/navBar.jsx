@@ -195,7 +195,7 @@ function NavBar() {
               </li>
             );
           })}
-          {/* <li className="">
+          { <li className="">
             <ul className="burger-menu-lang flex-row-start-center">
               <li className="burger-menu-lang-li flex-row-center-center">
                 <a className="burger-menu-lang-li-a" href={href_de.current}>
@@ -213,7 +213,7 @@ function NavBar() {
                 </a>
               </li>
             </ul>
-          </li> */}
+          </li> }
         </ul>
       </div>
     </div>
