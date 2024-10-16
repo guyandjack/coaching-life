@@ -1,11 +1,13 @@
 import { localOrProd } from "../../../UTILS/fonctions/testEnvironement";
 
-let url = localOrProd();
+let objectUrl = localOrProd();
+let url = objectUrl.url;
+
 
 let footerContentEN = [
   {
     text: "Legal Notice",
-    href: `${url}/public/en/legal-notice.html`,
+    href: `${url}/public/en/legals-notices.html`,
   },
 
   {
@@ -14,7 +16,7 @@ let footerContentEN = [
   },
   {
     text: "Terms of Use",
-    href: `${url}/public/en/terms-of-use.html`,
+    href: `${url}/public/en/general-terms-of-use.html`,
   },
 ];
 

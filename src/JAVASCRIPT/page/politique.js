@@ -9,5 +9,5 @@ divData.setAttribute(
   "data-fr",
   `${url}/public/fr/politique-de-confidancialite.html`
 );
-divData.setAttribute("data-de", `${url}/public/de/`);
-divData.setAttribute("data-en", `${url}/public/en/`);
+divData.setAttribute("data-de", `${url}/public/de/geheimhaltungspolitik.html`);
+divData.setAttribute("data-en", `${url}/public/en/privacy-policy.html`);

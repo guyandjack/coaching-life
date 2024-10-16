@@ -1,20 +1,22 @@
 import { localOrProd } from "../../../UTILS/fonctions/testEnvironement";
 
-let url = localOrProd();
+let objectUrl = localOrProd();
+let url = objectUrl.url;
+
 
 let footerContentDE = [
   {
     text: "Impressum",
-    href: `${url}/de/impressum.html`,
+    href: `${url}/public/de/impressum.html`,
   },
 
   {
-    text: "Datenschutzrichtlinie",
-    href: `${url}/de/datenschutzrichtlinie.html`,
+    text: "Geheimhaltungspolitik",
+    href: `${url}/public/de/geheimhaltungspolitik.html`,
   },
   {
-    text: "Nutzungsbedingungen",
-    href: `${url}/de/nutzungsbedingungen.html`,
+    text: "Allgemeine Nutzungsbedingungen",
+    href: `${url}/public/de/allgemeine-nutzungsbedingungen.html`,
   },
 ];
 
