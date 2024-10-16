@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { breakPoint } from "../../UTILS/breakpoint/break_point.js";
 
 //import des composants enfants
-import { BannerIndex } from "../banner/index-banner";
+import { BannerIndex } from "../banner/index-banner.jsx";
 
 //import parallax500w from "../../assets/image/page-index/500w-image-index.webp";
 //import parallax1000w from "../../assets/image/page-index/1000w-image-index.webp";
@@ -19,9 +19,20 @@ import { BannerIndex } from "../banner/index-banner";
 //import parallax2000w from "../../assets/image/page-index/2000w-parallax.jpg";
 import parallax2000w from "../../assets/image/page-index/image-index.webp";
 
+//import des fonctions
+
+
 import "../../style/CSS/parallax.css";
 
 //declaration des function
+
+function getLanguage() {
+  let htmlElement = document.querySelector("html");
+  let lang = htmlElement.getAttribute("lang");
+  return lang
+}
+
+
 function changeRatio(displayWidth) {
   const { large_Max, x_large_Max, small_Max, medium_Max } = breakPoint;
 
@@ -40,6 +51,13 @@ function updateRatio(seteur) {
 
 function Parallax() {
   const [ratio, setRatio] = useState();
+  const [language, setLanguage] = useState();
+
+  useEffect(() => {
+    let lang = getLanguage();
+    setLanguage(lang);
+  }, []);
+
 
   useEffect(() => {
     updateRatio(setRatio);
@@ -73,7 +91,7 @@ function Parallax() {
             alt="hommes et femmes d'affaire qui font des sauts de joi sur un fond de building et de couché de soleil"
           />
         </ParallaxBannerLayer>
-         <BannerIndex /> 
+         <BannerIndex lang={language} /> 
       </ParallaxBanner>
     </ParallaxProvider>
   );
