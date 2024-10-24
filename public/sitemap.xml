@@ -1,52 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>https://www.socoaching.ch/en/general-terms-of-use.html</loc>
+		<loc>https://www.socoaching.ch/de/geheimhaltungspolitik.html</loc>
 		<priority>0.33</priority>
 		<lastmod>2024-10-16</lastmod>
 	</url>
 	<url>
-		<loc>https://www.socoaching.ch/en/legals-notices.html</loc>
+		<loc>https://www.socoaching.ch/de/allgemeine-nutzungsbedingungen.html</loc>
 		<priority>0.33</priority>
-		<lastmod>2024-10-16</lastmod>
+		<lastmod>2024-10-18</lastmod>
 	</url>
 	<url>
-		<loc>https://www.socoaching.ch/en/privacy-policy.html</loc>
-		<priority>0.33</priority>
-		<lastmod>2024-10-14</lastmod>
-	</url>
-	<url>
-		<loc>https://www.socoaching.ch/de/dienstleistungen-des-individuellen-und-unternehmens-coachings.html</loc>
-		<priority>0.33</priority>
-		<lastmod>2024-10-16</lastmod>
-	</url>
-	<url>
-		<loc>https://www.socoaching.ch/de/impressum.html</loc>
-		<priority>0.33</priority>
-		<lastmod>2024-10-16</lastmod>
-	</url>
-	<url>
-		<loc>https://www.socoaching.ch/de/kontaktieren-sie-ihren-individuellen-und-unternehmenscoach.html</loc>
+		<loc>https://www.socoaching.ch/fr/article-coaching-developpement-personel-entreprise.html</loc>
 		<priority>0.33</priority>
 		<lastmod>2024-10-13</lastmod>
 	</url>
 	<url>
-		<loc>https://www.socoaching.ch/de/kundenbewertungen.html</loc>
+		<loc>https://www.socoaching.ch/fr/politique-de-confidencialite.html</loc>
 		<priority>0.33</priority>
 		<lastmod>2024-10-14</lastmod>
 	</url>
 	<url>
-		<loc>https://www.socoaching.ch/de/startseite.html</loc>
+		<loc>https://www.socoaching.ch/index.html</loc>
+		<priority>0.33</priority>
+		<lastmod>2024-08-05</lastmod>
+	</url>
+	<url>
+		<loc>https://www.socoaching.ch/fr/temoignages-clients.html</loc>
+		<priority>0.33</priority>
+		<lastmod>2024-09-21</lastmod>
+	</url>
+	<url>
+		<loc>https://www.socoaching.ch/fr/qui-suis-je.html</loc>
+		<priority>0.33</priority>
+		<lastmod>2024-10-06</lastmod>
+	</url>
+	<url>
+		<loc>https://www.socoaching.ch/fr/prestations-de-coaching-individuel-et-en-entreprise.html</loc>
 		<priority>0.33</priority>
 		<lastmod>2024-10-14</lastmod>
 	</url>
 	<url>
-		<loc>https://www.socoaching.ch/de/uber-mich.html</loc>
+		<loc>https://www.socoaching.ch/fr/mentions-legales.html</loc>
+		<priority>0.33</priority>
+		<lastmod>2024-09-28</lastmod>
+	</url>
+	<url>
+		<loc>https://www.socoaching.ch/fr/login.html</loc>
+		<priority>0.33</priority>
+		<lastmod>2024-09-08</lastmod>
+	</url>
+	<url>
+		<loc>https://www.socoaching.ch/fr/contactez-votre-coach-individuel-et-en-entreprise.html</loc>
+		<priority>0.33</priority>
+		<lastmod>2024-10-09</lastmod>
+	</url>
+	<url>
+		<loc>https://www.socoaching.ch/fr/conditions-generales-utilisation.html</loc>
+		<priority>0.33</priority>
+		<lastmod>2024-09-16</lastmod>
+	</url>
+	<url>
+		<loc>https://www.socoaching.ch/en/services-of-individual-and-business-coaching.html</loc>
+		<priority>0.33</priority>
+		<lastmod>2024-10-16</lastmod>
+	</url>
+	<url>
+		<loc>https://www.socoaching.ch/en/home.html</loc>
 		<priority>0.33</priority>
 		<lastmod>2024-10-14</lastmod>
 	</url>
 	<url>
-		<loc>https://www.socoaching.ch/en/about-me.html</loc>
+		<loc>https://www.socoaching.ch/en/customer-testimonials.html</loc>
 		<priority>0.33</priority>
 		<lastmod>2024-10-14</lastmod>
 	</url>
@@ -56,78 +81,53 @@
 		<lastmod>2024-10-13</lastmod>
 	</url>
 	<url>
-		<loc>https://www.socoaching.ch/en/customer-testimonials.html</loc>
+		<loc>https://www.socoaching.ch/en/about-me.html</loc>
 		<priority>0.33</priority>
 		<lastmod>2024-10-14</lastmod>
 	</url>
 	<url>
-		<loc>https://www.socoaching.ch/en/home.html</loc>
+		<loc>https://www.socoaching.ch/de/uber-mich.html</loc>
 		<priority>0.33</priority>
 		<lastmod>2024-10-14</lastmod>
 	</url>
 	<url>
-		<loc>https://www.socoaching.ch/en/services-of-individual-and-business-coaching.html</loc>
-		<priority>0.33</priority>
-		<lastmod>2024-10-16</lastmod>
-	</url>
-	<url>
-		<loc>https://www.socoaching.ch/fr/conditions-generales-utilisation.html</loc>
-		<priority>0.33</priority>
-		<lastmod>2024-09-16</lastmod>
-	</url>
-	<url>
-		<loc>https://www.socoaching.ch/fr/contactez-votre-coach-individuel-et-en-entreprise.html</loc>
-		<priority>0.33</priority>
-		<lastmod>2024-10-09</lastmod>
-	</url>
-	<url>
-		<loc>https://www.socoaching.ch/fr/login.html</loc>
-		<priority>0.33</priority>
-		<lastmod>2024-09-08</lastmod>
-	</url>
-	<url>
-		<loc>https://www.socoaching.ch/fr/mentions-legales.html</loc>
-		<priority>0.33</priority>
-		<lastmod>2024-09-28</lastmod>
-	</url>
-	<url>
-		<loc>https://www.socoaching.ch/fr/prestations-de-coaching-individuel-et-en-entreprise.html</loc>
+		<loc>https://www.socoaching.ch/de/startseite.html</loc>
 		<priority>0.33</priority>
 		<lastmod>2024-10-14</lastmod>
 	</url>
 	<url>
-		<loc>https://www.socoaching.ch/fr/qui-suis-je.html</loc>
-		<priority>0.33</priority>
-		<lastmod>2024-10-06</lastmod>
-	</url>
-	<url>
-		<loc>https://www.socoaching.ch/fr/temoignages-clients.html</loc>
-		<priority>0.33</priority>
-		<lastmod>2024-09-21</lastmod>
-	</url>
-	<url>
-		<loc>https://www.socoaching.ch/index.html</loc>
-		<priority>0.33</priority>
-		<lastmod>2024-08-05</lastmod>
-	</url>
-	<url>
-		<loc>https://www.socoaching.ch/fr/politique-de-confidencialite.html</loc>
+		<loc>https://www.socoaching.ch/de/kundenbewertungen.html</loc>
 		<priority>0.33</priority>
 		<lastmod>2024-10-14</lastmod>
 	</url>
 	<url>
-		<loc>https://www.socoaching.ch/fr/article-coaching-developpement-personel-entreprise.html</loc>
+		<loc>https://www.socoaching.ch/de/kontaktieren-sie-ihren-individuellen-und-unternehmenscoach.html</loc>
 		<priority>0.33</priority>
 		<lastmod>2024-10-13</lastmod>
 	</url>
 	<url>
-		<loc>https://www.socoaching.ch/de/allgemeine-nutzungsbedingungen.html</loc>
+		<loc>https://www.socoaching.ch/de/impressum.html</loc>
+		<priority>0.33</priority>
+		<lastmod>2024-10-18</lastmod>
+	</url>
+	<url>
+		<loc>https://www.socoaching.ch/de/dienstleistungen-des-individuellen-und-unternehmens-coachings.html</loc>
+		<priority>0.33</priority>
+		<lastmod>2024-10-16</lastmod>
+	</url>
+	<url>
+		<loc>https://www.socoaching.ch/en/privacy-policy.html</loc>
 		<priority>0.33</priority>
 		<lastmod>2024-10-14</lastmod>
 	</url>
 	<url>
-		<loc>https://www.socoaching.ch/de/geheimhaltungspolitik.html</loc>
+		<loc>https://www.socoaching.ch/en/legals-notices.html</loc>
 		<priority>0.33</priority>
-		<lastmod>2024-10-16</lastmod>
+		<lastmod>2024-10-18</lastmod>
+	</url>
+	<url>
+		<loc>https://www.socoaching.ch/en/general-terms-of-use.html</loc>
+		<priority>0.33</priority>
+		<lastmod>2024-10-18</lastmod>
 	</url>
 </urlset>

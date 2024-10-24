@@ -1,24 +1,24 @@
 /*function composant "NavBAr"*/
 //import des hooks
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 //import des composants enfants
 import { ReactSVG } from "react-svg";
 
 //import des fonctions
-import { localOrProd } from "../../UTILS/fonctions/testEnvironement";
-import { isScreenMobil } from "../../UTILS/fonctions/isScreenMobil.js";
+import { isXLargeScreen } from "../../UTILS/fonctions/isScreenMobil.js";
 import {
-  styleLinkNavBar,
   getNavBarContent,
   setHrefLinkLanguage,
+  styleLinkNavBar,
 } from "../../UTILS/fonctions/styleLinkNavBar.js";
+import { localOrProd } from "../../UTILS/fonctions/testEnvironement";
 
 //import des image et logo
-import logoSocoaching from "../../assets/logo/logo-monogramme-v4.svg";
-import iconMenuBurger from "../../assets/icons/menu-burger-40x40.svg";
-//import iconLanguage from "../../assets/icons/icon-language.svg";
 import iconClose from "../../assets/icons/close.svg";
+//import iconLanguage from "../../assets/icons/icon-language.svg";
+import iconMenuBurger from "../../assets/icons/menu-burger-40x40.svg";
+import logoSocoaching from "../../assets/logo/logo-monogramme-v4.svg";
 
 
 let objectUrl = localOrProd();
@@ -65,19 +65,21 @@ function NavBar() {
 
   //determine si l' ecran est de type mobile, et ajuste le "UseState" en fonction
   useEffect(() => {
-    let isMobilDisplay = isScreenMobil();
+    let isMobilDisplay = isXLargeScreen();
 
     setIsSmallScreen(isMobilDisplay);
 
     window.addEventListener("resize", () => {
-      let isMobilDisplays = isScreenMobil();
+      let isMobilDisplays = isXLargeScreen();
 
       setIsSmallScreen(isMobilDisplays);
     });
 
     return () => {
       window.removeEventListener("resize", () => {
-        isScreenMobil(setIsSmallScreen);
+         let isMobilDisplays = isXLargeScreen();
+
+         setIsSmallScreen(isMobilDisplays);
       });
     };
   }, []);
@@ -85,6 +87,7 @@ function NavBar() {
     <div>
       {/*!isSmallScreen || (isSmallScreen && !isClicked) ? () : null*/}
       <div
+        style={{ minHeight: "70px" }} // coreection CLS
         className={
           isSmallScreen /*&& !isClicked*/
             ? "nav-bar flex-row_reverse-space_between-center"
@@ -92,10 +95,7 @@ function NavBar() {
         }
       >
         <div className="container-logo">
-          <a
-            href={`${url}/index.html`}
-            aria-label="Accueil"
-          >
+          <a href={`${url}/index.html`} aria-label="Accueil">
             <ReactSVG
               src={logoSocoaching}
               className="logo-coaching-svg"
@@ -105,10 +105,7 @@ function NavBar() {
         </div>
         {isSmallScreen && !isClicked ? (
           <div className=" container-burger" onClick={() => clickBurger()}>
-            <ReactSVG
-              src={iconMenuBurger}
-              className="logo-burger-svg"
-            />
+            <ReactSVG src={iconMenuBurger} className="logo-burger-svg" />
           </div>
         ) : null}
         {!isSmallScreen ? (
@@ -127,43 +124,45 @@ function NavBar() {
                   </li>
                 );
               })}
-              { /*<li className="container-lang flex-column-center-center">
-                <div className="container-icon-lang">
-                  <ReactSVG
-                    src={iconLanguage}
-                    beforeInjection={(svg) => {
-                      svg.classList.add("icon-language");
-                    }}
-                  />
-                </div>
+              {
+                /*<li className="container-lang flex-column-center-center">
+                  <div className="container-icon-lang">
+                    <ReactSVG
+                      src={iconLanguage}
+                      beforeInjection={(svg) => {
+                        svg.classList.add("icon-language");
+                      }}
+                    />
+                  </div>
 
-                <ul className="list-lang flex-row-space_between-center">
-                  <li className="list-lang-li flex-column-center-center">
-                    <a
-                      className="list-lang-li-a flex-column-center-center"
-                      href={href_de.current}
-                    >
-                      De
-                    </a>
-                  </li>
-                  <li className="list-lang-li">
-                    <a
-                      className="list-lang-li-a flex-column-center-center"
-                      href={href_en.current}
-                    >
-                      En
-                    </a>
-                  </li>
-                  <li className="list-lang-li">
-                    <a
-                      className="list-lang-li-a flex-column-center-center"
-                      href={href_fr.current}
-                    >
-                      Fr
-                    </a>
-                  </li>
-                </ul>
-              </li>*/ }
+                  <ul className="list-lang flex-row-space_between-center">
+                    <li className="list-lang-li flex-column-center-center">
+                      <a
+                        className="list-lang-li-a flex-column-center-center"
+                        href={href_de.current}
+                      >
+                        De
+                      </a>
+                    </li>
+                    <li className="list-lang-li">
+                      <a
+                        className="list-lang-li-a flex-column-center-center"
+                        href={href_en.current}
+                      >
+                        En
+                      </a>
+                    </li>
+                    <li className="list-lang-li">
+                      <a
+                        className="list-lang-li-a flex-column-center-center"
+                        href={href_fr.current}
+                      >
+                        Fr
+                      </a>
+                    </li>
+                  </ul>
+                </li>*/
+              }
             </ul>
           </div>
         ) : null}
@@ -181,10 +180,7 @@ function NavBar() {
               setIsclicked(false);
             }}
           >
-            <ReactSVG
-              src={iconClose}
-              className="icon-close-svg"
-            />
+            <ReactSVG src={iconClose} className="icon-close-svg" />
           </li>
           {selectedContent.map((link, index) => {
             return (
@@ -195,7 +191,7 @@ function NavBar() {
               </li>
             );
           })}
-          { /*<li className="">
+          {/*<li className="">
             <ul className="burger-menu-lang flex-row-start-center">
               <li className="burger-menu-lang-li flex-row-center-center">
                 <a className="burger-menu-lang-li-a" href={href_de.current}>
@@ -221,3 +217,4 @@ function NavBar() {
 }
 
 export { NavBar };
+

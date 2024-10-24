@@ -3,6 +3,7 @@
 //import des hook
 import { useState } from "react";
 
+
 //import librairie emoji
 import * as emoji from "node-emoji";
 //import des fonctions
@@ -21,7 +22,10 @@ function Footer() {
   let contentFooter = getFooterContent();
 
   return (
-    <div className="container-footer flex-column-start-center">
+    <div
+      style={{ minHeight: "350px" }} // coreection CLS
+      className="container-footer flex-column-start-center"
+    >
       <div className="footer flex-column-center-center">
         <div className="footer-card flex-column-start-center">
           <CardResume />

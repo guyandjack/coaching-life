@@ -7,11 +7,11 @@ import { isXLargeScreen } from "../../UTILS/fonctions/isScreenMobil.js";
 function displayOrHideMenuSide() {
   let menuSide = document.querySelector(".container-menu-side");
   let result = isXLargeScreen();
-  if (result) {
+  if (!result) {
     console.log("is xlarge scereen : " + result)
     menuSide.classList.remove("hide");
   }
-  if (!result) {
+  if (result) {
     console.log("is xlarge scereen : " + result)
     menuSide.classList.add("hide");
   }

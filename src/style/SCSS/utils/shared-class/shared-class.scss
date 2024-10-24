@@ -278,6 +278,11 @@ footer {
   }
 
   @include upper-large-screen {
+    font-size: 35px;
+    //max-width: 50%;
+    font-weight: 800;
+  }
+  @include upper-x-large-screen {
     font-size: 40px;
     //max-width: 50%;
     font-weight: 800;

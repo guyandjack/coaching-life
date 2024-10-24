@@ -5,14 +5,21 @@ const sendRequest = require("../../utils/functions/requestDataBase.js");
 
 const checkEnv = require("../../utils/functions/checkEnvironement.js");
 
+const getLang = require("../../utils/functions/checkLanguageFileHtml.js");
+
 let urlbase = checkEnv.defineUrl();
 
 let imagePathDir = "upload/article/image/";
-let articlePathDir = "upload/article/html/";
+let articlePathDirFr = path.join(__dirname, '../../../public/fr/article');
+let articlePathDirDe = path.join(__dirname, '../../../public/de/artikle');
+let articlePathDirEn = path.join(__dirname, '../../../public/en/article');
+let pathArticle = "";
 
 let isTab = false;
 
 //declatartion des fonctions
+
+
 //create un nouveau nom de fichier image
 function createNewNameImage(req, index) {
   console.log("tableau d' image dectecte: " + isTab);
@@ -54,8 +61,25 @@ function createOneImagePathDB(newImageFileName) {
 }
 
 // cree un path/repertoir pour le fichier article
-function createOneArticlePathDir(newArticleFileName) {
-    let articlePath = path.join(articlePathDir, newArticleFileName);
+function createOneArticlePathDir(newArticleFileName, req) {
+  let lang = getLang(req.files.article);
+  
+  switch (lang) {
+    case "fr":
+      pathArticle = articlePathDirFr;
+      break;
+    case "de":
+      pathArticle = articlePathDirDe;
+      break;
+    case "en":
+      pathArticle = articlePathDirEn;
+      break;
+  
+    default:
+      break;
+  }
+  console.log("langue detectée: " + lang);
+    let articlePath = path.join(pathArticle, newArticleFileName);
     
     return articlePath;
 }
@@ -63,7 +87,7 @@ function createOneArticlePathDir(newArticleFileName) {
 // cree un path/database pour le fichier article
 function createOneArticlePathDB(newArticleFileName) {
   let articlePathDataBase =
-    urlbase.urlimg + articlePathDir + newArticleFileName;
+    urlbase.urlimg + pathArticle + newArticleFileName;
 
   return articlePathDataBase;
 }
@@ -113,7 +137,7 @@ function createUrlForFile(req) {
   let tabForDir = [];
   let newName = createNewNameArticle(req);
   console.log("nouveau nom de l'article: " + newName);
-  let resultDir = createOneArticlePathDir(newName);
+  let resultDir = createOneArticlePathDir(newName,req);
   let resultDB = createOneArticlePathDB(newName);
 
   tabForDB.push(resultDB);

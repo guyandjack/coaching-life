@@ -36,9 +36,9 @@ function getLanguage() {
 function changeRatio(displayWidth) {
   const { large_Max, x_large_Max, small_Max, medium_Max } = breakPoint;
 
-  if (displayWidth <= small_Max) return "1 / 1.5";
+  if (displayWidth <= small_Max) return "1 / 1.3";
   if (displayWidth <= medium_Max) return "1 / 1";
-  if (displayWidth <= large_Max) return "1 / 1";
+  if (displayWidth <= large_Max) return "1.5 / 1";
   if (displayWidth <= x_large_Max) return "2 / 1";
   return "3 / 1";
 }
@@ -73,11 +73,12 @@ function Parallax() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <ParallaxProvider>
-      <ParallaxBanner style={{ aspectRatio: `${ratio}` }}>
-        <ParallaxBannerLayer speed={-20}>
-          <img
-            /*srcSet={`
+    <div>
+      <ParallaxProvider>
+        <ParallaxBanner style={{ aspectRatio: `${ratio}` }}>
+          <ParallaxBannerLayer speed={-20} shouldDisableOnMobile={true}>
+            <img
+              /*srcSet={`
                   ${parallax500w} 600w,
                   ${parallax1000w} 1000w,
                   ${parallax2000w} 2000w,
@@ -87,13 +88,20 @@ function Parallax() {
                   (max-width: 993px) 993px, 
                   2000px
                    "*/
-            src={parallax2000w}
-            alt="hommes et femmes d'affaire qui font des sauts de joi sur un fond de building et de couché de soleil"
-          />
-        </ParallaxBannerLayer>
-         <BannerIndex lang={language} /> 
-      </ParallaxBanner>
-    </ParallaxProvider>
+              src={parallax2000w}
+              alt="hommes et femmes d'affaire qui font des sauts de joi sur un fond de building et de couché de soleil"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover", // Remplir tout l'espace
+                objectPosition: "center", // Centrer l'image
+              }}
+            />
+          </ParallaxBannerLayer>
+          <BannerIndex lang={language} />
+        </ParallaxBanner>
+      </ParallaxProvider>
+    </div>
   );
 }
 
