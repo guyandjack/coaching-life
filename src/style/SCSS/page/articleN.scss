@@ -2,57 +2,95 @@
 @import "../utils/mixins/responsive/responsive.scss";
 
 
-   .articleN{
+.articleN {
     position: relative;
+    z-index: 1;
+    //top: 50px;
     //border: 2px solid blue;
-    padding: 10px;
+    padding: 15px;
+    margin: 50px 0px;
     
-     @include upper-large-screen{
-        width: 50%;
-     }
-     
-   }
+    
+    
+    
+    @include upper-large-screen {
+        padding: 20px;
+        width: 70%;
+    }
 
-   .container-menu-side{
-       position: fixed;
-       left: 20px;
-       top: 10%;
+    @include upper-x-large-screen {
 
-    @include upper-x-large-screen{
-        
+        width: 60%;
+
+    }
+
+}
+
+.articleN::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: map-get($colors-rule, first-color);
+    opacity: 0.1;
+
+}
+
+ .articleN-h1 {
+    color: map-get($colors-rule-darked-10, fourth-color);
+    margin: 50px 0px;
+    //border-bottom: 1px solid map-get($colors-rule, fourth-color);
+} 
+
+
+/* concenen le menu flotant*/
+.container-menu-side {
+    position: fixed;
+    left: 20px;
+    top: 150px;
+    //border: 2px solid red;
+
+    @include upper-x-large-screen {
+
         left: 3%;
 
     }
-        .title-menu-side {
-            color: map-get($colors-rule, second-color);
-            font-size: 20px;
-        }
-   }
 
-   .menu-side{
-    
+    .title-menu-side {
+        color: map-get($colors-rule, second-color);
+        font-size: 20px;
+    }
+}
+
+.menu-side {
+
     width: 200px;
     //border: 2px solid red;
 
-    @include upper-x-large-screen{
+    @include upper-x-large-screen {
         width: 250px;
     }
 
-    
-    .menu-side-li{
+
+    .menu-side-li {
         list-style-type: disc;
         height: fit-content;
-       margin: 10px 0px;
-       border-left: 0px solid map-get($colors-rule, second-color);
-       transition: border-left linear 0.2s;
-       cursor: pointer;
-       &:hover{
-           border-left: 5px solid map-get($colors-rule, second-color);
-           transition: border-left linear 0.3s;
-       }
-        
+        margin: 10px 0px;
+        border-left: 0px solid map-get($colors-rule, second-color);
+        transition: border-left linear 0.2s;
+        cursor: pointer;
+
+        &:hover {
+            border-left: 5px solid map-get($colors-rule, second-color);
+            transition: border-left linear 0.3s;
+        }
+
     }
-    .menu-side-li-a{
+
+    .menu-side-li-a {
         display: block;
         font-style: oblique;
         color: map-get($colors-rule, first-color);
@@ -60,91 +98,112 @@
         //border: 2px solid red;
     }
 
-    .menu-side-li-retour{
+    .menu-side-li-retour {
         margin-top: 20px;
         padding: 10px;
         background-color: map-get($colors-rule, second-color);
         cursor: pointer;
         transition: background-color linear 0.2s;
-        &:hover{
+
+        &:hover {
             background-color: map-get($colors-rule-darked-10, second-color);
             transition: background-color linear 0.3s;
         }
-        
+
     }
-    .menu-side-li-retour-a{
+
+    .menu-side-li-retour-a {
         display: block;
         color: map-get($colors-rule, sixth-color);
         text-align: center;
 
     }
 
-   }
+}
 
-   .info-article{
-    margin: 10px 0px; 
 
-   }
 
-   #article-date{
-    margin-right: 20px;
-   }
+.articleN-info {
+    //border: 2px solid pink;
+    margin: 10px 0px;
+    width: 90%;
 
-   #article-read-time{
-    margin-left: 20px;
-   }
-
-   .split{
-       border-bottom: 1px solid map-get($colors-rule, first-color);
-       @include upper-large-screen{
-   
-           width: 70%;
-       }
-   }
-
-    .articleN-image{
-        border-radius: 10px;
-        margin: 20px 0px;
-        width: 90%;
-        @include upper-large-screen{
-
-            width: 70%;
-        }
+    @include upper-medium-screen {
+        flex-flow: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 80%;
     }
-
-    .articleN-introduction{
-        line-height: 180%;
-        font-size: 20px;
-        font-style: italic;
-        margin: 20px 0px;
-    }
-
-    .h2{
-        margin: 40px 0px;
-        align-self: flex-start;
-        border-left: 5px solid map-get($colors-rule, fourth-color);
-        border-right: 5px solid map-get($colors-rule, fourth-color);
-        padding: 0px 20px;
+    @include upper-large-screen {
         
+        width: 70%;
     }
+}
 
-    .articleN-text{
-        line-height: 150%;
-        margin: 10px 0px;
-        opacity: 0.8;
-        font-size: 18px;
+ .articleN-date,
+.articleN-date,
+.articleN-read-time {
+
+    margin: 10px 0px;
+    
+} 
+
+
+
+.split {
+    border-bottom: 2px solid map-get($colors-rule, first-color);
+    
+}
+
+.articleN-image {
+    border-radius: 10px;
+    margin: 20px 0px;
+    width: 90%;
+
+    @include upper-large-screen {
+
+        width: 70%;
     }
+}
 
-    .definition{
-        margin: 40px 0px;
-        padding: 10px;
-        border-radius: 10px;
-        border: 5px solid map-get($colors-rule, fourth-color);
-        backdrop-filter: brightness(60%);
-    }
+#img-1{
+    max-width: 600px;
+}
 
-    .articleN-list{
+.articleN-introduction {
+    line-height: 180%;
+    font-size: 20px;
+    font-style: italic;
+    margin: 20px 0px;
+}
 
-    }
+.articleN-h2 {
+    color: map-get($colors-rule, fifth-color);
+    margin: 40px 0px;
+    align-self: flex-start;
+    border-left: 5px solid map-get($colors-rule, fourth-color);
+    border-right: 5px solid map-get($colors-rule, fourth-color);
+    padding: 0px 20px;
+    
+}
 
+.articleN-h3{
+    color: map-get($colors-rule-darked-10, fourth-color);
+
+}
+
+.articleN-text {
+    line-height: 150%;
+    margin: 10px 0px;
+    opacity: 0.8;
+    font-size: 18px;
+}
+
+.definition {
+    margin: 40px 0px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 5px solid map-get($colors-rule, fourth-color);
+    backdrop-filter: brightness(60%);
+}
 

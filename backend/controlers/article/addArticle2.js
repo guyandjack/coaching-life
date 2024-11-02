@@ -10,9 +10,9 @@ const getLang = require("../../utils/functions/checkLanguageFileHtml.js");
 let urlbase = checkEnv.defineUrl();
 
 let imagePathDir = "upload/article/image/";
-let articlePathDirFr = path.join(__dirname, '../../../public/fr/article');
-let articlePathDirDe = path.join(__dirname, '../../../public/de/artikle');
-let articlePathDirEn = path.join(__dirname, '../../../public/en/article');
+let articlePathDirFr = path.join(__dirname, "../../../public/fr/article/");
+let articlePathDirDe = path.join(__dirname, '../../../public/de/artikle/');
+let articlePathDirEn = path.join(__dirname, '../../../public/en/article/');
 let pathArticle = "";
 
 let isTab = false;
@@ -87,7 +87,7 @@ function createOneArticlePathDir(newArticleFileName, req) {
 // cree un path/database pour le fichier article
 function createOneArticlePathDB(newArticleFileName) {
   let articlePathDataBase =
-    urlbase.urlimg + pathArticle + newArticleFileName;
+     pathArticle + newArticleFileName;
 
   return articlePathDataBase;
 }

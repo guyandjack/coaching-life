@@ -2,10 +2,13 @@
 /// composant carte clients pour la page article
 
 // eslint-disable-next-line no-unused-vars
-//import { localOrProd } from "../../UTILS/fonctions/testEnvironement.js";
 import "../../style/CSS/card-article-client.css";
 //import "../../style/CSS/form-dashboard.css";
 
+import { localOrProd } from "../../UTILS/fonctions/testEnvironement.js";
+//declaration des functions
+let objectUrl = localOrProd();
+let urlBase = objectUrl.url;
 // eslint-disable-next-line react/prop-types
 function CardArticleClient({
   articlePath,
@@ -19,6 +22,9 @@ function CardArticleClient({
   country,
 }) {
   function goToArticle() {
+    // Corrige les barres obliques inverses dans articlePath
+    //articlePath = articlePath.replace(/\\/g, "/");
+
     let articleInfo = {
       id: id,
       image: arrayImgUrl,
@@ -26,17 +32,22 @@ function CardArticleClient({
       country: country,
     };
 
-    // Sérialisation des données en JSON
+    let infoarticle = JSON.stringify(articleInfo);
+
+    localStorage.setItem("articleInfo", infoarticle);
+
+   /*  // Sérialise et encode uniquement articleInfo pour l'URL
     let info = JSON.stringify(articleInfo);
+    let encodedInfo = encodeURIComponent(info); */
 
-    // Encodage des informations pour l'URL
-    let encodedInfo = encodeURIComponent(info);
-
-    // Redirection avec les informations encodées
-    window.location.href = `${articlePath}?articleinfo=${encodedInfo}`;
-
-    console.log("articlepath: " + articlePath);
+    // Génère l'URL sans encodage de urlBase ou articlePath
+    //location.href = `${urlBase}/${articlePath}/?articleinfo=${encodedInfo}`;
+    location.href = `${urlBase}/${articlePath}`;
+    
   }
+  
+  console.log("articlepath: " + articlePath);
+  
 
   return (
     <div

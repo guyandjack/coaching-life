@@ -17,6 +17,8 @@ let objectUrl = localOrProd();
 let url = objectUrl.urlApi;
 
 
+
+
 function whatLanguage() {
   let result = {
     articleLabelValue: "",
@@ -45,6 +47,25 @@ function whatLanguage() {
   return result;
 }
 
+function cleanUrl(urlarticle) {
+ 
+ // Expression régulière pour capturer "public" et tout ce qui suit
+ const match = urlarticle.match(/life(?:\/|\\|\/\/|\\\\)(.*)/);
+
+ // Vérifie si la correspondance a réussi et construit le chemin final
+ if (match) {
+   const result = match[1];
+   return result
+   
+ } else {
+   console.log("Chemin contenant 'public' non trouvé.");
+   throw new Error("Chemin contenant 'public' non trouvé.");
+   
+  }
+  
+
+}
+
 
  
 
@@ -70,13 +91,20 @@ const getAllArticle = async () => {
           }
           if (article.url_article != null) {
             article.url_article = JSON.parse(article.url_article);
+            // adapte l' url de l' article pour le navigateur
+            article.url_article[0] = cleanUrl(article.url_article[0]);
+            console.log("url article modifie: " + article.url_article[0]);
           }
         });
+      
+      
+      
+
         return result;
         
         
     } else {
-       console.error("Failed to fetch avis: ", response.statusText);
+       console.error("Failed to fetch article: ", response.statusText);
        return [];
     }
   } catch (error) {
@@ -84,11 +112,20 @@ const getAllArticle = async () => {
     return [];
   }
 };
+
+
 function CardClientContainer() {
   const [arrayArticle, setArrayArticle] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
   const [langValue, setLangValue] = useState();
   const [languageCode, setLanguageCode] = useState();
+
+  useEffect(() => {
+    localStorage.removeItem("articleInfo");
+    return () => {
+      
+    };
+  }, []);
 
   useEffect(() => {
     const fetchArticle = async () => {

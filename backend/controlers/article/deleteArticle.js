@@ -64,6 +64,7 @@ async function deleteOneArticle(req, res) {
       return res.status(500).json({
         message:
           "Erreur lors de la suppression de/des images dans son repertoir",
+        errors: tabErrorDeleteFile
       });
     }
 
@@ -74,9 +75,9 @@ async function deleteOneArticle(req, res) {
       await Promise.all(
         result.url_article.map(async (url) => {
           try {
-            const cleanUrl = url.split(/3000[/\\]/)[1].trim();
-            await fs.rm(cleanUrl);
-            console.log(`Fichier article ${cleanUrl} supprimé avec succès.`);
+            //const cleanUrl = url.split(/3000[/\\]/)[1].trim();
+            await fs.rm(url);
+            console.log(`Fichier article ${url} supprimé avec succès.`);
           } catch (err) {
             tabErrorDeleteFile.push(`Impossible de supprimer l'article ${url}`);
             console.error(

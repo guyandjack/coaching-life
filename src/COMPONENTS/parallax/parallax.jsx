@@ -76,7 +76,7 @@ function Parallax() {
     <div>
       <ParallaxProvider>
         <ParallaxBanner style={{ aspectRatio: `${ratio}` }}>
-          <ParallaxBannerLayer speed={-20} shouldDisableOnMobile={true}>
+          <ParallaxBannerLayer speed={-20} >
             <img
               /*srcSet={`
                   ${parallax500w} 600w,

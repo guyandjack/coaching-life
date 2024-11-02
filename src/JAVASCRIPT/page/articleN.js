@@ -1,52 +1,108 @@
-import {defineUrlCSSForArticle} from "../../UTILS/fonctions/testEnvironement.js"
+//import {defineUrlCSSForArticle} from "../../UTILS/fonctions/testEnvironement.js"
 
 import { isXLargeScreen } from "../../UTILS/fonctions/isScreenMobil.js";
 
+import { localOrProd } from "../../UTILS/fonctions/testEnvironement.js";
 
+const divData = document.querySelector("#info-href");
 
+const refLangDE = document.querySelector("link[hreflang='de']");
+const refLangEN = document.querySelector("link[hreflang='en']");
+const refLangFR = document.querySelector("link[hreflang='fr']");
+const refLangDefault = document.querySelector("link[hreflang='x-default']");
+
+let objectUrl = localOrProd();
+let url = objectUrl.url;
+
+divData.setAttribute("data-de", `${url}/public/de/startseite.html`);
+divData.setAttribute("data-en", `${url}/public/en/home.html`);
+divData.setAttribute("data-fr", `${url}/index.html`);
+
+refLangDE.setAttribute("href", `${url}/public/de/startseite.html`);
+refLangEN.setAttribute("href", `${url}/public/en/home.html`);
+refLangFR.setAttribute("href", `${url}/index.html`);
+refLangDefault.setAttribute("href", `${url}/index.html`);
+
+/**
+ *recupere la langue de l'article
+ *
+ * @param {*} objectArticle
+ * @return {*}
+ */
+function getLanguage(objectArticle) {
+  let lang = objectArticle.country;
+  switch (lang) {
+    case "fr-FR":
+      return "fr";
+
+    case "en-EN":
+      return "en";
+
+    case "de-DE":
+      return "de";
+
+    default:
+      break;
+  }
+}
+
+/**
+ *en fonction de la taille de l'ecran affiche ou cache le menu side
+ *
+ * @return {*} bolean
+ */
 function displayOrHideMenuSide() {
   let menuSide = document.querySelector(".container-menu-side");
   let result = isXLargeScreen();
   if (!result) {
-    console.log("is xlarge scereen : " + result)
+    console.log("is xlarge scereen : " + result);
     menuSide.classList.remove("hide");
+    return true;
   }
   if (result) {
-    console.log("is xlarge scereen : " + result)
+    console.log("is xlarge scereen : " + result);
     menuSide.classList.add("hide");
+    return false;
   }
 }
 
-
-
+/**
+ *en fonction de la langue de l' article
+ defini un titre , le contenu et la destination du lien retour du menu side
+ *
+ * @param {*} objectArticle
+ */
 function setMenuSide(objectArticle) {
   let titleMenuSide = document.querySelector(".title-menu-side");
   let linkBackMenuSide = document.querySelector(".menu-side-li-retour-a");
   let titleMenuSideContent = "";
   let linkBackMenuSideContent = "";
+  let linkBackMenuSideHref = "";
   switch (objectArticle.country) {
     case "fr-FR":
-      titleMenuSideContent = "Dans cet article"
-      linkBackMenuSideContent = "Retour à la liste d'article"
+      titleMenuSideContent = "Dans cet article";
+      linkBackMenuSideContent = "Retour à la liste d'article";
+      linkBackMenuSideHref = `${url}/public/fr/article-coaching-developpement-personel-entreprise.html`;
       break;
     case "en-EN":
-      titleMenuSideContent = "In this article"
-      linkBackMenuSideContent = "Back to the articles list"
+      titleMenuSideContent = "In this article";
+      linkBackMenuSideContent = "Back to the articles list";
+      linkBackMenuSideHref = `${url}/public/fr/article-coaching-developpement-personel-entreprise.html`;
       break;
     case "de-DE":
       titleMenuSideContent = "in diesem Artikel";
       linkBackMenuSideContent = "Zurück zur Artikelliste";
+      linkBackMenuSideHref = "";
       break;
-  
+
     default:
       break;
   }
 
   titleMenuSide.textContent = titleMenuSideContent;
-  linkBackMenuSide.textContent = linkBackMenuSideContent
-  
+  linkBackMenuSide.textContent = linkBackMenuSideContent;
+  linkBackMenuSide.setAttribute("href", `${linkBackMenuSideHref}`);
 }
-
 
 /**
  * creer un menu en fonction du nombre de sous titre
@@ -56,8 +112,8 @@ function setLinkMenuSide() {
   let menuSide = document.querySelector(".menu-side");
   let arrayUnderTitleH2 = document.querySelectorAll("h2");
   arrayUnderTitleH2.forEach((titleH2, index) => {
-    titleH2.setAttribute("id", `ST-${index}`)
-  })
+    titleH2.setAttribute("id", `ST-${index}`);
+  });
 
   //crer et ajoute les liens en fonction des sous titres
   arrayUnderTitleH2.forEach((undertitle, index) => {
@@ -71,21 +127,23 @@ function setLinkMenuSide() {
     a.textContent = valueH2;
     li.appendChild(a);
     menuSide.appendChild(li);
-        
-  })
+  });
 
   //creer un dernier lien pour un retour a la liste des articles
-   let li = document.createElement("li");
+  let li = document.createElement("li");
   let a = document.createElement("a");
-   li.setAttribute("class", "menu-side-li-retour");
-   a.setAttribute("href", `#`);
-   a.setAttribute("class", "menu-side-li-retour-a");
-   a.textContent = "retour a la liste";
-   li.appendChild(a);
-   menuSide.appendChild(li);
+  li.setAttribute("class", "menu-side-li-retour");
+  a.setAttribute("class", "menu-side-li-retour-a");
+  li.appendChild(a);
+  menuSide.appendChild(li);
 }
 
-
+/**
+ * formate la date issu de la bdd
+ *
+ * @param {*} objectArticle
+ * @return {*}
+ */
 function formatDate(objectArticle) {
   let dateStr = objectArticle.created;
   let languageCode = objectArticle.country;
@@ -93,63 +151,51 @@ function formatDate(objectArticle) {
   // Convertir la chaîne de date en un objet Date
   const date = new Date(dateStr);
 
-  console.log("language code: " + languageCode)
+  console.log("language code: " + languageCode);
 
-  // Formater la date en fonction de la langue 
+  // Formater la date en fonction de la langue
   const options = { day: "2-digit", month: "long", year: "numeric" };
   const formattedDate = date.toLocaleDateString(languageCode, options);
 
   return formattedDate;
 }
 
+/**
+ *inserre la date de l' article dans le dom
+ *
+ * @param {*} objectArticle
+ */
 function insertArticleDate(objectArticle) {
-  let spanDate = document.querySelector("#article-date");
+  let spanDate = document.querySelector(".articleN-date");
   let formatedDate = formatDate(objectArticle);
   spanDate.textContent = formatedDate;
 }
 
+function insertArticleReadTime(language) {
+  let spanTime = document.querySelector(".articleN-time");
+  let text = "";
+  switch (language) {
+    case "fr":
+      text = "Temps de lecture: 3mn";
+      break;
+    case "de":
+      text = "Zeitaufwand: 3 Minuten";
+      break;
+    case "en":
+      text = "Reading time: 3mn";
+      break;
 
-function setUrlHeaderLink(urlBaseCSS) {
-  let linkNormelise = document.querySelector("#link-normalise");
-  let linkSharedClass = document.querySelector("#link-shared-class");
-  let linkArticle = document.querySelector("#link-article");
-
-  linkNormelise.setAttribute("href", `${urlBaseCSS}normelize.css`);
-  linkSharedClass.setAttribute("href", `${urlBaseCSS}shared-class.css`);
-  linkArticle.setAttribute("href", `${urlBaseCSS}articleN.css`);
-}
-
-/**
- * retourne un objet qui contient les informations sur l' article.(id, urlImage) ou null
- *
- * @return {object || null} un objet ou null
- */
-function decodeParams() {
-  // Création d'un objet URLSearchParams à partir de la query string de l'URL
-  let params = new URLSearchParams(window.location.search);
-
-  // Récupération du paramètre "articleinfo"
-  let articleInfoString = params.get("articleinfo");
-
-  if (articleInfoString) {
-    try {
-      // Décodage et conversion de la chaîne JSON en objet JavaScript
-      let articleInfo = JSON.parse(decodeURIComponent(articleInfoString));
-      console.log("Article Info:", articleInfo);
-      return articleInfo;
-    } catch (error) {
-      console.error("Erreur lors de l'analyse de l'objet JSON:", error);
-      return null;
-    }
-  } else {
-    console.log("Aucune information d'article trouvée dans l'URL.");
-    return null;
+    default:
+      break;
   }
+  spanTime.textContent = text;
 }
 
 function setUrlImage(objectArticle) {
-    let elementsImg = document.querySelectorAll("img");
-    let images = objectArticle.image;
+  console.log("objet article:" + objectArticle);
+  let elementsImg = document.querySelectorAll(".articleN-image");
+  console.log("tableau des elements image: " + elementsImg);
+  let images = objectArticle.image;
 
   if (elementsImg.length > 0) {
     elementsImg.forEach((img, index) => {
@@ -158,28 +204,17 @@ function setUrlImage(objectArticle) {
   }
 }
 
+function setArticle() {
+  displayOrHideMenuSide();
+  let objectArticle = JSON.parse(localStorage.getItem("articleInfo"));
+  let lang = getLanguage(objectArticle);
+  insertArticleDate(objectArticle);
+  insertArticleReadTime(lang);
+  setUrlImage(objectArticle);
+  setLinkMenuSide(objectArticle);
+  setMenuSide(objectArticle);
+}
+
 //script principal
-
-displayOrHideMenuSide();
+setArticle();
 window.addEventListener("resize", displayOrHideMenuSide);
-
-
-let url = defineUrlCSSForArticle();
-
-setUrlHeaderLink(url);
-
-let objectArticle = decodeParams();
-
-setUrlImage(objectArticle);
-insertArticleDate(objectArticle);
-
-setLinkMenuSide(objectArticle);
-setMenuSide(objectArticle);
-
-
-  
-
-  
-
-
-
