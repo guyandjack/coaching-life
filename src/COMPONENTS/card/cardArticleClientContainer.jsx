@@ -1,6 +1,7 @@
-
+//import des composants enfants
 import { CardArticleClient } from "./cardArticleClient";
 import { Spinner } from "../../COMPONENTS/spinner/spinner.jsx";
+
 
 //import des hooks
 import { useEffect, useState } from "react";

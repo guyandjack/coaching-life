@@ -16,7 +16,7 @@ import { localOrProd } from "../../UTILS/fonctions/testEnvironement";
 
 //import des image et logo
 import iconClose from "../../assets/icons/close.svg";
-//import iconLanguage from "../../assets/icons/icon-language.svg";
+import iconLanguage from "../../assets/icons/icon-language.svg";
 import iconMenuBurger from "../../assets/icons/menu-burger-40x40.svg";
 import logoSocoaching from "../../assets/logo/logo-monogramme-v4.svg";
 
@@ -125,7 +125,7 @@ function NavBar() {
                 );
               })}
               {
-                /*<li className="container-lang flex-column-center-center">
+                <li className="container-lang flex-column-center-center">
                   <div className="container-icon-lang">
                     <ReactSVG
                       src={iconLanguage}
@@ -161,7 +161,7 @@ function NavBar() {
                       </a>
                     </li>
                   </ul>
-                </li>*/
+                </li>
               }
             </ul>
           </div>
