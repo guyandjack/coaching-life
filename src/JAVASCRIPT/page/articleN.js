@@ -87,12 +87,12 @@ function setMenuSide(objectArticle) {
     case "en-EN":
       titleMenuSideContent = "In this article";
       linkBackMenuSideContent = "Back to the articles list";
-      linkBackMenuSideHref = `${url}/public/fr/article-coaching-developpement-personel-entreprise.html`;
+      linkBackMenuSideHref = `${url}/public/en/article-coaching-personal-development-company.html`;
       break;
     case "de-DE":
       titleMenuSideContent = "in diesem Artikel";
       linkBackMenuSideContent = "Zurück zur Artikelliste";
-      linkBackMenuSideHref = "";
+      linkBackMenuSideHref = `${url}/public/de/artikel-coaching-personale-entwicklung-unternehmen.html`;
       break;
 
     default:

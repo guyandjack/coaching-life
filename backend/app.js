@@ -36,6 +36,10 @@ app.use("/api", setHeaderSecurityCORS);
 // eslint-disable-next-line no-undef
 app.use('/upload', express.static(path.join(__dirname, 'upload')));
 
+// Serve les images depuis le dossier 'public'
+// eslint-disable-next-line no-undef
+app.use('/image', express.static(path.join(__dirname, 'image')));
+
 
 
 
