@@ -5,6 +5,7 @@ import path from "path"; // Assure-toi que path est importé correctement
 import { visualizer } from "rollup-plugin-visualizer";
 
 export default defineConfig({
+  
   plugins: [
     react(),
     visualizer({

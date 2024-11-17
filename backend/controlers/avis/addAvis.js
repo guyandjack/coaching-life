@@ -5,6 +5,9 @@ const sendRequest = require("../../utils/functions/requestDataBase.js");
 
 const checkEnv = require("../../utils/functions/checkEnvironement.js");
 
+//import * as deepl from "deepl-node";
+const deepl = require("deepl-node");
+
 
 let urlbase = checkEnv.defineUrl();
 let avatarPathDir = "upload/avis/avatar/";
@@ -55,6 +58,65 @@ function createUrlForAvatar(req) {
   
 }
 
+/**
+ * fait un appel ver l' api deepl via l' objet "deepl" pour traduire du text
+ *
+ * @param {*} content le contenu a traduire
+ * @param {*} lang la langue de traduction
+ * @return {*} un string qui contient le text traduit
+ */
+async function fetchDeeplApi(content, lang) {
+  
+  try {
+    
+    const authKey = process.env.CLEF_API_DEEPL;
+    const translator = new deepl.Translator(authKey);
+
+    let result = (async () => {
+      const result = await translator.translateText(
+        `${content}`,
+        null,
+        `${lang}`
+      );
+       
+      return result.text;
+    })();
+
+    return result
+
+   
+  } catch (error) {
+    console.error("Error fetching translate: ", error);
+    
+  }
+}
+
+
+/**
+ * recupere le contenu d' un avis dans les trois langues
+ *
+ * @param {*} content
+ * @return {*} object qui contient le contenu des avis dans les trois langues
+ */
+async function getTranslate(content) {
+  
+  let translatedTexts = {};
+
+  try {
+    translatedTexts.textFr = await fetchDeeplApi(content, "FR");
+    translatedTexts.textEn = await fetchDeeplApi(content, "EN-GB");
+    translatedTexts.textDe = await fetchDeeplApi(content, "DE");
+  }
+  catch(error) {
+    console.error("Error fetching translate: ", error);
+  }
+  
+  return translatedTexts
+  
+
+}
+
+
 
 async function addOneAvis(req, res) {
   const {
@@ -63,6 +125,10 @@ async function addOneAvis(req, res) {
     content,
     socialurl: socialUrl = null,
   } = req.body;
+
+  let translatedText = await getTranslate(content);
+
+  
 
   // Validation des données d'entrée
   if (!lastName || !firstName || !content) {
@@ -80,13 +146,24 @@ async function addOneAvis(req, res) {
      avatarUrlDir = avatarUrl.urlDir;
   }
   // Requête préparée pour insérer un avis dans la BDD
-  const requeteAddAvis = `INSERT INTO avis (created_at, content, first_name, last_name, social_link, url_img) VALUES (NOW(), ?, ?, ?, ?, ?)`;
+  const requeteAddAvis = `INSERT INTO avis (
+  created_at,
+  content,
+  content_en,
+  content_de,
+  first_name,
+  last_name,
+  social_link,
+   url_img) VALUES (NOW(), ?, ?, ?, ?, ?, ?, ?)`;
   const paramRequeteAddAvis = [
-    content,
+    translatedText.textFr,
+    translatedText.textEn,
+    translatedText.textDe,
     firstName,
     lastName,
     socialUrl,
     avatarUrlDB,
+    
   ];
 
   try {
@@ -99,6 +176,7 @@ async function addOneAvis(req, res) {
     connect.end();
 
     if (!requestResult) {
+      
       return res
         .status(500)
         .json({ message: "Échec de l'enregistrement de l'avis" });

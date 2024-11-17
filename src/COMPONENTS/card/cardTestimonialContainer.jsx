@@ -7,12 +7,14 @@ import { Spinner } from "../../COMPONENTS/spinner/spinner.jsx";
 
 //import des functions
 import { localOrProd } from "../../UTILS/fonctions/testEnvironement.js";
+import { getPageLanguage } from "../../UTILS/fonctions/checkPageLanguage.js";
 
 //import des feuilles de style
 import "../../style/CSS/card-testimonial-container.css";
 
 let objectUrl = localOrProd();
 let url = objectUrl.urlApi;
+let language = getPageLanguage();
 
 //declaration des fonctions
 
@@ -54,6 +56,21 @@ function modulo(index) {
   return (index + 1) % 2 === 0;
 }
 
+function getTestimonialText(language, card) {
+  switch (language) {
+    case "fr":
+      return card.content;
+    case "en":
+      return card.content_en;
+    case "de":
+      return card.content_de;
+    default:
+      return null;
+  }
+}
+
+
+
 function CardTestimonialContainer() {
   const [arrayAvis, setArrayAvis] = useState([]);
   const [isVisible, setIsVisible] = useState(false); 
@@ -64,7 +81,10 @@ function CardTestimonialContainer() {
     const fetchAvis = async () => {
       setIsVisible(true); // Affiche le spinner
       try {
-        const avis = await getAllAvis(); // Attendre la récupération des avis
+        const avis = await getAllAvis();
+        // Attendre la récupération des avis
+        //trie les avis en fonction de la langue de la page
+
         setArrayAvis(avis); // Met à jour l'état avec les avis récupérés
 
       } catch (error) {
@@ -82,18 +102,15 @@ function CardTestimonialContainer() {
 
   return (
     <div className="card-testimonial-container">
-      {isVisible ?
-        <Spinner
-          visible={isVisible} /> :
-        null}
-      
+      {isVisible ? <Spinner visible={isVisible} /> : null}
+
       {arrayAvis.length > 0 ? (
         <ul className="flex-column-start-center animation-slider">
           {arrayAvis.map((card, index) => (
             <li key={card.id}>
               <CardTestimonial
                 avatarUrl={card.url_img}
-                testimonialText={card.content}
+                testimonialText={getTestimonialText(language, card)}
                 testimonialLastName={card.last_name}
                 testimonialFirstName={card.first_name}
                 themeColor={modulo(index)}

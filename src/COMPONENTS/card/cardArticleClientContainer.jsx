@@ -49,9 +49,14 @@ function whatLanguage() {
 }
 
 function cleanUrl(urlarticle) {
+  let match = "";
+  if (url == "https://api.socoaching.ch/api") {
+    // Expression régulière pour capturer "public" ou "life" et tout ce qui suit en fonction de l'environement
+    match = urlarticle.match(/public(?:\/|\\|\/\/|\\\\)(.*)/);
+  } else {
+    match = urlarticle.match(/life(?:\/|\\|\/\/|\\\\)(.*)/);
+  }
  
- // Expression régulière pour capturer "public" et tout ce qui suit
- const match = urlarticle.match(/life(?:\/|\\|\/\/|\\\\)(.*)/);
 
  // Vérifie si la correspondance a réussi et construit le chemin final
  if (match) {
