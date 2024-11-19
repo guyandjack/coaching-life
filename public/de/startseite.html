@@ -31,6 +31,33 @@
   <link rel="alternate" hreflang="fr" href="https://socoaching.ch/index.html" />
   <link rel="alternate" hreflang="x-default" href="https://socoaching.ch/index.html" />
 
+  <!-- balise de géolocalisation -->
+  <meta name="geo.position" content=" 46.2333;7.35"> <!-- Latitude et longitude pour sion, Suisse -->
+  <meta name="geo.region" content="CH-VS"> <!-- CH pour la Suisse,  pour Genève -->
+  <meta name="geo.placename" content="Sion">
+  
+  <!-- script shema.org -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "SO COACHING",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "chemin des collines",
+        "addressLocality": "Sion",
+        "addressRegion": "VS",
+        "postalCode": "1950",
+        "addressCountry": "CH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "46.2333",
+        "longitude": "7.35"
+      }
+    }
+    </script>
+
 <!-- liens pour les differents favicons -->
 <link rel="apple-touch-icon" sizes="180x180" href="./src/assets/favicon/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="./src/assets/favicon/favicon-32x32.png">
