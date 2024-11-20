@@ -40,11 +40,13 @@ function createNewNameImage(req, index) {
 
 //create un nouveau nom de fichier article
 function createNewNameArticle(req) {
+
   const articleTitle = req.body.title;
+  let articleTitleValid = articleTitle.replaceAll(" ", "-");
   const articleName = req.files.article.name;
   const articleExt = path.extname(articleName); // Récupère l'extension avec le point inclus (ex: .html)
   const timestamp = Date.now();
-  const newArticleFileName = `article-${timestamp}-${articleTitle}${articleExt}`;
+  const newArticleFileName = `article-${timestamp}-${articleTitleValid}${articleExt}`;
   return newArticleFileName;
 }
 // cree un path/repertoir pour une image

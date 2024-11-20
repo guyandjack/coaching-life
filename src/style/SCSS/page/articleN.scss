@@ -8,7 +8,7 @@
     //top: 50px;
     //border: 2px solid blue;
     padding: 15px;
-    margin: 50px 0px;
+    margin: 50px 0px 150px 0px;
     
     
     
@@ -50,7 +50,7 @@
 .container-menu-side {
     position: fixed;
     left: 20px;
-    top: 150px;
+    top: 100px;
     //border: 2px solid red;
 
     @include upper-x-large-screen {
@@ -162,12 +162,14 @@
 
     @include upper-large-screen {
 
-        width: 70%;
+        width: 80%;
     }
 }
 
 #img-1{
     max-width: 600px;
+    max-height: 400px;
+    object-fit: cover;
 }
 
 .articleN-introduction {

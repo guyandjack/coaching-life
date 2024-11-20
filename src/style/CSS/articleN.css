@@ -2,7 +2,7 @@
   position: relative;
   z-index: 1;
   padding: 15px;
-  margin: 50px 0px;
+  margin: 50px 0px 150px 0px;
 }
 @media screen and (min-width: 993px) {
   .articleN {
@@ -37,7 +37,7 @@
 .container-menu-side {
   position: fixed;
   left: 20px;
-  top: 150px;
+  top: 100px;
 }
 @media screen and (min-width: 1501px) {
   .container-menu-side {
@@ -139,12 +139,15 @@
 }
 @media screen and (min-width: 993px) {
   .articleN-image {
-    width: 70%;
+    width: 80%;
   }
 }
 
 #img-1 {
   max-width: 600px;
+  max-height: 400px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .articleN-introduction {

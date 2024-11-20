@@ -43,10 +43,10 @@ function CardArticleClient({
     // Génère l'URL sans encodage de urlBase ou articlePath
     //location.href = `${urlBase}/${articlePath}/?articleinfo=${encodedInfo}`;
     location.href = `${urlBase}/${articlePath}`;
+    console.log("articlepath: " + articlePath);
     
   }
   
-  console.log("articlepath: " + articlePath);
   
 
   return (
@@ -70,3 +70,4 @@ function CardArticleClient({
 
 // eslint-disable-next-line no-undef
 export { CardArticleClient };
+
