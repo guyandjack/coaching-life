@@ -10,6 +10,28 @@ import { localOrProd } from "../../UTILS/fonctions/testEnvironement.js";
 let objectUrl = localOrProd();
 let urlBase = objectUrl.url;
 // eslint-disable-next-line react/prop-types
+import { getPageLanguage } from "../../UTILS/fonctions/checkPageLanguage.js";
+
+function getPageArticleLanguage() {
+  let lang = getPageLanguage();
+  let urlPageArticle = "";
+  switch (lang) {
+    case "fr":
+      urlPageArticle = `${urlBase}/public/fr/article-propose-par-so-coaching.html`;
+      break;
+    case "en":
+      urlPageArticle = "article-propose-par-so-coaching.html"
+      break;
+    case "de":
+      urlPageArticle = "article-propose-par-so-coaching.html"
+      break;
+  
+    default:
+      break;
+  }
+  return urlPageArticle
+}
+
 function CardArticleClient({
   articlePath,
   titre,
@@ -25,13 +47,18 @@ function CardArticleClient({
     // Corrige les barres obliques inverses dans articlePath
     //articlePath = articlePath.replace(/\\/g, "/");
 
+    
     let articleInfo = {
       id: id,
       image: arrayImgUrl,
       created: date,
       country: country,
+      page: articlePath,
+      title: titre,
+      content: resume
     };
-
+    
+    let titreValid = articleInfo.title.replace(/[^a-zA-Z0-9]+/g, "-").toLowerCase();
     let infoarticle = JSON.stringify(articleInfo);
 
     localStorage.setItem("articleInfo", infoarticle);
@@ -42,8 +69,15 @@ function CardArticleClient({
 
     // Génère l'URL sans encodage de urlBase ou articlePath
     //location.href = `${urlBase}/${articlePath}/?articleinfo=${encodedInfo}`;
-    location.href = `${urlBase}/${articlePath}`;
-    console.log("articlepath: " + articlePath);
+    /*** pour une page existante**** */
+    //location.href = `${urlBase}/${articlePath}`;
+    
+    /*** pour une page a uploader du derveur **** */
+    
+    let urlPage = getPageArticleLanguage();
+    location.href = `${urlPage}#${titreValid}`;
+    
+    
     
   }
   

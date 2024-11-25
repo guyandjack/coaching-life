@@ -94,8 +94,10 @@
         height: 100%;
         color:map-get($colors-rule, fifth-color);
         opacity: 0.6;
-        overflow: hidden;
-        text-overflow: ellipsis;
+         overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis; 
+       
         
 }
 }

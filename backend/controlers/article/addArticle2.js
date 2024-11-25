@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 const path = require("path");
+const fs = require("fs");
 const connectToDataBase = require("../../utils/functions/connectionDataBase.js");
 const sendRequest = require("../../utils/functions/requestDataBase.js");
 
@@ -10,9 +11,12 @@ const getLang = require("../../utils/functions/checkLanguageFileHtml.js");
 let urlbase = checkEnv.defineUrl();
 
 let imagePathDir = "upload/article/image/";
-let articlePathDirFr = path.join(__dirname, "../../../public/fr/article/");
+/*let articlePathDirFr = path.join(__dirname, "../../../public/fr/article/");
 let articlePathDirDe = path.join(__dirname, '../../../public/de/artikle/');
-let articlePathDirEn = path.join(__dirname, '../../../public/en/article/');
+let articlePathDirEn = path.join(__dirname, '../../../public/en/article/');*/
+let articlePathDirFr = "upload/article/html/fr/";
+let articlePathDirDe = "upload/article/html/de/";
+let articlePathDirEn = "upload/article/html/en/";
 let pathArticle = "";
 
 let isTab = false;
@@ -24,6 +28,9 @@ let isTab = false;
 function createNewNameImage(req, index) {
   console.log("tableau d' image dectecte: " + isTab);
   const articleTitle = req.body.title;
+  let articleTitleValid = articleTitle
+    .replace(/[^a-zA-Z0-9]+/g, "-")
+    .toLowerCase();
   const imageName = isTab ? req.files.image[index].name : req.files.image.name;
   console.log(
     "nom de l' image en cours de traitement dans la fonction createNewNameImage: " +
@@ -33,8 +40,8 @@ function createNewNameImage(req, index) {
   const timestamp = Date.now();
   const newImageFileName =
     index >= 0
-      ? `image-${timestamp}-${articleTitle}-${index}${imageExt}`
-      : `image-${timestamp}-${articleTitle}${imageExt}`;
+      ? `image-${timestamp}-${articleTitleValid}-${index}${imageExt}`
+      : `image-${timestamp}-${articleTitleValid}${imageExt}`;
   return newImageFileName;
 }
 
@@ -42,7 +49,9 @@ function createNewNameImage(req, index) {
 function createNewNameArticle(req) {
 
   const articleTitle = req.body.title;
-  let articleTitleValid = articleTitle.replaceAll(" ", "-");
+  let articleTitleValid = articleTitle
+    .replace(/[^a-zA-Z0-9]+/g, "-")
+    .toLowerCase();
   const articleName = req.files.article.name;
   const articleExt = path.extname(articleName); // Récupère l'extension avec le point inclus (ex: .html)
   const timestamp = Date.now();
@@ -88,8 +97,10 @@ function createOneArticlePathDir(newArticleFileName, req) {
 
 // cree un path/database pour le fichier article
 function createOneArticlePathDB(newArticleFileName) {
-  let articlePathDataBase =
-     pathArticle + newArticleFileName;
+  /*let articlePathDataBase =
+     pathArticle + newArticleFileName;*/
+  
+  let articlePathDataBase = urlbase.urlarticle + pathArticle + newArticleFileName;
 
   return articlePathDataBase;
 }
@@ -242,11 +253,23 @@ async function storeOneImage(img, imagePath, res) {
         res.status(500).json({ message: "Impossible d'enregistrer l'image" });
         return reject(err);
       }
-      resolve();
+      //test la presence du dossier
+      fs.promises
+        .access(imagePath)
+        .then(() => {
+          console.log(
+            "Le fichier image a été déplacé et est présent à l'emplacement souhaité."
+          );
+          return resolve();
+        })
+        .catch(() => {
+          console.error("Le fichier n'existe pas à l'emplacement prévu.");
+          return reject(err);
+        });
     });
   });
 }
-// Fonction pour enregistrer une image
+// Fonction pour enregistrer un article
 async function storeOneArticle(article, articlePath, res) {
   console.log("fichier article dans la fonction storeOneArticle: " + article);
   console.log(
@@ -259,7 +282,22 @@ async function storeOneArticle(article, articlePath, res) {
         res.status(500).json({ message: "Impossible d'enregistrer l'article" });
         return reject(err);
       }
-      resolve();
+
+      //test la presence du dossier
+      fs.promises
+        .access(articlePath)
+        .then(() => {
+          console.log(
+            "Le fichier article a été déplacé et est présent à l'emplacement souhaité."
+          );
+          return resolve()
+        })
+        .catch(() => {
+          console.error("Le fichier n'existe pas à l'emplacement prévu.");
+          return reject(err)
+        });
+      
+      //resolve();
     });
   });
 }

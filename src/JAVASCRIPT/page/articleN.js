@@ -3,13 +3,17 @@
 import { isXLargeScreen } from "../../UTILS/fonctions/isScreenMobil.js";
 
 import { localOrProd } from "../../UTILS/fonctions/testEnvironement.js";
+import { smoothScroll } from "../../UTILS/fonctions/scrollInView.js";
+
+
+//import { getPageLanguage } from "../../UTILS/fonctions/checkPageLanguage.js";
 
 const divData = document.querySelector("#info-href");
 
-const refLangDE = document.querySelector("link[hreflang='de']");
+/*const refLangDE = document.querySelector("link[hreflang='de']");
 const refLangEN = document.querySelector("link[hreflang='en']");
 const refLangFR = document.querySelector("link[hreflang='fr']");
-const refLangDefault = document.querySelector("link[hreflang='x-default']");
+const refLangDefault = document.querySelector("link[hreflang='x-default']");*/
 
 let objectUrl = localOrProd();
 let url = objectUrl.url;
@@ -18,11 +22,11 @@ divData.setAttribute("data-de", `${url}/public/de/artikel-coaching-personale-ent
 divData.setAttribute("data-en", `${url}/public/en/article-coaching-personal-development-company.html`);
 divData.setAttribute("data-fr", `${url}/public/fr/article-coaching-developpement-personel-entreprise.html`);
 
-refLangDE.setAttribute("href", `${url}/public/de/artikel-coaching-personale-entwicklung-unternehmen.html`);
+/*refLangDE.setAttribute("href", `${url}/public/de/artikel-coaching-personale-entwicklung-unternehmen.html`);
 refLangEN.setAttribute("href", `${url}/public/en/article-coaching-personal-development-company.html`);
 refLangFR.setAttribute("href", `${url}/public/fr/article-coaching-developpement-personel-entreprise.html`);
 refLangDefault.setAttribute("href", `${url}/public/fr/article-coaching-developpement-personel-entreprise.html`);
-
+*/
 /**
  *recupere la langue de l'article
  *
@@ -45,6 +49,41 @@ function getLanguage(objectArticle) {
       break;
   }
 }
+
+
+async function setHeadertag(articleObject) { 
+  let titleTag = document.querySelector("title");
+  let descriptionTag = document.querySelector("meta[name='description']");
+
+  titleTag.textContent = articleObject.title;
+  descriptionTag.setAttribute("content", articleObject.content);
+}
+
+async function loadPageArticle() {
+     
+  
+  let articleObject = JSON.parse(localStorage.getItem("articleInfo"));
+  setHeadertag(articleObject);
+  let page = articleObject.page;
+
+     try {
+       
+       
+       // Charger le fichier HTML
+       const response = await fetch(
+         `${page}`
+       );
+       const htmlContent = await response.text();
+
+       // Injecter le contenu HTML dans le div 
+       document.getElementById("article-content").innerHTML = htmlContent;
+
+       
+     } catch (error) {
+       console.error("Error loading page:", error);
+     }
+   }
+
 
 /**
  *en fonction de la taille de l'ecran affiche ou cache le menu side
@@ -110,25 +149,29 @@ function setMenuSide(objectArticle) {
  */
 function setLinkMenuSide() {
   let menuSide = document.querySelector(".menu-side");
-  let arrayUnderTitleH2 = document.querySelectorAll("h2");
+  let articleContainer = document.querySelector("#article-content");
+  let arrayUnderTitleH2 = articleContainer.querySelectorAll("h2");
   arrayUnderTitleH2.forEach((titleH2, index) => {
     titleH2.setAttribute("id", `ST-${index}`);
   });
 
-  //crer et ajoute les liens en fonction des sous titres
+  //creer et ajoute les liens en fonction des sous titres
   arrayUnderTitleH2.forEach((undertitle, index) => {
     let li = document.createElement("li");
-    let a = document.createElement("a");
+    //let a = document.createElement("a");
     let valueH2 = undertitle.textContent;
 
     li.setAttribute("class", "menu-side-li");
-    a.setAttribute("href", `#ST-${index}`);
-    a.setAttribute("class", "menu-side-li-a");
-    a.textContent = valueH2;
-    li.appendChild(a);
+    //a.setAttribute("href", `#ST-${index}`);
+    li.setAttribute("data-link", `ST-${index}`);
+    //a.setAttribute("class", "menu-side-li-a");
+    //a.textContent = valueH2;
+    li.textContent = valueH2;
+    //li.appendChild(a);
     menuSide.appendChild(li);
   });
 
+  
   //creer un dernier lien pour un retour a la liste des articles
   let li = document.createElement("li");
   let a = document.createElement("a");
@@ -136,6 +179,9 @@ function setLinkMenuSide() {
   a.setAttribute("class", "menu-side-li-retour-a");
   li.appendChild(a);
   menuSide.appendChild(li);
+
+
+  smoothScroll("menu-side-li");
 }
 
 /**
@@ -205,6 +251,7 @@ function setUrlImage(objectArticle) {
 }
 
 function setArticle() {
+  
   displayOrHideMenuSide();
   let objectArticle = JSON.parse(localStorage.getItem("articleInfo"));
   let lang = getLanguage(objectArticle);
@@ -216,5 +263,9 @@ function setArticle() {
 }
 
 //script principal
-setArticle();
-window.addEventListener("resize", displayOrHideMenuSide);
+(async () => {
+  await loadPageArticle();
+  setArticle();
+  window.addEventListener("resize", displayOrHideMenuSide);
+})();
+

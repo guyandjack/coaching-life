@@ -186,3 +186,30 @@
   -webkit-backdrop-filter: brightness(60%);
           backdrop-filter: brightness(60%);
 }
+
+.lieu-des-prestations {
+  position: relative;
+  z-index: 1;
+  color: #fbfffe;
+  font-size: 18px;
+  padding: 20px;
+  min-height: 200px;
+  line-height: 150%;
+  margin: 50px 0px;
+}
+@media screen and (min-width: 993px) {
+  .lieu-des-prestations {
+    font-size: 25px;
+  }
+}
+
+.lieu-des-prestations::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #001747;
+}

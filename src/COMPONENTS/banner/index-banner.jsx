@@ -115,9 +115,9 @@ function BannerIndex({ lang }) {
     titleLink1.current.textContent = contentBanner.link1.titleLink;
     textLink1.current.textContent = contentBanner.link1.textLink;
     titleLink2.current.textContent = contentBanner.link2.titleLink;
-    textLink2.current.textContent = contentBanner.link1.textLink;
+    textLink2.current.textContent = contentBanner.link2.textLink;
     titleLink3.current.textContent = contentBanner.link3.titleLink;
-    textLink3.current.textContent = contentBanner.link1.textLink;
+    textLink3.current.textContent = contentBanner.link3.textLink;
   }
     useEffect(() => {
       //determine l' url entre dev et prod

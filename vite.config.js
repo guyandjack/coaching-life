@@ -5,7 +5,6 @@ import path from "path"; // Assure-toi que path est importé correctement
 import { visualizer } from "rollup-plugin-visualizer";
 
 export default defineConfig({
-  
   plugins: [
     react(),
     visualizer({
@@ -38,6 +37,10 @@ export default defineConfig({
         article: path.resolve(
           __dirname,
           "public/fr/article-coaching-developpement-personel-entreprise.html"
+        ),
+        articleN: path.resolve(
+          __dirname,
+          "public/fr/article-propose-par-so-coaching.html"
         ),
         cgu: path.resolve(
           __dirname,

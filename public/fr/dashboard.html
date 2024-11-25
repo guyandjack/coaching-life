@@ -34,20 +34,20 @@
       </header>
       <main>
         <section id="top" class="relative">
-          <div class="flex-column-start-start container-page-move">
-            <a href="#top" class="page-top">Haut de page</a>
-            <a href="#bottom" class="page-bottom">Bas de page</a>
-          </div>
+          <ul class="flex-column-start-start container-page-move">
+            <li data-link="top" class="page-top menu-fixed">Haut de page</li>
+            <li data-link="bottom" class="page-bottom menu-fixed">Bas de page</li>
+          </ul>
           <!-- <div id="RC-spinner"></div> -->
           <div class="flex-column-start-center container-title">
             <div id="RC-collapse"></div>
             <h1 class="h1">Tableau de bord</h1>
           </div>
           <ul class="flex-column-space_evenly-center menu-dash">
-            <li><a class="menu-link" href="#mdp">Mot de passe</a></li>
-            <li><a class="menu-link" href="#avis">Avis</a></li>
-            <li><a class="menu-link" href="#article">Article</a></li>
-            <li><a class="menu-link" href="#data">Statistique</a></li>
+            <li class="menu-link" data-link="mdp">Mot de passe</li>
+            <li class="menu-link" data-link="avis">Avis</li>
+            <li class="menu-link" data-link="articles">Article</li>
+            <li class="menu-link" data-link="data">Statistique</li>
             
           </ul>
 
@@ -66,7 +66,7 @@
               <div id="RC-form-delete-avis" class="container-form"></div>
             </article>
           </div>
-          <div id="article" class="flex-column-start-center main-container-form">
+          <div id="articles" class="flex-column-start-center main-container-form">
             <div class="dashboard-title">Gestion des articles</div>
             <article class="flex-column-start-center ">
               <div id="RC-form-add-article" class="container-form"></div>

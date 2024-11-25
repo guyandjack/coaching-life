@@ -16,6 +16,7 @@ import "../../style/CSS/card-article-container.css";
 //declaration des functions
 let objectUrl = localOrProd();
 let url = objectUrl.urlApi;
+console.log("url api: " + url)
 
 
 function CardArticleContainer() {

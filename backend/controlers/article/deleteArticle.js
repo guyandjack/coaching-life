@@ -75,9 +75,9 @@ async function deleteOneArticle(req, res) {
       await Promise.all(
         result.url_article.map(async (url) => {
           try {
-            //const cleanUrl = url.split(/3000[/\\]/)[1].trim();
-            await fs.rm(url);
-            console.log(`Fichier article ${url} supprimé avec succès.`);
+            const cleanUrl = url.split(/3000[/\\]/)[1].trim();
+            await fs.rm(cleanUrl);
+            console.log(`Fichier article ${cleanUrl} supprimé avec succès.`);
           } catch (err) {
             tabErrorDeleteFile.push(`Impossible de supprimer l'article ${url}`);
             console.error(

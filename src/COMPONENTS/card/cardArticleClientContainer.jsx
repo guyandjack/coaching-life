@@ -48,7 +48,7 @@ function whatLanguage() {
   return result;
 }
 
-function cleanUrl(urlarticle) {
+/*function cleanUrl(urlarticle) {
   let match = "";
   if (url == "https://api.socoaching.ch/api") {
     // Expression régulière pour capturer "public" ou "life" et tout ce qui suit en fonction de l'environement
@@ -70,7 +70,7 @@ function cleanUrl(urlarticle) {
   }
   
 
-}
+}*/
 
 
  
@@ -98,8 +98,8 @@ const getAllArticle = async () => {
           if (article.url_article != null) {
             article.url_article = JSON.parse(article.url_article);
             // adapte l' url de l' article pour le navigateur
-            article.url_article[0] = cleanUrl(article.url_article[0]);
-            console.log("url article modifie: " + article.url_article[0]);
+            /*article.url_article[0] = cleanUrl(article.url_article[0]);
+            console.log("url article modifie: " + article.url_article[0]);*/
           }
         });
       
