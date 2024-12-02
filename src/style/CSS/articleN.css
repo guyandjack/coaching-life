@@ -3,6 +3,7 @@
   z-index: 1;
   padding: 15px;
   margin: 50px 0px 150px 0px;
+  overflow: hidden;
 }
 @media screen and (min-width: 993px) {
   .articleN {
@@ -24,13 +25,70 @@
   left: 0px;
   width: 100%;
   height: 100%;
-  background-color: #001747;
+  background-color: #1ba4e3;
+  /*  border-top-left-radius: 30%;
+   border-top-right-radius: 10%;
+   border-bottom-left-radius: 40%; 
+   border-bottom-right-radius: 20%;  */
   opacity: 0.1;
 }
 
+/* .div-deco{
+    position: absolute;
+
+}
+.div-deco-size-1{
+    width: 100px;
+    height: 100px;
+}
+.div-deco-size-2{
+    width: 200px;
+    height: 200px;
+}
+.div-deco-color-first{
+
+    background-color: map-get($colors-rule, first-color);
+}
+.div-deco-color-second{
+
+    background-color: map-get($colors-rule, second-color);
+}
+.div-deco-color-third{
+
+    background-color: map-get($colors-rule, third-color);
+}
+.div-deco-color-fourth{
+
+    background-color: map-get($colors-rule, fourth-color);
+} */
 .articleN-h1 {
-  color: #779f06;
+  position: relative;
+  z-index: 1;
+  color: #fbfffe;
   margin: 50px 0px;
+  overflow: hidden;
+}
+.articleN-h1::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #1ba4e3;
+  opacity: 0.5;
+}
+.articleN-h1::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #9cd008;
+  opacity: 1;
 }
 
 /* concenen le menu flotant*/
@@ -42,11 +100,20 @@
 @media screen and (min-width: 1501px) {
   .container-menu-side {
     left: 3%;
+    opacity: 1;
+    -webkit-transition: opacity 0.3s linear;
+    transition: opacity 0.3s linear;
   }
 }
 .container-menu-side .title-menu-side {
   color: #1ba4e3;
   font-size: 20px;
+}
+
+.transition-opacity {
+  opacity: 0;
+  -webkit-transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear;
 }
 
 .menu-side {
@@ -122,14 +189,18 @@
   }
 }
 
+.articleN-name,
 .articleN-date,
-.articleN-date,
-.articleN-read-time {
+.articleN-time {
   margin: 10px 0px;
+  padding: 0px 15px;
+  border-left: 2px solid white;
+  border-right: 2px solid white;
 }
 
-.split {
-  border-bottom: 2px solid #001747;
+.articleN-split {
+  width: 70%;
+  padding-bottom: 10px;
 }
 
 .articleN-image {

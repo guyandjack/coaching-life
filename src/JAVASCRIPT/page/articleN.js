@@ -82,7 +82,43 @@ async function loadPageArticle() {
      } catch (error) {
        console.error("Error loading page:", error);
      }
-   }
+}
+ 
+/**
+ * re
+ *
+ * @return {*} 
+ */
+function hideMenuSideIfFooterVisible() {
+  
+  // element observé
+  const footer = document.getElementById("RC-footer");
+
+  // element a modifier
+  const menu = document.querySelector(".container-menu-side");
+
+  
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            menu.classList.add("transition-opacity");
+          } else {
+            menu.classList.remove("transition-opacity");
+          }
+        });
+      },
+      {
+        root: null,
+        threshold: 0.4,
+       
+      }
+    );
+
+  observer.observe(footer);
+  
+  
+}
 
 
 /**
@@ -96,6 +132,7 @@ function displayOrHideMenuSide() {
   if (!result) {
     console.log("is xlarge scereen : " + result);
     menuSide.classList.remove("hide");
+    hideMenuSideIfFooterVisible();
     return true;
   }
   if (result) {
@@ -249,6 +286,8 @@ function setUrlImage(objectArticle) {
     });
   }
 }
+
+ 
 
 function setArticle() {
   
