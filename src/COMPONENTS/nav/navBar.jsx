@@ -13,6 +13,7 @@ import {
   styleLinkNavBar,
 } from "../../UTILS/fonctions/styleLinkNavBar.js";
 import { localOrProd } from "../../UTILS/fonctions/testEnvironement";
+import { getPageLanguage } from "../../UTILS/fonctions/checkPageLanguage.js";
 
 //import des image et logo
 import iconClose from "../../assets/icons/close.svg";
@@ -39,7 +40,17 @@ function NavBar() {
   let href_en = useRef("");
   let href_de = useRef("");
 
-  //gere l' effet de style sur les liens en fonction de l'url de la page
+  const langText = useRef("");
+
+  const langFrMainMenu = useRef();
+  const langDeMainMenu = useRef();
+  const langEnMainMenu = useRef();
+
+  const langFrBurgerMenu = useRef();
+  const langDeBurgerMenu = useRef();
+  const langEnBurgerMenu = useRef();
+
+  //gere l'effet de style sur les liens en fonction de l'url de la page
   useEffect(() => {
     if (!isSmallScreen) {
       styleLinkNavBar();
@@ -55,6 +66,67 @@ function NavBar() {
     href_en.current = result.en;
     href_fr.current = result.fr;
   });
+
+  //ajoute un atribut aria-label en fonction de la langue de la page
+  useEffect(() => {
+    let lang = getPageLanguage();
+    console.log("lang: " + lang)
+    switch (lang) {
+      case "fr":
+        
+        
+        if (langFrMainMenu.current && langEnMainMenu.current && langDeMainMenu.current) {
+          
+          langText.current = "Selection de la langue";
+          langFrMainMenu.current.setAttribute("aria-label", "Change la langue en francais");
+          langEnMainMenu.current.setAttribute("aria-label", "Change la langue en anglais");
+          langDeMainMenu.current.setAttribute("aria-label", "Change la langue en allemand");
+        }
+        
+        
+        if (langFrBurgerMenu.current && langEnBurgerMenu.current && langDeBurgerMenu.current) {
+          
+          langFrBurgerMenu.current.setAttribute("aria-label", "Change la langue en francais");
+          langEnBurgerMenu.current.setAttribute("aria-label", "Change la langue en anglais");
+          langDeBurgerMenu.current.setAttribute("aria-label", "Change la langue en allemand");
+        }
+        break;
+      case "de":
+        if (langFrMainMenu.current && langEnMainMenu.current && langDeMainMenu.current) {
+          langText.current = "Auswahl der Sprache";
+          langFrMainMenu.current.setAttribute("aria-label", "Ändere die Sprache auf Deutsch");
+          langEnMainMenu.current.setAttribute("aria-label", "Ändert die Sprache auf Englisch");
+          langDeMainMenu.current.setAttribute("aria-label", "Ändert die Sprache auf Deutsch");
+        }
+        if (langFrBurgerMenu.current && langEnBurgerMenu.current && langDeBurgerMenu.current) {
+
+          langFrBurgerMenu.current.setAttribute("aria-label", "Ändere die Sprache auf Deutsch");
+          langEnBurgerMenu.current.setAttribute("aria-label", "Ändert die Sprache auf Englisch");
+          langDeBurgerMenu.current.setAttribute("aria-label", "Ändert die Sprache auf Deutsch");
+        }
+        break;
+      case "en":
+
+        if (langFrMainMenu.current && langEnMainMenu.current && langDeMainMenu.current) {
+        
+          langText.current = "Change language"
+          langFrMainMenu.current.setAttribute("aria-label", "Change language to French");
+          langEnMainMenu.current.setAttribute("aria-label", "Change language to English");
+          langDeMainMenu.current.setAttribute("aria-label", "Change language to German");
+        }
+        if (langFrBurgerMenu.current && langEnBurgerMenu.current && langDeBurgerMenu.current) {
+
+          langFrBurgerMenu.current.setAttribute("aria-label", "Change language to French");
+          langEnBurgerMenu.current.setAttribute("aria-label", "Change language to English");
+          langDeBurgerMenu.current.setAttribute("aria-label", "Change language to German");
+        }
+        break;
+    
+      default:
+        break;
+    }
+
+  })
 
   function clickBurger() {
     if (!isClicked) {
@@ -84,7 +156,7 @@ function NavBar() {
     };
   }, []);
   return (
-    <div>
+    <nav>
       {/*!isSmallScreen || (isSmallScreen && !isClicked) ? () : null*/}
       <div
         style={{ minHeight: "70px" }} // coreection CLS
@@ -100,7 +172,8 @@ function NavBar() {
               src={logoSocoaching}
               className="logo-coaching-svg"
               title="logo de l'entreprise socoaching"
-            />
+              
+             />
           </a>
         </div>
         {isSmallScreen && !isClicked ? (
@@ -131,6 +204,7 @@ function NavBar() {
                       src={iconLanguage}
                       beforeInjection={(svg) => {
                         svg.classList.add("icon-language");
+                        svg.setAttribute("aria-label",`${langText.current}`)
                       }}
                     />
                   </div>
@@ -140,6 +214,7 @@ function NavBar() {
                       <a
                         className="list-lang-li-a flex-column-center-center"
                         href={href_de.current}
+                        ref={langDeMainMenu}
                       >
                         De
                       </a>
@@ -148,6 +223,7 @@ function NavBar() {
                       <a
                         className="list-lang-li-a flex-column-center-center"
                         href={href_en.current}
+                        ref={langEnMainMenu}
                       >
                         En
                       </a>
@@ -156,6 +232,7 @@ function NavBar() {
                       <a
                         className="list-lang-li-a flex-column-center-center"
                         href={href_fr.current}
+                        ref={langFrMainMenu}
                       >
                         Fr
                       </a>
@@ -191,28 +268,28 @@ function NavBar() {
               </li>
             );
           })}
-          {/*<li className="">
+          {<li className="">
             <ul className="burger-menu-lang flex-row-start-center">
               <li className="burger-menu-lang-li flex-row-center-center">
-                <a className="burger-menu-lang-li-a" href={href_de.current}>
+                <a className="burger-menu-lang-li-a" href={href_de.current} ref={langDeBurgerMenu}>
                   De
                 </a>
               </li>
               <li className="burger-menu-lang-li flex-row-center-center">
-                <a className="burger-menu-lang-li-a" href={href_en.current}>
+                <a className="burger-menu-lang-li-a" href={href_en.current} ref={langEnBurgerMenu}>
                   En
                 </a>
               </li>
               <li className="burger-menu-lang-li flex-row-center-center">
-                <a className="burger-menu-lang-li-a" href={href_fr.current}>
+                <a className="burger-menu-lang-li-a" href={href_fr.current} ref={langFrBurgerMenu}>
                   Fr
                 </a>
               </li>
             </ul>
-          </li> */}
+          </li> }
         </ul>
       </div>
-    </div>
+    </nav>
   );
 }
 

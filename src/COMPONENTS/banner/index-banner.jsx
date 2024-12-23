@@ -1,11 +1,9 @@
-
-import { useEffect, useRef } from "react"
+import { useEffect, useRef } from "react";
 
 import { localOrProd } from "../../UTILS/fonctions/testEnvironement.js";
 
 // composant banner page accueil
-import "../../style/CSS/index-banner.css"
-
+import "../../style/CSS/index-banner.css";
 
 //declaration des fonctions
 function defineContent(lang) {
@@ -14,39 +12,36 @@ function defineContent(lang) {
     case "fr":
       content.title = "Révéler les ressources de l'être humain";
       content.link1 = {
-        titleLink : "Coaching de vie",
-        textLink : "Trouvez votre équilibre"
-
-      }
+        titleLink: "Coaching de vie",
+        textLink: "Trouvez votre équilibre",
+      };
       content.link2 = {
-        titleLink : "Coaching de carrière",
-        textLink: "Libérez votre potentiel"
-            };
+        titleLink: "Coaching de carrière",
+        textLink: "Libérez votre potentiel",
+      };
       content.link3 = {
-        titleLink : "Consulting en entreprise",
-        textLink : "Management et RH"
-      }
+        titleLink: "Consulting en entreprise",
+        textLink: "Management et RH",
+      };
 
-      
       break;
-      case "de":
-        content.title = "Die Ressourcen des Menschen offenbaren";
-        content.link1 = {
-          titleLink: "Lebenscoaching",
-          textLink: "Finden Sie Ihr Gleichgewicht",
-        };
-        content.link2 = {
-          titleLink: "Coaching für die Karriere",
-          textLink: "Entfalten Sie Ihr Potenzial",
-        };
+    case "de":
+      content.title = "Die Ressourcen des Menschen offenbaren";
+      content.link1 = {
+        titleLink: "Lebenscoaching",
+        textLink: "Finden Sie Ihr Gleichgewicht",
+      };
+      content.link2 = {
+        titleLink: "Coaching für die Karriere",
+        textLink: "Entfalten Sie Ihr Potenzial",
+      };
       content.link3 = {
         titleLink: "Consulting in Unternehmen",
         textLink: "Management und HR",
       };
 
-        
-        break;
-        case "en":
+      break;
+    case "en":
       content.title = "Revealing the human being's resources";
       content.link1 = {
         titleLink: "Life coaching",
@@ -61,19 +56,14 @@ function defineContent(lang) {
         textLink: "Management and HR",
       };
 
-      
       break;
-  
+
     default:
       break;
   }
   console.log(content);
-  return content
+  return content;
 }
-
-
-
-
 
 function setUrlLink(url) {
   let linkTitleVie = document.querySelector("#vie");
@@ -94,11 +84,8 @@ function setUrlLink(url) {
   );
 }
 
-
-
 // eslint-disable-next-line react/prop-types
 function BannerIndex({ lang }) {
-  
   let bannerTitle = useRef();
   let titleLink1 = useRef();
   let textLink1 = useRef();
@@ -111,7 +98,7 @@ function BannerIndex({ lang }) {
     bannerTitle.current.textContent = contentBanner.title;
   }
 
-    function setLinkBanner(contentBanner) {
+  function setLinkBanner(contentBanner) {
     titleLink1.current.textContent = contentBanner.link1.titleLink;
     textLink1.current.textContent = contentBanner.link1.textLink;
     titleLink2.current.textContent = contentBanner.link2.titleLink;
@@ -119,37 +106,38 @@ function BannerIndex({ lang }) {
     titleLink3.current.textContent = contentBanner.link3.titleLink;
     textLink3.current.textContent = contentBanner.link3.textLink;
   }
-    useEffect(() => {
-      //determine l' url entre dev et prod
-      let objectUrl = localOrProd();
-      let url = objectUrl.url;
-      setUrlLink(url);
-      return () => {};
-    }, []);
-  
+  useEffect(() => {
+    //determine l' url entre dev et prod
+    let objectUrl = localOrProd();
+    let url = objectUrl.url;
+    setUrlLink(url);
+    return () => {};
+  }, []);
+
   useEffect(() => {
     let contentBanner = defineContent(lang);
     setTitleBanner(contentBanner);
     setLinkBanner(contentBanner);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-    return (
-      <div className="flex-column-start-center banner-container ">
-        <h1 ref={bannerTitle } className="h1 banner-title">
-          
-          {"Révéler les ressources de l'être humain"}
-        </h1>
-        
+  return (
+    <div className="flex-column-start-center banner-container">
+      <h1 ref={bannerTitle} className="h1 banner-title">
+        {"Révéler les ressources de l'être humain"}
+      </h1>
 
-        <ul className="flex-column-space_evenly-center link-container">
-          <li>
+      <ul className="flex-column-space_evenly-center link-container">
+        <li>
+          <h2>
             <a id="vie" className="flex-column-center-center link-cta" href="#">
               <p ref={titleLink1} className="h2 text-inside"></p>
               <p ref={textLink1} className="h3 text-aside"></p>
             </a>
-          </li>
-          <li>
+          </h2>
+        </li>
+        <li>
+          <h2>
             <a
               id="carriere"
               className="flex-column-center-center link-cta"
@@ -158,9 +146,11 @@ function BannerIndex({ lang }) {
               <p ref={titleLink2} className="h2 text-inside"></p>
               <p ref={textLink2} className="h3 text-aside"></p>
             </a>
-          </li>
+          </h2>
+        </li>
 
-          <li>
+        <li>
+          <h2>
             <a
               id="entreprise"
               className="flex-column-center-center link-cta"
@@ -169,10 +159,11 @@ function BannerIndex({ lang }) {
               <p ref={titleLink3} className="h2 text-inside"></p>
               <p ref={textLink3} className="h3 text-aside"></p>
             </a>
-          </li>
-        </ul>
-      </div>
-    );
+          </h2>
+        </li>
+      </ul>
+    </div>
+  );
 }
 
-export { BannerIndex }
+export { BannerIndex };
