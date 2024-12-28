@@ -1,13 +1,18 @@
 //composant "CardTestimonialContainer"
-//import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 //import ds composants enfants
 import { CardTestimonial } from "../../COMPONENTS/card/cardTestimonial.jsx";
 import { Spinner } from "../../COMPONENTS/spinner/spinner.jsx";
+import { ReactSVG } from "react-svg";
 
 //import des functions
 import { localOrProd } from "../../UTILS/fonctions/testEnvironement.js";
 import { getPageLanguage } from "../../UTILS/fonctions/checkPageLanguage.js";
+
+//import des images
+import chevronLeft from "../../assets/icons/chevron_left.svg";
+import chevronRight from "../../assets/icons/chevron_right.svg";
 
 //import des feuilles de style
 import "../../style/CSS/card-testimonial-container.css";
@@ -18,12 +23,9 @@ let language = getPageLanguage();
 
 //declaration des fonctions
 
-import { useState, useEffect } from "react";
-
 // Fonction pour récupérer les avis
 const getAllAvis = async () => {
   try {
-    
     const response = await fetch(`${url}/avis`, {
       method: "GET",
       headers: {
@@ -69,13 +71,28 @@ function getTestimonialText(language, card) {
   }
 }
 
+function nextAvis(container, distance) {
+  container.scrollBy({
+    left: distance,
+    behavior: "smooth", // Animation fluide
+  });
+}
 
+function prevAvis(container, distance) {
+  container.scrollBy({
+    left: -distance,
+    behavior: "smooth", // Animation fluide
+  });
+}
 
 function CardTestimonialContainer() {
   const [arrayAvis, setArrayAvis] = useState([]);
-  const [isVisible, setIsVisible] = useState(false); 
+  const [isVisible, setIsVisible] = useState(false);
 
-  
+  const nextArrow = useRef(null);
+  const prevArrow = useRef(null);
+  const avisList = useRef(null);
+  const testimonialSliderLi = useRef(null);
 
   useEffect(() => {
     const fetchAvis = async () => {
@@ -86,28 +103,131 @@ function CardTestimonialContainer() {
         //trie les avis en fonction de la langue de la page
 
         setArrayAvis(avis); // Met à jour l'état avec les avis récupérés
-
       } catch (error) {
         console.error("Erreur lors de la récupération des avis:", error);
       } finally {
         setTimeout(() => {
           setIsVisible(false);
-        },500)
+        }, 500);
       }
     };
-    
+
     fetchAvis(); // Appel de la fonction pour récupérer les avis
-    
   }, []); // [] assure que l'effet se déclenche seulement au montage
 
-  return (
-    <div className="card-testimonial-container">
-      {isVisible ? <Spinner visible={isVisible} /> : null}
+  useEffect(() => {
+    let chevronNext = nextArrow.current;
+    let chevronPrev = prevArrow.current;
+    
+    function updateDistance() {
+      if (testimonialSliderLi.current) {
+        return testimonialSliderLi.current.offsetWidth;
+      }
+      return 0;
+    }
 
+    function handlePrevClick() {
+      const distance = updateDistance();
+      prevAvis(avisList.current, distance);
+      checkScrollPosition(500);
+    }
+
+    function handleNextClick() {
+      const distance = updateDistance();
+      nextAvis(avisList.current, distance);
+      checkScrollPosition(500);
+    }
+
+    function checkScrollPosition(delay) {
+
+      setTimeout(() => {
+        
+        let actualPosition = parseInt(avisList.current.scrollLeft);
+        let totalWidth = parseInt(avisList.current.scrollWidth);
+        let widthView = parseInt(avisList.current.clientWidth);
+
+        console.log("position actuelle: " + actualPosition);
+        console.log("largeur totale:  " + totalWidth);
+        console.log("largeur visible:" + widthView);
+  
+  
+        if (actualPosition == 0) {
+          //scroll au debut
+          prevArrow.current.disabled = true;
+        }
+        else if (actualPosition + widthView >= totalWidth) {
+          nextArrow.current.disabled = true;
+        }
+        else {
+          prevArrow.current.disabled = false;
+          nextArrow.current.disabled = false;
+          
+        }
+      }, delay);
+    }
+
+    // Initial setup
+    if (prevArrow.current && nextArrow.current) {
+      chevronPrev.addEventListener("click", handlePrevClick);
+      chevronNext.addEventListener("click", handleNextClick);
+    }
+
+    // Handle resize events
+    const handleResize = () => {
+      const distance = updateDistance(); // This ensures the correct distance is used
+      console.log("Distance recalculated on resize:", distance);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup on unmount
+    return () => {
+      if (chevronNext && chevronPrev) {
+        chevronPrev.removeEventListener("click", handlePrevClick);
+        chevronNext.removeEventListener("click", handleNextClick);
+      }
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  return (
+    <div className="flex-column-start-center card-testimonial-container">
+      {isVisible ? <Spinner visible={isVisible} /> : null}
+      <div className="flex-row-space_between-center container-chevron relative">
+        <button
+          ref={prevArrow}
+          type="button"
+          className="btn-arrow"
+          aria-label="Scroll to previous items"
+          disabled
+          
+        >
+          <ReactSVG
+            src={chevronLeft}
+            beforeInjection={(svg) => {
+              svg.classList.add("testimonial-chevron");
+            }}
+          />
+        </button>
+        <button
+          ref={nextArrow}
+          type="button"
+          className="btn-arrow"
+          aria-label="Scroll to next items"
+          
+        >
+          <ReactSVG
+            src={chevronRight}
+            beforeInjection={(svg) => {
+              svg.classList.add("testimonial-chevron");
+            }}
+          />
+        </button>
+      </div>
       {arrayAvis.length > 0 ? (
-        <ul className="flex-column-start-center animation-slider">
+        <ul ref={avisList} className="flex-row-start-center testimonial-slider">
           {arrayAvis.map((card, index) => (
-            <li key={card.id}>
+            <li key={card.id} ref={testimonialSliderLi}>
               <CardTestimonial
                 avatarUrl={card.url_img}
                 testimonialText={getTestimonialText(language, card)}
@@ -126,6 +246,3 @@ function CardTestimonialContainer() {
 }
 
 export { CardTestimonialContainer };
-
-
-

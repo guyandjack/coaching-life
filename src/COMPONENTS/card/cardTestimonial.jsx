@@ -53,7 +53,15 @@ function CardTestimonial({
             />
           )}
         </div>
-        <div className="flex-row-center-center testimonial-container-text">
+        <div className="flex-row-center-center testimonial-container-text relative">
+          <ReactSVG
+            className={
+              themeColor
+                ? "testimonial-quote quote-color-second"
+                : "testimonial-quote quote-color-fourth"
+            }
+            src={quoteSvg}
+          />
           <p className="testimonial-text">{testimonialText}</p>
         </div>
         <div className="flex-row-start-center testimonial-container-info">
@@ -78,14 +86,6 @@ function CardTestimonial({
             </span>
           </span>
         </div>
-        <ReactSVG
-          className={
-            themeColor
-              ? "testimonial-quote quote-color-second"
-              : "testimonial-quote quote-color-fourth"
-          }
-          src={quoteSvg}
-        />
       </div>
     </ConfigProvider>
   );

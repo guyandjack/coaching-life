@@ -1,30 +1,33 @@
 .card-testimonial {
   position: relative;
   z-index: 1;
-  max-width: 400px;
-  width: 100%;
-  padding: 10px;
-  /* border-top: 2px solid map-get($colors-rule, second-color);
-  border-bottom: 2px solid map-get($colors-rule, second-color); */
-  margin: 50px 0px;
+  width: 400px;
+  /*@include upper-large-screen {
+      margin: 50px 50px;
+  }*/
 }
 @media screen and (min-width: 769px) {
   .card-testimonial {
-    width: 600px;
+    width: 500px;
   }
 }
 @media screen and (min-width: 993px) {
   .card-testimonial {
-    margin: 50px 50px;
+    width: 600px;
+  }
+}
+@media screen and (min-width: 1501px) {
+  .card-testimonial {
+    width: 700px;
   }
 }
 .card-testimonial .testimonial-container-avatar {
   position: absolute;
-  right: 0px;
+  left: 50%;
   top: 0%;
-  -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
+  -webkit-transform: translate(-50%, -90%);
+      -ms-transform: translate(-50%, -90%);
+          transform: translate(-50%, -90%);
 }
 .card-testimonial .testimonial-avatar {
   border: 5px solid #1ba4e3;
@@ -65,9 +68,11 @@
   opacity: 0;
 }
 .card-testimonial .testimonial-container-info {
-  margin-top: 20px;
   -ms-flex-item-align: end;
       align-self: flex-end;
+  -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+          transform: translateX(-100%);
 }
 .card-testimonial .testimonial-container-info .hook {
   font-size: 40px;
@@ -81,7 +86,7 @@
 .card-testimonial .testimonial-quote {
   position: absolute;
   z-index: -1;
-  top: 30px;
+  top: -30px;
   left: 0px;
   width: 80px;
   height: 80px;
@@ -94,14 +99,24 @@
   fill: #9cd008;
 }
 
-.card-testimonial::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  /* background-color: map-get($colors-rule, sixth-color);
-  opacity: 0.8; */
+/*.card-testimonial::after, .card-testimonial::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    //opacity: 0.5;
 }
+.card-testimonial::before {
+
+    border-top: 6px solid map-get($colors-rule, second-color);
+    border-left: 6px solid map-get($colors-rule, second-color);
+}
+.card-testimonial::after {
+
+    border-bottom: 4px solid map-get($colors-rule, fourth-color);
+    border-right: 4px solid map-get($colors-rule, fourth-color);
+    transform: rotateZ(10deg);
+}*/
