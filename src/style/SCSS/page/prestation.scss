@@ -3,7 +3,10 @@
 
 .page-prestation {
   background-color: map-get($colors-rule, sixth-color);
+  max-width: 2000px;
 }
+
+
 
 .container-title-carousel {
   position:relative;
@@ -138,25 +141,50 @@ text-align: left;
   }
 }
 
+.btn-arrow{
+  cursor: pointer;
+}
 
+.btn-arrow:hover .icon-arrow-slider{
+ 
+  fill: map-get($colors-rule, sixth-color);
+  
+}
+
+.btn-arrow:focus .icon-arrow-slider{
+  fill: map-get($colors-rule, sixth-color);
+   
+}
+
+
+.btn-arrow::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  
+}
 
 .icon-arrow-slider {
   width: 60px;
   height: 60px;
-  fill: map-get($colors-rule, sixth-color);
+  stroke: map-get($colors-rule, sixth-color);
   stroke-width: 20px ;
-  //stroke: map-get($colors-rule, first-color);
   
   @include upper-small-screen {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
   }
 
   @include upper-large-screen {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
   }
 }
+
+
 
 .color-arrow-second{
 stroke: map-get($colors-rule, second-color);
@@ -174,7 +202,9 @@ stroke: map-get($colors-rule, fourth-color);
 }
 
 .menu-fixed-container{
-  @include upper-medium-screen{
+ 
+  @include upper-large-screen{
+    display:flex;
     position: fixed;
     z-index: 1;
     bottom: 0px;
@@ -186,6 +216,7 @@ stroke: map-get($colors-rule, fourth-color);
     height:50px;
   }
   @include upper-x-large-screen{
+    display: flex;
     flex-flow: column;
     justify-content: flex-start;
     align-items: flex-start;

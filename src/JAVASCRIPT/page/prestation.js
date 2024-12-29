@@ -61,7 +61,7 @@ let arrows = document.querySelectorAll(".icon-arrow-slider");
 
 //menu fixed container
 const menuFixedContainer = document.querySelector(".menu-fixed-container");
-const target1 = document.querySelector("#target-1");
+const target1 = document.querySelector(".target-1");
 const target2 = document.querySelector(".lieu-des-prestations");
 
 //menu fixed li
@@ -278,40 +278,51 @@ function displayMenuFixed() {
     menuFixedContainer.classList.add("hide");
     return
   }
-  //callback de l'intersection observer
-  const observerCallback = (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.target === target1) {
-        // Quand on intersecte target1, afficher le menu
-        if (entry.isIntersecting) {
-          //observer.unobserve(targetObserver2);
-          menuFixedContainer.classList.remove("hide")
-        } else {
-          // Si on quitte target1 (scroll vers le haut), cacher le menu
-          //menuFixedContainer.classList.add("hide")
+  else {
+    menuFixedContainer.classList.remove("hide");
+    
+ }
+
+
+  
+  if (window.innerWidth >= breakPoint.large_Max) {
+    
+  
+
+    //callback de l'intersection observer
+    const observerCallback = (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.target === target1) {
+          // Quand on intersecte target1, afficher le menu
+          if (entry.isIntersecting) {
+            //observer.unobserve(targetObserver2);
+            menuFixedContainer.classList.remove("hide")
+          } else {
+            // Si on quitte target1 (scroll vers le haut), cacher le menu
+            //menuFixedContainer.classList.add("hide")
+          }
         }
-      }
 
-      if (entry.target === target2) {
-        // Si on intersecte target2 (scroll vers le bas), cacher le menu
-        if (entry.isIntersecting) {
-          //observer.unobserve(targetObserver1);
-          menuFixedContainer.classList.add("hide")
-        }  else {
-          // Si on quitte target2 (scroll vers le haut), afficher le menu
-          menuFixedContainer.classList.remove("hide");
-          //observer.unobserve(targetObserver2);
-        } 
-      }
-    });
-  };
+        if (entry.target === target2) {
+          // Si on intersecte target2 (scroll vers le bas), cacher le menu
+          if (entry.isIntersecting) {
+            //observer.unobserve(targetObserver1);
+            menuFixedContainer.classList.add("hide")
+          } else {
+            // Si on quitte target2 (scroll vers le haut), afficher le menu
+            menuFixedContainer.classList.remove("hide");
+            //observer.unobserve(targetObserver2);
+          }
+        }
+      });
+    };
 
-  const observer = new IntersectionObserver(observerCallback, optionsObserver);
+    const observer = new IntersectionObserver(observerCallback, optionsObserver);
 
     observer.observe(targetObserver1);
     observer.observe(targetObserver2);
   
-  
+  }
 }
 
 function colorArrowSlider(activeElementId) {
@@ -399,14 +410,16 @@ function displayContent() {
  * ********              *******
  * **********************************************/
 
-arrowNext.addEventListener("click", () => {
+arrowNext.addEventListener("click", (e) => {
   instance.next(1);
-
+  e.target.blur();
   activedSlider = getActiveSliderId();
+  
 });
 
-arrowPrev.addEventListener("click", () => {
+arrowPrev.addEventListener("click", (e) => {
   instance.prev(1);
+  e.target.blur();
   activedSlider = getActiveSliderId();
 });
 
