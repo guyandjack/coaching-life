@@ -154,9 +154,11 @@ function CardTestimonialContainer() {
         if (actualPosition == 0) {
           //scroll au debut
           chevronPrev.disabled = true;
+          chevronNext.disabled = false;
         }
         else if (actualPosition + widthView >= totalWidth) {
           chevronNext.disabled = true;
+          chevronPrev.disabled = false;
         }
         else {
           chevronPrev.disabled = false;
