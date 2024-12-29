@@ -14,7 +14,7 @@
   background-color: map-get($colors-rule, first-color);
 
   @include upper-large-screen {
-    height: 600px;
+    height: 500px;
   }
 
   .testimonial-title {

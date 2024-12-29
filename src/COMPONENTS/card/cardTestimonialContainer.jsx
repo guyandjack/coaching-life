@@ -1,14 +1,14 @@
 //composant "CardTestimonialContainer"
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 //import ds composants enfants
+import { ReactSVG } from "react-svg";
 import { CardTestimonial } from "../../COMPONENTS/card/cardTestimonial.jsx";
 import { Spinner } from "../../COMPONENTS/spinner/spinner.jsx";
-import { ReactSVG } from "react-svg";
 
 //import des functions
-import { localOrProd } from "../../UTILS/fonctions/testEnvironement.js";
 import { getPageLanguage } from "../../UTILS/fonctions/checkPageLanguage.js";
+import { localOrProd } from "../../UTILS/fonctions/testEnvironement.js";
 
 //import des images
 import chevronLeft from "../../assets/icons/chevron_left.svg";
@@ -153,23 +153,27 @@ function CardTestimonialContainer() {
   
         if (actualPosition == 0) {
           //scroll au debut
-          prevArrow.current.disabled = true;
+          chevronPrev.disabled = true;
         }
         else if (actualPosition + widthView >= totalWidth) {
-          nextArrow.current.disabled = true;
+          chevronNext.disabled = true;
         }
         else {
-          prevArrow.current.disabled = false;
-          nextArrow.current.disabled = false;
+          chevronPrev.disabled = false;
+          chevronNext.disabled = false;
           
         }
       }, delay);
     }
 
     // Initial setup
-    if (prevArrow.current && nextArrow.current) {
-      chevronPrev.addEventListener("click", handlePrevClick);
-      chevronNext.addEventListener("click", handleNextClick);
+    if (chevronPrev && chevronNext) {
+      chevronPrev.addEventListener("click", ()=>{
+        chevronPrev.blur();
+        handlePrevClick()});
+      chevronNext.addEventListener("click", ()=>{
+        chevronNext.blur();
+        handleNextClick()});
     }
 
     // Handle resize events
@@ -246,3 +250,4 @@ function CardTestimonialContainer() {
 }
 
 export { CardTestimonialContainer };
+
