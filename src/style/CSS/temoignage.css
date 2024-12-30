@@ -2,6 +2,15 @@
   background-color: #fbfffe;
 }
 
+.container-avis {
+  height: 700px;
+}
+@media screen and (min-width: 1501px) {
+  .container-avis {
+    height: 600px;
+  }
+}
+
 .testimonial-container-title {
   position: relative;
   z-index: 1;

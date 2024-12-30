@@ -6,6 +6,14 @@
   background-color: map-get($colors-rule, sixth-color);
 }
 
+//correction du cls en appliquqnt une hauteur fixe au conteneur du contenu dynamique
+.container-avis{
+  height: 700px;
+  @include upper-x-large-screen{
+    height: 600px;
+  }
+}
+
 .testimonial-container-title {
   position: relative;
   z-index: 1;
