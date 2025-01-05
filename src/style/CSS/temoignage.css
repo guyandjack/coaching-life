@@ -49,9 +49,6 @@
   -o-object-position: center;
      object-position: center;
   opacity: 0.7;
-  /*  @include upper-large-screen {
-    object-fit: scale-down;
-  } */
 }
 
 .lieu-des-prestations {

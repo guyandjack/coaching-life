@@ -13,7 +13,7 @@
   <meta property="og:title"
     content="Témoignages Clients - SO COACHING : Expériences de Coaching et Succès des clients.">
   <meta property="og:description"
-    content="Découvrez les témoignages de mes clients à Sion en valais et d'ailleurs chez SO COACHING. Lisez leurs expériences de coaching de vie, de carrière et de consulting RH en entreprise, et voyez comment nous avons aidé à transformer leurs objectifs en succès."/>
+    content="Découvrez les témoignages de mes clients à Sion en valais et d'ailleurs chez SO COACHING. Lisez leurs expériences de coaching de vie, de carrière et de consulting RH en entreprise, et voyez comment nous avons aidé à transformer leurs objectifs en succès." />
   <meta property="og:url" content="https://socoaching.ch/public/fr/temoignages-clients.html">
   <meta property="og:image" content="https://www.api.socoaching.ch/image/logo/logo-monogramme-v4.svg">
   <meta property="og:type" content="website">
@@ -28,6 +28,9 @@
   <link rel="alternate" hreflang="en" href="https://socoaching.ch/public/en/customer-testimonials.html" />
   <link rel="alternate" hreflang="fr" href="https://socoaching.ch/public/fr/temoignages-clients.html" />
   <link rel="alternate" hreflang="x-default" href="https://socoaching.ch/public/fr/temoignages-clients.html" />
+
+  <!-- prechargement des element "LCP"-->
+  <link rel="preload" href="../../src/assets/image/page-temoignage/1000w-temoignage.webp" as="image" type="image/webp">
 
   <!-- scripts JSX -->
   <script type="module" src="../../src/JSX/temoignage.jsx"></script>
@@ -56,11 +59,19 @@
         <div class="testimonial-container-title">
           <h1 class="h1 testimonial-title">Témoignages des personnes et entreprises qui m'ont fait confiance</h1>
           <img srcset="
-        ../../src/assets/image/page-temoignage/500w-temoignage.webp 500w,
-        ../../src/assets/image/page-temoignage/1000w-temoignage.webp 1000w,
-        ../../src/assets/image/page-temoignage/500w-temoignage.webp 1500w
-        " sizes="(max-height: 575px) 500px, (max-height: 993px) 1000px, 1500px "
-            src="../../src/assets/image/page-temoignage/500w-temoignage.webp" class="testimonial-img-title"
+        ../../src/assets/image/page-temoignage/500w-testimonial.webp 500w,
+        ../../src/assets/image/page-temoignage/1000w-testimonial.webp 1000w,
+        ../../src/assets/image/page-temoignage/1500w-testimonial.webp 1500w,
+        ../../src/assets/image/page-temoignage/2000w-testimonial.webp 2000w,
+        ../../src/assets/image/page-temoignage/3000w-testimonial.webp 3000w,
+        " sizes="
+        (max-width: 575px) 500px, 
+        (max-width: 993px) 1000px, 
+        (max-width: 1500px) 1500px, 
+        (max-width: 2000px) 2000px,
+        3000px
+         
+           " src="../../src/assets/image/page-temoignage/1000w-testimonial.webp" class="testimonial-img-title"
             alt="jeune femme qui affiche un avis positif">
 
         </div>
