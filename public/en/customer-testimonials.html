@@ -9,16 +9,16 @@
   <meta name="description"
     content="Discover customer testimonials at SO COACHING from Sion, Valais, and beyond. Read their life coaching, career coaching, and HR consulting experiences, and see how we've helped transform their goals into success stories." />
 
-    <!-- Balises Open Graph -->
-    <meta property="og:title" content="Customer Testimonials - SO COACHING: Coaching Experiences and Success Stories">
-    <meta property="og:description"
-      content="Discover customer testimonials at SO COACHING from Sion, Valais, and beyond. Read their life coaching, career coaching, and HR consulting experiences, and see how we've helped transform their goals into success stories." />
-    <meta property="og:url" content="https://socoaching.ch/public/en/customer-testimonials.html">
-    <meta property="og:image" content="https://www.api.socoaching.ch/image/logo/logo-monogramme-v4.svg">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="fr_CH">
-    <meta property="og:locale:alternate" content="de_CH">
-    <meta property="og:locale:alternate" content="en_US">
+  <!-- Balises Open Graph -->
+  <meta property="og:title" content="Customer Testimonials - SO COACHING: Coaching Experiences and Success Stories">
+  <meta property="og:description"
+    content="Discover customer testimonials at SO COACHING from Sion, Valais, and beyond. Read their life coaching, career coaching, and HR consulting experiences, and see how we've helped transform their goals into success stories." />
+  <meta property="og:url" content="https://socoaching.ch/public/en/customer-testimonials.html">
+  <meta property="og:image" content="https://www.api.socoaching.ch/image/logo/logo-monogramme-v4.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_CH">
+  <meta property="og:locale:alternate" content="de_CH">
+  <meta property="og:locale:alternate" content="en_US">
 
   <!-- multilingual versions -->
   <link rel="canonical" href="https://socoaching.ch/public/en/customer-testimonials.html" />
@@ -26,6 +26,10 @@
   <link rel="alternate" hreflang="en" href="https://socoaching.ch/public/en/customer-testimonials.html" />
   <link rel="alternate" hreflang="fr" href="https://socoaching.ch/public/fr/temoignages-clients.html" />
   <link rel="alternate" hreflang="x-default" href="https://socoaching.ch/public/fr/temoignages-clients.html" />
+
+  <!-- prechargement des element "LCP"-->
+  <link rel="preload" href="../../src/assets/image/page-temoignage/1000w-testimonial.webp" as="image" type="image/webp">
+
 
   <!-- scripts JSX -->
   <script type="module" src="../../src/JSX/temoignage.jsx"></script>
@@ -51,16 +55,25 @@
         <div class="testimonial-container-title">
           <h1 class="h1 testimonial-title">Testimonials from individuals and companies who trusted me</h1>
           <img srcset="
-        ../../src/assets/image/page-temoignage/500w-temoignage.webp 500w,
-        ../../src/assets/image/page-temoignage/1000w-temoignage.webp 1000w,
-        ../../src/assets/image/page-temoignage/500w-temoignage.webp 1500w
-        " sizes="(max-height: 575px) 500px, (max-height: 993px) 1000px, 1500px"
-            src="../../src/assets/image/page-temoignage/500w-temoignage.webp" class="testimonial-img-title"
-            alt="young woman displaying a positive review">
+                  ../../src/assets/image/page-temoignage/500w-testimonial.webp 500w,
+                  ../../src/assets/image/page-temoignage/1000w-testimonial.webp 1000w,
+                  ../../src/assets/image/page-temoignage/1500w-testimonial.webp 1500w,
+                  ../../src/assets/image/page-temoignage/2000w-testimonial.webp 2000w,
+                  ../../src/assets/image/page-temoignage/3000w-testimonial.webp 3000w,
+                  " sizes="
+                  (max-width: 575px) 500px, 
+                  (max-width: 993px) 1000px, 
+                  (max-width: 1500px) 1500px, 
+                  (max-width: 2000px) 2000px,
+                  3000px
+                   
+                     " src="../../src/assets/image/page-temoignage/1000w-testimonial.webp"
+            class="testimonial-img-title" alt="young woman displaying a positive review">
+
         </div>
-        <section id="banner-avis"></section>
-        <section id="RC-container-avis"></section>
-        <div class="flex-column-center-center lieu-des-prestations">
+      <div id="banner-avis"></div>
+      <div id="RC-container-avis" class="container-avis"></div>
+      <div class="flex-column-center-center lieu-des-prestations">
           <p>
             <strong>My coaching services</strong> are available in Sion, Valais, and throughout Switzerland via
             <strong>videoconferencing</strong>.<br>

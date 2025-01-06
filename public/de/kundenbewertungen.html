@@ -27,6 +27,10 @@
   <link rel="alternate" hreflang="fr" href="https://socoaching.ch/public/fr/temoignages-clients.html" />
   <link rel="alternate" hreflang="x-default" href="https://socoaching.ch/public/fr/temoignages-clients.html" />
 
+  <!-- prechargement des elements "LCP"-->
+  <link rel="preload" href="../../src/assets/image/page-temoignage/1000w-testimonial.webp" as="image" type="image/webp">
+
+
   <!-- scripts JSX -->
   <script type="module" src="../../src/JSX/temoignage.jsx"></script>
   <!-- scripts JS -->
@@ -50,16 +54,24 @@
       <section class="relative">
         <div class="testimonial-container-title">
           <h1 class="h1 testimonial-title">Kundenbewertungen von Personen und Unternehmen, die mir vertraut haben</h1>
-          <img srcset="
-        ../../src/assets/image/page-temoignage/500w-temoignage.webp 500w,
-        ../../src/assets/image/page-temoignage/1000w-temoignage.webp 1000w,
-        ../../src/assets/image/page-temoignage/500w-temoignage.webp 1500w
-        " sizes="(max-height: 575px) 500px, (max-height: 993px) 1000px, 1500px"
-            src="../../src/assets/image/page-temoignage/500w-temoignage.webp" class="testimonial-img-title"
-            alt="junge Frau, die eine positive Bewertung abgibt">
+          <img srcset="                            ../../src/assets/image/page-temoignage/500w-testimonial.webp 500w,
+                            ../../src/assets/image/page-temoignage/1000w-testimonial.webp 1000w,
+                            ../../src/assets/image/page-temoignage/1500w-testimonial.webp 1500w,
+                            ../../src/assets/image/page-temoignage/2000w-testimonial.webp 2000w,
+                            ../../src/assets/image/page-temoignage/3000w-testimonial.webp 3000w,
+                            " sizes="
+                            (max-width: 575px) 500px, 
+                            (max-width: 993px) 1000px, 
+                            (max-width: 1500px) 1500px, 
+                            (max-width: 2000px) 2000px,
+                            3000px
+                             
+                               " src="../../src/assets/image/page-temoignage/1000w-testimonial.webp"
+            class="testimonial-img-title" alt="junge Frau, die eine positive Bewertung abgibt">
+
         </div>
-        <section id="banner-avis"></section>
-        <section id="RC-container-avis"></section>
+        <div id="banner-avis"></div>
+        <div id="RC-container-avis" class="container-avis"></div>
         <div class="flex-column-center-center lieu-des-prestations">
           <p>
             <strong>Meine Coaching-Dienstleistungen</strong> finden in Sitten, im Wallis und in der ganzen Schweiz per
