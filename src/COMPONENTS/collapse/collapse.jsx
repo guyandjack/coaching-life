@@ -8,6 +8,7 @@ import "../../style/CSS/custom-collapse.css";
 
 let result = localOrProd();
 let url = result.url;
+let heart = `❤️`;
 
 //permet de se deconnecter en suprimant le token d' authentification
 function logOut() {
@@ -18,35 +19,33 @@ function logOut() {
 
 // eslint-disable-next-line no-unused-vars
 function displayAdmin(ref) {
-  //const spanAvatar = document.querySelector(".admin-avatar");
+  
   console.log("elemnet ref: " + ref);
   let adminName = localStorage.getItem("admin");
 
   if (adminName == "sophie") {
-    //spanAvatar.textcontent = "👩 ";
-    ref.current.textContent = "Bonjour Sophie";
+   
+    ref.current.textContent = `Bonjour Sophie`;
+    
     return;
   }
 
   if (adminName == "guillaume") {
-    //spanAvatar.textContent = `🦾 `;
+    
     ref.current.textContent = "Bonjour Guillaume";
     return;
   }
 
-  /* ref.current.textContent = "Utilisateur non autorisé";
-  setTimeout(() => {
-    window.location.href = `${url}/index.html`;
-  }, 2000); */
+  
 }
 
 function CustomCollapse() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLog, setIsLog] = useState(true);
-  const summary = useRef();
-  const chevron = useRef();
-    const collapsed = useRef();
-    let heart = `❤️`;
+  const summary = useRef(null);
+  const chevron = useRef(null);
+  const collapsed = useRef(null);
+ 
 
   useEffect(() => {
     displayAdmin(summary);
