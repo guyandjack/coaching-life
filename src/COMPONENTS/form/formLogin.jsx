@@ -2,7 +2,7 @@
 //import des librairies
 
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 //import des composants enfants
 import { Spinner } from "../../COMPONENTS/spinner/spinner.jsx";
@@ -24,56 +24,7 @@ import "../../style/CSS/form-dashboard.css";
 let objectUrl = localOrProd();
 let url = objectUrl.urlApi;
 
-console.log("url api de form login: " + url)
 
-async function fetchApi(data, seter) {
-  seter(true);
-  //let content = JSON.stringify(data);
-  const formData = new FormData();
-  // Ajoute les fichiers et les autres champs du formulaire
-  for (const [key, value] of Object.entries(data)) {
-    if (value instanceof FileList) {
-      Array.from(value).forEach((file) => {
-        formData.append(key, file);
-      });
-    } else {
-      formData.append(key, value);
-    }
-  }
-
-  let response = await fetch(`${url}/login`, {
-    method: "POST",
-    /*headers: {
-        "Content-Type": "multipart/form-data",
-        //Accept: "application/json",
-      },*/
-    body: formData,
-  });
-  if (response.ok) {
-    let data = await response.json();
-    // eslint-disable-next-line no-unused-vars
-    const toasterValid = document.querySelector("#toaster-valid-login");
-
-    if (data.message == "succes") {
-      localStorage.setItem("admin", data.name);
-      localStorage.setItem("token", data.token);
-      toasterValid.classList.add("visible");
-      setTimeout(() => {
-        toasterValid.classList.remove("visible");
-        //reset();
-        window.location.href = "./dashboard.html"
-        seter(false);
-      }, 3000);
-    }
-  } else {
-    // eslint-disable-next-line no-unused-vars
-    const toasterInvalid = document.querySelector("#toaster-invalid-login");
-    toasterInvalid.classList.add("visible");
-    setTimeout(() => {
-      toasterInvalid.classList.remove("visible");
-    }, 3000);
-  }
-}
 
 function FormLogin() {
   const {
@@ -87,29 +38,104 @@ function FormLogin() {
   const [isVisibleB, setIsVisibleB] = useState(false);
   const [isSpinnerVisible, setIsSpinnerVisible] = useState(false);
 
-  function displayPassword(e) {
-    let inputPassword = document.querySelector("#input-password");
-    let inputEmail = document.querySelector("#input-email");
+  const toasterValid = useRef(null);
+  const toasterInValid = useRef(null);
+
+
+  //declaration des functions
+  async function fetchApi(data) {
+    setIsSpinnerVisible(true);
+    //let content = JSON.stringify(data);
+    const formData = new FormData();
+    // Ajoute les fichiers et les autres champs du formulaire
+    for (const [key, value] of Object.entries(data)) {
+      if (value instanceof FileList) {
+        Array.from(value).forEach((file) => {
+          formData.append(key, file);
+        });
+      } else {
+        formData.append(key, value);
+      }
+    }
+
+    try {
+      let response = await fetch(`${url}/login`, {
+        method: "POST",
+        body: formData,
+      });
+
+      // Vérifie si le serveur a renvoyé un statut HTTP valide
+      if (!response.ok) {
+        throw new Error(
+          `Erreur HTTP : ${response.status} ${response.statusText}`
+        );
+      }
+
+      if (response.ok) {
+        let data = await response.json();
+        // eslint-disable-next-line no-unused-vars
+        
+
+        if (data.message == "succes") {
+          localStorage.setItem("admin", data.name);
+          localStorage.setItem("token", data.token);
+          toasterValid.current.classList.add("visible");
+          setTimeout(() => {
+            toasterValid.current.classList.remove("visible");
+            window.location.href = "./dashboard.html";
+            setIsSpinnerVisible(false);
+          }, 3000);
+        }
+      }
+    }
+    catch (error) {
+      // Gère les erreurs réseau et autres exceptions
+      toasterInValid.current.classList.add("visible");
+      if (
+        error.message.includes("Failed to fetch") ||
+        error.message.includes("ERR_CONNECTION_REFUSED")
+      ) {
+        toasterInValid.current.textContent = "le serveur est inaccessible. Veuillez réessayer plus tard.";
+
+      } else {
+        
+        toasterInValid.current.textContent = "le serveur est inaccessible. Veuillez réessayer plus tard.";
+        
+      }
+      setIsSpinnerVisible(false);
+      setTimeout(() => {
+        toasterInValid.current.classList.remove("visible");
+      }, 3000);
+
+    }
+  } 
+   
+
     
 
-    let inputIdSelected = e.target.closest(".eye").dataset.idinput; //onrecupere le parent du svg
+    function displayPassword(e) {
+      let inputPassword = document.querySelector("#input-password");
+      let inputEmail = document.querySelector("#input-email");
+    
 
-    switch (inputIdSelected) {
-      case "input-email":
-        setIsVisibleA(!isVisibleA);
-        inputEmail.focus();
-        break;
-      case "input-password":
-        setIsVisibleB(!isVisibleB);
-        inputPassword.focus();
-        break;
+      let inputIdSelected = e.target.closest(".eye").dataset.idinput; //onrecupere le parent du svg
+
+      switch (inputIdSelected) {
+        case "input-email":
+          setIsVisibleA(!isVisibleA);
+          inputEmail.focus();
+          break;
+        case "input-password":
+          setIsVisibleB(!isVisibleB);
+          inputPassword.focus();
+          break;
       
 
-      default:
-        break;
+        default:
+          break;
+      }
     }
-  }
-  
+    
 
   return (
     <div>
@@ -193,7 +219,7 @@ function FormLogin() {
             ) : null}
           </div>
         </div>
-<div className="relative flex-column-start-center container-btn-submit">
+  <div className="relative flex-column-start-center container-btn-submit">
         <button
           id="login-submit"
           className="btn-submit"
@@ -203,11 +229,11 @@ function FormLogin() {
         >
           {"Login"}
         </button>
-        <div id="toaster-valid-login" className="flex-column-center-center toaster valid">
+        <div ref={toasterValid} className="flex-column-center-center toaster valid">
           {"Utilisteur connecté"}
         </div>
-        <div id="toaster-invalid-login" className="flex-column-center-center toaster invalid">
-          {"Oups! une erreur c'est produite"}
+        <div ref={toasterInValid} className="flex-column-center-center toaster invalid">
+         
         </div></div>
       </form>
     </div>
