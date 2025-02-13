@@ -1,12 +1,14 @@
 /* eslint-disable no-undef */
 const path = require("path");
 const fs = require("fs");
+const sharp = require("sharp");
 const connectToDataBase = require("../../utils/functions/connectionDataBase.js");
 const sendRequest = require("../../utils/functions/requestDataBase.js");
 
 const checkEnv = require("../../utils/functions/checkEnvironement.js");
 
 const getLang = require("../../utils/functions/checkLanguageFileHtml.js");
+//const { array } = require("prop-types");
 
 let urlbase = checkEnv.defineUrl();
 
@@ -19,27 +21,27 @@ let articlePathDirDe = "upload/article/html/de/";
 let articlePathDirEn = "upload/article/html/en/";
 let pathArticle = "";
 
-let isTab = false;
+
 
 //declatartion des fonctions
 
-
 //create un nouveau nom de fichier image
-function createNewNameImage(req, index) {
-  console.log("tableau d' image dectecte: " + isTab);
+function createNewNameImage(req, url, index) {
   const articleTitle = req.body.title;
   let articleTitleValid = articleTitle
     .replace(/[^a-zA-Z0-9]+/g, "-")
     .toLowerCase();
-  const imageName = isTab ? req.files.image[index].name : req.files.image.name;
+  //const imageName = isTab ? req.files.image[index].name : req.files.image.name;
+  const imageName = url ;
   console.log(
     "nom de l' image en cours de traitement dans la fonction createNewNameImage: " +
       imageName
   );
   const imageExt = path.extname(imageName); // Récupère l'extension avec le point inclus (ex: .jpg)
+  //const imageExt = ".webp"; //modifie l' extension du fichier avant de creer les path dir et db
   const timestamp = Date.now();
   const newImageFileName =
-    index >= 0
+    index > 0
       ? `image-${timestamp}-${articleTitleValid}-${index}${imageExt}`
       : `image-${timestamp}-${articleTitleValid}${imageExt}`;
   return newImageFileName;
@@ -47,7 +49,6 @@ function createNewNameImage(req, index) {
 
 //create un nouveau nom de fichier article
 function createNewNameArticle(req) {
-
   const articleTitle = req.body.title;
   let articleTitleValid = articleTitle
     .replace(/[^a-zA-Z0-9]+/g, "-")
@@ -74,7 +75,7 @@ function createOneImagePathDB(newImageFileName) {
 // cree un path/repertoir pour le fichier article
 function createOneArticlePathDir(newArticleFileName, req) {
   let lang = getLang(req.files.article);
-  
+
   switch (lang) {
     case "fr":
       pathArticle = articlePathDirFr;
@@ -85,36 +86,43 @@ function createOneArticlePathDir(newArticleFileName, req) {
     case "en":
       pathArticle = articlePathDirEn;
       break;
-  
+
     default:
       break;
   }
   console.log("langue detectée: " + lang);
-    let articlePath = path.join(pathArticle, newArticleFileName);
-    
-    return articlePath;
+  let articlePath = path.join(pathArticle, newArticleFileName);
+
+  return articlePath;
 }
 
 // cree un path/database pour le fichier article
 function createOneArticlePathDB(newArticleFileName) {
   /*let articlePathDataBase =
      pathArticle + newArticleFileName;*/
-  
-  let articlePathDataBase = urlbase.urlarticle + pathArticle + newArticleFileName;
+
+  let articlePathDataBase =
+    urlbase.urlarticle + pathArticle + newArticleFileName;
 
   return articlePathDataBase;
 }
 
 //creation des chemin pour stoker les images
-function createUrlForImage(req) {
-  //si req.files est untableau(plusieurs images)
-  if (Array.isArray(req.files.image)) {
-    isTab = true;
+function createUrlForImage(req, taburl) {
+  if (!Array.isArray(taburl)) {
+    console.log("l'argument attendu dans 'createUrlForImage' n'est pas un tableau");
+    return {}
+  }
+
+  if (taburl.length < 1) {
+    console.log("tableau d'url vide!")
+  }
+   
     let tabForDB = [];
     let tabForDir = [];
-    console.log("nombre d'image detectées: " + req.files.length);
-    req.files.image.forEach((img, index) => {
-      let newName = createNewNameImage(req, index);
+    console.log("nombre d'image detectées: " + taburl.length);
+   taburl.forEach((url, index) => {
+      let newName = createNewNameImage(req, url, index);
       let resultDir = createOneImagePathDir(newName);
       let resultDB = createOneImagePathDB(newName);
       tabForDB.push(resultDB);
@@ -125,23 +133,7 @@ function createUrlForImage(req) {
       urlDB: tabForDB,
     };
     return objectUrlImage;
-  } else {
-    isTab = false;
-    let tabForDB = [];
-    let tabForDir = [];
-    console.log("Une seule image detectéeeeeee ");
-    let newName = createNewNameImage(req);
-    let resultDir = createOneImagePathDir(newName);
-    let resultDB = createOneImagePathDB(newName);
-    tabForDB.push(resultDB);
-    tabForDir.push(resultDir);
-
-    let objectUrlImage = {
-      urlDir: tabForDir,
-      urlDB: tabForDB,
-    };
-    return objectUrlImage;
-  }
+   
 }
 
 //creation du chemin pour stoker le fichier article
@@ -150,7 +142,7 @@ function createUrlForFile(req) {
   let tabForDir = [];
   let newName = createNewNameArticle(req);
   console.log("nouveau nom de l'article: " + newName);
-  let resultDir = createOneArticlePathDir(newName,req);
+  let resultDir = createOneArticlePathDir(newName, req);
   let resultDB = createOneArticlePathDB(newName);
 
   tabForDB.push(resultDB);
@@ -162,6 +154,59 @@ function createUrlForFile(req) {
   };
   return objectUrlArticle;
 }
+
+// permet de redimensionner et de changer le format des fichiers images
+
+async function formatImageFile(req) {
+  try {
+    //let files = req.files.image;
+    let arrayPath = [];
+
+    if (Array.isArray(req.files.image)) {
+      for (let i = 0; i < req.files.image.length; i++) {
+         await sharp(req.files.image[i]["data"])
+          .resize({ width: 600, fit: "inside" })
+          .toFormat("webp", { quality: 80 })
+          .toBuffer()
+          .then((data) => { req.files.image[i].data = data; });
+        await timer(5);
+         req.files.image[i].mimetype = "image/webp";
+        fs.writeFileSync(`output-img-${i}.webp`, req.files.image[i].data);
+        arrayPath.push(`output-img-${i}.webp`);
+         
+      }
+      console.log("array path------------------------")
+      console.log(arrayPath);
+      return arrayPath
+      
+    } else {
+      let file = req.files.image;
+      if (!file.data) {
+        throw new Error("Le buffer de l'image est invalide.");
+      }
+
+      file.data = await sharp(file.data)
+        .resize({ width: 600, fit: "inside" })
+        .toFormat("webp", { quality: 80 })
+        .withMetadata()
+        .removeAlpha()
+        .toBuffer();
+      await timer(5)
+      fs.writeFileSync("output-single.webp", file.data);
+      file.mimetype = "image/webp";
+      arrayPath.push("output-single.webp");
+      return arrayPath
+    }
+  } catch (error) {
+    console.error("❌ Erreur de traitement des images :", error);
+  }
+}
+
+ function timer(t) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, t*1000)
+  })
+} 
 
 //fonction principale
 
@@ -177,6 +222,8 @@ async function addOneArticle(req, res) {
 
   const { article: fileArticle, image: imageArticle } = req.files;
 
+  console.log(req.files.image);
+
   // Validation des données d'entrée du files
   if (!fileArticle || !imageArticle) {
     return res.status(400).json({
@@ -184,10 +231,15 @@ async function addOneArticle(req, res) {
     });
   }
 
-  let imagePathObject = createUrlForImage(req);
-  let filePathObject = createUrlForFile(req);
+  //Formatage des images dans "req" en "webp" + recuperation des url dans un tableau
+  let arrayPath = await formatImageFile(req) ?? null ;
+  console.log("req.files.image apres le traitement: -----------------------");
+  console.log(req.files.image);
 
-  //
+  
+
+  let imagePathObject = createUrlForImage(req, arrayPath);
+  let filePathObject = createUrlForFile(req);
 
   //url de l' article
   let urlArticleDB = JSON.stringify(filePathObject.urlDB);
@@ -222,7 +274,8 @@ async function addOneArticle(req, res) {
     }
 
     // Enregistre la/les images dans un dossier
-    if (isTab) {
+    //v-1
+    /* if (isTab) {
       let imageList = req.files.image;
       imageList.forEach((img, index) => {
         storeOneImage(img, urlImageDir[index], res);
@@ -230,22 +283,26 @@ async function addOneArticle(req, res) {
     } else {
       let img = req.files.image;
       storeOneImage(img, urlImageDir[0], res);
-    }
+    } */
+    // v-2
+    storeImg(arrayPath, urlImageDir);
 
     //enregistre l'article dans une dossier
     storeOneArticle(req.files.article, urlArticleDir[0], res);
 
     return res.status(201).json({ message_status: "succes" });
   } catch (error) {
-    console.error("Erreur lors de l'ajout de l'avis :", error);
+    console.error("Erreur lors de l'ajout de l'article :", error);
     return res
       .status(500)
-      .json({ message: "Erreur serveur lors de l'ajout de l'avis" });
+      .json({ message: "Erreur serveur lors de l'ajout de l'article" });
   }
 }
 
 // Fonction pour enregistrer une image
-async function storeOneImage(img, imagePath, res) {
+//v-1
+/* async function storeOneImage(img, imagePath, res) {
+  //mofie l' extension du fichier
   return new Promise((resolve, reject) => {
     img.mv(imagePath, (err) => {
       if (err) {
@@ -253,6 +310,7 @@ async function storeOneImage(img, imagePath, res) {
         res.status(500).json({ message: "Impossible d'enregistrer l'image" });
         return reject(err);
       }
+
       //test la presence du dossier
       fs.promises
         .access(imagePath)
@@ -260,6 +318,7 @@ async function storeOneImage(img, imagePath, res) {
           console.log(
             "Le fichier image a été déplacé et est présent à l'emplacement souhaité."
           );
+
           return resolve();
         })
         .catch(() => {
@@ -268,6 +327,18 @@ async function storeOneImage(img, imagePath, res) {
         });
     });
   });
+} */
+//v-2
+async function storeImg(arrayUrl, newPath) {
+  try {
+    for (let i = 0; i < arrayUrl.length; i++)  {
+
+      await fs.promises.rename(arrayUrl[i], newPath[i]);
+    }
+  }
+  catch (e) {
+    console.log("erreur: " + e.message)
+  }
 }
 // Fonction pour enregistrer un article
 async function storeOneArticle(article, articlePath, res) {
@@ -278,7 +349,7 @@ async function storeOneArticle(article, articlePath, res) {
   return new Promise((resolve, reject) => {
     article.mv(articlePath, (err) => {
       if (err) {
-        console.error("Impossible d'enregistrer l'image :", err);
+        console.error("Impossible d'enregistrer l'article :", err);
         res.status(500).json({ message: "Impossible d'enregistrer l'article" });
         return reject(err);
       }
@@ -290,13 +361,13 @@ async function storeOneArticle(article, articlePath, res) {
           console.log(
             "Le fichier article a été déplacé et est présent à l'emplacement souhaité."
           );
-          return resolve()
+          return resolve();
         })
         .catch(() => {
           console.error("Le fichier n'existe pas à l'emplacement prévu.");
-          return reject(err)
+          return reject(err);
         });
-      
+
       //resolve();
     });
   });

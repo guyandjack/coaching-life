@@ -73,6 +73,9 @@ async function loadPageArticle() {
        const response = await fetch(
          `${page}`
        );
+       if (!response.ok) {
+         throw new Error("une erreur http est survenu");
+       }
        const htmlContent = await response.text();
 
        // Injecter le contenu HTML dans le div 

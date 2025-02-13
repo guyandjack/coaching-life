@@ -18,6 +18,7 @@ import { CardArticleContainer } from "../COMPONENTS/form/cardFormArticleContaine
 //import { CardAvis } from "../COMPONENTS/card/cardAvis.jsx";
 import { CardAvisContainer } from "../COMPONENTS/form/cardFormAvisContainer.jsx";
 import { CustomCollapse } from "../COMPONENTS/collapse/collapse.jsx";
+import { RefreshToken } from "../COMPONENTS/refreshtoken/refreshToken.jsx";
 
 
 
@@ -34,6 +35,14 @@ const collaspseElement = document.getElementById("RC-collapse");
 ReactDOM.createRoot(collaspseElement).render(
   <React.StrictMode>
     <CustomCollapse />
+  </React.StrictMode>
+); 
+
+// Rendu du composant CustomCollapse dans le DOM
+const refreshElement = document.getElementById("RC-refresh");
+ReactDOM.createRoot(refreshElement).render(
+  <React.StrictMode>
+    <RefreshToken />
   </React.StrictMode>
 ); 
 

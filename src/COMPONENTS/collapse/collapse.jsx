@@ -2,7 +2,9 @@
 import { useState, useRef, useEffect } from "react";
 import { MdExpandMore } from "react-icons/md"; // Chevron-like icons
 
+
 import { localOrProd } from "../../UTILS/fonctions/testEnvironement.js";
+import { cleanTokenInLocalStorage } from "../../UTILS/fonctions/cleanTokenInLocalStorage.js";
 
 import "../../style/CSS/custom-collapse.css";
 
@@ -12,8 +14,14 @@ let heart = `❤️`;
 
 //permet de se deconnecter en suprimant le token d' authentification
 function logOut() {
-  localStorage.removeItem("token");
-  localStorage.removeItem("admin");
+   cleanTokenInLocalStorage(
+    "token",
+    "admin",
+    "time",
+    "expire",
+    "lastCountUpdated",
+    "lastDateUpdated"
+  )
   window.location.href = `${url}/index.html`;
 }
 
@@ -71,6 +79,7 @@ function CustomCollapse() {
 
   return (
     <ul className="relative container-collapse">
+      
       <li
         className="flex-row-start-center container-chevron"
         onClick={handleClickChevron}

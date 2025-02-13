@@ -80,6 +80,9 @@ function FormAddArticle() {
       }
     }
 
+    try {
+      
+    
     let response = await fetch(`${url}/article`, {
       method: "POST",
       headers: {
@@ -87,6 +90,7 @@ function FormAddArticle() {
       },
       body: formData,
     });
+    
     if (response.ok) {
       // eslint-disable-next-line no-unused-vars
       //const data = await response.json();
@@ -112,6 +116,10 @@ function FormAddArticle() {
           toasterInvalid.classList.remove("visible");
         }, 3000);
       }
+    }
+  }
+    catch (error) {
+      console.log("erreur lors du fetch : " + error.message)
     }
 
   }

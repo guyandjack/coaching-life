@@ -34,6 +34,9 @@ const logUser = require("./controlers/user/loginUser.js");
 // eslint-disable-next-line no-unused-vars, no-undef
 const changePassword = require("./controlers/user/changePassword.js");
 
+//refresh du token
+// eslint-disable-next-line no-undef
+const keepConnection = require("./controlers/user/keepConnection.js");
 
 /*********  avis clients ************/
 
@@ -88,6 +91,9 @@ routeur.get("/avis",  getAllAvis);
 //route admin  socoaching - recupere tous les article de la base de donnée
 routeur.get("/article", getAllArticle);
 
+// routes Admin  - refresh token
+routeur.get("/refresh-token", auth, keepConnection);
+
 
 
 
@@ -106,11 +112,12 @@ routeur.post("/login", checkData, logUser);
 // routes Admin  - Ajouter un avis
 routeur.post("/avis", checkData, auth, addOneAvis);
 
+//route Admin - Ajouter un article
+routeur.post("/article", checkData, auth, addOneArticle);
+
 //route Contact SoCoaching - send mail
 routeur.post("/contact", checkData, contact);
 
-//route Admin - Ajouter un article
-routeur.post("/article", checkData, auth, addOneArticle);
 
 
 
@@ -137,6 +144,7 @@ routeur.delete("/article", checkData, auth, deleteOneArticle);
 routeur.get("/test", (req, res) => {
     res.status(200).json({"message": "route validée"})
 });
+
 
 // eslint-disable-next-line no-undef
 module.exports = routeur;

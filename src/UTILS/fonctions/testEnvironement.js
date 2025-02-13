@@ -36,12 +36,14 @@ function localOrProd() {
       console.log("Mode production");
       result.url = baseProdUrl;
       result.urlApi = apiProdUrl;
+      result.mode = "prod"
       console.log("urlprod :" + result.url);
       console.log("urlprodApi :" + result.urlApi);
     } else {
       console.log("Mode développement");
       result.url = baseDevUrl;
       result.urlApi = apiDevUrl;
+      result.mode = "dev"
       console.log("urldev :" + result.url);
       console.log("urldevApi :" + result.urlApi);
     } 

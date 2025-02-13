@@ -5,6 +5,17 @@ const jwt = require("jsonwebtoken");
 const connectToDataBase = require("../../utils/functions/connectionDataBase.js");
 const sendRequest = require("../../utils/functions/requestDataBase.js");
 
+
+//import des fonctions
+const checkEnv = require("../../utils/functions/checkEnvironement.js");
+let expIn = "30m";
+let exp = 30;
+if (checkEnv.devOrProd() == "dev") {
+  expIn = "30s";
+  
+  
+}
+
 async function checkUserLogin(req, res) {
   const { email: userEmail, password: userPassword } = req.body;
 
@@ -35,7 +46,9 @@ async function checkUserLogin(req, res) {
 
     // Vérification de la présence de l'utilisateur
     if (requestResult.length === 0) {
-      return res.status(401).json({ message: "Utilisateur non reconnu" });
+      return res
+        .status(401)
+        .json({ message: "Mot de passe et/ou identifiant non reconnu" });
     }
 
     const user = requestResult[0];
@@ -43,21 +56,24 @@ async function checkUserLogin(req, res) {
     // Vérification du mot de passe
     const isMatch = await bcrypt.compare(userPassword, user.password);
     if (!isMatch) {
-      return res.status(401).json({ message: "Mot de passe incorrect" });
+      return res.status(401).json({ message: "Mot de passe et/ou identifiant incorrect" });
     }
 
     // Génération du token JWT
     const token = jwt.sign(
       { adminId: user.id },
       process.env.PRIVATE_KEY_TOKEN,
-      { expiresIn: "4h" }
+      { expiresIn: expIn }
     );
-
+    
+    let date = new Date;
     // Envoi de la réponse
     res.status(200).json({
       message: "succes",
       name: `${user.admin_name}`,
       token: token,
+      time: date.getTime(),
+      expire: exp
     });
   } catch (error) {
     console.error(`Erreur lors de la vérification du login : ${error.message}`);

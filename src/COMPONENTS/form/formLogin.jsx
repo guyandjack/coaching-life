@@ -79,6 +79,8 @@ function FormLogin() {
         if (data.message == "succes") {
           localStorage.setItem("admin", data.name);
           localStorage.setItem("token", data.token);
+          localStorage.setItem("time", data.time);
+          localStorage.setItem("expire", data.expire);
           toasterValid.current.classList.add("visible");
           setTimeout(() => {
             toasterValid.current.classList.remove("visible");

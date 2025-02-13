@@ -8,13 +8,14 @@ function verifAuth(req, res, next) {
     const decodedToken = jwt.verify(token, process.env.PRIVATE_KEY_TOKEN);
     // eslint-disable-next-line no-unused-vars
     const adminId = decodedToken.adminId;
+     console.log("Token valide, expire à :", new Date(decodedToken.exp * 1000));
 
     req.auth = {
       admin: adminId,
     };
     next();
   } catch (error) {
-    console.log("error");
+    console.log("error: " + error.message);
     res.status(401).send("utilisateur non reconnu!");
   }
 }
