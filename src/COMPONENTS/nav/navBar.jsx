@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 //import des composants enfants
 import { ReactSVG } from "react-svg";
+import { CustomCollapse } from "../collapse/collapse.jsx";
 
 //import des fonctions
 import { isXLargeScreen } from "../../UTILS/fonctions/isScreenMobil.js";
@@ -21,7 +22,6 @@ import iconLanguage from "../../assets/icons/icon-language.svg";
 import iconMenuBurger from "../../assets/icons/menu-burger-40x40.svg";
 import logoSocoaching from "../../assets/logo/logo-monogramme-v4.svg";
 
-
 let objectUrl = localOrProd();
 let url = objectUrl.url;
 
@@ -33,6 +33,7 @@ import "../../style/CSS/navbar.css";
 function NavBar() {
   let [isSmallScreen, setIsSmallScreen] = useState();
   let [isClicked, setIsclicked] = useState(false);
+  const [isToken, setIsToken] = useState(false);
 
   let selectedContent = getNavBarContent();
 
@@ -70,63 +71,131 @@ function NavBar() {
   //ajoute un atribut aria-label en fonction de la langue de la page
   useEffect(() => {
     let lang = getPageLanguage();
-    console.log("lang: " + lang)
+    console.log("lang: " + lang);
     switch (lang) {
       case "fr":
-        
-        
-        if (langFrMainMenu.current && langEnMainMenu.current && langDeMainMenu.current) {
-          
+        if (
+          langFrMainMenu.current &&
+          langEnMainMenu.current &&
+          langDeMainMenu.current
+        ) {
           langText.current = "Selection de la langue";
-          langFrMainMenu.current.setAttribute("aria-label", "Change la langue en francais");
-          langEnMainMenu.current.setAttribute("aria-label", "Change la langue en anglais");
-          langDeMainMenu.current.setAttribute("aria-label", "Change la langue en allemand");
+          langFrMainMenu.current.setAttribute(
+            "aria-label",
+            "Change la langue en francais"
+          );
+          langEnMainMenu.current.setAttribute(
+            "aria-label",
+            "Change la langue en anglais"
+          );
+          langDeMainMenu.current.setAttribute(
+            "aria-label",
+            "Change la langue en allemand"
+          );
         }
-        
-        
-        if (langFrBurgerMenu.current && langEnBurgerMenu.current && langDeBurgerMenu.current) {
-          
-          langFrBurgerMenu.current.setAttribute("aria-label", "Change la langue en francais");
-          langEnBurgerMenu.current.setAttribute("aria-label", "Change la langue en anglais");
-          langDeBurgerMenu.current.setAttribute("aria-label", "Change la langue en allemand");
+
+        if (
+          langFrBurgerMenu.current &&
+          langEnBurgerMenu.current &&
+          langDeBurgerMenu.current
+        ) {
+          langFrBurgerMenu.current.setAttribute(
+            "aria-label",
+            "Change la langue en francais"
+          );
+          langEnBurgerMenu.current.setAttribute(
+            "aria-label",
+            "Change la langue en anglais"
+          );
+          langDeBurgerMenu.current.setAttribute(
+            "aria-label",
+            "Change la langue en allemand"
+          );
         }
         break;
       case "de":
-        if (langFrMainMenu.current && langEnMainMenu.current && langDeMainMenu.current) {
+        if (
+          langFrMainMenu.current &&
+          langEnMainMenu.current &&
+          langDeMainMenu.current
+        ) {
           langText.current = "Auswahl der Sprache";
-          langFrMainMenu.current.setAttribute("aria-label", "Ändere die Sprache auf Deutsch");
-          langEnMainMenu.current.setAttribute("aria-label", "Ändert die Sprache auf Englisch");
-          langDeMainMenu.current.setAttribute("aria-label", "Ändert die Sprache auf Deutsch");
+          langFrMainMenu.current.setAttribute(
+            "aria-label",
+            "Ändere die Sprache auf Deutsch"
+          );
+          langEnMainMenu.current.setAttribute(
+            "aria-label",
+            "Ändert die Sprache auf Englisch"
+          );
+          langDeMainMenu.current.setAttribute(
+            "aria-label",
+            "Ändert die Sprache auf Deutsch"
+          );
         }
-        if (langFrBurgerMenu.current && langEnBurgerMenu.current && langDeBurgerMenu.current) {
-
-          langFrBurgerMenu.current.setAttribute("aria-label", "Ändere die Sprache auf Deutsch");
-          langEnBurgerMenu.current.setAttribute("aria-label", "Ändert die Sprache auf Englisch");
-          langDeBurgerMenu.current.setAttribute("aria-label", "Ändert die Sprache auf Deutsch");
+        if (
+          langFrBurgerMenu.current &&
+          langEnBurgerMenu.current &&
+          langDeBurgerMenu.current
+        ) {
+          langFrBurgerMenu.current.setAttribute(
+            "aria-label",
+            "Ändere die Sprache auf Deutsch"
+          );
+          langEnBurgerMenu.current.setAttribute(
+            "aria-label",
+            "Ändert die Sprache auf Englisch"
+          );
+          langDeBurgerMenu.current.setAttribute(
+            "aria-label",
+            "Ändert die Sprache auf Deutsch"
+          );
         }
         break;
       case "en":
-
-        if (langFrMainMenu.current && langEnMainMenu.current && langDeMainMenu.current) {
-        
-          langText.current = "Change language"
-          langFrMainMenu.current.setAttribute("aria-label", "Change language to French");
-          langEnMainMenu.current.setAttribute("aria-label", "Change language to English");
-          langDeMainMenu.current.setAttribute("aria-label", "Change language to German");
+        if (
+          langFrMainMenu.current &&
+          langEnMainMenu.current &&
+          langDeMainMenu.current
+        ) {
+          langText.current = "Change language";
+          langFrMainMenu.current.setAttribute(
+            "aria-label",
+            "Change language to French"
+          );
+          langEnMainMenu.current.setAttribute(
+            "aria-label",
+            "Change language to English"
+          );
+          langDeMainMenu.current.setAttribute(
+            "aria-label",
+            "Change language to German"
+          );
         }
-        if (langFrBurgerMenu.current && langEnBurgerMenu.current && langDeBurgerMenu.current) {
-
-          langFrBurgerMenu.current.setAttribute("aria-label", "Change language to French");
-          langEnBurgerMenu.current.setAttribute("aria-label", "Change language to English");
-          langDeBurgerMenu.current.setAttribute("aria-label", "Change language to German");
+        if (
+          langFrBurgerMenu.current &&
+          langEnBurgerMenu.current &&
+          langDeBurgerMenu.current
+        ) {
+          langFrBurgerMenu.current.setAttribute(
+            "aria-label",
+            "Change language to French"
+          );
+          langEnBurgerMenu.current.setAttribute(
+            "aria-label",
+            "Change language to English"
+          );
+          langDeBurgerMenu.current.setAttribute(
+            "aria-label",
+            "Change language to German"
+          );
         }
         break;
-    
+
       default:
         break;
     }
-
-  })
+  });
 
   function clickBurger() {
     if (!isClicked) {
@@ -134,6 +203,31 @@ function NavBar() {
     }
     return;
   }
+
+  //modifie le state qui gere l' affichage du composant "collapse"
+  function isSession() {
+    if (localStorage.getItem("token")) {
+      setIsToken(true);
+      return
+    }
+    setIsToken(false);
+    
+  }
+
+  useEffect(() => {
+    //detect si un token d' authentification  est present
+    isSession();
+
+    //verifie si un token est present toutes les  seconsdes
+    let inter =  setInterval(() => {
+      console.log("verifie le token chaque secondes.");
+      isSession();
+    }, 1000);
+
+    return ()=>{clearInterval(inter)}
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   //determine si l' ecran est de type mobile, et ajuste le "UseState" en fonction
   useEffect(() => {
@@ -149,9 +243,9 @@ function NavBar() {
 
     return () => {
       window.removeEventListener("resize", () => {
-         let isMobilDisplays = isXLargeScreen();
+        let isMobilDisplays = isXLargeScreen();
 
-         setIsSmallScreen(isMobilDisplays);
+        setIsSmallScreen(isMobilDisplays);
       });
     };
   }, []);
@@ -166,16 +260,21 @@ function NavBar() {
             : "nav-bar flex-row-space_between-center"
         }
       >
+        {isToken ? (
+          <div className="flex-column-center-center wrapper-collapse">
+            <CustomCollapse />
+          </div>
+        ) : null}
         <div className="container-logo">
           <a href={`${url}/index.html`} aria-label="Accueil">
             <ReactSVG
               src={logoSocoaching}
               className="logo-coaching-svg"
               title="logo de l'entreprise socoaching"
-              
-             />
+            />
           </a>
         </div>
+
         {isSmallScreen && !isClicked ? (
           <div className=" container-burger" onClick={() => clickBurger()}>
             <ReactSVG src={iconMenuBurger} className="logo-burger-svg" />
@@ -183,7 +282,7 @@ function NavBar() {
         ) : null}
         {!isSmallScreen ? (
           <div className="container-nav flex-row-end-center">
-            <ul className="container-link flex-row-start-center">
+            <ul className="relative container-link flex-row-start-center">
               {selectedContent.map((link, index) => {
                 return (
                   <li
@@ -197,49 +296,48 @@ function NavBar() {
                   </li>
                 );
               })}
-              {
-                <li className="container-lang flex-column-center-center">
-                  <div className="container-icon-lang">
-                    <ReactSVG
-                      src={iconLanguage}
-                      beforeInjection={(svg) => {
-                        svg.classList.add("icon-language");
-                        svg.setAttribute("aria-label",`${langText.current}`)
-                      }}
-                    />
-                  </div>
 
-                  <ul className="list-lang flex-row-space_between-center">
-                    <li className="list-lang-li flex-column-center-center">
-                      <a
-                        className="list-lang-li-a flex-column-center-center"
-                        href={href_de.current}
-                        ref={langDeMainMenu}
-                      >
-                        De
-                      </a>
-                    </li>
-                    <li className="list-lang-li">
-                      <a
-                        className="list-lang-li-a flex-column-center-center"
-                        href={href_en.current}
-                        ref={langEnMainMenu}
-                      >
-                        En
-                      </a>
-                    </li>
-                    <li className="list-lang-li">
-                      <a
-                        className="list-lang-li-a flex-column-center-center"
-                        href={href_fr.current}
-                        ref={langFrMainMenu}
-                      >
-                        Fr
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-              }
+              <li className="container-lang flex-column-center-center">
+                <div className="container-icon-lang">
+                  <ReactSVG
+                    src={iconLanguage}
+                    beforeInjection={(svg) => {
+                      svg.classList.add("icon-language");
+                      svg.setAttribute("aria-label", `${langText.current}`);
+                    }}
+                  />
+                </div>
+
+                <ul className="list-lang flex-row-space_between-center">
+                  <li className="list-lang-li flex-column-center-center">
+                    <a
+                      className="list-lang-li-a flex-column-center-center"
+                      href={href_de.current}
+                      ref={langDeMainMenu}
+                    >
+                      De
+                    </a>
+                  </li>
+                  <li className="list-lang-li">
+                    <a
+                      className="list-lang-li-a flex-column-center-center"
+                      href={href_en.current}
+                      ref={langEnMainMenu}
+                    >
+                      En
+                    </a>
+                  </li>
+                  <li className="list-lang-li">
+                    <a
+                      className="list-lang-li-a flex-column-center-center"
+                      href={href_fr.current}
+                      ref={langFrMainMenu}
+                    >
+                      Fr
+                    </a>
+                  </li>
+                </ul>
+              </li>
             </ul>
           </div>
         ) : null}
@@ -268,25 +366,39 @@ function NavBar() {
               </li>
             );
           })}
-          {<li className="">
-            <ul className="burger-menu-lang flex-row-start-center">
-              <li className="burger-menu-lang-li flex-row-center-center">
-                <a className="burger-menu-lang-li-a" href={href_de.current} ref={langDeBurgerMenu}>
-                  De
-                </a>
-              </li>
-              <li className="burger-menu-lang-li flex-row-center-center">
-                <a className="burger-menu-lang-li-a" href={href_en.current} ref={langEnBurgerMenu}>
-                  En
-                </a>
-              </li>
-              <li className="burger-menu-lang-li flex-row-center-center">
-                <a className="burger-menu-lang-li-a" href={href_fr.current} ref={langFrBurgerMenu}>
-                  Fr
-                </a>
-              </li>
-            </ul>
-          </li> }
+          {
+            <li className="">
+              <ul className="burger-menu-lang flex-row-start-center">
+                <li className="burger-menu-lang-li flex-row-center-center">
+                  <a
+                    className="burger-menu-lang-li-a"
+                    href={href_de.current}
+                    ref={langDeBurgerMenu}
+                  >
+                    De
+                  </a>
+                </li>
+                <li className="burger-menu-lang-li flex-row-center-center">
+                  <a
+                    className="burger-menu-lang-li-a"
+                    href={href_en.current}
+                    ref={langEnBurgerMenu}
+                  >
+                    En
+                  </a>
+                </li>
+                <li className="burger-menu-lang-li flex-row-center-center">
+                  <a
+                    className="burger-menu-lang-li-a"
+                    href={href_fr.current}
+                    ref={langFrBurgerMenu}
+                  >
+                    Fr
+                  </a>
+                </li>
+              </ul>
+            </li>
+          }
         </ul>
       </div>
     </nav>
@@ -294,4 +406,3 @@ function NavBar() {
 }
 
 export { NavBar };
-

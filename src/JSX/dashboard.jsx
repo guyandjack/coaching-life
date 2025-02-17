@@ -17,8 +17,8 @@ import { FormAddArticle } from "../COMPONENTS/form/formAddArticle.jsx";
 import { CardArticleContainer } from "../COMPONENTS/form/cardFormArticleContainer.jsx";
 //import { CardAvis } from "../COMPONENTS/card/cardAvis.jsx";
 import { CardAvisContainer } from "../COMPONENTS/form/cardFormAvisContainer.jsx";
-import { CustomCollapse } from "../COMPONENTS/collapse/collapse.jsx";
-import { RefreshToken } from "../COMPONENTS/refreshtoken/refreshToken.jsx";
+//import { CustomCollapse } from "../COMPONENTS/collapse/collapse.jsx";
+//import { RefreshToken } from "../COMPONENTS/refreshtoken/refreshToken.jsx";
 
 
 
@@ -30,21 +30,21 @@ ReactDOM.createRoot(rootElement).render(
   </React.StrictMode>
 );
 
-// Rendu du composant CustomCollapse dans le DOM
+/*// Rendu du composant CustomCollapse dans le DOM
 const collaspseElement = document.getElementById("RC-collapse");
 ReactDOM.createRoot(collaspseElement).render(
   <React.StrictMode>
     <CustomCollapse />
   </React.StrictMode>
-); 
+); */
 
 // Rendu du composant CustomCollapse dans le DOM
-const refreshElement = document.getElementById("RC-refresh");
+/* const refreshElement = document.getElementById("RC-refresh");
 ReactDOM.createRoot(refreshElement).render(
   <React.StrictMode>
     <RefreshToken />
   </React.StrictMode>
-); 
+);  */
 
 const footerContainer = document.getElementById("RC-footer");
 ReactDOM.createRoot(footerContainer).render(

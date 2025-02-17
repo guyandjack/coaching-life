@@ -221,6 +221,12 @@
   height: 24px;
 }
 
+.wrapper-collapse {
+  position: absolute;
+  top: 100%;
+  right: 50px;
+}
+
 .menu-burger {
   position: absolute;
   top: 0px;

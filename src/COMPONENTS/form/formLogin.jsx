@@ -77,6 +77,10 @@ function FormLogin() {
         
 
         if (data.message == "succes") {
+          //netoyage du localstorage
+          localStorage.clear()
+
+          //recuperation des data api
           localStorage.setItem("admin", data.name);
           localStorage.setItem("token", data.token);
           localStorage.setItem("time", data.time);
@@ -86,7 +90,7 @@ function FormLogin() {
             toasterValid.current.classList.remove("visible");
             window.location.href = "./dashboard.html";
             setIsSpinnerVisible(false);
-          }, 3000);
+          }, 1000);
         }
       }
     }

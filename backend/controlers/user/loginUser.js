@@ -8,10 +8,11 @@ const sendRequest = require("../../utils/functions/requestDataBase.js");
 
 //import des fonctions
 const checkEnv = require("../../utils/functions/checkEnvironement.js");
-let expIn = "30m";
-let exp = 30;
+let expIn = "1800s";
+let exp = 1800;
 if (checkEnv.devOrProd() == "dev") {
-  expIn = "30s";
+  expIn = "50s";
+  exp = 50
   
   
 }
@@ -66,7 +67,7 @@ async function checkUserLogin(req, res) {
       { expiresIn: expIn }
     );
     
-    let date = new Date;
+    let date = new Date();
     // Envoi de la réponse
     res.status(200).json({
       message: "succes",

@@ -9,13 +9,13 @@ import { cleanTokenInLocalStorage } from "../../UTILS/fonctions/cleanTokenInLoca
 
 let env = localOrProd();
 let urlApi = env.urlApi;
-let urlBase = env.url;
+//let urlBase = env.url;
 let mode = env.mode;
 
 //determine le temps (s) a pertir du quel le countdown s' affiche
 let timeShow = 120;
 if (mode == "dev") {
-  timeShow = 10;
+  timeShow = 30;
 }
 
 function RefreshToken() {
@@ -27,10 +27,10 @@ function RefreshToken() {
   const [count, setCount] = useState(null);
 
   // constante d' initialisation
-  const refTokenLife = useRef(null);
-  const refTokenBirth = useRef(null);
-  const refDeltaBirth = useRef(null);
-  const refTokenExpire = useRef(null);
+ 
+  //const refTokenBirth = useRef(null);
+  //const refDeltaBirth = useRef(null);
+  //const refTokenExpire = useRef(null);
 
   // constante relative aux element du dom
   const refreshElement = useRef(null);
@@ -50,42 +50,44 @@ function RefreshToken() {
     let lastCountUpdated = Number(localStorage.getItem("lastCountUpdated"));
     console.log("lastcountupdate: " + lastCountUpdated);
 
-    let lastDateUpdated = Number(localStorage.getItem("lastDateUpdated"));
+    let lastDateUpdated = parseInt(Number(localStorage.getItem("lastDateUpdated"))/1000);
     console.log("lastdateupdate: " + lastDateUpdated);
 
-    let actualDate = parseInt(date.getTime() / 1000);
-    console.log("actual date: " + actualDate);
-
     //date (en seconde) de creation du token  sur le serveur
-    refTokenBirth.current = parseInt(
-      Number(localStorage.getItem("time")) / 1000
-    );
-    console.log("storage tokenBirth: " + refTokenBirth.current);
+    let tokenTime = parseInt(Number(localStorage.getItem("time")) / 1000);
+    console.log("storage tokenBirth: " + tokenTime);
 
     //dure de vie (en seconde) du token implementer sur le serveur
-    refTokenExpire.current = parseInt(Number(localStorage.getItem("expire")));
-    console.log("storage tokenExpire: " + refTokenExpire.current);
+    let tokenExpire = parseInt(Number(localStorage.getItem("expire")));
+    console.log("storage tokenExpire: " + tokenExpire);
+    
+    //date actuel en seconde
+    let actualDate = parseInt(date.getTime() / 1000);
 
     //decalage entre la date de cretaion sur serveur et date de traitement client
-    refDeltaBirth.current = parseInt(
-      date.getTime() / 1000 - refTokenBirth.current
-    );
-    console.log("deltabirth: " + refDeltaBirth.current);
+    let deltaTimeToken = actualDate - tokenTime;
+    console.log("deltabirth: " + deltaTimeToken);
 
+
+    let tokenLife = 0;
     //duree de vie du token a partir de sa date de creation sur le serveur
     if (lastCountUpdated > 0 && lastDateUpdated > 0) {
+
       //calcul du temps de sortie de page par le client
       let duringTimeOut = actualDate - lastDateUpdated;
 
-      refTokenLife.current = lastCountUpdated - duringTimeOut;
-      setCount(refTokenLife.current);
+      console.log("actual date init: " + actualDate);
+      console.log("lastdate update: " + lastDateUpdated);
+      console.log("during time out: " + duringTimeOut);
+      
+      //duree de vie du token
+      tokenLife = lastCountUpdated - duringTimeOut;
+      setCount(tokenLife);
       console.log("init Count -1-: " + count);
     } else {
-      refTokenLife.current =
-        refTokenBirth.current + refTokenExpire.current - refDeltaBirth.current;
-      console.log("refTokenLive: " + refTokenLife.current);
-
-      setCount(refTokenLife.current - refTokenBirth.current);
+      tokenLife = tokenExpire - deltaTimeToken;
+      
+      setCount(tokenLife);
       console.log("init Count -2-: " + count);
     }
   }
@@ -133,9 +135,31 @@ function RefreshToken() {
     }
   }
 
-  useEffect(() => {
-    getInfoFromLocalStorage();
+  
 
+  useEffect(() => {
+    /*function handleVisibilityChange() {
+      if (document.visibilityState === "visible") {
+        console.log("Page visible, mise à jour du countdown...");
+        getInfoFromLocalStorage(); // 🔄 Mettre à jour le compte à rebours
+      }
+    }*/
+
+    function updateCountdown() {
+      console.log("Page réaffichée, mise à jour du countdown...");
+      getInfoFromLocalStorage();
+    }
+    
+    getInfoFromLocalStorage();
+    
+
+    //document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("pageshow", updateCountdown);
+
+    return () => {
+      //document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("pageshow", updateCountdown);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -143,6 +167,7 @@ function RefreshToken() {
   useEffect(() => {
     // evite de cerer un countdown si count n'existe pas
     if (count === null) {
+      console.log("la valeur de count n' existe pas....!");
       return;
     }
 
@@ -161,13 +186,14 @@ function RefreshToken() {
             localStorage.setItem("lastCountUpdated", newCount.toString());
             localStorage.setItem(
               "lastDateUpdated",
-              parseInt(date.getTime() / 1000).toString()
+              date.getTime().toString()
             );
 
             return newCount;
           }),
         1000
       );
+      
       console.log("count-2: " + count);
     }
     //affiche le composant deux minutes avant l' expiration du token
@@ -176,7 +202,7 @@ function RefreshToken() {
     }
 
     //affiche le message indiquant que la deconnexion est en cours
-    if (count < 1) {
+    if (count && count < 1) {
       refreshDialog.current.classList.add("dialog-transition");
       setTimeout(() => {
         cleanTokenInLocalStorage(
@@ -186,7 +212,7 @@ function RefreshToken() {
           "lastCountUpdated",
           "lastDateUpdated"
         );
-        window.location = `${urlBase}/public/fr/login.html`;
+        //window.location = `${urlBase}/public/fr/login.html`;
       }, 1000);
       return;
     }
@@ -212,7 +238,7 @@ function RefreshToken() {
             <span>
               {count
                 ? " # " + count.toString().padStart(3, "0") + " s"
-                : " # " + "00" + " s"}
+                : " # " + "000" + " s"}
             </span>
           </p>
           <button
