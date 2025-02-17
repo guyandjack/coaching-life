@@ -5,12 +5,12 @@ const jwt = require("jsonwebtoken");
 //import des fonctions
 // eslint-disable-next-line no-undef
 const checkEnv = require("../../utils/functions/checkEnvironement.js");
-let expIn = "20m";
-let exp = 20;
+let expIn = "1200s";
+let exp = 1200;
 if (checkEnv.devOrProd() == "dev") {
-  expIn = "20s";
-  
-  
+    expIn = "50s";
+    exp = 50;
+ 
 }
 
 function keepConnection(req, res) {
