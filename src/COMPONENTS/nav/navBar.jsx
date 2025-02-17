@@ -367,7 +367,7 @@ function NavBar() {
             );
           })}
           {
-            <li className="">
+            <li className="burger-menu-li">
               <ul className="burger-menu-lang flex-row-start-center">
                 <li className="burger-menu-lang-li flex-row-center-center">
                   <a
