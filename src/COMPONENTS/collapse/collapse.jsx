@@ -19,7 +19,7 @@ let mode = env.mode;
 //determine le temps (s) a pertir du quel le countdown s' affiche
 let timeShow = 120;
 if (mode == "dev") {
-  timeShow = 130;
+  timeShow = 30;
 }
 
 //permet de se deconnecter en suprimant le token d' authentification
@@ -137,6 +137,9 @@ function CustomCollapse() {
     setInitCountDown(!InitCountDown);
     //restart du countdown
     setRunCountDown(!runCountDown);
+
+    //referme le collaspse
+    refreshElement.current.classList.remove("display");
   }
 
   /************ use effect  ***************

@@ -29,9 +29,26 @@
   background-color: map-get($colors-rule, sixth-color);
 }
 
+/* .wrapper-logo{
+  //border: 2px solid red;
+}
+
+
+//concerne le collapse qui s' affiche lors d' une connexion admin
+.wrapper-collapse {
+   position: absolute;
+  top: 50%;
+  transform: translate(-100%, -50%);
+  z-index: 10; 
+  //border: 2px solid blue;
+} */
+
 .container-logo {
   flex: 0 1 auto;
+  //border: 2px solid green;
 }
+
+
 
 .logo-coaching-svg {
   width: 150px;
@@ -51,7 +68,7 @@
   @include upper-x-large-screen {
     width: 300px;
 
-    margin-left: 100px;
+    margin-left: 30px;
   }
 
 
@@ -96,11 +113,11 @@
   }
 }
 
-.container-nav {
+/* .container-nav {
   flex: 1 0 auto;
-  //border: 2px solid red;
+  border: 2px solid red;
 }
-
+ */
 .container-link-li {
   position: relative;
   height: 40px;
@@ -230,12 +247,7 @@
 }
 
 
-//concerne le collapse qui s' affiche lors d' une connexion admin
-.wrapper-collapse{
-position: absolute;
-  top: 100%;
-  right: 50px;
-}
+
 
 .menu-burger {
   position: absolute;
@@ -278,7 +290,7 @@ position: absolute;
 
     transform: translateX(0px);
     opacity: 1;
-    transition: opacity 0.6s ease-out 0.5s, transform 0.3s ease-out 0.5s
+    transition: opacity 0.6s ease-out 0.5s, transform 0.3s ease-out 0.5s;
 
   }
   

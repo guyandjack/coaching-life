@@ -6,6 +6,9 @@ import { useEffect, useRef, useState } from "react";
 import { ReactSVG } from "react-svg";
 import { CustomCollapse } from "../collapse/collapse.jsx";
 
+//import des data
+//import { breakPoint } from "../../UTILS/breakpoint/break_point.js";
+
 //import des fonctions
 import { isXLargeScreen } from "../../UTILS/fonctions/isScreenMobil.js";
 import {
@@ -28,14 +31,17 @@ let url = objectUrl.url;
 //import de feuilles de style
 import "../../style/CSS/navbar.css";
 
-//declaration des fonctions
+//function principale
 
 function NavBar() {
-  let [isSmallScreen, setIsSmallScreen] = useState();
+  let [isSmallScreen, setIsSmallScreen] = useState(isXLargeScreen());
   let [isClicked, setIsclicked] = useState(false);
   const [isToken, setIsToken] = useState(false);
 
   let selectedContent = getNavBarContent();
+
+  const containerLogo = useRef(null);
+  const collapseElement = useRef(null);
 
   let href_fr = useRef("");
   let href_en = useRef("");
@@ -208,28 +214,35 @@ function NavBar() {
   function isSession() {
     if (localStorage.getItem("token")) {
       setIsToken(true);
-      return
+      return true;
     }
     setIsToken(false);
-    
+    return false;
   }
 
-  useEffect(() => {
-    //detect si un token d' authentification  est present
-    isSession();
+  //calcule la position du composant collapse
+  function setPositionCollapse() {
+    console.log("issmall screen dans setposition collapse: ", isSmallScreen);
 
-    //verifie si un token est present toutes les  seconsdes
-    let inter =  setInterval(() => {
-      console.log("verifie le token chaque secondes.");
-      isSession();
-    }, 1000);
+    //mode petit ecran le collapse se place a gauche du logo "socoaching"
+    if (isSmallScreen) {
+      console.log("mode petit ecran.......");
+      const objectRect = containerLogo.current.getBoundingClientRect();
 
-    return ()=>{clearInterval(inter)}
+      collapseElement.current.style.left = `${objectRect.x - 200}px`;
+    }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    //mode ecran large le collapse se place a gauche de la bar de navigation
+    if (!isSmallScreen) {
+      console.log("mode grand ecran.......");
+      const navElement = document.querySelector(".container-nav");
+      const objectRect = navElement.getBoundingClientRect();
 
-  //determine si l' ecran est de type mobile, et ajuste le "UseState" en fonction
+      collapseElement.current.style.left = `${objectRect.x}px`;
+    }
+  }
+
+  //determine si l'ecran est de type mobile, et ajuste le "UseState" en fonction
   useEffect(() => {
     let isMobilDisplay = isXLargeScreen();
 
@@ -249,6 +262,26 @@ function NavBar() {
       });
     };
   }, []);
+
+  useEffect(() => {
+    //detect si un token d' authentification  est present
+    isSession();
+
+    setPositionCollapse();
+
+    //verifie si un token est present toutes les  seconsdes
+    let inter = setInterval(() => {
+      console.log("verifie le token chaque secondes.");
+      isSession();
+      setPositionCollapse();
+    }, 1000);
+
+    return () => {
+      clearInterval(inter);
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <nav>
       {/*!isSmallScreen || (isSmallScreen && !isClicked) ? () : null*/}
@@ -260,19 +293,29 @@ function NavBar() {
             : "nav-bar flex-row-space_between-center"
         }
       >
-        {isToken ? (
-          <div className="flex-column-center-center wrapper-collapse">
-            <CustomCollapse />
+        <div
+          className={
+            isSmallScreen
+              ? "flex-row-center-center wrapper-logo"
+              : "flex-row_reverse-center-center wrapper-logo"
+          }
+        >
+          <div
+            ref={collapseElement}
+            className="flex-column-center-center wrapper-collapse"
+          >
+            {isToken ? <CustomCollapse /> : null}
           </div>
-        ) : null}
-        <div className="container-logo">
-          <a href={`${url}/index.html`} aria-label="Accueil">
-            <ReactSVG
-              src={logoSocoaching}
-              className="logo-coaching-svg"
-              title="logo de l'entreprise socoaching"
-            />
-          </a>
+
+          <div ref={containerLogo} className="container-logo">
+            <a href={`${url}/index.html`} aria-label="Accueil">
+              <ReactSVG
+                src={logoSocoaching}
+                className="logo-coaching-svg"
+                title="logo de l'entreprise socoaching"
+              />
+            </a>
+          </div>
         </div>
 
         {isSmallScreen && !isClicked ? (
@@ -280,6 +323,7 @@ function NavBar() {
             <ReactSVG src={iconMenuBurger} className="logo-burger-svg" />
           </div>
         ) : null}
+
         {!isSmallScreen ? (
           <div className="container-nav flex-row-end-center">
             <ul className="relative container-link flex-row-start-center">

@@ -8,8 +8,8 @@ const checkEnv = require("../../utils/functions/checkEnvironement.js");
 let expIn = "1200s";
 let exp = 1200;
 if (checkEnv.devOrProd() == "dev") {
-    expIn = "50s";
-    exp = 50;
+    expIn = "40s";
+    exp = 40;
  
 }
 
