@@ -49,13 +49,13 @@ function NavBar() {
 
   const langText = useRef("");
 
-  const langFrMainMenu = useRef();
-  const langDeMainMenu = useRef();
-  const langEnMainMenu = useRef();
+  const langFrMainMenu = useRef(null);
+  const langDeMainMenu = useRef(null);
+  const langEnMainMenu = useRef(null);
 
-  const langFrBurgerMenu = useRef();
-  const langDeBurgerMenu = useRef();
-  const langEnBurgerMenu = useRef();
+  const langFrBurgerMenu = useRef(null);
+  const langDeBurgerMenu = useRef(null);
+  const langEnBurgerMenu = useRef(null);
 
   //gere l'effet de style sur les liens en fonction de l'url de la page
   useEffect(() => {
@@ -65,19 +65,36 @@ function NavBar() {
     return () => {};
   });
 
-  //attribut la route des liens de la liste choix des langues
+  //determine la valeur de l' attribut "href" des liens de la liste choix des langues mainMenu et menuBurger
   useEffect(() => {
     let result = setHrefLinkLanguage();
-
-    href_de.current = result.de;
-    href_en.current = result.en;
-    href_fr.current = result.fr;
-  });
+    href_de.current = result.de ?? null;
+    href_en.current = result.en ?? null;
+    href_fr.current = result.fr ?? null;
+    if (
+      langFrMainMenu.current &&
+      langEnMainMenu.current &&
+      langDeMainMenu.current
+    ) {
+      langDeMainMenu.current.href = href_de.current;
+      langEnMainMenu.current.href = href_en.current;
+      langFrMainMenu.current.href = href_fr.current;
+    }
+    if (
+      langFrBurgerMenu.current &&
+      langEnBurgerMenu.current &&
+      langDeBurgerMenu.current
+    ) {
+      langDeBurgerMenu.current.href = href_de.current;
+      langEnBurgerMenu.current.href = href_en.current;
+      langFrBurgerMenu.current.href = href_fr.current;
+    }
+  }, [isSmallScreen]);
 
   //ajoute un atribut aria-label en fonction de la langue de la page
   useEffect(() => {
     let lang = getPageLanguage();
-    console.log("lang: " + lang);
+   
     switch (lang) {
       case "fr":
         if (
@@ -201,7 +218,7 @@ function NavBar() {
       default:
         break;
     }
-  });
+  },[isSmallScreen]);
 
   function clickBurger() {
     if (!isClicked) {
@@ -220,27 +237,7 @@ function NavBar() {
     return false;
   }
 
-  //calcule la position du composant collapse
-  function setPositionCollapse() {
-    console.log("issmall screen dans setposition collapse: ", isSmallScreen);
-
-    //mode petit ecran le collapse se place a gauche du logo "socoaching"
-    if (isSmallScreen) {
-      console.log("mode petit ecran.......");
-      const objectRect = containerLogo.current.getBoundingClientRect();
-
-      collapseElement.current.style.left = `${objectRect.x - 200}px`;
-    }
-
-    //mode ecran large le collapse se place a gauche de la bar de navigation
-    if (!isSmallScreen) {
-      console.log("mode grand ecran.......");
-      const navElement = document.querySelector(".container-nav");
-      const objectRect = navElement.getBoundingClientRect();
-
-      collapseElement.current.style.left = `${objectRect.x}px`;
-    }
-  }
+  
 
   //determine si l'ecran est de type mobile, et ajuste le "UseState" en fonction
   useEffect(() => {
@@ -267,13 +264,13 @@ function NavBar() {
     //detect si un token d' authentification  est present
     isSession();
 
-    setPositionCollapse();
+    
 
     //verifie si un token est present toutes les  seconsdes
     let inter = setInterval(() => {
       console.log("verifie le token chaque secondes.");
       isSession();
-      setPositionCollapse();
+      
     }, 1000);
 
     return () => {
@@ -341,7 +338,7 @@ function NavBar() {
                 );
               })}
 
-              <li className="container-lang flex-column-center-center">
+              <li className="flex-column-center-center container-lang ">
                 <div className="container-icon-lang">
                   <ReactSVG
                     src={iconLanguage}
@@ -352,11 +349,11 @@ function NavBar() {
                   />
                 </div>
 
-                <ul className="list-lang flex-row-space_between-center">
-                  <li className="list-lang-li flex-column-center-center">
+                <ul className="flex-column-space_evenly-center list-lang ">
+                  <li className="list-lang-li">
                     <a
                       className="list-lang-li-a flex-column-center-center"
-                      href={href_de.current}
+                      href={""}
                       ref={langDeMainMenu}
                     >
                       De
@@ -365,7 +362,7 @@ function NavBar() {
                   <li className="list-lang-li">
                     <a
                       className="list-lang-li-a flex-column-center-center"
-                      href={href_en.current}
+                      href={""}
                       ref={langEnMainMenu}
                     >
                       En
@@ -374,7 +371,7 @@ function NavBar() {
                   <li className="list-lang-li">
                     <a
                       className="list-lang-li-a flex-column-center-center"
-                      href={href_fr.current}
+                      href={""}
                       ref={langFrMainMenu}
                     >
                       Fr
@@ -416,7 +413,7 @@ function NavBar() {
                 <li className="burger-menu-lang-li flex-row-center-center">
                   <a
                     className="burger-menu-lang-li-a"
-                    href={href_de.current}
+                    href={""}
                     ref={langDeBurgerMenu}
                   >
                     De
@@ -425,7 +422,7 @@ function NavBar() {
                 <li className="burger-menu-lang-li flex-row-center-center">
                   <a
                     className="burger-menu-lang-li-a"
-                    href={href_en.current}
+                    href={""}
                     ref={langEnBurgerMenu}
                   >
                     En
@@ -434,7 +431,7 @@ function NavBar() {
                 <li className="burger-menu-lang-li flex-row-center-center">
                   <a
                     className="burger-menu-lang-li-a"
-                    href={href_fr.current}
+                    href={""}
                     ref={langFrBurgerMenu}
                   >
                     Fr

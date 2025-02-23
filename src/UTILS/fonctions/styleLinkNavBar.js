@@ -77,11 +77,9 @@ function getNavLinkToStyle(tabKeyWord, urlFinded) {
       console.log("id du lien selectionné: " + keyWord[1]);
       let elementLink = document.querySelector(`#${keyWord[1]} span`);
 
-      console.log(" lien selectionné: " + elementLink);
-
       result = elementLink;
     }
-    console.log(" resultat: " + result);
+    
   });
   return result;
 }
@@ -126,7 +124,7 @@ function styleLinkNavBar() {
   let curentUrl = getCurentUrl();
 
   let targetLink = getNavLinkToStyle(keyWordSelected, curentUrl);
-  console.log("lien a styliser 2: " + targetLink);
+  
   if (targetLink !== null && targetLink !== "undefined")
     styleNavLink(targetLink);
 }

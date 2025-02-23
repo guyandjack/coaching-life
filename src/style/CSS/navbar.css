@@ -179,45 +179,42 @@
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  width: 50px;
 }
 
 .list-lang {
   position: absolute;
   z-index: 2;
-  top: 100%;
-  right: 0px;
-  width: 100px;
+  top: 90%;
+  left: 50%;
+  width: 100%;
   opacity: 0;
-  max-height: 0px;
+  height: 0px;
   overflow: hidden;
-  -webkit-transform: translateX(150%);
-      -ms-transform: translateX(150%);
-          transform: translateX(150%);
-  -webkit-transition: opacity 150ms ease-in-out 0.1s, max-height 0.2s ease-in-out 0.2s, padding 0.2s ease-in-out 0.2s, -webkit-transform 0.2s ease-in-out 0s;
-  transition: opacity 150ms ease-in-out 0.1s, max-height 0.2s ease-in-out 0.2s, padding 0.2s ease-in-out 0.2s, -webkit-transform 0.2s ease-in-out 0s;
-  transition: opacity 150ms ease-in-out 0.1s, transform 0.2s ease-in-out 0s, max-height 0.2s ease-in-out 0.2s, padding 0.2s ease-in-out 0.2s;
-  transition: opacity 150ms ease-in-out 0.1s, transform 0.2s ease-in-out 0s, max-height 0.2s ease-in-out 0.2s, padding 0.2s ease-in-out 0.2s, -webkit-transform 0.2s ease-in-out 0s;
+  -webkit-transform: translate(-50%);
+      -ms-transform: translate(-50%);
+          transform: translate(-50%);
+  -webkit-transition: opacity 0.2s ease-in-out 0.1s, height 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out 0.1s, height 0.2s ease-in-out;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
   background-color: #fbfffe;
 }
 
 .container-lang:hover .list-lang {
-  -webkit-transform: translateX(0%);
-      -ms-transform: translateX(0%);
-          transform: translateX(0%);
+  -webkit-transform: translate(-50%);
+      -ms-transform: translate(-50%);
+          transform: translate(-50%);
   opacity: 1;
-  max-height: 40px;
-  padding: 10px;
-  height: 100%;
-  -webkit-transition: opacity 0.2ms ease-in-out 0s, -webkit-transform 0.3s ease-in-out 0s;
-  transition: opacity 0.2ms ease-in-out 0s, -webkit-transform 0.3s ease-in-out 0s;
-  transition: opacity 0.2ms ease-in-out 0s, transform 0.3s ease-in-out 0s;
-  transition: opacity 0.2ms ease-in-out 0s, transform 0.3s ease-in-out 0s, -webkit-transform 0.3s ease-in-out 0s;
+  height: 100px;
+  -webkit-transition: opacity 0.3ms ease-in-out 0s, height 0.3s ease-in-out;
+  transition: opacity 0.3ms ease-in-out 0s, height 0.3s ease-in-out;
 }
 
 .list-lang-li-a {
-  position: relative;
   color: #001747;
   font-size: 1em;
+  padding: 5px;
 }
 
 .list-lang-li-a:hover {

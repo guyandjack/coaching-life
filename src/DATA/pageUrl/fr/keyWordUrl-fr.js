@@ -9,6 +9,7 @@ let keyWordUrlFR = [
   ["mentions-legales.html", "mentions"],
   ["politique-de-confidencialite.html", "politique"],
   ["login", "login"],
+  ["article-coaching-developpement-personel-entreprise.html","article"],
 ];
 
 export { keyWordUrlFR };

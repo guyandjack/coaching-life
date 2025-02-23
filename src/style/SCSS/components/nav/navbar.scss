@@ -190,41 +190,45 @@
   margin-right: 40px;
   width: fit-content;
   //border: 2px solid orange;
+  width: 50px;
 }
 
 
 .list-lang {
   position: absolute;
   z-index: 2;
-  top: 100%;
-  right: 0px;
-  width: 100px;
+  top: 90%;
+  left: 50%;
+  width: 100%;
   opacity: 0;
-  max-height: 0px;
+  height: 0px;
   overflow: hidden;
-  transform: translateX(150%);
+  transform: translate(-50%);
   transition:
-    opacity 150ms ease-in-out 0.1s,
-    transform 0.2s ease-in-out 0s,
-    max-height 0.2s ease-in-out 0.2s,
-    padding 0.2s ease-in-out 0.2s;
+    opacity 0.2s ease-in-out 0.1s,
+    height 0.2s ease-in-out;
+   
+    
   //border: 2px solid blue;
+  border: 1px solid rgba(0,0,0,0.5);
+  border-radius: 5px;
   background-color: map-get($colors-rule, sixth-color);
 }
 
 .container-lang:hover .list-lang {
-  transform: translateX(0%);
+  transform: translate(-50%);
   opacity: 1;
-  max-height: 40px;
-  padding: 10px;
-  height: 100%;
-  transition: opacity 0.2ms ease-in-out 0s, transform 0.3s ease-in-out 0s;
+  //padding: 10px;
+  height: 100px;
+  transition: opacity 0.3ms ease-in-out 0s, height 0.3s ease-in-out ;
 }
 
 .list-lang-li-a {
-  position: relative;
+  //position: relative;
   color: map-get($colors-rule, first-color);
   font-size: 1em;
+  padding: 5px;
+  //border: 2px solid red;
 
 }
 
