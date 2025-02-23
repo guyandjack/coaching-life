@@ -47,6 +47,13 @@
             top: 50%;
             //left: 20px;
             max-width: 70%;
+            font-size: 30px;
+            
+        }
+        @include upper-x-large-screen {
+            top: 50%;
+            //left: 20px;
+            max-width: 70%;
             font-size: 35px;
             
         }

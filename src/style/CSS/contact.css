@@ -42,6 +42,13 @@
   .contact-container-title .contact-title {
     top: 50%;
     max-width: 70%;
+    font-size: 30px;
+  }
+}
+@media screen and (min-width: 1501px) {
+  .contact-container-title .contact-title {
+    top: 50%;
+    max-width: 70%;
     font-size: 35px;
   }
 }
