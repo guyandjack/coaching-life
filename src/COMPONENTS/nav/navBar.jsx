@@ -24,6 +24,9 @@ import iconClose from "../../assets/icons/close.svg";
 import iconLanguage from "../../assets/icons/icon-language.svg";
 import iconMenuBurger from "../../assets/icons/menu-burger-40x40.svg";
 import logoSocoaching from "../../assets/logo/logo-monogramme-v4.svg";
+import fr_flag from "../../assets/icons/france.png";
+import en_flag from "../../assets/icons/united-kingdom.png";
+import de_flag from "../../assets/icons/germany.png";
 
 let objectUrl = localOrProd();
 let url = objectUrl.url;
@@ -356,7 +359,12 @@ function NavBar() {
                       href={""}
                       ref={langDeMainMenu}
                     >
-                      De
+                      <img
+                        src={de_flag}
+                        alt="german flag"
+                        width={25}
+                        height={25}
+                      ></img>
                     </a>
                   </li>
                   <li className="list-lang-li">
@@ -365,7 +373,12 @@ function NavBar() {
                       href={""}
                       ref={langEnMainMenu}
                     >
-                      En
+                      <img
+                        src={en_flag}
+                        alt="german flag"
+                        width={25}
+                        height={25}
+                      ></img>
                     </a>
                   </li>
                   <li className="list-lang-li">
@@ -374,7 +387,12 @@ function NavBar() {
                       href={""}
                       ref={langFrMainMenu}
                     >
-                      Fr
+                      <img
+                        src={fr_flag}
+                        alt="german flag"
+                        width={25}
+                        height={25}
+                      ></img>
                     </a>
                   </li>
                 </ul>
@@ -416,7 +434,12 @@ function NavBar() {
                     href={""}
                     ref={langDeBurgerMenu}
                   >
-                    De
+                    <img
+                      src={de_flag}
+                      alt="german flag"
+                      width={25}
+                      height={25}
+                    ></img>
                   </a>
                 </li>
                 <li className="burger-menu-lang-li flex-row-center-center">
@@ -425,7 +448,12 @@ function NavBar() {
                     href={""}
                     ref={langEnBurgerMenu}
                   >
-                    En
+                    <img
+                      src={en_flag}
+                      alt="uk flag"
+                      width={25}
+                      height={25}
+                    ></img>
                   </a>
                 </li>
                 <li className="burger-menu-lang-li flex-row-center-center">
@@ -434,7 +462,12 @@ function NavBar() {
                     href={""}
                     ref={langFrBurgerMenu}
                   >
-                    Fr
+                    <img
+                      src={fr_flag}
+                      alt="french flag"
+                      width={25}
+                      height={25}
+                    ></img>
                   </a>
                 </li>
               </ul>

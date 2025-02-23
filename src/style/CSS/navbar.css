@@ -211,20 +211,21 @@
   transition: opacity 0.3ms ease-in-out 0s, height 0.3s ease-in-out;
 }
 
+.container-lang:hover .icon-language {
+  fill: #9cd008;
+}
+
 .list-lang-li-a {
-  color: #001747;
-  font-size: 1em;
   padding: 5px;
 }
 
 .list-lang-li-a:hover {
-  color: #9cd008;
   -webkit-transform: scale(1.2);
       -ms-transform: scale(1.2);
           transform: scale(1.2);
 }
 
-#icon-language {
+.icon-language {
   fill: #001747;
   width: 24px;
   height: 24px;

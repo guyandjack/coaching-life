@@ -222,11 +222,17 @@
   height: 100px;
   transition: opacity 0.3ms ease-in-out 0s, height 0.3s ease-in-out ;
 }
+.container-lang:hover .icon-language {
+  
+      fill: map-get($colors-rule, fourth-color);
+    
+}
+
 
 .list-lang-li-a {
   //position: relative;
-  color: map-get($colors-rule, first-color);
-  font-size: 1em;
+  //color: map-get($colors-rule, first-color);
+  //font-size: 1em;
   padding: 5px;
   //border: 2px solid red;
 
@@ -235,7 +241,7 @@
 
 
 .list-lang-li-a:hover {
-  color: map-get($colors-rule, fourth-color);
+  //color: map-get($colors-rule, fourth-color);
   transform: scale(1.2);
 }
 
@@ -243,11 +249,11 @@
 
 
 
-#icon-language {
+.icon-language {
   fill: map-get($colors-rule, first-color);
-
   width: 24px;
   height: 24px;
+ 
 }
 
 
