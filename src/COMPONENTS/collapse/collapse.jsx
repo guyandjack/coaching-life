@@ -37,6 +37,8 @@ function logOut() {
 }
 
 function getInfoFromLocalStorage() {
+  
+
   //recuperation des dernieres valeur du count
   let lastCountUpdated = Number(localStorage.getItem("lastCountUpdated"));
   console.log("lastcountupdate: " + lastCountUpdated);
@@ -62,6 +64,7 @@ function getInfoFromLocalStorage() {
   console.log("deltabirth: " + deltaTimeToken);
 
   return {
+    
     actualDate: parseInt(actualDate),
     delta: parseInt(deltaTimeToken),
     expire: parseInt(tokenExpire),
@@ -266,6 +269,11 @@ function CustomCollapse() {
             rester connecté
           </div>
         </li>
+        <li className="dashboard-li">
+          <a className="text" href={`${urlBase}/public/fr/dashboard.html`}>
+            Dashboard
+          </a>
+        </li>
         <li
           className="text logout-li"
           onClick={() => {
@@ -276,6 +284,8 @@ function CustomCollapse() {
         >
           Logout
         </li>
+
+
         <li ref={alertElement} className="text alert">
           deconnexion en cours...
         </li>

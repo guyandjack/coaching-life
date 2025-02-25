@@ -6,7 +6,7 @@
     margin: 0px 10px;
     width: 150px;
     //height: %;
-    color: map-get($colors-rule, first-color);
+   
     //border: 2px solid red;
 
 
@@ -19,6 +19,12 @@
         padding: 5px;
         transition: padding linear 0.3s 0s, max-height linear 0.3s 0s;
     }
+    &:hover .dashboard-li {
+        max-height: 30px;
+        padding: 5px;
+        transition: padding linear 0.3s 0s, max-height linear 0.3s 0s;
+    }
+
 }
 
 .container-head {
@@ -59,6 +65,7 @@
 
 .text {
     font-size: 12px;
+    color: map-get($colors-rule, first-color);
 
 }
 
@@ -67,7 +74,7 @@
 
 
 
-.logout-li {
+.logout-li, .dashboard-li {
     //border: 2px solid red;
     max-height: 0px;
     padding: 0px;

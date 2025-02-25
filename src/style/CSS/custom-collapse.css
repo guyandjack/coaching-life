@@ -1,12 +1,17 @@
 .main-container {
   margin: 0px 10px;
   width: 150px;
-  color: #001747;
 }
 .main-container:hover .icon-account {
   fill: #1ba4e3;
 }
 .main-container:hover .logout-li {
+  max-height: 30px;
+  padding: 5px;
+  -webkit-transition: padding linear 0.3s 0s, max-height linear 0.3s 0s;
+  transition: padding linear 0.3s 0s, max-height linear 0.3s 0s;
+}
+.main-container:hover .dashboard-li {
   max-height: 30px;
   padding: 5px;
   -webkit-transition: padding linear 0.3s 0s, max-height linear 0.3s 0s;
@@ -39,9 +44,10 @@
 
 .text {
   font-size: 12px;
+  color: #001747;
 }
 
-.logout-li {
+.logout-li, .dashboard-li {
   max-height: 0px;
   padding: 0px;
   overflow: hidden;
@@ -49,7 +55,7 @@
   transition: padding linear 0.3s 0s, max-height linear 0.3s 0s, background-color linear 0.3s 0s;
   cursor: pointer;
 }
-.logout-li:hover {
+.logout-li:hover, .dashboard-li:hover {
   background-color: #1ba4e3;
 }
 
