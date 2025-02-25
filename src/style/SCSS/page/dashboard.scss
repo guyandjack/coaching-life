@@ -12,14 +12,14 @@
 .container-page-move{
   position: fixed;
   right: 5%;
-  bottom: 5%;
+  bottom: 55%;
   z-index: 10;
   
 
 }
 
  .container-title{
-  border-bottom: 2px solid map-get($colors-rule, sixth-color );
+  border-bottom: 2px solid map-get($colors-rule, sixth-color);
 } 
 
 #RC-collapse{
@@ -30,16 +30,20 @@
   padding: 10px;
   background-color: map-get($colors-rule, first-color);
   color: map-get($colors-rule, sixth-color);
-  //font-size: 20px;
-  //font-weight: 500;
   margin-top: 20px;
   text-align: center;
   width: 100px;
+  cursor: pointer;
+  
+  
   @include upper-large-screen{
     font-size: 20px;
     font-weight: 600;
     width: 200px;
-
+    
+  }
+  &:hover{
+    background-color: map-get($colors-rule, second-color);
   }
 }
 

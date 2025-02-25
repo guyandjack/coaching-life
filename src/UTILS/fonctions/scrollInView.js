@@ -1,4 +1,5 @@
 
+//realise un scroll vers un element de la page
 function smoothScroll(classElement) {
     
     let arrayLinkMenu = document.querySelectorAll(`.${classElement}`);
